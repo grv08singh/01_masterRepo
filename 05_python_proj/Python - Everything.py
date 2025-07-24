@@ -711,12 +711,13 @@ warnings.filterwarnings('ignore')
 
 # s1.upper()                                                        #upper case
 # s1.lower()                                                        #lower case
-# s1.capitalize()                                                   #capitalize first character of every word
+# s1.capitalize()                                                   #capitalize first character of first word
 
 # s1.replace('d','z')                                               #replace 'd' with 'z' in s1
 # s1.strip()                                                        #remove white space before and after s1
-# s1.split()                                                        #split the string at space
+# s1.split()                                                        #split the string at space and provide a list of strings
 # s1.split('c')                                                     #split the string at 'c'
+# " ".join(arr_of_str)                                              #join an array of string with space in between
 # len(s1)                                                           #length of string
 
 
