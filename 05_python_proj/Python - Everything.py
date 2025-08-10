@@ -48,7 +48,9 @@ warnings.filterwarnings('ignore')
 
 
 
-# 1. EDA :: Exploratory Data Analysis
+###############################################################################################################
+#### 1. EDA :: Exploratory Data Analysis
+###############################################################################################################
 
 # 1.1 Cleaning
 
@@ -116,11 +118,150 @@ warnings.filterwarnings('ignore')
 ####        print(LE.classes())
 
 
-# 2. Statistics
 
 
 
-# 3. Machine Learning - Model Building
+
+
+###############################################################################################################
+#### 2. Statistics
+###############################################################################################################
+# IMPORT LIBRARY
+# import statistics as st                                                               #for descriptive statistics - in built in python
+# from scipy import stats                                                               #for descriptive & inferential statistics
+#       
+# arr1, arr2 are lists of data
+#       
+# st.mean(arr1)       
+# st.median(arr1)     
+# st.mode(arr1)       
+# st.stdev(arr1)                                                                        #sample Standard Deviation
+# st.pstdev(arr1)                                                                       #population Standard Deviation
+# st.variance(arr1)                                                                     #sample Variance
+# st.pvariance(arr1)                                                                    #population Variance
+#       
+# st.covariance(arr1, list_2)     
+# st.correlation(arr1, list_2)        
+# st.linear_regression(arr1, list_2)      
+#       
+#
+# st.geometric_mean(arr1)
+# st.harmonic_mean(arr1)
+#
+#
+#
+#
+#
+#
+# from scipy import stats
+#
+#############################################
+#### Z-Test, Z Test
+#############################################
+#
+# z_stat = (st.mean(arr1) - pop_mean) / (pop_std/math.sqrt(N))                          #N = population size
+# p_val = 2 * (1 - stats.norm.cdf(abs(z_stat)))                                         #probability value for z_stat
+# OR
+# from statsmodels.stats.weightstats import ztest                                       #one sampled, z test, z-test
+# z_stat, p_val = ztest(x1=arr1, value = pop_mean, alternative='two-sided')             #for H1: arr1.mean != pop_mean
+# z_stat, p_val = ztest(x1=arr1, value = pop_mean, alternative='larger')                #for H1: arr1.mean > pop_mean
+#
+#
+# z_stat, p_val = ztest(x1=arr1,x2=list_2, value=pop_mean_diff, alternative='larger')   #two sample difference, z test, z-test
+# OR
+# z_stat = ((mean(arr1)-mean(list_2)) - pop_mean_diff)/(s1_std**2/n1 + s2_std**2/n2)    #N = number of sample data-points
+# 
+# 
+# from statsmodels.stats.proportion import proportions_ztest                            #z-test for proportion
+# z_stat, p_val = proportions_ztest(count=arr1_count, nobs=total_pop, value=0.50, alternative="two-sided")
+# 
+# 
+# 
+# 
+#
+#############################################
+#### T-Test, T Test
+#############################################
+# 
+# t_stat = (st.mean(arr1) - pop_mean) / (sample_std/math.sqrt(n-1))                     #n = number of sample data-points
+# p_val = stats.t.sf(abs(t_stat), df=(n-1))                                             #one-tailed probability
+# p_val = stats.t.sf(abs(t_stat), df=(n-1)) * 2                                         #two-tailed probability
+# OR
+# t_stat, p_val = stats.ttest_1samp(a=arr1, pop_mean)                                   #one sampled T-Test
+#
+#
+# t_stat = (s1_mean - s2_mean) / (s1_std**2/n1 + s2_std**2/n2)                          #n1, n2 = number of sample data-points in s1, s2
+# OR
+# t_stat, p_val = stats.ttest_ind(arr1, arr2)                                           #two independent sampled T-Test
+#
+# 
+# 
+# 
+# 
+#############################################
+#### Chi2-Test, Chi2 Test
+#############################################
+#
+# from scipy.stats import chi2
+#
+# chi2_stat = sum((obs_arr - exp_arr)**2 / exp_arr)                                     #(observed - expected) / expected
+# p_val = (1 - chi2.cdf(chi2_stat, df))                                                 #df = n-1
+# OR
+# from scipy.stats import chi2_contingency
+# contingency_table = pd.crosstab(df['obs_arr1'], df['obs_arr2'])                       #two observed categorical variables
+# chi2_stat, p_val, df, exp_frequencies = chi2_contingency(contingency_table)
+# OR
+# from scipy.stats import chisquare
+# chi2_stat, p_val = chisquare(f_obs=obs_arr, f_exp=exp_arr)
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+#############################################
+#### F-Test, F Test (ANOVA)
+#############################################
+# 
+# var1 = var(arr1)
+# df1 = len(arr2)
+#
+# var2 = var(arr1)
+# df2 = len(arr2)
+#
+# max_var = max(var1, var2)
+# min_var = min(var1, var2)
+#
+# df_n = max_var_df(df1, df2)
+# df_d = min_var_df(df1, df2)
+#
+# f_stat = max_var/min_var                                                              #max variance / min variance
+# p_val = (1 - stats.f.cdf(f_stat, df_n, df_d))                                         #p_val for one_tailed f_stat, df1 for max(var1, var2)
+# OR
+# from scipy.stats import f_oneway                                                      #one way anova
+# f_stat, p_val = f_oneway(arr1, arr2, arr3)                                            #one way anova
+#
+#
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###############################################################################################################
+#### 3. Machine Learning - Model Building
+###############################################################################################################
 # IMPORT LIBRARY
 #### from sklearn.linear_model import LinearRegression
 #### from sklearn.model_selection import train_test_split
@@ -174,7 +315,9 @@ warnings.filterwarnings('ignore')
 
 
 
-# numpy - Everything
+###############################################################################################################
+#### numpy - Everything
+###############################################################################################################
 
 # list = []
 
@@ -352,7 +495,9 @@ warnings.filterwarnings('ignore')
 
 
 
-# pandas - Everything
+###############################################################################################################
+#### pandas - Everything
+###############################################################################################################
 
 # import pandas as pd
 # my_list = []
@@ -522,7 +667,9 @@ warnings.filterwarnings('ignore')
 
 
 
-# matplotlib - Everything
+###############################################################################################################
+#### matplotlib - Everything
+###############################################################################################################
 
 # import matplotlib.pyplot as plt
 
@@ -672,7 +819,9 @@ warnings.filterwarnings('ignore')
 
 
 
-# Seaborn
+###############################################################################################################
+#### Seaborn
+###############################################################################################################
 
 # import seaborn as sns
 
@@ -687,7 +836,7 @@ warnings.filterwarnings('ignore')
 # sns.boxplot(data=df, y='col_1', hue='col_2')                      #box plot
 # sns.histplot(data=df, x='col_1', hue='col_2')                     #histogram plot
 # sns.lineplot(data=df, x='col_1', y='col_2')                       #line plot
-# sns.kdeplot(list_1)                                               #KDE plot
+# sns.kdeplot(arr1)                                               #KDE plot
 
 # arguments of scatterplot() method:
     # color 'r','g','b','k','y','c','m'
@@ -710,148 +859,114 @@ warnings.filterwarnings('ignore')
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ###############################################################################################################
-#### Statistics Modules
+#### strings - Everything
 ###############################################################################################################
-# import statistics as st                                                       #for descriptive statistics - in built in python
-# from scipy import stats                                                       #for descriptive & inferential statistics
-# 
-# st.mean(list_1)
-# st.median(list_1)
-# st.mode(list_1)
-# st.stdev(list_1)                                                              #sample Standard Deviation
-# st.pstdev(list_1)                                                             #population Standard Deviation
-# st.variance(list_1)                                                           #sample Variance
-# st.pvariance(list_1)                                                          #population Variance
-#
-# st.covariance(list_1, list_2)
-# st.correlation(list_1, list_2)
-# st.linear_regression(list_1, list_2)
-#
-# z_score = (list_1 - st.mean(list_1))/st.stdev(list_1)                         #Z-score for every data-point
-#
-# st.geometric_mean(list_1)
-# st.harmonic_mean(list_1)
-#
-#
-#
-#
-#
-#
-#
-# z_stat = (sample_mean - pop_mean) / (std_dev/np.sqrt(N))                      #N = number of population data-points
-# p_val = 2 * (1 - stats.norm.cdf(abs(z_stat)))                                 #for z_stat > 0
-# p_val = 2 * stats.norm.cdf(abs(z_stat))                                       #for z_stat < 0
-#
-# 
-# t_stat, p_val = stats.ttest_1samp(col_1, pop_mean)                            #1-Sample T-Test - direct formula
-# OR
-# t_stat = (sample_mean - pop_mean) / (sample_std_dev/np.sqrt(n-1))             #n = number of sample data-points
-# p_val = 2 * (1 - stats.norm.cdf(abs(t_stat)))                                 #for t_stat > 0
-# p_val = 2 * stats.norm.cdf(abs(t_stat))                                       #for t_stat < 0
-# 
-# 
-# 
-#
-#
+
+# s1 = 'abcdefghij'                                                                     #string
+# s1[3]                                                                                 #string indexing
+# s1[-1]                    
+# s1[2:]                                                                                #string slicing
+# s1[:8]                    
+# s1[1:5]                   
+# s1[::2]                                                                               #every character from string s with step size 2
+# s1[::-1]                                                                              #string backwards
+                    
+# s2 = 'welcome'                    
+# s1 + s2                                                                               #concatenation
+# char = 'a'                    
+# char * 10                                                                             #'aaaaaaaaaa'
+                    
+# s1.upper()                                                                            #upper case
+# s1.lower()                                                                            #lower case
+# s1.capitalize()                                                                       #capitalize first character of first word
+                    
+# s1.replace('d','z')                                                                   #replace 'd' with 'z' in s1
+# s1.strip()                                                                            #remove white space before and after s1
+# s1.split()                                                                            #split the string at space and provide a list of strings
+# s1.split('c')                                                                         #split the string at 'c'
+# " ".join(arr_of_str)                                                                  #join an array of string with space in between
+# len(s1)                                                                               #length of string
+                    
+                    
+                    
+
+###############################################################################################################
+#### list - Everything
+###############################################################################################################
+                    
+# my_list = ['A string',23,100.232,'o']                                                 #a list can contain anything
+# len(my_list)                                                                          #number of elements in a list
+# my_list[2]                                                                            #element at index 2
+# my_list[2:]                                                                           #elements from index 2 to end
+# my_list[:3]                                                                           #elements from start to index 2
+# my_list[2:5]                                                                          #elements at index 2,3,4
+# my_list[::2]                                                                          #every 2nd element from the list
+# my_list[::-1]                                                                         #reverse the list
+# my_list + ['new item']                                                                #concatenate element to the list
+# my_list * 2                                                                           #repeat the list
+# my_list.append('append_me')                                                           #append element to the list
+# my_list.pop()                                                                         #remove last element from the list and return it
+# my_list.pop(2)                                                                        #remove element at index 2 from the list and return it
+# my_list.reverse()                                                                     #reverse the list
+# my_list.sort()                                                                        #sort the list - in place
+# sorted(my_list)                                                                       #just show the sorted list, not sort original list
+# [i**2 for i in my_list if i%2==0]                                                     #list comprehension
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-# strings - Everything
-
-# s1 = 'abcdefghij'                                                 #string
-# s1[3]                                                             #string indexing
-# s1[-1]
-# s1[2:]                                                            #string slicing
-# s1[:8]
-# s1[1:5]
-# s1[::2]                                                           #every character from string s with step size 2
-# s1[::-1]                                                          #string backwards
-
-# s2 = 'welcome'
-# s1 + s2                                                           #concatenation
-# char = 'a'
-# char * 10                                                         #'aaaaaaaaaa'
-
-# s1.upper()                                                        #upper case
-# s1.lower()                                                        #lower case
-# s1.capitalize()                                                   #capitalize first character of first word
-
-# s1.replace('d','z')                                               #replace 'd' with 'z' in s1
-# s1.strip()                                                        #remove white space before and after s1
-# s1.split()                                                        #split the string at space and provide a list of strings
-# s1.split('c')                                                     #split the string at 'c'
-# " ".join(arr_of_str)                                              #join an array of string with space in between
-# len(s1)                                                           #length of string
-
-
-
-
-# list - Everything
-
-# my_list = ['A string',23,100.232,'o']                             #a list can contain anything
-# len(my_list)                                                      #number of elements in a list
-# my_list[2]                                                        #element at index 2
-# my_list[2:]                                                       #elements from index 2 to end
-# my_list[:3]                                                       #elements from start to index 2
-# my_list[2:5]                                                      #elements at index 2,3,4
-# my_list[::2]                                                      #every 2nd element from the list
-# my_list[::-1]                                                     #reverse the list
-# my_list + ['new item']                                            #concatenate element to the list
-# my_list * 2                                                       #repeat the list
-# my_list.append('append_me')                                       #append element to the list
-# my_list.pop()                                                     #remove last element from the list and return it
-# my_list.pop(2)                                                    #remove element at index 2 from the list and return it
-# my_list.reverse()                                                 #reverse the list
-# my_list.sort()                                                    #sort the list - in place
-# sorted(my_list)                                                   #just show the sorted list, not sort original list
-# [i**2 for i in my_list if i%2==0]                                 #list comprehension
-
-
-
-
-
-
-# dictionary - Everything
+###############################################################################################################
+#### dictionary - Everything
+###############################################################################################################
 
 # d = {'key1':123,'key2':[12,23,33],'key3':['item0','item1','item2']}
-# d['key3']                                                         #give the value of key3 i.e. ['item0','item1','item2']
-# d['key3'][0]                                                      #'item0'
-# d['key3'][0].upper()                                              #'ITEM0'
-# d.keys()                                                          #all the keys of the dictionary
-# d.values()                                                        #all the values of the dictionary
-# d.items()                                                         #all the key:value pairs of the dictionary
-
-
-
-
-# tuples - Everything
-
-# t = ('one', 2, 3.1)                                               #initializing a tuple
-# len(t)                                                            #number of elements in the tuple
-# t[-1]                                                             #last element of the tuple
-# t.index('one')                                                    #index of element 'one' in the tuple
-# t.count('one')                                                    #count of element 'one' in the tuple
-
-
-
-# sets - Everything
-
-# x = set()                                                         #creating a set
-# x.add(1)                                                          #adding element to set
-# x.add(2)                                                          #adding element to set
-# set(my_list)                                                      #convert my_list to set: show any duplicate values only once
+# d['key3']                                                                             #give the value of key3 i.e. ['item0','item1','item2']
+# d['key3'][0]                                                                          #'item0'
+# d['key3'][0].upper()                                                                  #'ITEM0'
+# d.keys()                                                                              #all the keys of the dictionary
+# d.values()                                                                            #all the values of the dictionary
+# d.items()                                                                             #all the key:value pairs of the dictionary
+                    
+                    
+                    
+                    
+###############################################################################################################
+#### tuples - Everything                   
+###############################################################################################################
+                    
+# t = ('one', 2, 3.1)                                                                   #initializing a tuple
+# len(t)                                                                                #number of elements in the tuple
+# t[-1]                                                                                 #last element of the tuple
+# t.index('one')                                                                        #index of element 'one' in the tuple
+# t.count('one')                                                                        #count of element 'one' in the tuple
+                    
+                    
+                    
+###############################################################################################################
+#### sets - Everything           
+###############################################################################################################      
+                    
+# x = set()                                                                             #creating a set
+# x.add(1)                                                                              #adding element to set
+# x.add(2)                                                                              #adding element to set
+# set(my_list)                                                                          #convert my_list to set: show any duplicate values only once
