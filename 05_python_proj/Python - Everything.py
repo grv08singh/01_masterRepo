@@ -1,9 +1,9 @@
-# Open jupyter notebook at a specified path:
-# Type in Anaconda Prompt
-# jupyter notebook --notebook-dir="specified_path"
-# jupyter notebook --notebook-dir="D:\04 Intellipaat - EPGC\02 EPGC - Python\06 Python - Mandatory Assignments\05 - Data Visualization Assignment"
-# jupyter notebook --notebook-dir="C:\Users\Grv\00 DS Python\00-grv-DS PythonPractice"
-# jupyter notebook --notebook-dir="D:\git_repo_DS\07_Intellipaat_EPGC\03 EPGC - Python + Stats + ML"
+## Open jupyter notebook at a specified path:
+## Type in Anaconda Prompt
+## jupyter notebook --notebook-dir="specified_path"
+## jupyter notebook --notebook-dir="D:\04 Intellipaat - EPGC\02 EPGC - Python\06 Python - Mandatory Assignments\05 - Data Visualization Assignment"
+## jupyter notebook --notebook-dir="C:\Users\Grv\00 DS Python\00-grv-DS PythonPractice"
+## jupyter notebook --notebook-dir="D:\git_repo_DS\07_Intellipaat_EPGC\03 EPGC - Python + Stats + ML"
 
 
 
@@ -202,9 +202,9 @@ warnings.filterwarnings('ignore')
 #
 # from scipy import stats
 #
-#############################################
+###############################################################################################################
 #### Z-Test, Z Test
-#############################################
+###############################################################################################################
 #
 # z_stat = (st.mean(arr1) - pop_mean) / (pop_std/math.sqrt(N))                          #N = population size
 # p_val = 2 * (1 - stats.norm.cdf(abs(z_stat)))                                         #probability value for z_stat
@@ -226,9 +226,9 @@ warnings.filterwarnings('ignore')
 # 
 # 
 #
-#############################################
+###############################################################################################################
 #### T-Test, T Test
-#############################################
+###############################################################################################################
 # 
 # t_stat = (st.mean(arr1) - pop_mean) / (sample_std/math.sqrt(n-1))                     #n = number of sample data-points
 # p_val = stats.t.sf(abs(t_stat), df=(n-1))                                             #one-tailed probability
@@ -245,9 +245,9 @@ warnings.filterwarnings('ignore')
 # 
 # 
 # 
-#############################################
+###############################################################################################################
 #### Chi2-Test, Chi2 Test
-#############################################
+###############################################################################################################
 #
 # from scipy.stats import chi2
 #
@@ -267,9 +267,9 @@ warnings.filterwarnings('ignore')
 # 
 # 
 # 
-#############################################
+###############################################################################################################
 #### F-Test, F Test (ANOVA)
-#############################################
+###############################################################################################################
 # 
 # var1 = var(arr1)
 # df1 = len(arr2)
@@ -805,7 +805,7 @@ warnings.filterwarnings('ignore')
 
 
 
-# Intellipaat
+## Intellipaat
 # x = range(32)
 # y = df['col_1']
 

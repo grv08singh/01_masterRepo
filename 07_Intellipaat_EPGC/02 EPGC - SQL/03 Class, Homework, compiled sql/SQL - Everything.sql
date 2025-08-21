@@ -91,7 +91,7 @@
 -- }
 -- 
 -- 
--- --###############################################################
+-- ###########################################################################################
 -- --XML
 -- <person>
 --   <NAME>Alice</NAME>
@@ -146,14 +146,14 @@ Demo 02: 02-02-2025
 
 
 --Sql server Adventure wORks restore,SSMS INTroduction,Data type( numeric)
---#################################################
+-- ###########################################################################################
 --Self learning 
 --	https://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16
 --XML data IN SQL Server
 --	https://learn.microsoft.com/en-us/sql/relational-DATABASEs/xml/xml-data-sql-server?view=sql-server-ver16
 --JSON data IN SQL Server
 --	https://learn.microsoft.com/en-us/sql/relational-DATABASEs/json/json-data-sql-server?view=sql-server-ver16
--- --###########################################################
+-- ###########################################################################################
 -- 	-- comment = INfORmational message 
 -- 	-- single lINe comment
 -- 	--	sql server IS NOT a cASe sensitive language 
@@ -173,7 +173,7 @@ Demo 02: 02-02-2025
 -- 
 -- --session 1- 50 reserved fOR system process
 -- 
--- --#################################################
+-- ###########################################################################################
 -- 	--Download backup files
 -- 	--Step 1 
 -- 	--Open --> sql server management studio--> New Query -->run a commAND 
@@ -191,7 +191,7 @@ Demo 02: 02-02-2025
 -- 	--step 4
 -- 	--Restore
 -- 
--- --##################################################
+-- ###########################################################################################
 -- --System DATABASEs
 -- https://learn.microsoft.com/en-us/sql/relational-DATABASEs/DATABASEs/system-DATABASEs?view=sql-server-ver16
 -- 
@@ -223,7 +223,7 @@ Demo 02: 02-02-2025
 -- 	--NAME  =  mssqlsystemresource
 -- 
 -- 
--- --##########################################################
+-- ###########################################################################################
 -- --Numbers 
 -- --Exact numerics
 -- 
@@ -273,7 +273,7 @@ SELECT @age age;
 	SELECT @val AS Val, DATALENGTH(@val) AS Byte;
 
 
---##########################################################
+-- ###########################################################################################
 --SMALLINT, range(-32768 to 32767), 2 byte  
 	DECLARE @val SMALLINT;
 	SET @val =-32768;
@@ -297,7 +297,7 @@ SELECT @age age;
 	DECLARE @val SMALLINT;
 	SET @val =32768;
 	SELECT @val AS Val, DATALENGTH(@val) AS Byte;
---##########################################################
+-- ###########################################################################################
 --INT (-2,147,483,648 to 2,147,483,647), 4 byte
 
 
@@ -335,7 +335,7 @@ SELECT @age age;
 	SET @val =2147483648;
 	SELECT @val AS Val, DATALENGTH(@val) AS Byte;
 
---#######################################################
+-- ###########################################################################################
 --BIGINT (-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807), 8 byte
 
 	DECLARE @val  BIGINT;
@@ -357,7 +357,7 @@ SELECT @age age;
 	SET @val =1;
 	SELECT @val AS Val, DATALENGTH(@val) AS Byte;
 
----###################################################################
+-- ###########################################################################################
 --Approximate numerics
 	--PrecISion (data which IS present towards the left AND right of the DECIMAL poINt)
 	--Scale(data which IS present towards right of the DECIMAL poINT)
@@ -391,7 +391,7 @@ SELECT @age age;
 -- 1.23456789656457* 10 raISed to power of 15
 
 
---#####################################################################
+-- ###########################################################################################
 --  DECIMAL(precISion , scale)
 --	PrecISion			StORage bytes
 --	1 - 9					5
@@ -493,7 +493,7 @@ SELECT @age age;
 
 --String,unicode,DATETIME,ddl(CREATE, ALTER, DROP, USE) 
 
---##################################################
+-- ###########################################################################################
 -- '12 3#$%^&*DFGH J KL:123 123sdAS d'
 
 --CHAR(n), range (1 to 8000)
@@ -526,7 +526,7 @@ SELECT @age age;
 	SET @val='alpha';
 	SELECT @val, DATALENGTH(@val) AS Byte;
 
---##########################################################
+-- ###########################################################################################
 --VARCHAR(n), range 1-8000 / MAX
 	--It IS a variable-length data type
 	--USEd to store Unicode CHARacters
@@ -566,14 +566,14 @@ SELECT @age age;
 	SET @val='alpha';
 	SELECT @val, DATALENGTH(@val) AS Byte;
 
----###################################
+-- ###########################################################################################
 
 	DECLARE @val VARCHAR(MAX);
 	SET @val='नमस्ते दुनिया';
 	SELECT @val, DATALENGTH(@val) AS Byte;
 
 
---###############################################
+-- ###########################################################################################
 --Unicode (nCHAR & nvaCHAR)
 --nCHAR(1 to 4000) 
 	--It IS a fixed length data type
@@ -593,7 +593,7 @@ SELECT @age age;
 	SET @val=N'नमस्ते你好，世界';
 	SELECT @val, DATALENGTH(@val) AS Byte;
 
---###########################################################
+-- ###########################################################################################
 --nVARCHAR()--1-4000
 --It IS a variable-length data type
 --USEd to store Unicode CHARacters
@@ -622,12 +622,12 @@ SELECT @age age;
 
 
 	
---###########################################################
---###########################################################
+-- ###########################################################################################
+-- ###########################################################################################
 -- datatypes:	DATE, TIME, SMALLDATETIME, DATETIME, DATETIME2, DATETIMEOFFSET
 -- functions:	GETDATE(), SYSDATETIME(), 
---###########################################################
---###########################################################
+-- ###########################################################################################
+-- ###########################################################################################
 --DATE (3 byte)
 	--INput ='YYYY-MM-DD' OR 'MM-DD-YYYY'
 	--Output ='YYYY-MM-DD'
@@ -652,7 +652,7 @@ SELECT @age age;
 	SET @val= '15-02-2025';
 	SELECT @val, DATALENGTH(@val) AS Byte;
 
---##########################################################
+-- ###########################################################################################
 
 --TIME(5 byte)	
 	--INput 'HH:MM:SS'
@@ -669,7 +669,7 @@ SELECT @age age;
 	SELECT GETDATE(), DATALENGTH(GETDATE()) AS Byte;
 	SELECT SYSDATETIME(), DATALENGTH(SYSDATETIME()) AS Byte;
 
---#####################################################
+-- ###########################################################################################
 --TIMEstamp 'YYYY-MM-DD HH:MM:SS'
 
 --SMALLDATETIME(4 byte)'YYYY-MM-DD HH:MM:SS'
@@ -706,7 +706,7 @@ SELECT @age age;
 	SET @val= CONCAT(SYSDATETIME(),'-5:30');
 	SELECT @val, DATALENGTH(@val) AS Byte;
 
---#################################################
+-- ###########################################################################################
 --DDL(Data DefINition Language)
 --CREATE
 	--CREATE DATABASE
@@ -725,14 +725,14 @@ SELECT @age age;
 	CREATE TABLE employee (eid INT , eNAME VARCHAR(10), age TINYINT , gender CHAR(10), salary DECIMAL(10,2));
 
 -- Which DATABASE & datatype
---##############################################################
+-- ###########################################################################################
 --SYNATX:
 --CREATE TABLE TABLE_NAME	(COLUMN1_NAME datatype ,COLUMN2_NAME datatype,COLUMN3_NAME datatype,...)
 
 ---TASk to CREATE TABLE dep (eid, eNAME , age , gender, salary)
 	USE SQlDemo;
 	CREATE TABLE dep eid INT , eNAME VARCHAR(10), age TINYINT , gender CHAR(10), salary DECIMAL(10,2));
---########################################################
+-- ###########################################################################################
 --ALTER
 --ALTER to ADD a COLUMN 
 /*Syntax:
@@ -825,10 +825,10 @@ SELECT @age age;
 
 
 
---########################################################
+-- ###########################################################################################
 https://learn.microsoft.com/en-us/sql/t-sql/queries/SELECT-ORder-by-claUSE-transact-sql?view=sql-server-ver16
 https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-server-ver16
---######################################################### 
+-- ###########################################################################################
 -- Database file saved location
 
 	DROP DATABASE demo;
@@ -841,12 +841,12 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 	( NAME = N'demo_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.DEMO\MSSQL\DATA\demo_log.ldf' , SIZE = 8192KB , FILEGROWTH = 65536KB )
 	 WITH LEDGER = OFF;
 
--- ##################################################################
+-- ###########################################################################################
 -- organisation(HR, FIN, SAL, MAR)
 	CREATE DATABASE organisation;
 	USE organisation;
 
--- ########################################
+-- ###########################################################################################
 -- organisation(HR, FIN, SAL, MAR)
 	CREATE DATABASE organisation;
 	USE organisation;
@@ -868,7 +868,7 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 	CREATE TABLE t11 (c1 INT, c2 INT);
 	CREATE TABLE t12 (c1 INT, c2 INT);
 
-	--########################################
+-- ###########################################################################################
 
 
 	CREATE DATABASE neworg;	
@@ -899,7 +899,7 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 	CREATE TABLE mark.t12 (c1 INT, c2 INT);
 
 -- DATABASE.SCHEMANAME.TABLENAME
---################################################################
+-- ###########################################################################################
 	CREATE DATABASE Demo;
 	USE Demo;
 
@@ -926,13 +926,13 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 	EXEC SP_RENAME 'records.eid','emp_id','COLUMN';
 
 
---####################################################
+-- ###########################################################################################
 	CREATE DATABASE SQLDemo;
 	USE SQLDemo;
 
 	CREATE TABLE department (eid INT, ename VARCHAR(20), age TINYINT, gender CHAR(10), salary DECIMAL(10,2));
 
---####################################################
+-- ###########################################################################################
 --DML(Data Manipulation language)
 --SELECT 
 	--Syntax: SELECT COLUMN1,COLUMN2, COLUMN3,.... FROM TABLE 
@@ -980,7 +980,7 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 	INSERT INTO  department	VALUES
 	(NULL,NULL,NULL,NULL,NULL );
 
---####################################################	
+-- ###########################################################################################
 
 
 --UPDATE( MODIFY the TABLE-data)
@@ -1012,7 +1012,7 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 	SET eNAME ='john' ,age =29, salary =8754
 	WHERE gender='male';
 
---######################################
+-- ###########################################################################################
 --DELETE (remove a records/ multiple records FROM TABLE )
 	--syntax : DELETE FROM TABLENAME WHERE COLUMN=value 
 	   
@@ -1022,14 +1022,14 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 	
 	DELETE FROM department;
 
---######################################
+-- ###########################################################################################
 --TRUNCATE (remove all records FROM TABLE )
 	--Syntax: TRUNCATE TABLE TABLENAME
 	TRUNCATE TABLE department WHERE eid =101;	-- INCORRECT SYNTAX
 	TRUNCATE TABLE department;					-- CORRECT SYNTAX
 
 	SELECT * FROM department;
---######################################
+-- ###########################################################################################
 	DROP TABLE test;
 	CREATE TABLE test (id INT, ename VARCHAR(20), phnum INT);
 	
@@ -1069,7 +1069,7 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 
 
 
----##############################
+-- ###########################################################################################
 --Import Export
 	CREATE DATABASE importexport;
 	USE importexport;
@@ -1081,7 +1081,7 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 
 
 
---#########################################
+-- ###########################################################################################
 	USE AdventureWorks2022;
 	
 	SELECT BusinessEntityID,FirstName,LastName,ModifiedDate 
@@ -1136,7 +1136,7 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 	WHERE ModifiedDate <= '2007-01-09 00:00:00.000';
 
 
---#############################
+-- ###########################################################################################
 --WHERE COLUMNNAME =value AND COLUMNNAME =value AND COLUMNNAME =value AND COLUMNNAME =value ......
 
 	SELECT BusinessEntityID,FirstName,LastName,ModifiedDate 
@@ -1197,7 +1197,7 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 	FirstName ='Barry' OR
 	FirstName ='Sidney';
 
---##########################################
+-- ###########################################################################################
 --WHERE COLUMN IN (VALI, VAL2, VAL3 ,....)
 	SELECT BusinessEntityID,FirstName,LastName,ModifiedDate 
 	FROM PERSON.PERSON
@@ -1266,7 +1266,7 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 	WHERE  FirstName LIKE '%OM%';
 	
 	
----#####################################################################################################
+-- ###########################################################################################
 
 
 --QUESTION TO PRACTICE 
@@ -1307,7 +1307,8 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 	DROP TABLE Teachers_Departments;
 	CREATE TABLE Teachers_Departments (TeacherDepartmentID INT, TeacherID INT, DepartmentID INT);
 	
-----*****************************************************************************************
+-- ###########################################################################################
+-- ###########################################################################################
 --practice question
  DROP DATABASE hospital;
  CREATE DATABASE hospital;
@@ -1376,7 +1377,7 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 
 --ORDER BY ,top offSET fetch, aggregate functions,GROUP BY HAVing 
 --ConstraINT ( NOT NULL , check,default ), INDEX , CLUSTERED , non CLUSTERED
- --##################################################################
+-- ###########################################################################################
  --Self learning  
 --	https://learn.microsoft.com/en-us/traINing/modules/transfORm-data-by-implementing-pivot-unpivot-rollup-cube/
 --
@@ -1384,7 +1385,7 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 --
 --	https://learn.microsoft.com/en-us/sql/relational-DATABASEs/INDEXes/CLUSTERED-AND-NONCLUSTERED-INDEXes-described?view=sql-server-ver16
 
----########################################################
+-- ###########################################################################################
 	CREATE DATABASE Demo;
 	USE Demo;
 
@@ -1421,7 +1422,7 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 
 	SELECT * FROM department ;
 
---#############################################
+-- ###########################################################################################
 
 --COLUMN sort --> ASC /DESC
 --ORDER BY COLUMN ASc, COLUMN desc
@@ -1490,7 +1491,7 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 	ORDER BY BusinessEntityID DESC
 	OFFSET 2 ROWS;
 
---#######################################
+-- ###########################################################################################
 	SELECT  * 
 	FROM person.person 
 	ORDER BY BusinessEntityID DESC
@@ -1503,7 +1504,7 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 	FETCH NEXT 5 ROWS ONLY;
 
 
----######################################
+-- ###########################################################################################
 --Aggregate function 
 
 --COUNT(*): Counts the number of rows IN a datASET INclude the NULL VALUES .
@@ -1545,7 +1546,7 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 
 
 
---#############################
+-- ###########################################################################################
  --GROUP BY ... HAVing 
  --break the result set into subsets
 
@@ -1582,7 +1583,7 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
 	HAVing gender='Female';
 
 
----#############################
+-- ###########################################################################################
   --LOGICAL PROCESSing ORDER / SEQUENCE OF THE SELECT STATEMENT 
   --Sequence to execute IN sql server
 
@@ -1602,7 +1603,7 @@ https://learn.microsoft.com/en-us/sql/t-sql/queries/WHERE-transact-sql?view=sql-
   --DISTINCT
   --ORDER BY
 
---#################################################
+-- ###########################################################################################
 
 	SELECT * FROM Department ORDER BY did ASC;
 
@@ -1662,9 +1663,9 @@ INSERT INTO emp  VALUES
 
 
 
---##########################################
+-- ###########################################################################################
 -- CONSTRAINTS
---##########################################
+-- ###########################################################################################
 	
 	SELECT * FROM DEPARTMENT;
 
@@ -1685,7 +1686,7 @@ INSERT INTO emp  VALUES
 
 
 
---###############################################
+-- ###########################################################################################
 --Execution plan = Ctrl + M
 --INDEX 
 	SELECT * FROM DEPARTMENT  WHERE did =1;
@@ -1780,7 +1781,7 @@ INSERT INTO emp  VALUES
 
  --PK, FK,SQL SERVER  CrossjoINs,EQUI, self joIN,merge,
 
---########################################################
+-- ###########################################################################################
 
 	CREATE DATABASE Demo	
 	GO
@@ -1813,7 +1814,7 @@ INSERT INTO emp  VALUES
 
 	SELECT * FROM department
 
----#######################################################
+-- ###########################################################################################
 --primary key(UNIQUE + NOT NULL)// COLUMN (OR a SET of COLUMNs)
 	--1 primary key  IN TABLE 
 	--CLUSTERED INDEX (sort & store, SEEK FASTER)
@@ -1860,7 +1861,7 @@ INSERT INTO emp  VALUES
 
 	SELECT * FROM HR
 
- ---###################################################
+-- ###########################################################################################
 --FOReign key -->(Primary key  OR UNIQUE )
 	 --Refrential INTegrity --> ADD records (Primary , UNIQUE)
 	 --CAScading INTegrity --> DELETE (fOReign key)
@@ -1924,7 +1925,7 @@ INSERT INTO emp  VALUES
 	DELETE FROM USErs 
 	DELETE FROM ORders --- DELETE FROM FK FIRST
 
---#########################################################################
+-- ###########################################################################################
 --SQL SERVER JOINS
 
 CREATE DATABASE Ecommerce
@@ -2024,21 +2025,21 @@ SELECT top 1 * FROM ORders
 SELECT top 1  * FROM ORderDetails
 SELECT top 1 * FROM products
 
---###############################################
+-- ###########################################################################################
 --Relationship 
 	--Customers		-->ORders		=	 CustomerID
 	--ORders		-->ORderDetails	=	 ORderID 
 	--ORderDetails	-->products		=	 ProductID
 	--Customers		-->products		=	 CustomerID-->ORderID-->ProductID
 
---####################
+-- ###########################################################################################
 /*SYNTAX JoINs:
 	SELECT COLUMNs
 	FROM TABLE1  JOIN TABLE2 	ON TABLE1.COLUMN = TABLE2.COLUMN
 	JOIN TABLE3 	ON TABLE1.COLUMN = TABLE3.COLUMN
 	JOIN TABLE4 	ON TABLE2.COLUMN = TABLE4.COLUMN
 */
---###############################################
+-- ###########################################################################################
 
 
 SELECT top 1 * FROM Customers
@@ -2071,7 +2072,7 @@ SELECT top 1 * FROM products
 	INNER JOIN ORderDetails  AS od ON O.ORderID=OD.ORderID
 	INNER JOIN products AS p ON OD.ProductID=P.ProductID
 
---###############################################
+-- ###########################################################################################
 --Left outer joIN 
 
 	SELECT  * FROM Customers Left outer  JOIN ORders ON Customers.CustomerID=ORders.CustomerID
@@ -2090,7 +2091,7 @@ SELECT top 1 * FROM products
 	SELECT  * FROM Customers c Left JOIN ORders O ON C.CustomerID=O.CustomerID
 	WHERE O.ORderID IS NULL
 	
---###############################################
+-- ###########################################################################################
 --Right outer joIN 
 
 	SELECT  * FROM Customers Right outer  JOIN ORders ON Customers.CustomerID=ORders.CustomerID
@@ -2109,7 +2110,7 @@ SELECT top 1 * FROM products
 	SELECT  * FROM Customers c Right JOIN ORders O ON C.CustomerID=O.CustomerID
 	WHERE  C.CustomerID IS NULL
 
---###############################################
+-- ###########################################################################################
 --Full outer joIN 
 
 	SELECT  * FROM Customers Full outer  JOIN ORders ON Customers.CustomerID=ORders.CustomerID
@@ -2128,7 +2129,7 @@ SELECT top 1 * FROM products
 	SELECT  * FROM Customers c Full JOIN ORders O ON C.CustomerID=O.CustomerID
 	WHERE  C.CustomerID IS NULL OR O.CustomerID IS NULL
 
---###########################
+-- ###########################################################################################
 --Cross joIN 
 	--Cartesian product of the two TABLEs
 	--possible combINations of rows BETWEEN two OR mORe TABLEs.
@@ -2149,7 +2150,7 @@ SELECT top 1 * FROM products
 
 
 
---###########################
+-- ###########################################################################################
 
 	CREATE TABLE emp(
 		employee_id INT PRIMARY KEY,
@@ -2171,7 +2172,7 @@ SELECT top 1 * FROM products
 		
 		SELECT * FROM emp cross joIN dep
 
---##############################################
+-- ###########################################################################################
 --equi joIN
 	SELECT  * FROM Customers INNER JOIN ORders ON Customers.CustomerID=ORders.CustomerID
 
@@ -2183,7 +2184,7 @@ SELECT top 1 * FROM products
 
 
 
---############################################
+-- ###########################################################################################
 CREATE TABLE INfo (
 		EmployeeID INT PRIMARY KEY,
 		EmployeeNAME VARCHAR(255),
@@ -2265,7 +2266,7 @@ CREATE TABLE Prod (
 
 
 
---############################################
+-- ###########################################################################################
 
 /*Merge Syntax
 		MERGE  target_TABLE USing source_TABLE ON merge_condition
@@ -2278,7 +2279,7 @@ CREATE TABLE Prod (
 */
 
 
---#############################
+-- ###########################################################################################
 	CREATE TABLE Employees (
 		EmployeeID INT PRIMARY KEY,
 		FirstName VARCHAR(50),
@@ -2364,8 +2365,8 @@ on ue.employeeid =ee.employeeid
 
 	SELECT * FROM UPDATEdEmployees
 	SELECT * FROM Employees
---#################################################################
---################################################################################################
+-- ###########################################################################################
+-- ###########################################################################################
 
 --FIND COLUMN--FirstName
 
@@ -2448,11 +2449,11 @@ Demo 07: 21-02-2025
 
 
  --SQL SERVER SET operatORs ,Function (string, DATE TIME )
---#########################################################################
+-- ###########################################################################################
 --Self learning  
 --	https://learn.microsoft.com/en-us/traINing/modules/transfORm-data-by-implementing-pivot-unpivot-rollup-cube/
 --	https://learn.microsoft.com/en-us/sql/t-sql/functions/functions?view=sql-server-ver16
---#########################################################################
+-- ###########################################################################################
  
 
 --7. JoIN with Subquery:
@@ -2466,7 +2467,7 @@ Demo 07: 21-02-2025
      on PP. BusinessEntityID = HRE. BusinessEntityID
 	 WHERE PP. BusinessEntityID IN( SELECT SalesPersonID FROM 	  Sales.SalesORderHeader )
 
---#######################################################
+-- ###########################################################################################
 	CREATE DATABASE  SQLDEMO
 	GO
 	USE SQLDEMO
@@ -2501,7 +2502,7 @@ Demo 07: 21-02-2025
 
 	GO
 	SELECT *  FROM Department
---#################################################################
+-- ###########################################################################################
 	CREATE TABLE emp 
 	( empid INT, eNAME VARCHAR(20), eage INT , dob DATE)
 
@@ -2566,7 +2567,7 @@ Demo 07: 21-02-2025
 	SELECT depid,empNAME,age FROM dep ORDER BY empid ASc
 
 
---#######################################################
+-- ###########################################################################################
 -- Function 
 --String function 
 	USE AdventureWorks2022
@@ -2640,7 +2641,7 @@ Demo 07: 21-02-2025
 	SET @NAME ='aLPha'
 	SELECT @NAME,concat(upper(left(@NAME,1)), lower(right(@NAME, len(@NAME)-1)))
 
---####################################################
+-- ###########################################################################################
 --replace ( string , old value, new value)
 
 	SELECT replace ('Hello 123 WORld', '123', 'SQL')
@@ -2741,7 +2742,7 @@ demo tom john
 
 
 
---###############################
+-- ###########################################################################################
 CREATE TABLE Transactions (
     custNAME VARCHAR(50),
     tran_DATE DATE
@@ -2777,7 +2778,7 @@ WHERE tran_DATE IN( '2025-02-20'  ,'2025-02-21')
 GROUP BY custNAME 
 HAVing COUNT(DISTINCT tran_DATE )>1
 
---###############################
+-- ###########################################################################################
 --DATE TIME 'yyyy-MM-dd hh:mm:ss'
 	--DATE(Year, month, day, quarter, week, weekday, day of year)
 	--TIME (Hours, mINutes, second, milISeconds, microseconds, nanoseconds)
@@ -2870,7 +2871,7 @@ HAVing COUNT(DISTINCT tran_DATE )>1
 	DATEADD( WEEK, -3, HireDATE ) AS[week],
 	DATEADD( WEEKDAY, -52, HireDATE ) AS[WEEKDAY]
 	FROM HumanResources.Employee
---##################################
+-- ###########################################################################################
 
 --Scenarios 
 --hINT(ParseNAME)
@@ -2963,12 +2964,12 @@ Demo 08: 22-02-2025
 
 --Function (  conversion , wINdows function, CTE ),USER DEFINED (TABLE valued & Scalar valued function  )
 --view AND procedure 
---#######################################################
+-- ###########################################################################################
 --Self learning  
 	https://learn.microsoft.com/en-us/sql/t-sql/queries/with-common-TABLE-expression-transact-sql?view=sql-server-ver16
 	https://learn.microsoft.com/en-us/traINing/modules/transfORm-data-by-implementing-pivot-unpivot-rollup-cube/
 	https://learn.microsoft.com/en-us/sql/t-sql/functions/functions?view=sql-server-ver16
---#######################################################
+-- ###########################################################################################
 	CREATE DATABASE  SQLDEMO
 	GO
 	USE SQLDEMO
@@ -3003,7 +3004,7 @@ Demo 08: 22-02-2025
 
 	GO
 	SELECT *  FROM Department
---##################################
+-- ###########################################################################################
 --Conversion
 	--data type -->
 		--Numeric-->string -->numeric -->DATETIME 
@@ -3095,7 +3096,7 @@ https://www.mssqltips.com/sqlservertip/1145/DATE-AND-TIME-conversions-using-sql-
 	
 	SELECT  fORmat(GETDATE(),'yyy-ddd-MMM hh:mm:ss tt')
 
---############################################################
+-- ###########################################################################################
 --WINdows  function(ranking function ) 
 --ranking_function() over(partition by  COLUMNNAME  ORDER BY COLUMNNAME ASc/desc)
 --partition by = GROUP BY 
@@ -3179,7 +3180,7 @@ https://www.mssqltips.com/sqlservertip/1145/DATE-AND-TIME-conversions-using-sql-
 --errOR message 
 	--WINdowed functions can only appear IN the SELECT OR ORDER BY claUSEs.
 
----###########################################################
+-- ###########################################################################################
  --CTE(Common TABLE experssion)
   /* --TempORary result SET IN SQL Server( SELECT, INSERT, UPDATE, OR DELETE)
   WITH CTE_NAME (COLUMN1, COLUMN2, ...)
@@ -3304,7 +3305,7 @@ with
 
 
 
---##########################################
+-- ###########################################################################################
 --USEr defINed function
 	--Scalar valued function 
 	/*syntax
@@ -3364,7 +3365,7 @@ with
 --call function 
 	SELECT dbo.cubes() 
 
---########################################
+-- ###########################################################################################
 	 CREATE TABLE Products
 	(
 		ProductID INT PRIMARY KEY,
@@ -3397,17 +3398,18 @@ returns float
 	SELECT *, dbo.dp(price, 15.80) AS newprice FROM products
 
 
+-- ###########################################################################################
 ---conditional statement  
 	if 1=1
 		prINT'true'
 	else
 		prINT'false'
---####################
+-- ###########################################################################################
 	if 1=10
 		prINT'true'
 	else
 		prINT'false'
---####################
+-- ###########################################################################################
 
 
 
@@ -3444,7 +3446,7 @@ Demo 09: 28-02-2025
 
 
 --TABLE valued  function,IF , IF ELSE ,VIEW, stored PROCEDURE,TCL, 
----####################################################
+-- ###########################################################################################
 CREATE DATABASE Demo 
 USE Demo
 CREATE TABLE Customer (
@@ -3543,7 +3545,7 @@ UPDATE PurchASes
 	SELECT * , DBO.getdIS(CUSTOMERID)  AS dISCOUNT FROM PurchASes
 
 
---#####################################################
+-- ###########################################################################################
 --Practice question 3
 --healthcare system
 
@@ -3624,7 +3626,7 @@ SELECT * FROM HealthMetrics
 
 	RETURN @SCORE 
 
---##############################################################
+-- ###########################################################################################
 
 --1. Healthcare Cost Calculation
 --FORmula:TotalCost = BASeFee + MedicationFee + (BASeFee + MedicationFee) * TaxRate / 100
@@ -3711,7 +3713,7 @@ SELECT * FROM HealthMetrics
 	(3, 3600, 36),
 	(4, 4800, 48),
 	(5, 6000, 60);
---#############################
+-- ###########################################################################################
 --TABLE valued function 
 
 /*syntax
@@ -3782,7 +3784,7 @@ CREATE TABLE Department
 	 SELECT * FROM DBO.highsal(3)
 
 
---###################################################################
+-- ###########################################################################################
 
 --Scenario Description:
 --The mobile carrier wants to help customers monitOR their usage agaINst their plan limits.
@@ -3907,8 +3909,8 @@ pREMIUM .50
 
 
 
---##################################################################
---#######################################################
+-- ###########################################################################################
+-- ###########################################################################################
 --SQl server views
 --Virtual TABLEs
 	/*Syntax:
@@ -4025,7 +4027,7 @@ SELECT did,eNAME,dept  FROM Department
 
 
  
---#########################################################
+-- ###########################################################################################
  
 	CREATE TABLE Sales (SaleID INT PRIMARY KEY,SaleDATE DATE,Amount DECIMAL(10, 2)	);
 	   	 
@@ -4072,24 +4074,24 @@ CREATE UNIQUE CLUSTERED  INDEX VW_ID ON vw_INDEX(SALEDATE)
 
 SELECT * FROM vw_INDEX
 
---#######################################################
+-- ###########################################################################################
 --conditional statement  
 	if 1=1
 		prINT'true'
 	else
 		prINT'false'
---####################
+-- ###########################################################################################
 	if 1=2
 		prINT'true'
 	else
 		prINT'false'
---####################
+-- ###########################################################################################
 
 	if 'a'='A'
 		prINT'true'
 	else
 		prINT'false'
---####################
+-- ###########################################################################################
 
 	if 1=18
 		prINT'true1'
@@ -4104,13 +4106,13 @@ SELECT * FROM vw_INDEX
 	else
 		prINT'false' 
 
---#################
+-- ###########################################################################################
 	DECLARE @stock INT =500
 	if @stock >100
 		prINT'stock IS high '
 	else
 		prINT'stock IS low '
-		--#############################
+		-- ######################
 	DECLARE @action VARCHAR(20)
 	SET @action ='INSERTs'	
 
@@ -4125,7 +4127,7 @@ SELECT * FROM vw_INDEX
 	else
 		prINT'False, INvalid action'
 
---##################################################
+-- ###########################################################################################
 --logic (SELECT,INSERT, UPDATE , DELETE )
 --stored procedure 
 
@@ -4188,7 +4190,7 @@ exec sp_view @eid =166
 exec sp_view @eid =112
 
 
---##################################################
+-- ###########################################################################################
 
 
 
@@ -4236,7 +4238,7 @@ exec sp_view @eid =112
 	exec sp_auto [DELETE] , 102
 
 
---#####################################
+-- ###########################################################################################
 --TCL Transaction Control Language 
 	--Save		Commit
 	--dont'save	Rollback 
@@ -4322,7 +4324,7 @@ Demo 10: 01-03-2025
 
 
 --SQl server DML trigger , exception hANDling , cASes,
---#######################################################
+-- ###########################################################################################
 CREATE DATABASE  SQLDEMO
 	GO
 	USE SQLDEMO
@@ -4357,7 +4359,7 @@ CREATE DATABASE  SQLDEMO
 
 	GO
 	  SELECT * FROM Department
---#######################################################
+-- ###########################################################################################
 --Trigger IN SQL server (event  --> Action  IS perfORmed)
 
 --DML(INSERT, UPDATE , DELETE)	--> Data --> TABLE
@@ -4407,7 +4409,7 @@ CREATE DATABASE  SQLDEMO
 	Enable TRIGGER TG_freeze ON Department;
 	DISABLE TRIGGER TG_freeze ON Department;
 
----##############################################
+-- ###########################################################################################
 --Trigger copy data FROM 1 TABLE to aNOTher TABLE
 	SELECT * FROM Department
 
@@ -4489,7 +4491,7 @@ DELETE FROM DEPARTMENT WHERE gender='male'
 
 UPDATE DEPARTMENT SET SALARY =11111111 , DEPT='unknown'
 
---##########################################################
+-- ###########################################################################################
 --DDL trigger (CREATE_TABLE, ALTER_TABLE, DROP_TABLE)
 
 --XML datatype IN SQL server --EVENTDATA()
@@ -4520,7 +4522,7 @@ UPDATE DEPARTMENT SET SALARY =11111111 , DEPT='unknown'
 	end 
 
 
---################################
+-- ###########################################################################################
 --PerfORm DDL operation
 --CREATE TABLE
 	CREATE TABLE test	(id INT , age INT, ph INT)
@@ -4536,7 +4538,7 @@ SELECT * FROM DDLLOGS
 
 
 
----####################################
+-- ###########################################################################################
 -- USEr NOT allowed to CREATE a TABLE which hAS NAME = temp
 	CREATE trigger checktbl
 	on DATABASE 
@@ -4558,7 +4560,7 @@ SELECT * FROM DDLLOGS
 	CREATE TABLE q2131temp312312cAS	(id INT , age INT, ph INT)
 
 
----############################################################
+-- ###########################################################################################
 --Exception /ErrOR hANDling (ErrOR related function)
 SELECT errOR_message(), errOR_lINe(), errOR_state(), errOR_Severity(),errOR_procedure(),errOR_number()
 
@@ -4629,7 +4631,7 @@ SELECT errOR_message(), errOR_lINe(), errOR_state(), errOR_Severity(),errOR_proc
 
 	end Catch
 
---###################################
+-- ###########################################################################################
 	CREATE TABLE errORlog
 		(	sno INT identity(1,1),
 			TIMEstamps VARCHAR(100) default GETDATE(),
@@ -4671,7 +4673,7 @@ SELECT errOR_message(), errOR_lINe(), errOR_state(), errOR_Severity(),errOR_proc
 	end Catch
 
 
---###########################################
+-- ###########################################################################################
 
 
 --CASes IN SQL server
