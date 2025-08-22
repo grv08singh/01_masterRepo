@@ -31,9 +31,10 @@ warnings.filterwarnings('ignore')
 
 
 #### 1) Linear Regression
-######## 1.1) Regularization - Ridge Regression
-######## 1.2) Regularization - Lasso Regression
-######## 1.3) Regularization - Elastic Net Regression
+######## 1) Bias-Variance Trade-Off
+############ 1) Regularization - Ridge Regression
+############ 2) Regularization - Lasso Regression
+############ 3) Regularization - Elastic Net Regression
 
 #### 2) Multiple Linear Regression
 
