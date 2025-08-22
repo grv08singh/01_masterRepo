@@ -1042,3 +1042,28 @@ warnings.filterwarnings('ignore')
 # x.add(1)                                                                              #adding element to set
 # x.add(2)                                                                              #adding element to set
 # set(my_list)                                                                          #convert my_list to set: show any duplicate values only once
+
+# sum(x)                                                                                #sum of all elements of set x
+# len(x)                                                                                #number of elements in set x
+
+# x.discard(n)                                                                          #delete n without error when not found
+# x.remove(n)                                                                           #delete n with error when not found
+
+# x = set()
+# y = set()
+# x.union(y)                                                                            #set function union
+# x.intersection(y)                                                                     #set function intersection
+# x.differences(y)                                                                      #elements in x but not in y
+
+
+
+
+
+
+
+
+
+
+
+
+
