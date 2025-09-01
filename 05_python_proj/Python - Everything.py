@@ -100,7 +100,9 @@ warnings.filterwarnings('ignore')
 #### 1. EDA :: Exploratory Data Analysis
 ###############################################################################################################
 
-# 1.1 Cleaning
+
+# 1.1 Data Cleaning
+
 
 # 1.2 Checking Datatype Inconsistency 
 #### (when column is supposed to be float/int, but it is object type due to a space or unknown value maybe)
@@ -120,6 +122,7 @@ warnings.filterwarnings('ignore')
 ####   if df[col].dtype=='object':
 ####     df[col].replace('unknown',np.NAN)
 
+
 # 1.3 Remove Null Values (if Null < 10% of data, [dropna], else if Null < 40% of data, [fillna] with median/mode, else [drop feature/col])
 #### for col in df.columns:
 ####     if(df[col].dtype in ('int64', 'float64'):
@@ -130,8 +133,10 @@ warnings.filterwarnings('ignore')
 #### drop Null rows from specific columns -->
 #### df = df.dropna(subset=[col1, col2, col3, col4])
 
+
 # 1.4 Remove Duplicates
 #### df.drop_duplicates()
+
 
 # 1.5 Outliers - 
 #### Check for outliers
@@ -140,6 +145,7 @@ warnings.filterwarnings('ignore')
 ####     if(df[col].dtype in ('int64', 'float64'):
 ####         sns.boxplot(data = df, y = col)
 ####         plt.show()
+
 
 #### Remove outliers
 ####
@@ -154,6 +160,7 @@ warnings.filterwarnings('ignore')
 ####         df = df[ (df[col] >= LB) & (df[col] <= UB) ]
 #### final_size = df.shape[0]
 #### print(f"rows removed: {initial_size - final_size}")
+
 
 # 1.6 Label Encoding
 #### Label encoding on all the non-numeric columns
@@ -567,7 +574,7 @@ warnings.filterwarnings('ignore')
 # series_1.loc[2]                                                   #returns data from row index 2
 # series_1.loc[0:3]                                                 #returns data from row index 0 to 3
 # series_1.loc[[2,3,6]]                                             #returns data from row index 2,3,6
-            
+
 # series_1.iloc[2]                                                  #returns data from row index 2
 # series_1.iloc[0:3]                                                #returns data from row index 0 to 2
 # series_1.iloc[[2,3,6]]                                            #returns data from row index 2,3,6
@@ -604,6 +611,7 @@ warnings.filterwarnings('ignore')
 # df.mean()                                                         #returns mean for every numeric column
 # df.median()                                                       #returns median for every numeric column
 # df.std()                                                          #returns standard deviation for every numeric column
+# df.skew()                                                         #returns skewedness, -ve is left skewed, +ve is right skewed, 0 is not skewed
 # df.count()                                                        #returns count for every numeric column
 # df.describe()                                                     #returns count,mean,std,min,25%,median,75%,max for each numeric column
 # df.describe(include = 'O')                                        #returns count,unique,frequency,top (Statistics) for non-numeric column
@@ -668,6 +676,7 @@ warnings.filterwarnings('ignore')
 # df.iloc[[2,3,6],[5,2]]                                            #returns data from row 2,3,6 & col 5,2
             
 # df['col_1'].unique()                                              #Unique values from col_1
+# df.col_1.unique()                                                 #Unique values from col_1
 # df['col_1'].nunique()                                             #The number of unique values from col_1
 # df['col_1'].value_counts()                                        #group by col_1 and show its count
             
