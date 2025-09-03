@@ -2,21 +2,20 @@
 <NotepadPlus>
     <FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" dlgAlwaysVisible="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="no" fifProjectPanel1="no" fifProjectPanel2="no" fifProjectPanel3="no" regexBackward4PowerUser="no" bookmarkLine="no" purge="no">
         <Filter name="" />
-        <Find name="kde" />
+        <Find name="add column" />
+        <Find name="add" />
+        <Find name="updat" />
         <Find name="describe" />
+        <Find name="kde" />
         <Find name="sort_values" />
         <Find name="col" />
         <Find name="rename" />
         <Find name="drop" />
         <Find name="duplicated" />
-        <Find name="isnull" />
-        <Find name="random sample" />
-        <Find name="sample" />
         <Replace name='&quot;#D4E4E4&quot;' />
         <Replace name="D4E4E4" />
     </FindHistory>
     <History nbMaxFile="10" inSubMenu="no" customLength="-1">
-        <File filename="C:\Users\grv06\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions\markdown-basics\package.json" />
         <File filename="C:\Users\grv06\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions\markdown-math\preview-styles\index.css" />
         <File filename="C:\Users\grv06\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions\ipynb\package.json" />
         <File filename="C:\Users\grv06\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions\ipynb\package.nls.json" />
@@ -26,6 +25,7 @@
         <File filename="F:\Grv\Grv\06 Personal\git_repo_DS\03_sql_proj\SQL - Everything.sql" />
         <File filename="F:\Grv\Grv\06 Personal\git_repo_DS\05_python_proj\Python - Everything.py" />
         <File filename="F:\Grv\Grv\05 Personal - Official\Monthly Work Done.py" />
+        <File filename="D:\git_repo_DS\03_sql_proj\SQL - Everything.sql" />
     </History>
     <ProjectPanels>
         <ProjectPanel id="0" workSpaceFile="" />

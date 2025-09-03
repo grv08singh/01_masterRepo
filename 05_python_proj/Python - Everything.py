@@ -138,7 +138,7 @@ df.rename(columns={'col_1' : 'col_101','col_2' : 'col_102'},inplace = True)
 #### (when column is supposed to be float/int, but it is object type due to a space or unknown value maybe)
 for col in df.columns:
     if df[col].dtype == 'object':
-       print(f"{col}: {df[col].unique()}")
+       print(f"{col}: {df[col].unique().tolist()}")
        print()
        
 #### 'unknown' values count
@@ -240,8 +240,46 @@ for col in df.columns:
 ######## 2.3) Mini Batch Gradient Descent
 
 #### 4) Polynomial Linear Regression
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, random_state = 42)
 
-#### 6) Logistics Regression
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(x_train, y_train)
+y_pred = model.predict(x_test)
+
+from sklearn.metrics import *
+print(f"R2 Score: {r2_score(y_test, y_pred)}")
+print(f"Mean Absolute Error: {mean_absolute_error(y_test, y_pred)}")
+print(f"Mean Squared Error: {mean_squared_error(y_test, y_pred)}")
+print(f"Root Mean Squared Error: {np.sqrt(mean_squared_error(y_test, y_pred))}")
+sns.regplot(x = y_pred, y = y_test, line_kws = {'color':'red'})
+
+
+
+
+#### 6) Logistic Regression
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 42)
+
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+x_train_scaled = sc.fit_transform(x_train)
+x_test_scaled = sc.transform(x_test)
+
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression()
+model.fit(x_train_scaled, y_train)
+y_pred = model.predict(x_test_scaled)
+
+from sklearn.metrics import classification_report, confusion_matrix
+print(f"Classification Report: {classification_report(y_test, y_pred)}")
+print(f"Confusion Matrix: {confusion_matrix(y_test, y_pred)}")
+
+
+
+
+
 
 #### 7) Decision Tree Classification
 ######## Maximum (Entropy Reduction) OR (Info Gain) is required
