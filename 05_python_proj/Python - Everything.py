@@ -3,7 +3,7 @@
 ## jupyter notebook --notebook-dir="specified_path"
 ## jupyter notebook --notebook-dir="D:\04 Intellipaat - EPGC\02 EPGC - Python\06 Python - Mandatory Assignments\05 - Data Visualization Assignment"
 ## jupyter notebook --notebook-dir="C:\Users\Grv\00 DS Python\00-grv-DS PythonPractice"
-## jupyter notebook --notebook-dir="D:\git_repo_DS\08_EPGC_Intellipaat\03 EPGC - P+S+ML - Mandatory Assignments\06 - Logistic Regression Assignment Quiz"
+## jupyter notebook --notebook-dir="D:\git_repo_DS\08_EPGC_Intellipaat\03 EPGC - P+S+ML - Mandatory Assignments\07 - Capstone Project Walmart"
 ## C:\Users\grv06\AppData\Roaming\Code\User\settings.json
 
 
@@ -173,12 +173,28 @@ df = df.drop_duplicates()
 
 
 # 1.5 Outliers - 
-#### Check for outliers
+#### Check for outliers - Outliers Analysis
 
 for col in df.columns:
     if(df[col].dtype in ('int64', 'float64'):
         sns.boxplot(data = df, y = col)
         plt.show()
+        
+# OR
+
+fig = plt.figure(figsize=(15,12),dpi=300)
+i = 0
+for col in df.columns:
+    if df[col].dtype in ('int64', 'float64'):
+        i += 1
+        plt.subplot(df.shape[1]//3, 3, i)
+        sns.boxplot(data=df, x=col, width=0.2, color='violet')
+        # or
+        # plt.boxplot(x=df[col])
+        # plt.title(col)
+plt.show()
+
+
 
 #### Remove outliers
 initial_size = df.shape[0]
@@ -201,7 +217,6 @@ LE = LabelEncoder()
 for col in df.columns:
    if(df[col].dtype == 'object'):
        df[col] = LE.fit_transform(df[col])
-       print(LE.classes())
 
 
 
