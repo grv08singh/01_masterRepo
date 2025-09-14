@@ -2,16 +2,16 @@
 <NotepadPlus>
     <FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" dlgAlwaysVisible="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="no" fifProjectPanel1="no" fifProjectPanel2="no" fifProjectPanel3="no" regexBackward4PowerUser="no" bookmarkLine="no" purge="no">
         <Filter name="" />
-        <Find name="add column" />
-        <Find name="add" />
-        <Find name="updat" />
-        <Find name="describe" />
-        <Find name="kde" />
-        <Find name="sort_values" />
-        <Find name="col" />
+        <Find name="scatterplot" />
+        <Find name="subplot" />
+        <Find name="boxplot" />
         <Find name="rename" />
-        <Find name="drop" />
-        <Find name="duplicated" />
+        <Find name="replace" />
+        <Find name="remove duplicate" />
+        <Find name="df.iloc" />
+        <Find name="set_option" />
+        <Find name="ensemble" />
+        <Find name="tree" />
         <Replace name='&quot;#D4E4E4&quot;' />
         <Replace name="D4E4E4" />
     </FindHistory>
@@ -43,8 +43,8 @@
         <GUIConfig name="ScintillaViewsSplitter">vertical</GUIConfig>
         <GUIConfig name="UserDefineDlg" position="undocked">hide</GUIConfig>
         <GUIConfig name="TabSetting" replaceBySpace="no" size="4" backspaceUnindent="no" />
-        <GUIConfig name="AppPosition" x="394" y="120" width="1100" height="700" isMaximized="yes" />
-        <GUIConfig name="FindWindowPosition" left="592" top="317" right="1329" bottom="759" isLessModeOn="no" />
+        <GUIConfig name="AppPosition" x="394" y="121" width="1100" height="700" isMaximized="yes" />
+        <GUIConfig name="FindWindowPosition" left="1074" top="96" right="1811" bottom="538" isLessModeOn="no" />
         <GUIConfig name="FinderConfig" wrappedLines="no" purgeBeforeEverySearch="no" showOnlyOneEntryPerFoundLine="yes" />
         <GUIConfig name="noUpdate" intervalDays="15" nextUpdateDate="20080426" autoUpdateMode="0">yes</GUIConfig>
         <GUIConfig name="Auto-detection">yes</GUIConfig>
