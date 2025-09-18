@@ -37,8 +37,8 @@ from sklearn.model_selection import GridSearchCV
 ## 1) Data Cleaning:
 ###    Remove Duplicates rows - df.duplicated()
 ###    Handle Null values - df.dropna() / df.fillna()
-###    Check unique values of each column - df['col_1'].unique().tolist()
-###    Handle Errors - df['col_1'].replace('unknown',np.NAN)
+###    Check unique values of each column - df['col1'].unique().tolist()
+###    Handle Errors - df['col1'].replace('unknown',np.NAN)
 #
 #
 ## 2) Data Pre-Processing (Standardize, Scale, Encode)
@@ -123,17 +123,17 @@ df.shape
 df.columns
 df.info()
 df.describe().T
-df.isnull.sum()
-df.isnull.sum().sum()
+df.isnull().sum()
+df.isnull().sum().sum()
 df.duplicated().sum()
-df['col_1'].count()
-df['col_1'].sum()
-df['col_1'].unique()
-df['col_1'].nunique()
-df['col_1'].value_counts()
-df.groupby('col_1')['col_2'].size()
-df.groupby('col_1')[['col_2','col_3','col_4']].mean()
-df.rename(columns={'col_1' : 'col_101','col_2' : 'col_102'},inplace = True)
+df['col1'].count()
+df['col1'].sum()
+df['col1'].unique()
+df['col1'].nunique()
+df['col1'].value_counts()
+df.groupby('col1')['col2'].size()
+df.groupby('col1')[['col2','col3','col4']].mean()
+df.rename(columns={'col1' : 'col101','col2' : 'col102'},inplace = True)
 
 
 
@@ -165,7 +165,7 @@ for col in df.columns:
         df[col] = df[col].fillna(df[col].mode()[0])
 
 #### drop Null rows from specific columns -->
-df = df.dropna(subset=['col_1', 'col_2', 'col_3'])
+df = df.dropna(subset=['col1', 'col2', 'col3'])
 
 
 # 1.4 Remove Duplicates
@@ -229,7 +229,7 @@ for col in df.columns:
 
 
 # 2.1 X-y Split
-X = df[['col_1','col_2']]
+X = df[['col1','col2']]
 y = df['tgt_col']
 #or
 X = df.iloc[:, :-1]
@@ -919,11 +919,11 @@ pd.concat([s[:5], pd.Series([50], index=[5]), s[5:]])             #use concat to
 series_1.reset_index(drop = True)                                 #reset index without making previous index a column
 series_1.reset_index()                                            #reset index making previous index a column
 df.reset_index(drop = True)                                       #reset index
-df.set_index('col_1')                                             #set index to col_1
+df.set_index('col1')                                              #set index to col1
             
             
             
-#### DataFrame df          
+#### Import Export Data
 df = pd.DataFrame(my_list, columns =['x','y'])                    #create DataFrame from list
 df = pd.DataFrame(my_dict, columns =['x','y'])                    #create DataFrame from dictionary
 
@@ -939,9 +939,11 @@ df.to_csv(filename)                                               #write to a cs
 df.to_excel(filename)                                             #write to an excel file
 df.to_sql(tbl_nm, connection_object)                              #write to an sql database table
 df.to_json(filename)                                              #write to a file in json format
+df.values.tolist()                                                #All DataFrame values to list
+df.to_dict()                                                      #DataFrame to a dictionary
 
 
-
+# Inspect Data
 pd.set_option('display.max_columns', None)                        #display all columns while printing dataset
 pd.set_option('display.max_rows', 5)                              #display only 5 rows while printing dataset
 df.head()                                                         #show first 5 rows of df
@@ -964,118 +966,166 @@ df.describe(include = 'all')                                      #returns Stati
 df.transpose()                                                    #transpose all the data of df
 df.T                                                              #transpose all the data of df
 
-df.col_1                                                          #returns single column
-df.col_1[0]                                                       #returns data of col_1 @ row index 0
-df['col_1']                                                       #returns single column
-df[['col_1','col_2']]                                             #returns multiple column
-df['col_1'][0]                                                    #returns data of col_1 @ row index 0
+np.array_split(df, 2)                                             #split df into 2 np arrays of almost equal rows
+np.array_split(df, 2, axis=0)                                     #split df into 2 np arrays of almost equal rows
+np.array_split(df, 2, axis=1)                                     #split df into 2 np arrays of almost equal columns
+
+
+# Selecting Data
+df.col1                                                           #returns single column
+df.col1[0]                                                        #returns data of col1 @ row index 0
+df['col1']                                                        #returns single column
+df[['col1','col2']]                                               #returns multiple column
+df['col1'][0]                                                     #returns data of col1 @ row index 0
 
 df.loc[0]                                                         #select first row by index label
-df.loc[0, 'col_1']                                                #select an element by label
-df.loc[0:3, 'col_1':'col_4']                                      #returns data from row 0 to 2 & col_1 to col_4
-df.loc[0:5,'col_0':'col_2']                                       #returns data from row 0 to 4, col_0 to col_2
-df.loc[[2,3,6],['col_1','col_3']]                                 #returns data from row 2,3,6 & col 1,3
+df.loc[0, 'col1']                                                 #select an element by label
+df.loc[0:3, 'col1':'col4']                                        #returns data from row 0 to 2 & col1 to col4
+df.loc[0:5,'col_0':'col2']                                        #returns data from row 0 to 4, col_0 to col2
+df.loc[[2,3,6],['col1','col3']]                                   #returns data from row 2,3,6 & col 1,3
 
 df.iloc[0]                                                        #select first row by index or position
 df.iloc[0, 0]                                                     #select an element by position
-df.iloc[0:3, 1:4]                                                 #returns data from row 0 to 2 & col_1 to col_4
+df.iloc[0:3, 1:4]                                                 #returns data from row 0 to 2 & col1 to col4
 df.iloc[0:5,0:3]                                                  #returns data from row 0 to 4, col 0 to 2
 df.iloc[[2,3,6],[5,2]]                                            #returns data from row 2,3,6 & col 5,2
           
-pd.set_index('col_3', inplace=True)                               #to set col_3 as indexs
+pd.set_index('col3', inplace=True)                                #to set col3 as indexs
 pd.reset_index(drop = True)                                       #reset index making previous index a column
 
-df.isnull.sum()                                                   #column-wise count of null values
-df.notnull.sum()                                                  #column-wise count of non-null values
+
+# Cleaning Data
+df.isnull().sum()                                                 #column-wise count of null values
+df.notnull().sum()                                                #column-wise count of non-null values
 
 df.dropna()                                                       #drop all the rows with null in any column
 df.dropna(axis=0)                                                 #drop all the rows with null in any column
 df.dropna(axis=1)                                                 #drop all the columns with null in any row
 df.dropna(thresh=2)                                               #drop all the rows with values above 2
+
 df.fillna(value='abc')                                            #fill all the null values with 'abc'
-df.fillna({'col_1':x}, inplace=True)                              #fill null values in col_1 with x
-df['col_1'].fillna(value=df['col_1'].mean())                      #fill all the null values in col_1 with avg of it
-df['col_1'].replace(' ', np.nan)                                  #replace all the space values with null
+df.fillna({'col1':x}, inplace=True)                               #fill null values in col1 with x
+df['col1'].fillna(value=df['col1'].mean())                        #fill all the null values in col1 with avg of it
+df['col1'].replace(' ', np.nan)                                   #replace all the space values with null
+df['col1'].replace(1, 'one')                                      #replace all the space values with null
 
-del df['col_1']                                                   #permanently remove col_1
+df = df.rename(columns={'old':'new','old2':'new2'})               #rename columns
 
-
-
-
-
-df.min()                                                          #returns a minimum value for each column
-df.max()                                                          #returns a maximum value for each column
-df.mean()                                                         #returns mean for every numeric column
-df.median()                                                       #returns median for every numeric column
-df.std()                                                          #returns standard deviation for every numeric column
-df.count()                                                        #returns count for every numeric column
+df['col1'].astype(int)                                            #change col1 data type to int
+df['col1'].astype(float)                                          #change col1 data type to float
+pd.to_numeric(df['col1'], errors='coerce')                        #convert col1 values to numbers, if there is space then make it null
 
 df.duplicated().sum()                                             #row-wise count of duplicates
 df.drop_duplicates()                                              #drop duplicate rows
-df['col_1'].astype(float)                                         #change col_1 data type to float
-df.drop(columns = [col_1,col_2], inplace=True)                    #drop col_1 and col_2
+df.drop(columns = ['col1', 'col2'], inplace = True)               #drop col1 and col2
 
-df = df.rename(columns={'col_1':'col_101','col_2':'col_102'})     #rename columns or replace column names
 
-df['col_1'].mean()                                                #returns mean for col_1
-df['col_1'].median()                                              #returns median for col_1
-df['col_1'].std()                                                 #returns standard deviation for col_1
-df['col_1'].count()                                               #returns count for col_1
-df['col_1'].value_counts()                                        #group by col_1 and show its count
-df.groupby('col_1')['col_2'].size()                               #group by col_1, count of col_2
 
-df.values.tolist()                                                #All DataFrame values to list
-df.to_dict()                                                      #DataFrame to a dictionary
-df['col_1'].astype(int)                                           #convert data type to integer
-pd.to_numeric(df['col_1'], errors='coerce')                       #convert col_1 values to numbers, if there is space then make it null
-df['col_1'].astype(int)                                           #convert col_1 values to numbers
+# Sort or Filter Data
+df.sort_values('col1')                                            #sort ascending based on col1
+df.sort_values('col1', ascending = False)                         #sort descending based on col1
+df.sort_values(['col1','col2'], ascending = [True, False])        #sort multiple columns
+
+df['col1'] > 5                                                    #returns True/False based on the condition > 5
+df[df['col1'] > 5]                                                #returns DataFrame where condition is true
+df[(df['col1'] > 5) & (df['col2'] < 10)]                          #returns DataFrame where both the conditions meet
+df[df['col1'].isin(['Alice', 'David'])]                           #Filter rows where Name is 'Alice' or 'David'
+
+df = df.query('col1 > 2 and col2 != "apple"')                     #filter using a query string
+a, b = 2, 'apple'
+df = df.query('col1 > @a and col2 == @b')                         #filter using a query string
+
+df.nlargest(3, 'col1')                                            #get top 3 rows by col1
+df.nsmallest(3, 'col1')                                           #get bottom 3 rows by col1
+
+df.filter(like = 'part')                                          #filter columns by substring
+df.filter(like = 'abc', axis = 1)                                 #filter columns containing abc in their name
+df.filter(regex = '^N', axis = 1)                                 #selects columns starting with 'N'
+
+
+# Group Data
+df.groupby('col1')                                                #group by col1
+
+df.groupby('col1').sum()                                          #group by col1, sum of col1
+df.groupby('col1').count()                                        #group by col1, count of col1
+df.groupby('col1').size()                                         #same as above
+df.groupby('col1').mean()                                         #group by col1, mean of col1
+df.groupby('col1').std()                                          #group by col1, standard deviation of col1
+df.groupby('col1').max()                                          #group by col1, maximum of col1
+df.groupby('col1').min()                                          #group by col1, minimum of col1
+
+df.groupby('col1')['col2'].sum()                                  #group by col1, sum of col2
+df.groupby('col1')['col2'].count()                                #group by col1, count of col2
+df.groupby('col1')['col2'].size()                                 #same as above
+df.groupby('col1')['col2'].mean()                                 #group by col1, mean of col2
+df.groupby('col1')['col2'].std()                                  #group by col1, standard deviation of col2
+df.groupby('col1')['col2'].max()                                  #group by col1, maximum of col2
+df.groupby('col1')['col2'].min()                                  #group by col1, minimum of col2
+
+df.agg({'col1':'mean', 'col2':'sum'})                             #aggregate multiple columns
+df.pivot_table(values = 'col1', index = 'group', aggfunc = 'mean')
+df.pivot_table(values = 'col4', index = ['col1', 'col2'], columns = ['col3'])
+                                                                  #summarize col4 on combination of col1, col2 on rows and col3 on columns
+
+df.apply(np.mean)                                                 #apply a function to columns
+df.transform(lambda x: x+10)                                      #transform data column-wise
+
+
+# Concatenate, Merge & Join Data (pd.append has been discontinued)
+pd.concat([df1, df2])                                             #concatenate data vertically / append rows
+pd.concat([df1, df2], axis=0)                                     #concatenate data vertically / append rows
+pd.concat([df1, df2], axis=1)                                     #concatenate data horizontally / add colums
+    
+pd.merge(df1, df2, how = 'inner', on = 'col3')                    #SQL INNER JOIN on col3
+pd.merge(df1, df2, how = 'outer', on = ['col3', 'col5'])          #SQL OUTER JOIN on col3 and col5
+pd.merge(df1, df2, how = 'left', on = 'col5')                     #SQL LEFT JOIN on col5
+
+df1.join(df2)                                                     #SQL INNER JOIN based on row_index
+df1.join(df2, how = 'left')                                       #SQL LEFT JOIN based on row_index
+
+
+# Statistical Operations
+
+df['col1'].value_counts()                                         #group by col1 and show its count
+df['col1'].unique()                                               #Unique values from col1
+df['col1'].nunique()                                              #The number of unique values from col1
+
+df.min()                                                          #returns a minimum value for each column
+df.max()                                                          #returns a maximum value for each column
+df.sum()                                                          #returns sum for every numeric column
+df.count()                                                        #returns count for every numeric column
+df.mean()                                                         #returns mean for every numeric column
+df.median()                                                       #returns median for every numeric column
+df.std()                                                          #returns standard deviation for every numeric column
+df.var()                                                          #returns variance for every numeric column
 df.corr(numeric_only = True)                                      #correlation coefficient for each value with respect to every other value
 
-pd.concat([df_1, df_2])                                           #append df_2 at the end of df_1
-pd.concat([df_1, df_2], axis=0)                                   #append df_2 at the end of df_1
-pd.concat([df_1, df_2], axis=1)                                   #append df_2 at the end and right of df_1
-pd.merge(df_1,df_2,how='inner',on='col_3')                        #SQL INNER JOIN on col_3
-pd.merge(df_1,df_2,how='outer',on=['col_3','col_5'])              #SQL OUTER JOIN on col_3 and col_5
-pd.merge(df_1,df_2,how='left',on='col_5')                         #SQL LEFT JOIN on col_5
-
-df_left.join(df_right)                                            #SQL INNER JOIN based on row_index
-df_left.join(df_right,how='left')                                 #SQL LEFT JOIN based on row_index
-
-np.array_split(df, 2)                                             #split df into 2 np arrays of almost equal rows
-np.array_split(df, 2, axis=0)                                     #split df into 2 np arrays of almost equal rows
-np.array_split(df, 2, axis=1)                                     #split df into 2 np arrays of almost equal columns
-
-df['col_1'].unique()                                              #Unique values from col_1
-df['col_1'].nunique()                                             #The number of unique values from col_1
-df['col_1'].value_counts()                                        #group by col_1 and show its count
+df['col1'].min()                                                  #returns a minimum value for col1
+df['col1'].max()                                                  #returns a maximum value for col1
+df['col1'].sum()                                                  #returns sum for col1
+df['col1'].count()                                                #returns count for col1
+df['col1'].mean()                                                 #returns mean for col1
+df['col1'].median()                                               #returns median for col1
+df['col1'].std()                                                  #returns standard deviation of col1
+df['col1'].var()                                                  #returns variance of col1
 
 
-####Sorting of DataFrame          
-df.sort_values(by = 'col_1')                                      #sort ascending based on col_1
-df.sort_values(by = 'col_1', ascending = False)                   #sort descending based on col_1
-
-####Filtering DataFrame           
-df['col_1']>5]                                                    #returns True/False based on the condition >5
-df[df['col_1']>5]                                                 #returns DataFrame where condition is true
-df[df['col_1']>5 & df['col_2']<10]                                #returns DataFrame where both the conditions meet
-
-df.groupby('col_1')['col_2'].sum()                                #group by col_1, sum of col_2
-df.groupby('col_1')['col_2'].count()                              #group by col_1, count of col_2
-df.groupby('col_1')['col_2'].mean()                               #group by col_1, mean of col_2
-df.groupby('col_1')['col_2'].std()                                #group by col_1, standard deviation of col_2
-df.groupby('col_1')['col_2'].max()                                #group by col_1, maximum of col_2
-df.groupby('col_1')['col_2'].min()                                #group by col_1, minimum of col_2
-
-df.pivot_table(values='col_4',index=['col_1', 'col_2'],columns=['col_3'])
-                                                                  #summarize col_4 on combination of col_1, col_2 on rows and col_3 on columns
+# Datetime
 df['date'] = pd.to_datetime(df['date'])
-
-
 pd.Timestamp.now()
 pd.Timestamp.now().year
 
 
-
+# Visualization
+df.plot.line()
+df.plot.bar()
+df.plot.barh()
+df.plot.hist()
+df.plot.box()
+df.plot.kde()
+df.plot.area()
+df.plot.pie()
+df.plot.scatter(x = 'col1', y = 'col2')
 
 
 
@@ -1171,7 +1221,7 @@ ax.legend(loc=0)                                                    #0-best fit 
     # startangle=90                                                 #only in pie chart
     # radius=1.5                                                    #only in pie chart, to change pie to donut
     # labels                                                        #labels
-    # hue='col_2'                                                   #Segregate based on col_2
+    # hue='col2'                                                   #Segregate based on col2
 
 
 
@@ -1182,19 +1232,19 @@ ax.legend(loc=0)                                                    #0-best fit 
 
 ## Intellipaat
 x = range(32)
-y = df['col_1']
+y = df['col1']
 
 # Single Chart/Plot
-plt.plot(df['col_1'],df['col_2'])                                 #line chart
-plt.bar(df['col_1'],df['col_2'])                                  #vertical bar chart
-plt.barh(df['col_1'],df['col_2'])                                 #horizontal bar chart
-plt.scatter(df['col_1'],df['col_2'])                              #scatter plot
-plt.stackplot(df['col_1'],df['col_2'])                            #Area/stack plot, y can be 2-d array
-plt.pie(df['col_2'])                                              #Pie Chart
-plt.boxplot(df['col_2'])                                          #used to find outlier
-plt.violinplot(df['col_2'])                                       #used to find outlier
-plt.imshow(df['col_2'], cmap='summer')                            #heatmap
-plt.hist(df['col_1'], bins=8, edgecolor="white")                  #histogram with 8 bins
+plt.plot(df['col1'],df['col2'])                                 #line chart
+plt.bar(df['col1'],df['col2'])                                  #vertical bar chart
+plt.barh(df['col1'],df['col2'])                                 #horizontal bar chart
+plt.scatter(df['col1'],df['col2'])                              #scatter plot
+plt.stackplot(df['col1'],df['col2'])                            #Area/stack plot, y can be 2-d array
+plt.pie(df['col2'])                                              #Pie Chart
+plt.boxplot(df['col2'])                                          #used to find outlier
+plt.violinplot(df['col2'])                                       #used to find outlier
+plt.imshow(df['col2'], cmap='summer')                            #heatmap
+plt.hist(df['col1'], bins=8, edgecolor="white")                  #histogram with 8 bins
           
 plt.figure(figsize=(4, 10))           
 plt.xlabel('X Axis Title Here')           
@@ -1205,12 +1255,12 @@ plt.grid(True)
 plt.xticks(rotation=90)            
 plt.show()            
 
-plt.subplot(2,3,4).plot(df['col_1'],df['col_2'],'g--')              #2 rows, 3 coloumns, 4th plot, g-- green dashed line
-plt.subplot(r,c,sn).plot(df['col_1'],df['col_2'],'y*-')             #y*- yellow line with * marker
+plt.subplot(2,3,4).plot(df['col1'],df['col2'],'g--')              #2 rows, 3 coloumns, 4th plot, g-- green dashed line
+plt.subplot(r,c,sn).plot(df['col1'],df['col2'],'y*-')             #y*- yellow line with * marker
             
                 
 # arguments of pie() method:            
-    # labels='col_1'                                                #Pie chart only
+    # labels='col1'                                                #Pie chart only
     # explode=()                                                    #Pie chart only
     # autopct='%1.2f%%'                                             #Pie chart only
                 
@@ -1218,9 +1268,9 @@ plt.subplot(r,c,sn).plot(df['col_1'],df['col_2'],'y*-')             #y*- yellow 
     # cmap = 'autumn', 'summer', 'winter','spring'                  #different color schemes
             
 # Multiple Charts/Plots in Grid of 1x3                              # 1-row, 3-columns
-plt.subplot(1,3,1).scatter(x=df['col_1'],y=df['col_2'])             # 1- rows, 3 - col 1 - position
-plt.subplot(1,3,2).scatter(x=df['col_1'],y=df['col_2'])             # 1- rows, 3 - col 2 - position
-plt.subplot(1,3,3).scatter(x=df['col_1'],y=df['col_2'])             # 1- rows, 3 - col 3 - position
+plt.subplot(1,3,1).scatter(x=df['col1'],y=df['col2'])             # 1- rows, 3 - col 1 - position
+plt.subplot(1,3,2).scatter(x=df['col1'],y=df['col2'])             # 1- rows, 3 - col 2 - position
+plt.subplot(1,3,3).scatter(x=df['col1'],y=df['col2'])             # 1- rows, 3 - col 3 - position
 plt.show()
 
 
@@ -1249,22 +1299,22 @@ plt.show()
 # import seaborn as sns
 
 sns.pairplot(data=df)                                               #scatterplot for all the column pairs
-sns.countplot(data=df, x='col_1')                                   #vertical bar chart of col_1 summarized with its count
-sns.countplot(data=df, y='col_1')                                   #horizontal bar chart of col_1 summarized with its count
-sns.boxplot(data=df, y='col_1')                                     #used to find outlier
-sns.scatterplot(data=df, x='col_1', y='col_2')                      #scatter plot
-sns.barplot(data=df, x='col_1', y='col_2')                          #bar chart
-sns.regplot(data=df, x='col_1', y='col_2')                          #regression plot = scatter plot with best fit line
+sns.countplot(data=df, x='col1')                                   #vertical bar chart of col1 summarized with its count
+sns.countplot(data=df, y='col1')                                   #horizontal bar chart of col1 summarized with its count
+sns.boxplot(data=df, y='col1')                                     #used to find outlier
+sns.scatterplot(data=df, x='col1', y='col2')                      #scatter plot
+sns.barplot(data=df, x='col1', y='col2')                          #bar chart
+sns.regplot(data=df, x='col1', y='col2')                          #regression plot = scatter plot with best fit line
 sns.heatmap(data=df, y=3x3_array)                                   #heat map
-sns.boxplot(data=df, y='col_1', hue='col_2')                        #box plot
-sns.histplot(data=df, x='col_1', hue='col_2')                       #histogram plot
-sns.lineplot(data=df, x='col_1', y='col_2')                         #line plot
+sns.boxplot(data=df, y='col1', hue='col2')                        #box plot
+sns.histplot(data=df, x='col1', hue='col2')                       #histogram plot
+sns.lineplot(data=df, x='col1', y='col2')                         #line plot
 sns.kdeplot(arr1)                                                   #KDE plot
 
 # arguments of scatterplot() method:
     # color 'r','g','b','k','y','c','m'
     # palette for multiple colors
-    # hue for group by on col_2
+    # hue for group by on col2
     # marker '^','-','--','*','o','+'
     # s for size of the marker
     # edgecolor is for the edge color of the marker
@@ -1272,7 +1322,7 @@ sns.kdeplot(arr1)                                                   #KDE plot
 
 ################## Subplots in seaborn
 fig, axis = plt.subplots(nrows=2, ncols=2, figsize=(12,8))
-sns.barplot(data=df, x='col_1', y='col_2', hue='col_3', ax = axis[0,0])
+sns.barplot(data=df, x='col1', y='col2', hue='col3', ax = axis[0,0])
 
 
 
