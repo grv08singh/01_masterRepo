@@ -1,1 +1,3 @@
-Collected data from SQL Server databases of state governments and scraped data from state government websites, followed by applying ETL processes to clean and preprocess the data for accurate and efficient statistical analysis.
+conda create -p venv python==3.8 -y
+#if error in above code
+conda install --solver=classic conda-forge::conda-libmamba-solver conda-forge::libmamba conda-forge::libmambapy conda-forge::libarchive

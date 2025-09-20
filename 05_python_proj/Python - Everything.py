@@ -32,6 +32,45 @@ from sklearn.model_selection import GridSearchCV
 
 
 
+# Deep Learning Project (Predict handwritten digits):
+# 1) Recognizing handwritten digits in training data
+import os
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+os.getcwd() #get the current working directory
+os.listdir() #list the items in cwd
+
+from PIL import Image #calling Pillow Library (PIL) and then loading the function/method Image
+image_path = r"C:\Users\think\OneDrive\TRAINING\INTELLIPAAT\DEEP LEARNING\09. AI and DL IITR-07Sep2025(M)\number_7.png"
+img = Image.open(image_path) #Pillow lib is used to open and load the image
+img #print the image
+img = img.convert('RGB') #convert the raw image to standard RGB image
+img_gray = img.convert('L') #convert the standard RGB image to grayscale. L stands for Luminance
+width, height = img_gray.size #it returns a tuple (width, height) of the image in pixels
+img_gray_resized = img_gray.resize((28,28)) #Convert this image from (width X height) to (28 X 28)
+img_gray_resized_array = np.array(img_gray_resized) # Convert the resized grayscale image into a pixelated np array
+
+### Plotting the `pixelated image` as a 28 by 28 grid
+plt.figure(figsize = (4,4))
+plt.imshow(img_gray_resized_array, cmap='gray')
+plt.colorbar()
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ML Pipeline:
 #
 ## 1) Data Cleaning:
