@@ -1,3 +1,10 @@
-conda create -p venv python==3.8 -y
-#if error in above code
-conda install --solver=classic conda-forge::conda-libmamba-solver conda-forge::libmamba conda-forge::libmambapy conda-forge::libarchive
+conda create -p venv python==3.13 -y
+conda activate venv/
+
+echo "# mlprojects" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/grv08singh/mlprojects.git
+git push -u origin main

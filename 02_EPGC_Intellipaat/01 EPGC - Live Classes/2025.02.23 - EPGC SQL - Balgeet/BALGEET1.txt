@@ -1,0 +1,9 @@
+https://learn.microsoft.com/en-us/sql/relational-databases/security/encryption/always-encrypted-tutorial-getting-started?view=sql-server-ver16&tabs=ssms
+https://www.mssqltips.com/sqlservertip/1145/date-and-time-conversions-using-sql-server/
+https://www.mssqltips.com/sqlservertip/7023/sql-format-currency-options/
+https://learn.microsoft.com/en-us/training/browse/?products=sql-server
+https://learn.microsoft.com/en-us/training/browse/?products=sql-server
+
+
+Balgeet Drive Link :
+https://drive.google.com/drive/u/0/folders/1GI3uLa_3ja8ETk1mTucyp6eE2-cRrfJ4
