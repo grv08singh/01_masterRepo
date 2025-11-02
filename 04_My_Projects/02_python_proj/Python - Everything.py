@@ -30,7 +30,7 @@
 ## Open jupyter notebook at a specified path:
 ## Type in Anaconda Prompt
 ## jupyter notebook --notebook-dir="specified_path"
-## jupyter notebook --notebook-dir="D:\git_repo_DS\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\18 EPGC - Py - Pandas Assignment 2"
+## jupyter notebook --notebook-dir="D:\git_repo_DS\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\19 EPGC - Py - Data Visualization Assignment Quiz"
 ## jupyter notebook --notebook-dir="D:\git_repo_DS\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\17 EPGC - ML - Decision Tree Quiz"
 ## jupyter notebook --notebook-dir="D:\Projects\streamlit_startup_dashboard"
 ## C:\Users\grv06\AppData\Roaming\Code\User\settings.json
@@ -627,7 +627,7 @@ p_val = stats.t.sf(t_stat, df=(n-1))                                            
 # OR
 
 from scipy.stats import ttest_1samp
-t_stat, p_val = stats.ttest_1samp(a=arr1, pop_mean)
+t_stat, p_val = ttest_1samp(a=arr1, pop_mean)
 
 
 
@@ -637,7 +637,7 @@ t_stat = (s1_mean - s2_mean) / (s1_std**2/n1 + s2_std**2/n2)                    
 # OR
 
 from scipy.stats import ttest_ind
-t_stat, p_val = stats.ttest_ind(arr1, arr2)
+t_stat, p_val = ttest_ind(arr1, arr2)
 
 
 
