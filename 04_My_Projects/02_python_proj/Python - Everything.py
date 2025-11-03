@@ -1383,6 +1383,9 @@ df.pivot_table(index=['col1','col2'],
                 columns=['col3','col4'],
                 aggfunc={'col5':'sum','col6':'min'}                 #diff cols, diff aggregations
 
+#Melt (opposite of Pivot)
+df_pivot.melt()                                                     #gives long format data
+
 #vectorized String operations using pandas
 df['col1'].str.upper()                                              #all upper case
 df['col1'].str.lower()                                              #all lower case
@@ -1747,47 +1750,13 @@ plt.ylabel('y')
 
 
 ## Intellipaat
-x = range(32)
-y = df['col1']
-
 # Single Chart/Plot
-plt.figure(figsize=(4, 10))
-plt.bar(x,df['col2'])                                      #vertical bar chart
-plt.xlabel('X Axis Title Here')
-plt.ylabel('Y Axis Title Here')
-plt.title('title_1')
-plt.legend('legend_1')
-plt.grid(True)
-plt.xticks(rotation=90)
-plt.show()
-
-plt.plot(x,y)                                     #line chart
-plt.barh(x,y)                                     #horizontal bar chart
-plt.scatter(x,y)                                  #scatter plot
 plt.stackplot(x,y)                                #Area/stack plot, y can be 2-d array
-plt.pie(y)                                                 #Pie Chart
 plt.boxplot(y)                                             #used to find outlier
 plt.violinplot(y)                                          #used to find outlier
-plt.imshow(y, cmap='summer')                               #heatmap
-plt.hist(x, bins=8, edgecolor="white")                     #histogram with 8 bins
-
-plt.subplot(2,3,4).plot(x,y,'g--')                #2 rows, 3 coloumns, 4th plot, g-- green dashed line
-plt.subplot(r,c,sn).plot(x,y,'y*-')               #y*- yellow line with * marker
-            
-                
-# arguments of pie() method:            
-    # labels='col1'                                                 #Pie chart only
-    # explode=()                                                    #Pie chart only
-    # autopct='%1.2f%%'                                             #Pie chart only
                 
 # arguments of imshow() method:         
     # cmap = 'autumn', 'summer', 'winter','spring'                  #different color schemes
-            
-# Multiple Charts/Plots in Grid of 1x3                              # 1-row, 3-columns
-plt.subplot(1,3,1).scatter(x=x,y=y)               # 1- rows, 3 - col 1 - position
-plt.subplot(1,3,2).scatter(x=x,y=y)               # 1- rows, 3 - col 2 - position
-plt.subplot(1,3,3).scatter(x=x,y=y)               # 1- rows, 3 - col 3 - position
-plt.show()
 
 
 
@@ -2213,28 +2182,6 @@ g.plot(sns.scatterplot,sns.histplot)
 
 
 ##Intellipaat
-sns.pairplot(data=df)                                               #scatterplot for all the column pairs
-sns.countplot(data=df, x='col1')                                   #vertical bar chart of col1 summarized with its count
-sns.countplot(data=df, y='col1')                                   #horizontal bar chart of col1 summarized with its count
-sns.boxplot(data=df, y='col1')                                     #used to find outlier
-sns.scatterplot(data=df, x='col1', y='col2')                      #scatter plot
-sns.barplot(data=df, x='col1', y='col2')                          #bar chart
-sns.regplot(data=df, x='col1', y='col2')                          #regression plot = scatter plot with best fit line
-sns.heatmap(data=df, y=3x3_array)                                   #heat map
-sns.boxplot(data=df, y='col1', hue='col2')                        #box plot
-sns.histplot(data=df, x='col1', hue='col2')                       #histogram plot
-sns.lineplot(data=df, x='col1', y='col2')                         #line plot
-sns.kdeplot(arr1)                                                   #KDE plot
-
-# arguments of scatterplot() method:
-    # color 'r','g','b','k','y','c','m'
-    # palette for multiple colors
-    # hue for group by on col2
-    # marker '^','-','--','*','o','+'
-    # s for size of the marker
-    # edgecolor is for the edge color of the marker
-    # alpha is for transparency of the marker
-
 ################## Subplots in seaborn
 fig, axis = plt.subplots(nrows=2, ncols=2, figsize=(12,8))
 sns.barplot(data=df, x='col1', y='col2', hue='col3', ax = axis[0,0])
@@ -2268,7 +2215,7 @@ sns.barplot(data=df, x='col1', y='col2', hue='col3', ax = axis[0,0])
 
 
 ###############################################################################################################
-#### Plotly
+#### Plotly Graph Objects (Plotly go)
 ###############################################################################################################
 
 import plotly.offline as pyo
@@ -2318,7 +2265,7 @@ layout = go.Layout(title='title of graph',
 fig = go.Figure(data=data,layout=layout)
 pyo.plot(fig)
 
-#bar graph
+#bar chart
 trace = go.Bar(x=df['cat_col'],
                     y=df['num_col'])
 data = [trace]
@@ -2328,6 +2275,175 @@ layout = go.Layout(title='title of graph',
 fig = go.Figure(data=data,layout=layout)
 pyo.plot(fig)
 
+#bar chart - NESTED / CLUSTERED (by default behaviour)
+trace1 = go.Bar(x=df['cat_col'],
+                    y=df['num_col1'],
+                    name='num_col1_name',
+                    marker={'color':'#00a65a'})
+trace1 = go.Bar(x=df['cat_col'],
+                    y=df['num_col2'],
+                    name='num_col2_name',
+                    marker={'color':'#06a65a'})
+data = [trace1,trace2]
+layout = go.Layout(title='title of graph',
+                    xaxis={'title':'x_title'},
+                    yaxis={'title':'y_title'})
+fig = go.Figure(data=data,layout=layout)
+pyo.plot(fig)
+pyo.plot(fig)
+
+#bar chart - OVERLAY
+trace1 = go.Bar(x=df['cat_col'],
+                    y=df['num_col1'],
+                    name='num_col1_name',
+                    marker={'color':'#00a65a'})
+trace1 = go.Bar(x=df['cat_col'],
+                    y=df['num_col2'],
+                    name='num_col2_name',
+                    marker={'color':'#06a65a'})
+data = [trace1,trace2]
+layout = go.Layout(title='title of graph',
+                    xaxis={'title':'x_title'},
+                    yaxis={'title':'y_title'},
+                    barmode='overlay')
+fig = go.Figure(data=data,layout=layout)
+pyo.plot(fig)
+
+#bar chart - STACK
+trace1 = go.Bar(x=df['cat_col'],
+                    y=df['num_col1'],
+                    name='num_col1_name',
+                    marker={'color':'#00a65a'})
+trace1 = go.Bar(x=df['cat_col'],
+                    y=df['num_col2'],
+                    name='num_col2_name',
+                    marker={'color':'#06a65a'})
+data = [trace1,trace2]
+layout = go.Layout(title='title of graph',
+                    xaxis={'title':'x_title'},
+                    yaxis={'title':'y_title'},
+                    barmode='stack')
+fig = go.Figure(data=data,layout=layout)
+pyo.plot(fig)
+
+#bubble plot (3-D or 4-D scatter plot)
+trace = go.Scatter(x=df['cat_col'],
+                    y=df['num_col1'],
+                    mode='markers',
+                    marker={'size':df['num_col2']})
+data = [trace]
+layout = go.Layout(title='Bubble Chart',
+                    xaxis={'title':'x_title'},
+                    yaxis={'title':'y_title'})
+fig = go.Figure(data=data,layout=layout)
+pyo.plot(fig)
+
+#box plot
+trace = go.Box(x=df['num_col',
+                name='num_col_name',
+                marker={'color':'#00a65a'})
+data = [trace]
+layout = go.Layout(title='Box Plot',
+                    xaxis={'title':'x_title'})
+fig = go.Figure(data=data,layout=layout)
+pyo.plot(fig)
+
+#box plots juxtaposed
+trace1 = go.Box(x=df['num_col1',
+                name='num_col1_name',
+                marker={'color':'#00a65a'})
+trace2 = go.Box(x=df['num_col2',
+                name='num_col2_name')
+data = [trace1,trace2]
+layout = go.Layout(title='Box Plot',
+                    xaxis={'title':'x_title'})
+fig = go.Figure(data=data,layout=layout)
+pyo.plot(fig)
+
+#histogram (frequency plot)
+trace = go.Histogram(x=df['num_col'],
+                        xbins={'size':10,
+                                'start':5,
+                                'end':95})
+data = [trace]
+layout = go.Layout(title='hist_title',
+                    xaxis={'title':'x_title'})
+fig = go.Figure(data=data,layout=layout)
+pyo.plot(fig)
+
+#heatmap
+trace = go.Heatmap(x=df['cat_col1'],
+                    y=df['cat_col2'],
+                    z=df['num_col'])
+data = [trace]
+layout = go.Layout(title='heatmap_title')
+fig = go.Figure(data=data,layout=layout)
+pyo.plot(fig)
+
+#heatmaps juxtaposed in subplots [two subplots in one single plot]
+from plotly import tools
+trace1 = go.Heatmap(x=df['cat_col1'],
+                    y=df['cat_col2'],
+                    z=df['num_col'].values.tolist())
+trace2 = go.Heatmap(x=df['cat_col1'],
+                    y=df['cat_col2'],
+                    z=df['num_col'].values.tolist())
+fig = tools.make_subplots(rows=1,
+                            cols=2,
+                            subplot_titles=['heatmap1 title','heatmap2 title'],
+                            shared_yaxes=True)
+fig.append_trace(trace1,1,1)
+fig.append_trace(trace2,1,2)
+pyo.plot(fig)
+
+#dist plot (combination of histplot, kdeplot, rugplot)
+import plotly.figure_factory as ff
+hist_data = [df['num_col1'], df['num_col2']]
+group_labels = ['num_col1_label','num_col2_label']
+fig = ff.create_distplot(hist_data,group_labels,bin_size=[10,20])
+pyo.plot(fig)
+
+#3-D surface plots (can't be made using px)
+x = np.linspace(-10,10,100)
+y = np.linspace(-10,10,100)
+xx,yy = np.meshgrid(x,y)
+
+trace = go.Surface(x=x,y=y,z=z)
+data = [trace]
+layout = go.Layout(title='3D Surface Plot')
+fig = go.Figure(data,layout)
+fig.show()
+
+#contour plot (top view of 3-D surface plot)
+trace = go.Contour(x=x,y=y,z=z)
+data = [trace]
+layout = go.Layout(title='Contour Plot')
+fig = go.Figure(data,layout)
+fig.show()
+
+#subplots [1 figure, multiple axis, diff kind of charts]
+from plotly.subplots import make_subplots
+fig = make_subplots(rows=2,cols=2)
+fig.add_trace(
+        go.Scatter(x=[1,2,3,4,5,6],y=[1,1,5,2,6,8]),
+        row=1,
+        col=1)
+fig.add_trace(
+        go.Histogram(x=[4,5,2,5,2,5,7,3,4,8,9,1]),
+        row=1,
+        col=2)
+fig.add_trace(
+        go.Scatter(x=[1,2,3,4,5,6],y=[1,1,5,2,6,8],mode='markers'),
+        row=2,
+        col=1)
+fig.add_trace(
+        go.Histogram(x=[4,5,2,5,2,5,7,3,4,8,9,1]),
+        row=2,
+        col=2)
+fig.update_layout(title='figure_title')
+fig.show()
+
+#Plotly supports map data unlike matplotlib or seaborn
 
 
 
@@ -2345,7 +2461,135 @@ pyo.plot(fig)
 
 
 
+###############################################################################################################
+#### Plotly Express (px)
+###############################################################################################################
 
+import plotly.express as px
+
+df = px.data.tips()                                                 #in-built dataset in px
+df = px.data.iris()                                                 #in-built dataset in px
+df = px.data.____()                                                 #other in-built datasets in px
+
+#scatter plot
+px.scatter(df,
+            x='num_col1',
+            y='num_col2',
+            color='cat_col1',
+            size='num_col3',
+            size_max=100,
+            hover_name='cat_col2')
+
+#scatter plot animation on timeline
+px.scatter(df,
+            x='num_col1',
+            y='num_col2',
+            color='cat_col1',
+            size='num_col3',
+            size_max=100,
+            hover_name='cat_col2',
+            range_x=[10,100],
+            animation_frame='date_col',
+            animation_group='cat_col2')
+
+#scatter matrix (just like pair plot in sns)
+px.scatter_matrix(iris,
+                    dimensions=['sepal_length',
+                                'sepal_width',
+                                'petal_length',
+                                'petal_width'],
+                    color='species')
+
+#3-D scatter plot
+px.scatter_3d(df,
+                x='num_col1',
+                y='num_col2',
+                z='num_col3',
+                log_y=True,
+                color='cat_col1',
+                hover_name='cat_col2')
+
+#line chart - one line for each column
+px.line(df,
+            x=df.index,
+            y=df.columns,
+            title='chart_title')
+
+#bar chart
+px.bar(df,
+            x='cat_col',
+            y='num_col',
+            title='chart_title',
+            text_auto=True)
+
+#STACKED bar chart with index & multiple cols (default is stacked)
+px.bar(df,
+            x=df.index,
+            y=df.columns,
+            title='chart_title',
+            text_auto=True)
+
+#STACKED bar chart with cols only
+px.bar(df,
+            x='cat_col1',
+            y='num_col',
+            color='cat_col2',
+            title='chart_title',
+            text_auto=True)
+
+#GROUPED / CLUSTERED bar chart
+px.bar(df,
+            x=df.index,
+            y=df.columns,
+            title='chart_title',
+            text_auto=True,
+            barmode='group',
+            log_y=True)
+
+#bar chart animation on timeline
+px.bar(df,
+            x='cat_col1',
+            y='num_col',
+            color='cat_col1',
+            title='chart_title',
+            animation_frame='date_col',
+            animation_group='cat_col2',
+            range_y=[0,100])
+
+#histogram - multiple histograms for diff categories in `cat_col` on same axis
+px.histogram(df,
+                x='num_col',
+                nbins=20,
+                color='cat_col',
+                text_auto=True)
+
+#pie chart
+px.pie(df,
+            values='num_col',
+            names='cat_col')
+
+#sunburst plot - Donut around Pie chart (centre=higher heirarchy, circumference=lower heirarchy)
+px.sunburst(df,
+                path=['continent_col','country_col','state_col'],
+                values='num_col',
+                color='cat_col3')
+
+#treemap chart
+px.treemap(df,
+                path=[px.constant('continent_col'),'country_col','state_col'],
+                values='num_col',
+                color='cat_col3')
+
+#heatmap chart (df has to be grid dataframe)
+px.imshow(df)
+
+#facet plots [1 figure, multiple axis, same kind of chart]
+px.scatter(df,
+                x='num_col1',
+                y='num_col2',
+                facet_col='cat_col1',
+                facet_row='cat_col2',
+                color='cat_col3')
 
 
 
