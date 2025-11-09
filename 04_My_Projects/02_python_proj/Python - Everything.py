@@ -30,7 +30,7 @@
 ## Open jupyter notebook at a specified path:
 ## Type in Anaconda Prompt
 ## jupyter notebook --notebook-dir="specified_path"
-## jupyter notebook --notebook-dir="D:\git_repo_DS\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\19 EPGC - Py - Data Visualization Assignment Quiz"
+## jupyter notebook --notebook-dir="D:\git_repo_DS\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\24 EPGC - ML - Random Forest AQ"
 ## jupyter notebook --notebook-dir="D:\git_repo_DS\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\17 EPGC - ML - Decision Tree Quiz"
 ## jupyter notebook --notebook-dir="D:\Projects\streamlit_startup_dashboard"
 ## C:\Users\grv06\AppData\Roaming\Code\User\settings.json
@@ -43,18 +43,14 @@ import seaborn as sns
 import warnings as wr
 wr.filterwarnings('ignore')
 
-from sklearn.model_selection import train_test_split
-from sklearn import linear_model
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import r2_score,f1_score,accuracy_score, confusion_matrix,ConfusionMatrixDisplay
-from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import LabelEncoder
-from sklearn.linear_model import LogisticRegression
+
+from sklearn.preprocessing import StandardScaler,LabelEncoder
+from sklearn.model_selection import train_test_split,cross_val_score,GridSearchCV,RandomizedSearchCV
+from sklearn.linear_model import LinearRegression,LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import cross_val_score
-from sklearn.model_selection import GridSearchCV
+from sklearn.ensemble import RandomForestClassifier,RandomForestRegressor
+from sklearn.cluster import KMeans
+from sklearn.metrics import r2_score,accuracy_score,precision_score,recall_score,f1_score,confusion_matrix,ConfusionMatrixDisplay,classification_report
 
 
 
@@ -282,9 +278,8 @@ print(f"rows removed: {initial_size - final_size}")
 from sklearn.preprocessing import LabelEncoder
 LE = LabelEncoder()
 for col in df.columns:
-   if(df[col].dtype == 'object'):
-       df[col] = LE.fit_transform(df[col])
-       df[col] = LE.fit_transform(df[col])
+    if df[col].dtype == 'object':
+        df[col] = pd.DataFrame(LE.fit_transform(df[col]))
 
 
 
@@ -312,29 +307,62 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.30, random_state = 42)
 
 
-# 2.3 Initializing Different ML Model
+# 2.3 Scaling
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+X_train_scaled = sc.fit_transform(X_train)
+X_test_scaled = sc.transform(X_test)
 
-## 2.3.1 Linear Regression
+
+# 2.4 Initializing Different ML Model
+## 2.4.1 Linear Regression
 from sklearn.linear_model import LinearRegression
 lr = LinearRegression()
 lr.fit(X_train, y_train)
 y_pred = lr.predict(X_test)
+sns.regplot(x = y_pred, y = y_test, line_kws = {'color':'red'})
 
-from sklearn.metrics import *
+## 2.4.2 Logistic Regression
+from sklearn.linear_model import LogisticRegression
+LoR = LogisticRegression()
+LoR.fit(X_train, y_train)
+y_pred = LoR.predict(X_test)
+
+## 2.4.3 Decision Tree Classifier
+from sklearn.tree import DecisionTreeClassifier
+dt = DecisionTreeClassifier()
+dt = DecisionTreeClassifier(max_depth = 5)
+dt.fit(X_train, y_train)
+y_pred = dt.predict(X_test)
+
+## 2.4.4 Random Forest Classifier
+from sklearn.ensemble import RandomForestClassifier
+rf = RandomForestClassifier()
+rf = RandomForestClassifier(n_estimators = 52, max_depth = 7, criterion = 'entropy', random_state = 2)
+rf.fit(X_train, y_train)
+y_pred = rf.predict(X_test)
+
+
+## 2.5 Scores
+# Regression
+from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
+mae = mean_absolute_error(y_test, y_pred)
 mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
 r2_score = r2_score(y_test, y_pred)
 
-## 2.3.2 Logistic Regression
-from sklearn.linear_model import LogisticRegression
-log = LogisticRegression()
-log.fit(X_train, y_train)
-y_pred = log.predict(X_test)
-
-from sklearn.metrics import *
-accuracy_score(y_test, y_pred)
+#Classification
+#automatic calculation
+from sklearn.metrics import confusion_matrix,accuracy_score,precision_score,recall_score,f1_score,classification_report
 confusion_matrix(y_test, y_pred)
-tn, fp, fn, tp = confusion_matrix(y_test, y_pred).ravel()
+accuracy_score(y_test, y_pred)
+precision_score(y_test, y_pred)
+recall_score(y_test, y_pred)
+f1_score(y_test, y_pred)
+classification_report(y_test, y_pred)
+
+#manual calculation
+[tn, fp], [fn, tp] = confusion_matrix(y_test, y_pred).ravel()
 precision = tp / (tp + fp)
 recall_or_sensitivity = tp / (tp + fn)
 f1_score = 2 * precision * recall / (precision + recall)
@@ -342,43 +370,38 @@ negative_precision = tn / (tn + fn)
 specificity = tn / (tn + fp)
 total_support_value = tp + tn + fp + fn
 
-## 2.3.3 Decision Tree Classifier
-from sklearn.tree import DecisionTreeClassifier
-dt = DecisionTreeClassifier()
-dt = DecisionTreeClassifier(max_depth = 5)
-dt.fit(X_train, y_train)
-y_pred = dt.predict(X_test)
 
-from sklearn.metrics import *
-accuracy_score(y_test, y_pred)
-confusion_matrix(y_test, y_pred)
-
-## 2.3.4 Random Forest Classifier
-from sklearn.ensemble import RandomForestClassifier
-rf = RandomForestClassifier()
-rf = RandomForestClassifier(n_estimators = 52, max_depth = 7, criterion = 'entropy', random_state = 2)
-rf.fit(X_train, y_train)
-y_pred = rf.predict(X_test)
-
-from sklearn.metrics import *
-accuracy_score(y_test, y_pred)
-confusion_matrix(y_test, y_pred)
-
-## 2.3.5 Grid Search CV
+## 2.6 Finding Best Hyper Parameters
+## 2.6.1 Values to try
 param_grid = {
     'n_estimators' : [100,200,300],
     'max_depth' : [None,5,10,15],
     'min_samples_split' : [2,5,10],
     'min_samples_leaf' : [1,2,4],
-    'criterion' : ['gini','entropy']
+    'criterion' : ['gini','entropy'],
+    'bootstrap': [True, False]
 }
 
-from sklearn.model_selection import GridSearchCV
-from sklearn.ensemble import RandomForestClassifier
+## 2.6.2.1 Grid Search CV
 rf = RandomForestClassifier()
-grid_search = GridSearchCV(estimator = rf, param_grid = param_grid, cv = 5, scoring = 'accuracy')
+grid_search = GridSearchCV(estimator = rf, 
+                            param_grid = param_grid, 
+                            cv = 5, 
+                            scoring = 'accuracy', 
+                            n_jobs = -1,
+                            verbose = 1)
 grid_search.fit(X_train, y_train)
 
+## 2.6.2.2 Randomized Search CV
+rand_grid_cv = RandomizedSearchCV(estimator = rf, 
+                                    param_distributions = param_grid, 
+                                    cv = 5, 
+                                    scoring = 'accuracy', 
+                                    n_jobs = -1,
+                                    verbose = 1)
+rand_grid_cv.fit(X_train, y_train)
+
+## 2.6.3 Finding best params/models from grid
 grid_search.best_estimator_
 grid_search.score(X,y)
 grid_search.best_score_
@@ -397,21 +420,23 @@ grid_search.best_params_
 
 
 
-
 #### ML MODELS & TECHNIQUES
 
-#### Regression Types:
-######## 1) Linear Regression
-######## 2) Ridge Regression
-######## 3) Lasso Regression
-######## 4) 
+#### Regression Algo:
+######## 1) Linear Regression [OLS] - Ridge, Lasso, 
+######## 2) Linear Regression [GD] - Batch GD, Stochastic GD, Mini Batch GD 
+######## 3) Polynomial Linear Regression
+######## 4) Decision Tree Regression
+######## 5) Random Forest Regression
+######## 6) Support Vector Regression
 
-#### Classification Types:
+#### Classification Algo:
 ######## 1) Logistic Regression
-######## 2) Decision Tree
-######## 3) Random Forest
+######## 2) Decision Tree Classifier
+######## 3) Random Forest Classifier
 ######## 4) K-Nearest Neighbours
 ######## 5) Naive Bayes
+######## 6) Support Vector Classifier
 
 
 
@@ -429,41 +454,11 @@ grid_search.best_params_
 ######## 2.3) Mini Batch Gradient Descent
 
 #### 4) Polynomial Linear Regression
-from sklearn.model_selection import train_test_split
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, random_state = 42)
-
-from sklearn.linear_model import LinearRegression
-model = LinearRegression()
-model.fit(x_train, y_train)
-y_pred = model.predict(x_test)
-
-from sklearn.metrics import *
-print(f"R2 Score: {r2_score(y_test, y_pred)}")
-print(f"Mean Absolute Error: {mean_absolute_error(y_test, y_pred)}")
-print(f"Mean Squared Error: {mean_squared_error(y_test, y_pred)}")
-print(f"Root Mean Squared Error: {np.sqrt(mean_squared_error(y_test, y_pred))}")
-sns.regplot(x = y_pred, y = y_test, line_kws = {'color':'red'})
 
 
 
 
 #### 6) Logistic Regression
-from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42)
-
-from sklearn.preprocessing import StandardScaler
-sc = StandardScaler()
-X_train_scaled = sc.fit_transform(X_train)
-X_test_scaled = sc.transform(X_test)
-
-from sklearn.linear_model import LogisticRegression
-model = LogisticRegression()
-model.fit(X_train_scaled, y_train)
-y_pred = model.predict(X_test_scaled)
-
-from sklearn.metrics import classification_report, confusion_matrix
-print(f"Classification Report: {classification_report(y_test, y_pred)}")
-print(f"Confusion Matrix: {confusion_matrix(y_test, y_pred)}")
 
 
 
@@ -484,43 +479,16 @@ print(f"Confusion Matrix: {confusion_matrix(y_test, y_pred)}")
 ######## Info_Gain = Variance_parent - w_avg(Variance_children)
 
 #### 9) Random Forest Classification
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###############################################################################################################
-#### sklearn
 
-######## 1) preprocessing
-############ LabelEncoder class
-############ StandardScaler class
 
-######## 2) linear_model
-############ LinearRegression class
 
-######## 3) model_selection
-############ train_test_split class
-############ cross_val_score class
 
-######## 4) metrics
-############ r2_score
-############ f1_score
-############ mean_absolute_error
-############ mean_squared_error
 
-######## 5) ensemble
-############ RandomForestRegressor class
-###############################################################################################################
+
+
+
+
 
 
 
@@ -1130,11 +1098,10 @@ sr + sr2                                               #gives union of both the 
 
 
 #Pandas DataFrame
-#setting display options
-pd.set_option('display.max_columns', None)                          #display all columns while printing dataset
-pd.set_option('display.max_rows', 5)                                #display only 5 rows while printing dataset
-print(df.head().to_string())                                        #print every column for first 5 rows when columns hide normally
-print(df.to_string())                                               #print every column for all rows when columns hide normally
+pd.set_option('display.max_rows', 5)                                #display only 5 rows
+pd.set_option('display.max_rows', None)                             #display all rows
+pd.set_option('display.max_columns', None)                          #display all cols
+pd.set_option('display.max_colwidth', None)                         #proper col width
 
 #Creating DataFrame
 df = pd.DataFrame([[],[],[]], columns =['x','y'])                   #DataFrame from list
