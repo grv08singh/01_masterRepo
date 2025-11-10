@@ -47,128 +47,18 @@ wr.filterwarnings('ignore')
 from sklearn.preprocessing import LabelEncoder,OneHotEncoder,OrdinalEncoder,StandardScaler,MinMaxScaler
 from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split,cross_val_score,GridSearchCV,RandomizedSearchCV
-from sklearn.linear_model import LinearRegression,LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier,RandomForestRegressor
+
+from sklearn.linear_model import LinearRegression,LogisticRegression,SGDRegressor,SGDClassifier,Ridge,Lasso,ElasticNet
+from sklearn.tree import DecisionTreeRegressor,DecisionTreeClassifier
+from sklearn.ensemble import RandomForestRegressor,RandomForestClassifier
+from sklearn.svm import SVR,SVC
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.cluster import KMeans
 from sklearn.metrics import r2_score,accuracy_score,precision_score,recall_score,f1_score,confusion_matrix,ConfusionMatrixDisplay,classification_report
 
-
-
-
-
-# Deep Learning Project (Predict handwritten digits):
-# 1) Recognizing handwritten digits in training data
-import os
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-os.getcwd() #get the current working directory
-os.listdir() #list the items in cwd
-
-from PIL import Image #calling Pillow Library (PIL) and then loading the function/method Image
-image_path = r"C:\Users\think\OneDrive\TRAINING\INTELLIPAAT\DEEP LEARNING\09. AI and DL IITR-07Sep2025(M)\number_7.png"
-img = Image.open(image_path) #Pillow lib is used to open and load the image
-img #print the image
-img = img.convert('RGB') #convert the raw image to standard RGB image
-img_gray = img.convert('L') #convert the standard RGB image to grayscale. L stands for Luminance
-width, height = img_gray.size #it returns a tuple (width, height) of the image in pixels
-img_gray_resized = img_gray.resize((28,28)) #Convert this image from (width X height) to (28 X 28)
-img_gray_resized_array = np.array(img_gray_resized) # Convert the resized grayscale image into a pixelated np array
-
-### Plotting the `pixelated image` as a 28 by 28 grid
-plt.figure(figsize = (4,4))
-plt.imshow(img_gray_resized_array, cmap='gray')
-plt.colorbar()
-plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ML Pipeline:
-#
-## 1) Data Cleaning:
-###    Remove Duplicates rows - df.duplicated()
-###    Handle Null values - df.dropna() / df.fillna()
-###    Check unique values of each column - df['col1'].unique().tolist()
-###    Handle Errors - df['col1'].replace('unknown',NaN)
-#
-#
-## 2) Data Pre-Processing (Standardize, Scale, Encode)
-###    Inspect Data Types - df.info()
-###    Check Missing Values - df.isnull().sum()
-###    Statistical Summary - df.describe().T
-###    Visualize Outliers in each numerical column using boxplot()
-###    Remove Outliers using IQR Method
-###    Correlation Analysis to understand the relationship between features & target variable - df.corr()
-###    Check if Target Variable is balanced affecting model training and evaluation - plt.pie()
-###    X - y Split
-###    Feature Scaling:
-####      Normalization      - MinMaxScaler().fit_transform(X)
-####      Standardization    - StandardScaler().fit_transform(X)
-#
-#
-## 3) Feature Engineering (Feature Selection, Create New or Transform Existing Features)
-###    Feature Creation: creating new features using domain knowledge
-###    Feature Transformation: 
-####      Normalization / Standardization /Scaling
-####      Encoding
-####      Mathematical Transformation (log, sqrt etc.)
-###    Feature Extraction: (PCA Technique) Reduces dimension, Reduces computation cost, Improves model performance, Prevents overfitting
-####      Signal Processing
-####      Statistical Techniques
-####      Transformation Algorithms
-###    Feature Selection: Choosing relevant features
-####      Filter Methods
-####      Wrapper Methods
-####      Embedded Methods
-###    Feature Scaling: to ensure all the features contribute equally
-####      Min-Max Scaling
-####      Standard Scaling
-#
-#
-## 4) EDA Types:
-###    Univariate Analysis: one variable - mean, median, mode, variance, std, barplot, kdeplot
-###    Bivariate A.: relationship b/w two variables - pairplot, scatterplot, correlation cofficient, contingency table, line graph, covariance
-###    Multivariate A.: rel. b/w two or more variables - heatmap, PCA, Spatial Analysis (geog. maps), ARIMA (time series Analysis)
-#
-#
-## 5) Model Selection ---> based on: 
-### data Complexity
-### decision factors like performance, interpretability, scalability
-### Experimentation with different models to find the best one
-#
-#
-## 6) Model Training ---> basic features are:
-### Iterative Process: Train the model iteratively, adjusting parameters to minimize errors & enhance accuracy
-### Optimization: Fine-tune model to optimize its predictive capabilities
-### Validation: Rigorously train model to ensure accuracy to new unseen data
-#
-#
-## 7) Model Evaluation & Tuning
-### Evaluation Metrics: Accuracy, Precision, Recall, F1 score, Specificity, Type-1-2 error, Confusion Matrix for performance evaluation
-### Strengths & Weaknesses: Identify the strengths & weaknesses of the model through rigorous testing
-### Iterative Improvement: Initiate model tuning to adjust hyperparameters & enhance predictive accuracy
-### Model Robustness: Iterative tuning to achieve desired levels of model robustness & reliability
-### Regularization - Lasso, Ridge, Elastic Net Regression - prevents overfitting, fine tuning, stable model, better performance, interpretability
-### Bias Variance tradeoff
-### Hyperparameter Tuning
-### Cross Validation
-### AUC-ROC curve
-#
-#
-### 8) Model Deployment
+from sklearn.feature_slection import SelectKBest,chi2
+from sklearn.compose import ColumnTransformer,make_column_transformer
+from sklearn.pipeline import Pipeline,make_pipeline
 
 
 
@@ -311,10 +201,6 @@ ct = ColumnTransformer(transformers=[
 ct.fit_transform(df)
 
 
-#1.8 Pipeline
-from sklearn.pipeline import Pipeline,make_pipeline
-
-
 
 
 
@@ -325,12 +211,13 @@ from sklearn.pipeline import Pipeline,make_pipeline
 
 
 # 2.1 X-y Split
+#selection using col name
 X = df[['col1','col2']]
 y = df['tgt_col']
-#or
+#or selection using col indexing & slicing
 X = df.iloc[:, :-1]
 y = df.iloc[:, -1]
-#or
+#or selection using fancy col indexing
 X = df.iloc[:,[0,1,2,3,4,5,6,7]]
 y = df.iloc[:,[8]]
 
@@ -439,6 +326,194 @@ grid_search.best_estimator_
 grid_search.score(X,y)
 grid_search.best_score_
 grid_search.best_params_
+
+
+## 2.7 Pipeline
+#single model
+from sklearn.pipeline import Pipeline,make_pipeline
+#imputation transformer - applying imputation on col with index 3 & 5
+trf1 = ColumnTransformer([
+        ('impute1', SimpleImputer(), [5]),
+        ('impute2', SimpleImputer(strategy='most_frequent'), [3])
+        ], remainder='passthrough')
+#one hot encoding transformer - applying ohe on col index 2 & 4
+trf2 = ColumnTransformer([
+        ('ohe1', OneHotEncoder(sparse=False,handle_unknown='ignore'), [2,4])
+        ], remainder='passthrough')
+#scaling transformer - applying scaling on all cols with index 0 through 9
+trf3 = ColumnTransformer([
+        ('scale1',MinMaxScaler(),slice(0,10))
+        ])
+#feature selection - selecting 5 best features
+trf4 = SelectKBest(score_func=chi2, k=5)
+
+#train model
+trf5 = DecisionTreeClassifier()
+
+#create pipeline
+pipe = Pipeline([
+        ('trf1',trf1),
+        ('trf2',trf2),
+        ('trf3',trf3),
+        ('trf4',trf4),
+        ('trf5',trf5)
+        ])
+#or 
+pipe = make_pipeline(trf1,trf2,trf3,trf4,trf5)
+
+#train
+from sklearn import set_config
+set_config(display = 'diagram')
+pipe.fit(X_train, y_train)
+
+#exploring pipeline
+pipe.named_steps
+
+#prediction
+y_pred = pipe.predict(X_test)
+
+
+#Cross Validation using pipeline
+from sklearn.model_selection import GridSearchCV
+params = {
+    'n_estimators' : [100,200,300],
+    'max_depth' : [None,5,10,15],
+    'min_samples_split' : [2,5,10],
+    'min_samples_leaf' : [1,2,4],
+    'criterion' : ['gini','entropy'],
+    'bootstrap': [True, False]
+}
+grid = GridSearchCV(pipe, params, cv=5, scoring='accuracy')
+grid.fit(X_train, y_train)
+grid.best_score_
+grid.best_params_
+
+#Exporting the pipeline
+import pickle
+pickle.dump(pipe,open('pipe.pkl','wb'))
+
+
+
+
+
+
+
+
+
+
+
+# Deep Learning Project (Predict handwritten digits):
+# 1) Recognizing handwritten digits in training data
+import os
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+os.getcwd() #get the current working directory
+os.listdir() #list the items in cwd
+
+from PIL import Image #calling Pillow Library (PIL) and then loading the function/method Image
+image_path = r"C:\Users\think\OneDrive\TRAINING\INTELLIPAAT\DEEP LEARNING\09. AI and DL IITR-07Sep2025(M)\number_7.png"
+img = Image.open(image_path) #Pillow lib is used to open and load the image
+img #print the image
+img = img.convert('RGB') #convert the raw image to standard RGB image
+img_gray = img.convert('L') #convert the standard RGB image to grayscale. L stands for Luminance
+width, height = img_gray.size #it returns a tuple (width, height) of the image in pixels
+img_gray_resized = img_gray.resize((28,28)) #Convert this image from (width X height) to (28 X 28)
+img_gray_resized_array = np.array(img_gray_resized) # Convert the resized grayscale image into a pixelated np array
+
+### Plotting the `pixelated image` as a 28 by 28 grid
+plt.figure(figsize = (4,4))
+plt.imshow(img_gray_resized_array, cmap='gray')
+plt.colorbar()
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ML Pipeline:
+#
+## 1) Data Cleaning:
+###    Remove Duplicates rows - df.duplicated()
+###    Handle Null values - df.dropna() / df.fillna()
+###    Check unique values of each column - df['col1'].unique().tolist()
+###    Handle Errors - df['col1'].replace('unknown',NaN)
+#
+#
+## 2) Data Pre-Processing (Standardize, Scale, Encode)
+###    Inspect Data Types - df.info()
+###    Check Missing Values - df.isnull().sum()
+###    Statistical Summary - df.describe().T
+###    Visualize Outliers in each numerical column using boxplot()
+###    Remove Outliers using IQR Method
+###    Correlation Analysis to understand the relationship between features & target variable - df.corr()
+###    Check if Target Variable is balanced affecting model training and evaluation - plt.pie()
+###    X - y Split
+###    Feature Scaling:
+####      Normalization      - MinMaxScaler().fit_transform(X)
+####      Standardization    - StandardScaler().fit_transform(X)
+#
+#
+## 3) Feature Engineering (Feature Selection, Create New or Transform Existing Features)
+###    Feature Creation: creating new features using domain knowledge
+###    Feature Transformation: 
+####      Normalization / Standardization /Scaling
+####      Encoding
+####      Mathematical Transformation (log, sqrt etc.)
+###    Feature Extraction: (PCA Technique) Reduces dimension, Reduces computation cost, Improves model performance, Prevents overfitting
+####      Signal Processing
+####      Statistical Techniques
+####      Transformation Algorithms
+###    Feature Selection: Choosing relevant features
+####      Filter Methods
+####      Wrapper Methods
+####      Embedded Methods
+###    Feature Scaling: to ensure all the features contribute equally
+####      Min-Max Scaling
+####      Standard Scaling
+#
+#
+## 4) EDA Types:
+###    Univariate Analysis: one variable - mean, median, mode, variance, std, barplot, kdeplot
+###    Bivariate A.: relationship b/w two variables - pairplot, scatterplot, correlation cofficient, contingency table, line graph, covariance
+###    Multivariate A.: rel. b/w two or more variables - heatmap, PCA, Spatial Analysis (geog. maps), ARIMA (time series Analysis)
+#
+#
+## 5) Model Selection ---> based on: 
+### data Complexity
+### decision factors like performance, interpretability, scalability
+### Experimentation with different models to find the best one
+#
+#
+## 6) Model Training ---> basic features are:
+### Iterative Process: Train the model iteratively, adjusting parameters to minimize errors & enhance accuracy
+### Optimization: Fine-tune model to optimize its predictive capabilities
+### Validation: Rigorously train model to ensure accuracy to new unseen data
+#
+#
+## 7) Model Evaluation & Tuning
+### Evaluation Metrics: Accuracy, Precision, Recall, F1 score, Specificity, Type-1-2 error, Confusion Matrix for performance evaluation
+### Strengths & Weaknesses: Identify the strengths & weaknesses of the model through rigorous testing
+### Iterative Improvement: Initiate model tuning to adjust hyperparameters & enhance predictive accuracy
+### Model Robustness: Iterative tuning to achieve desired levels of model robustness & reliability
+### Regularization - Lasso, Ridge, Elastic Net Regression - prevents overfitting, fine tuning, stable model, better performance, interpretability
+### Bias Variance tradeoff
+### Hyperparameter Tuning
+### Cross Validation
+### AUC-ROC curve
+#
+#
+### 8) Model Deployment
 
 
 
