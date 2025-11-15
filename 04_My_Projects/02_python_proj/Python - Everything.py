@@ -235,32 +235,110 @@ X_test_scaled = sc.transform(X_test)
 
 
 # 2.4 Initializing Different ML Model
-## 2.4.1 Linear Regression
+## 2.4.1 Linear Regressor (OLS)
 from sklearn.linear_model import LinearRegression
 lr = LinearRegression()
-lr.fit(X_train, y_train)
+lr = lr.fit(X_train, y_train)
 y_pred = lr.predict(X_test)
 sns.regplot(x = y_pred, y = y_test, line_kws = {'color':'red'})
 
-## 2.4.2 Logistic Regression
+## 2.4.2 SGDRegressor (GD)
+from sklearn.linear_model import SGDRegressor
+sgd_r = SGDRegressor(loss='squared_error', penalty='l2', random_state=42)
+
+## 2.4.3 Lasso Regressor
+from sklearn.linear_model import Lasso
+lasso_r = Lasso(alpha=1.0)
+
+## 2.4.4 Ridge Regressor
+from sklearn.linear_model import Ridge
+ridge_r = Ridge(alpha=1.0)
+
+## 2.4.5 Elastic Net Regressor
+from sklearn.linear_model import ElasticNet
+elastic_net_r = ElasticNet(alpha=0.1, l1_ratio=0.5, random_state=42)
+
+## 2.4.6 KNN Regressor
+from sklearn.neighbors import KNeighborsRegressor
+knnr = KNeighborsRegressor(n_neighbors=5)
+
+## 2.4.7 Support Vector Regressor (SVR)
+from sklearn.svm import SVR
+svr = SVR(kernel='rbf', C=100, gamma=0.1, epsilon=.1)
+
+## 2.4.8 Decision Tree Regressor
+from sklearn.tree import DecisionTreeRegressor
+dt_r = DecisionTreeRegressor(max_depth=5, random_state=0)
+
+## 2.4.9 Random Forest Regressor
+from sklearn.ensemble import RandomForestRegressor
+rf_r = RandomForestRegressor(n_estimators=100, random_state=42)
+
+## 2.4.10 Gradient Boosting Regressor
+from sklearn.ensemble import GradientBoostingRegressor
+gb_r = GradientBoostingRegressor(n_estimators=500, learning_rate=0.01,
+                                    max_depth=4, loss='ls', random_state=42)
+
+## 2.4.11 XGBoost Regressor
+from xgboost import XGBRegressor
+xgb_r = XGBRegressor(objective='reg:squarederror',n_estimators=100, 
+                         learning_rate=0.1,max_depth=5,random_state=42)
+
+## 2.4.12 Logistic Regressor - Binary Classifier
 from sklearn.linear_model import LogisticRegression
 LoR = LogisticRegression()
-LoR.fit(X_train, y_train)
-y_pred = LoR.predict(X_test)
 
-## 2.4.3 Decision Tree Classifier
+## 2.4.13 SGDClassifier
+from sklearn.linear_model import SGDClassifier
+sgd_c = SGDClassifier(loss='log_loss', penalty='l2', max_iter=1000, random_state=42)
+
+## 2.4.14 Lasso Classifier (No direct method)
+from sklearn.linear_model import LogisticRegression
+lasso_c = LogisticRegression(penalty='l1', solver='liblinear', C=0.1)
+
+## 2.4.15 Ridge Classifier
+from sklearn.linear_model import RidgeClassifier
+ridge_c = RidgeClassifier(alpha=1.0, solver='auto')
+
+## 2.4.16 Elastic Net Classifier (No direct method)
+from sklearn.linear_model import SGDClassifier
+elastic_net_c = SGDClassifier(loss='log_loss', penalty='elasticnet', l1_ratio=0.5)
+#OR
+elastic_net_c = LogisticRegression(penalty='elasticnet', solver='saga', l1_ratio=0.5)
+
+## 2.4.17 KNN Classifier
+from sklearn.neighbors import KNeighborsClassifier
+knn_c = KNeighborsClassifier(n_neighbors=5)
+
+## 2.4.18 Support Vector Classifier (SVC)
+from sklearn.svm import SVC
+svc = SVC(kernel='rbf', C=1, gamma='scale')
+
+## 2.4.19 Decision Tree Classifier
 from sklearn.tree import DecisionTreeClassifier
-dt = DecisionTreeClassifier()
-dt = DecisionTreeClassifier(max_depth = 5)
-dt.fit(X_train, y_train)
-y_pred = dt.predict(X_test)
+dt_c = DecisionTreeClassifier(max_depth = 5)
 
-## 2.4.4 Random Forest Classifier
+## 2.4.20 Random Forest Classifier
 from sklearn.ensemble import RandomForestClassifier
-rf = RandomForestClassifier()
-rf = RandomForestClassifier(n_estimators = 52, max_depth = 7, criterion = 'entropy', random_state = 2)
-rf.fit(X_train, y_train)
-y_pred = rf.predict(X_test)
+rf_c = RandomForestClassifier()
+rf_c = RandomForestClassifier(n_estimators = 52, max_depth = 7, criterion = 'entropy', random_state = 2)
+
+## 2.4.21 Gradient Boosting Classifier
+from sklearn.ensemble import GradientBoostingClassifier
+gb_c = GradientBoostingClassifier(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)
+
+## 2.4.22 XGBoost Classifier
+from xgboost import XGBClassifier
+xgb_c = XGBClassifier(objective="binary:logistic", n_estimators=100,
+                        learning_rate=0.1, max_depth=3, random_state=42)
+
+## 2.4.23 K-Means Clustering
+from sklearn.cluster import KMeans
+kmeans = KMeans(n_clusters=2, init='k-means++', n_init='auto', random_state=0)
+kmeans.fit(X)
+y_kmeans = kmeans.predict(X)
+centers = kmeans.cluster_centers_
+
 
 
 ## 2.5 Scores
@@ -2656,7 +2734,7 @@ px.scatter(df,
 
 
 ###############################################################################################################
-#### selenium - Everything
+#### selenium - Everything (download the html page of a website)
 ###############################################################################################################
 
 from selenium import webdriver
@@ -2665,21 +2743,80 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 
+#opening a website in chrome browser
 s = Service("C:/Users/Nitish/Desktop/chromedriver.exe")
 driver = webdriver.Chrome(service = s)
 driver.get('http://google.com')
 time.sleep(2)
 
-# fetch the search input box using xpath
+#fetch the search input box using xpath
 user_input = driver.find_element(by=By.XPATH, value='/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input')
 user_input.send_keys('Campusx')
 time.sleep(1)
-# hit enter key
+
+#hit enter key
 user_input.send_keys(Keys.ENTER)
 time.sleep(1)
-# click
+
+#click an element
 link = driver.find_element(by=By.XPATH, value='//*[@id="rso"]/div[2]/div/div/div[1]/div/div/div[1]/div/a')
 link.click()
+
+#go to the bottom of the page
+driver.execute_script('window.scrollTo(0,document.body.scrollHeight)')
+
+#getting the html code and saving it into my_file.html
+html = driver.page_source
+with open('my_file.html','w',encoding='utf-8') as f:
+    f.write(html)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###############################################################################################################
+#### BeautifulSoup - Everything (take out elements from an html document)
+###############################################################################################################
+
+from bs4 import BeautifulSoup
+
+#opening an html file and reading it
+with open('my_file.html','r',encoding='utf-8') as f:
+    html = f.read()
+
+#creating a soup object to scrape data from html
+soup = BeautifulSoup(html,'lxml')
+
+#finding all divs
+divs = soup.find_all('div',{'class':'sm-product has-tag has-features has-actions'})
+
+#finding all tags
+for div in divs:
+    #find tag h2
+    a0 = div.find('h2').text
+    #find span with class price
+    a1 = div.find('span',{'class':'price'}).text
+    #find div with class 'score rank-2-bg', under it, find tag b
+    a2 = div.find('div',{'class':'score rank-2-bg'}).find('b').text
+    #find tag 'ul' with class 'sm-feat specs' and find all li values
+    x = i.find('ul',{'class':'sm-feat specs'}).find_all('li')
+    x0 = x[0].text
+    x1 = x[1].text
+    x2 = x[2].text
+
 
 
 

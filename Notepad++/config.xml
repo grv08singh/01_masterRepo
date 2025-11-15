@@ -24,7 +24,6 @@
         <Replace name='&quot;#D4E4E4&quot;' />
     </FindHistory>
     <History nbMaxFile="10" inSubMenu="no" customLength="-1">
-        <File filename="F:\Grv\Grv\06 Personal\git_repo_DS\05_python_proj\Python - Everything.py" />
         <File filename="F:\Grv\Grv\05 Personal - Official\Monthly Work Done.py" />
         <File filename="D:\git_repo_DS\03_sql_proj\SQL - Everything.sql" />
         <File filename="C:\Users\grv06\OneDrive\Desktop\git_push.bat" />
@@ -34,6 +33,7 @@
         <File filename="D:\Projects\pyproj_webscraping\DTHV.csv" />
         <File filename="D:\Projects\pyproj_ws_ktk\run_app.bat" />
         <File filename="C:\Users\grv06\OneDrive\Desktop\git_pull.bat" />
+        <File filename="D:\Projects\pyproj_ws_ktk_v2\streamlit_app.py" />
     </History>
     <ProjectPanels>
         <ProjectPanel id="0" workSpaceFile="" />
