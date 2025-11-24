@@ -1,9 +1,0 @@
-2025-09-02 17:33:10  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
-2025-09-02 17:33:10  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
-2025-09-02 17:33:10  F:\Grv\Grv\06 Personal\git_repo_DS\Notepad++\config.xml is opened.
-2025-09-02 17:33:10  F:\Grv\Grv\06 Personal\git_repo_DS\Notepad++\config.xml  10431/10431 bytes are written.
-2025-09-02 17:33:10  F:\Grv\Grv\06 Personal\git_repo_DS\Notepad++\config.xml is closed.
-2025-09-02 17:33:10  F:\Grv\Grv\06 Personal\git_repo_DS\Notepad++\session.xml is opened.
-2025-09-02 17:33:10  F:\Grv\Grv\06 Personal\git_repo_DS\Notepad++\session.xml  1438/1438 bytes are written.
-2025-09-02 17:33:10  F:\Grv\Grv\06 Personal\git_repo_DS\Notepad++\session.xml is closed.
-2025-09-02 17:33:10  WM_DESTROY (isEndSessionStarted == true)
