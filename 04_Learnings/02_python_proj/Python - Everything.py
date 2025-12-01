@@ -8,11 +8,6 @@
 
 
 
-
-
-
-
-
 ###############################################################################################################
 #### GIT
 ###############################################################################################################
@@ -34,11 +29,18 @@ git clone https://github.com/grv08singh/01_Docs.git
 
 
 
-
-
 ###############################################################################################################
 #### Python Environment
 ###############################################################################################################
+
+## Open jupyter notebook at a specified path:
+## Type in Anaconda Prompt
+## jupyter notebook --notebook-dir="specified_path"
+## jupyter notebook --notebook-dir="D:\git_repo_DS\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\31 EPGC - ML - Project Analysing Naming Trend"
+## jupyter notebook --notebook-dir="D:\git_repo_DS\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\17 EPGC - ML - Decision Tree Quiz"
+## jupyter notebook --notebook-dir="D:\Projects\streamlit_startup_dashboard"
+## C:\Users\grv06\AppData\Roaming\Code\User\settings.json
+
 #Create Python env using conda
 conda create --name dummy_env python=3.8
 #list of env
@@ -72,6 +74,41 @@ python -m ipykernel install --user --name=dummy_env
 
 
 
+###############################################################################################################
+#### Deep Learning (DL)
+###############################################################################################################
+# Deep Learning Project (Predict handwritten digits):
+# 1) Recognizing handwritten digits in training data
+import os
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+os.getcwd() #get the current working directory
+os.listdir() #list the items in cwd
+
+from PIL import Image #calling Pillow Library (PIL) and then loading the function/method Image
+image_path = r"C:\Users\think\OneDrive\TRAINING\INTELLIPAAT\DEEP LEARNING\09. AI and DL IITR-07Sep2025(M)\number_7.png"
+img = Image.open(image_path) #Pillow lib is used to open and load the image
+img #print the image
+img = img.convert('RGB') #convert the raw image to standard RGB image
+img_gray = img.convert('L') #convert the standard RGB image to grayscale. L stands for Luminance
+width, height = img_gray.size #it returns a tuple (width, height) of the image in pixels
+img_gray_resized = img_gray.resize((28,28)) #Convert this image from (width X height) to (28 X 28)
+img_gray_resized_array = np.array(img_gray_resized) # Convert the resized grayscale image into a pixelated np array
+
+### Plotting the `pixelated image` as a 28 by 28 grid
+plt.figure(figsize = (4,4))
+plt.imshow(img_gray_resized_array, cmap='gray')
+plt.colorbar()
+plt.show()
+
+
+
+
+
+
 
 
 ###############################################################################################################
@@ -82,54 +119,6 @@ python -m ipykernel install --user --name=dummy_env
 
 #Proj_01: use mnist dataset to learn a MBGD,DT,RF,KNN,DL model and create an online app to recognize handwritten digits.
 #Proj_02: 
-
-
-
-
-
-## Open jupyter notebook at a specified path:
-## Type in Anaconda Prompt
-## jupyter notebook --notebook-dir="specified_path"
-## jupyter notebook --notebook-dir="D:\git_repo_DS\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\31 EPGC - ML - Project Analysing Naming Trend"
-## jupyter notebook --notebook-dir="D:\git_repo_DS\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\17 EPGC - ML - Decision Tree Quiz"
-## jupyter notebook --notebook-dir="D:\Projects\streamlit_startup_dashboard"
-## C:\Users\grv06\AppData\Roaming\Code\User\settings.json
-
-
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import warnings as wr
-wr.filterwarnings('ignore')
-
-
-from sklearn.preprocessing import LabelEncoder,OneHotEncoder,OrdinalEncoder,StandardScaler,MinMaxScaler
-from sklearn.impute import SimpleImputer
-from sklearn.model_selection import train_test_split,cross_val_score,GridSearchCV,RandomizedSearchCV
-#SMOTE - Synthetic Minority Oversampling Technique
-from imblearn.over_sampling import SMOTE
-
-from sklearn.linear_model import LinearRegression,LogisticRegression,SGDRegressor,SGDClassifier,Ridge,Lasso,ElasticNet
-from sklearn.tree import DecisionTreeRegressor,DecisionTreeClassifier
-from sklearn.ensemble import RandomForestRegressor,RandomForestClassifier
-from sklearn.svm import SVR,SVC
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import r2_score,accuracy_score,roc_auc_score,precision_score,recall_score,f1_score,confusion_matrix,ConfusionMatrixDisplay,classification_report
-
-from sklearn.cluster import KMeans
-from sklearn.decomposition import PCA
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-
-from sklearn.feature_slection import SelectKBest,chi2
-from sklearn.compose import ColumnTransformer,make_column_transformer
-from sklearn.pipeline import Pipeline,make_pipeline
-
-
-
-
-
-
 
 
 
@@ -189,11 +178,98 @@ from sklearn.pipeline import Pipeline,make_pipeline
 
 
 
-###############################################################################################################
-#### 1. EDA :: Exploratory Data Analysis
+#### ML MODELS & TECHNIQUES
+
+#### Regression Algo:
+######## 1) Linear Regression [OLS] - Ridge, Lasso, ElasticNet
+######## 2) Linear Regression [GD] - Batch GD, Stochastic GD, Mini Batch GD 
+######## 3) Polynomial Linear Regression
+######## 4) Decision Tree Regression
+######## 5) Random Forest Regression
+######## 6) Support Vector Regression
+
+#### Classification Algo:
+######## 1) Logistic Regression
+######## 2) Decision Tree Classifier
+######## 3) Random Forest Classifier
+######## 4) K-Nearest Neighbours
+######## 5) Naive Bayes
+######## 6) Support Vector Classifier
+
+#### 1) Linear Regression
+######## 1) Bias-Variance Trade-Off
+############ 1) Regularization - Ridge Regression
+############ 2) Regularization - Lasso Regression
+############ 3) Regularization - Elastic Net Regression
+
+#### 2) Multiple Linear Regression
+
+#### 3) Gradient Descent
+######## 2.1) Batch Gradient Descent
+######## 2.2) Stochastic Gradient Descent
+######## 2.3) Mini Batch Gradient Descent
+
+#### 4) Polynomial Linear Regression
+
+#### 6) Logistic Regression
+
+#### 7) Decision Tree Classification
+######## Maximum (Entropy Reduction) OR (Info Gain) is required
+######## General Formula for Entropy at a node = H = P1*log(P1) + P2*log(P2) ------> Max value 1 at P1=P2=0.5
+######## where P1, P2 are probabilities of event 1, 2 at the node
+######## Info_Gain = H_parent - w_avg(H_children)
+
+######## Gini = Measure of impurity (alternative of Entropy H)
+######## Gini = 1 - [P1^2 + P2^2] ------> Max value 0.5 at P1=P2=0.5 [Computationally easier than Entropy calculation]
+######## Info_Gain = Gini_parent - w_avg(Gini_children)
+
+#### 8) Decision Tree Regression
+######## Info_Gain = Variance_parent - w_avg(Variance_children)
+
+#### 9) Random Forest Classification
 ###############################################################################################################
 
-# 1.1 Cleaning
+
+
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import warnings as wr
+wr.filterwarnings('ignore')
+
+
+from sklearn.preprocessing import LabelEncoder,OneHotEncoder,OrdinalEncoder,StandardScaler,MinMaxScaler
+from sklearn.impute import SimpleImputer
+from sklearn.model_selection import train_test_split,cross_val_score,GridSearchCV,RandomizedSearchCV
+#SMOTE - Synthetic Minority Oversampling Technique
+from imblearn.over_sampling import SMOTE
+
+from sklearn.linear_model import LinearRegression,LogisticRegression,SGDRegressor,SGDClassifier,Ridge,Lasso,ElasticNet
+from sklearn.tree import DecisionTreeRegressor,DecisionTreeClassifier
+from sklearn.ensemble import RandomForestRegressor,RandomForestClassifier
+from sklearn.svm import SVR,SVC
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import r2_score,accuracy_score,roc_auc_score,precision_score,recall_score,f1_score
+                            ,confusion_matrix,ConfusionMatrixDisplay,classification_report
+
+from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+
+from sklearn.feature_selection import SelectKBest,chi2
+from sklearn.compose import ColumnTransformer,make_column_transformer
+from sklearn.pipeline import Pipeline,make_pipeline
+
+
+
+
+###############################################################################################################
+#### EDA :: Exploratory Data Analysis
+###############################################################################################################
+
+# 1 Cleaning
 df.shape
 df.columns.tolist()
 df.info()
@@ -211,7 +287,7 @@ df.groupby('col1')[['col2','col3','col4']].mean()
 df.rename(columns={'col1' : 'col101','col2' : 'col102'},inplace = True)
 
 
-# 1.2 Checking Datatype Inconsistency
+# 2 Checking Datatype Inconsistency
 #### (when column is supposed to be float/int, but it is object type due to a space or unknown value maybe)
 for col in df.columns:
     if df[col].dtype == 'object':
@@ -227,7 +303,7 @@ for col in ['age', 'job', 'marital', 'education', 'default', 'housing', 'loan']:
     df[col].replace('unknown',NaN)
 
 
-# 1.3 Remove Null Values (if Null < 10% of data, [dropna], else if Null < 40% of data, [fillna] with median/mode, else [drop feature/col])
+# 3 Remove Null Values (if Null < 10% of data, [dropna], else if Null < 40% of data, [fillna] with median/mode, else [drop feature/col])
 for col in df.columns:
     if(df[col].dtype in ('int64', 'float64'):
         df[col] = df[col].fillna(df[col].median())
@@ -237,11 +313,11 @@ for col in df.columns:
 df = df.dropna(subset=['col1', 'col2', 'col3'])
 
 
-# 1.4 Remove Duplicates
+# 4 Remove Duplicates
 df = df.drop_duplicates()
 
 
-# 1.5 Outliers - 
+# 5 Outliers - 
 #### Check for outliers - Outliers Analysis
 
 for col in df.columns:
@@ -276,44 +352,58 @@ print(f"rows removed: {initial_size - final_size}")
 
 
 
-
-
-
-
-
-
 ###############################################################################################################
-#### 2. Feature Engineering
+#### Feature Engineering
 ###############################################################################################################
 
-# 2.1 Feature Selection
-## 2.1.1 Filter Methods [effect of individual col]
-#### 2.1.1.1 Drop Duplicate Cols
+# 1 Feature Transformation
+## 1.1 Missing Value Imputation
+## 1.2 Handling Categorical Features
+## 1.3 Outlier Detection
+## 1.4 Feature Scaling
 
-#### 2.1.1.2 Variance Threshold Method
-######## 2.1.1.2.1 Constant value: Drop cols with variance = 0
-######## 2.1.1.2.2 Quasi-Constant value: Drop cols with variance ~ 0
-from sklearn.feature_slection import VarianceThreshold
+# 2 Feature Construction
+
+
+# 3 Feature Selection
+## 3.1 Filter Methods [Individual feature effect is studied]
+#### 3.1.1 Drop Duplicate Cols
+
+#### 3.1.2 Variance Threshold Method
+######## 3.1.2.1 Constant value: Drop cols with variance = 0
+######## 3.1.2.2 Quasi-Constant value: Drop cols with variance ~ 0
+from sklearn.feature_selection import VarianceThreshold
 sel = VarianceThreshold(threshold = 0.05)
 sel.fit_transform(X_train_scaled)
 sel.transform(X_test_scaled)
 
-#### 2.1.1.3 Correlation Method: Drop cols with corr near 0
+#### 3.1.3 Correlation Method: Drop cols with corr near 0
 
-#### 2.1.1.4 ANOVA Method;    H0 : feature has no relation with tgt
-from sklearn.feature_slection import f_classif, SelectKBest
+#### 3.1.4 ANOVA Method;    H0 : feature has no relation with tgt
+from sklearn.feature_selection import f_classif, SelectKBest
 sel = SelectKBest(f_classif, k=25).fit(X_train, y_train)
 sel.get_support()
 
-#### 2.1.1.5 CHI-Square Method;    H0 : feature has no relation with tgt
+#### 3.1.5 CHI-Square Method;    H0 : feature has no relation with tgt
 ct = pd.crosstab('col1', y_train, margin=True)
 from scipy.stats import chi2_contingency
 p_val = chi2_contingency(ct)[1]
 
+#### 3.1.6 Mutual Information Method;
+from sklearn.feature_selection import mutual_info_classif
+mi = mutual_info_classif(X,y)
+for i,mi_val in enumerate(mi):
+    print(f"feature {i}: Mutual Infomation = {mi_val}")
+
+#OR
+from sklearn.feature_selection import SelectKBest,mutual_info_classif
+selector = SelectKBest(mutual_info_classif,k=2)
+X_new = selector.fit_transform(X,y)
+cols = selector.get_support(indices=True)           #indices of selected cols
 
 
-## 2.1.2 Wrapper Methods [effect of combination of cols on tgt]
-#### 2.1.2.1 Exhaustive Feature Selection: try out each subset combination, and select the best
+## 3.2 Wrapper Methods [combined effect of features is studied - computationally slower]
+#### 3.2.1 Exhaustive Feature Selection: try out each subset combination, and select the best
 ######## needs to train 2^n - 1 models to find the best subset of features
 from mlxtend.feature_selection import ExhaustiveFeatureSelector as EFS
 LoR = LogisticRegression()
@@ -326,7 +416,7 @@ efs.best_score_
 efs.best_feature_names_
 efs.subsets_
 
-#### 2.1.2.2 Sequential Forward Selection
+#### 3.2.2 Sequential Forward Selection
 ######## needs to train n(n+1)/2 models to find the best subset of features
 ######## use only 1 feature & calculate accuracy; do for all cols; choose best score
 ######## do this process until all features are selected
@@ -340,7 +430,7 @@ sfs = SFS(LR, k_features='best', forward=True, floating=False, scoring='r2', cv=
 sfs = sfs.fit(X_train, y_train)
 sfs.k_feature_idx_
 
-#### 2.1.2.3 Backward Elimination
+#### 3.2.3 Backward Elimination
 ######## needs to train n(n+1)/2 models to find the best subset of features
 ######## remove 1 feature & calculate accuracy; do for all cols; choose best score
 ######## do this process until 1 feature remains
@@ -354,37 +444,44 @@ sfs = SFS(LR, k_features='best', forward=False, floating=False, scoring='r2', cv
 sfs = sfs.fit(X_train, y_train)
 sfs.k_feature_idx_
 
+#### 3.2.4 Recursive Feature Elimination (RFE)
+######## recursively find importance score & remove the one with lowest score
+######## RFE is also part of Embedded Methods
+from sklearn.feature_selection import RFE
+from sklearn.feature_selection import RFECV
+model = RandomForestClassifier()
 
-#### 2.1.2.4 Recursive Feature Elimination
+rfe = RFE(estimator=model, step=2, n_features_to_select=2)      #step=2 means remove 2 features with lowest scores
+#OR
+rfecv = RFECV(estimator=model, step=2, n_features_to_select=2, cv=5)
 
-
-## 2.1.3 Embedded Methods
-
-
-## 2.1.4 Hybrid Methods
-
-
-
-# 2.2 Feature Extraction
-## 2.2.1 Principal Component Analysis (PCA)
-
-
-## 2.2.2 Linear Discriminant Analysis (LDA)
+rfe.fit(X_train_scaled, y_train)
+rfe.ranking_
 
 
+## 3.3 Embedded Methods [trains ML model along with scoring feature importance]
+#### Algo having coef_ OR feature_importance_ attributes can be used as embedded methods
+#### coef_ e.g. Linear Regression, Logistic Regression, Ridge, Lasso, Elastic Net, 
+#### feature_importance_ e.g. Decision Tree, Random Forest, Gradient Boosting
+#### sklearn.feature_selection.SelectFromModel --> Transformer to use embedded methods
+
+
+## 3.4 Hybrid Methods
 
 
 
-
+# 2 Feature Extraction
+## 2.1 Principal Component Analysis (PCA)
+## 2.2 Linear Discriminant Analysis (LDA)
 
 
 
 ###############################################################################################################
-#### 2. Machine Learning (ML) - Model Fitting
+#### Machine Learning (ML) - Model Fitting
 ###############################################################################################################
 
 
-# 2.1 X-y Split
+# 1 X-y Split
 #selection using col name
 X = df[['col1','col2']]     #pd.DataFrame
 y = df['tgt_col']           #pd.Series
@@ -396,39 +493,39 @@ X = df.iloc[:,[0,1,2,3,4,5,6,7]]
 y = df.iloc[:,[8]]
 
 
-# 2.2 Train-Test Split
+# 2 Train-Test Split
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.30, random_state = 42)
 
 
-# 2.3.1 Encoding - Manually
-# 2.3.1.1 Label encoding
+# 3.1 Encoding - Manually
+# 3.1.1 Label encoding
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 for col in df.columns:
     if df[col].dtype == 'object':
         df[col] = pd.DataFrame(le.fit_transform(df[[col]]))
 
-# 2.3.1.2 Ordinal Encoding
+# 3.1.2 Ordinal Encoding
 from sklearn.preprocessing import OrdinalEncoder
 oe = OrdinalEncoder(categories=[['low','medium','high']])
 df['col1'] = pd.DataFrame(oe.fit_transform(df[['col1']]))
 
-# 2.3.1.3 One Hot Encoding
+# 3.1.3 One Hot Encoding
 from sklearn.preprocessing import OneHotEncoder
 ohe = OneHotEncoder(drop='First', sparse=False, handle_unknown='ignore')
 df['col1'] = pd.DataFrame(ohe.fit_transform(df[['col1']]))
 ## One Hot Encoding - using Pandas [column names retained]
 pd.get_dummies(df,columns=['col1','col2'],drop_first=True)      #OHE for col1 and col2
 
-# 2.3.1.4 Simple Imputer [replace missing values with col mean]
+# 3.1.4 Simple Imputer [replace missing values with col mean]
 from sklearn.impute import SimpleImputer
 si = SimpleImputer()                                            #mean by default
 si = SimpleImputer(strategy = 'median')                         #median
 si = SimpleImputer(strategy = 'most_frequent')                  #mode
 df['col1'] = pd.DataFrame(si.fit_transform(df[['col1']]))
 
-# 2.3.1.5 Encoding - Using Column Transformer [task of above steps becomes easier]
+# 3.1.5 Encoding - Using Column Transformer [task of above steps becomes easier]
 from sklearn.compose import ColumnTransformer
 ct = ColumnTransformer(transformers=[
                                         ('tnf1', OrdinalEncoder(categories=[['low','medium','high']]), ['col1']),
@@ -440,21 +537,21 @@ ct.fit_transform(df)
 
 
 
-# 2.4 Scaling
-# 2.4.1 Standard Scaler
+# 4 Scaling
+# 4.1 Standard Scaler
 from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
 X_train_scaled = sc.fit_transform(X_train)
 X_test_scaled = sc.transform(X_test)
 
-# 2.4.2 Min Max Scaler
+# 4.2 Min Max Scaler
 from sklearn.preprocessing import MinMaxScaler
 sc = MinMaxScaler()
 X_train_scaled = sc.fit_transform(X_train)
 X_test_scaled = sc.transform(X_test)
 
 
-# 2.5 SMOTE - Synthetic Minority Oversampling Technique
+# 5 SMOTE - Synthetic Minority Oversampling Technique
 # make class balanced
 from imblearn.over_sampling import SMOTE
 smote = SMOTE(random_state=42)
@@ -462,8 +559,8 @@ X_resampled, y_resampled = smote.fit_resample(X_train, y_train)
 #now X_resampled & y_resampled will not have class imbalance
 
 
-# 2.6 Dimensionality Reduction
-## 2.6.1 PCA (Principal Component Analysis) [Unsupervised Technique - Not Algo]
+# 6 Dimensionality Reduction
+## 6.1 PCA (Principal Component Analysis) [Unsupervised Technique - Not Algo]
 #manual work
 from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
@@ -491,7 +588,7 @@ pca.explained_variance_
 #%age variance explained by each PC
 pca.explained_variance_ratio_
 
-## 2.6.2 LDA (Linear Discriminant Analysis) [Supervised Technique - Not Algo]
+## 6.2 LDA (Linear Discriminant Analysis) [Supervised Technique - Not Algo]
 #used with classification problem only
 #Fisher Discriminant Ratio = (mu1 - mu2)^2/(s1^2 + s2^2)      after projection on line
 #we have to find max of numerator, min of denominator
@@ -509,105 +606,105 @@ X_test_lda = LDA.transform(X_test)
 
 
 
-# 2.7 Initializing Different ML Model
-## 2.7.1 Linear Regressor (OLS)
+# 7 Initializing Different ML Model
+## 7.1 Linear Regressor (OLS)
 from sklearn.linear_model import LinearRegression
 lr = LinearRegression()
 lr.fit(X_train, y_train)
 y_pred = lr.predict(X_test)
 sns.regplot(x = y_pred, y = y_test, line_kws = {'color':'red'})
 
-## 2.7.2 SGDRegressor (GD)
+## 7.2 SGDRegressor (GD)
 from sklearn.linear_model import SGDRegressor
 sgd_r = SGDRegressor(loss='squared_error', penalty='l2', random_state=42)
 
-## 2.7.3 Lasso Regressor
+## 7.3 Lasso Regressor
 from sklearn.linear_model import Lasso
 lasso_r = Lasso(alpha=1.0)
 
-## 2.7.4 Ridge Regressor
+## 7.4 Ridge Regressor
 from sklearn.linear_model import Ridge
 ridge_r = Ridge(alpha=1.0)
 
-## 2.7.5 Elastic Net Regressor
+## 7.5 Elastic Net Regressor
 from sklearn.linear_model import ElasticNet
 elastic_net_r = ElasticNet(alpha=0.1, l1_ratio=0.5, random_state=42)
 
-## 2.7.6 KNN Regressor
+## 7.6 KNN Regressor
 from sklearn.neighbors import KNeighborsRegressor
 knnr = KNeighborsRegressor(n_neighbors=5)
 
-## 2.7.7 Support Vector Regressor (SVR)
+## 7.7 Support Vector Regressor (SVR)
 from sklearn.svm import SVR
 svr = SVR(kernel='rbf', C=100, gamma=0.1, epsilon=.1)
 
-## 2.7.8 Decision Tree Regressor
+## 7.8 Decision Tree Regressor
 from sklearn.tree import DecisionTreeRegressor
 dt_r = DecisionTreeRegressor(max_depth=5, random_state=0)
 
-## 2.7.9 Random Forest Regressor
+## 7.9 Random Forest Regressor
 from sklearn.ensemble import RandomForestRegressor
 rf_r = RandomForestRegressor(n_estimators=100, random_state=42)
 
-## 2.7.10 Gradient Boosting Regressor
+## 7.10 Gradient Boosting Regressor
 from sklearn.ensemble import GradientBoostingRegressor
 gb_r = GradientBoostingRegressor(n_estimators=500, learning_rate=0.01,
                                     max_depth=4, loss='ls', random_state=42)
 
-## 2.7.11 XGBoost Regressor
+## 7.11 XGBoost Regressor
 from xgboost import XGBRegressor
 xgb_r = XGBRegressor(objective='reg:squarederror',n_estimators=100, 
                          learning_rate=0.1,max_depth=5,random_state=42)
 
-## 2.7.12 Logistic Regressor - Binary Classifier
+## 7.12 Logistic Regressor - Binary Classifier
 from sklearn.linear_model import LogisticRegression
 LoR = LogisticRegression()
 
-## 2.7.13 SGDClassifier
+## 7.13 SGDClassifier
 from sklearn.linear_model import SGDClassifier
 sgd_c = SGDClassifier(loss='log_loss', penalty='l2', max_iter=1000, random_state=42)
 
-## 2.7.14 Lasso Classifier (No direct method)
+## 7.14 Lasso Classifier (No direct method)
 from sklearn.linear_model import LogisticRegression
 lasso_c = LogisticRegression(penalty='l1', solver='liblinear', C=0.1)
 
-## 2.7.15 Ridge Classifier
+## 7.15 Ridge Classifier
 from sklearn.linear_model import RidgeClassifier
 ridge_c = RidgeClassifier(alpha=1.0, solver='auto')
 
-## 2.7.16 Elastic Net Classifier (No direct method)
+## 7.16 Elastic Net Classifier (No direct method)
 from sklearn.linear_model import SGDClassifier
 elastic_net_c = SGDClassifier(loss='log_loss', penalty='elasticnet', l1_ratio=0.5)
 #OR
 elastic_net_c = LogisticRegression(penalty='elasticnet', solver='saga', l1_ratio=0.5)
 
-## 2.7.17 KNN Classifier
+## 7.17 KNN Classifier
 from sklearn.neighbors import KNeighborsClassifier
 knn_c = KNeighborsClassifier(n_neighbors=5)
 
-## 2.7.18 Support Vector Classifier (SVC)
+## 7.18 Support Vector Classifier (SVC)
 from sklearn.svm import SVC
 svc = SVC(kernel='rbf', C=1, gamma='scale')
 
-## 2.7.19 Decision Tree Classifier
+## 7.19 Decision Tree Classifier
 from sklearn.tree import DecisionTreeClassifier
 dt_c = DecisionTreeClassifier(max_depth = 5)
 
-## 2.7.20 Random Forest Classifier
+## 7.20 Random Forest Classifier
 from sklearn.ensemble import RandomForestClassifier
 rf_c = RandomForestClassifier()
 rf_c = RandomForestClassifier(n_estimators = 52, max_depth = 7, criterion = 'entropy', random_state = 2)
 
-## 2.7.21 Gradient Boosting Classifier
+## 7.21 Gradient Boosting Classifier
 from sklearn.ensemble import GradientBoostingClassifier
 gb_c = GradientBoostingClassifier(n_estimators=100, learning_rate=0.1, max_depth=3, random_state=42)
 
-## 2.7.22 XGBoost Classifier
+## 7.22 XGBoost Classifier
 from xgboost import XGBClassifier
 xgb_c = XGBClassifier(objective="binary:logistic", n_estimators=100,
                         learning_rate=0.1, max_depth=3, random_state=42)
 
-## 2.7.23 K-Means Clustering [Unsupervised Algo]
+## 7.23 K-Means Clustering [Unsupervised Algo]
 from sklearn.cluster import KMeans
 kmeans = KMeans(n_clusters=3, init='k-means++', 
                 n_init='auto', random_state=0, max_iter=200)
@@ -619,8 +716,8 @@ cluster_pred_for_new_data_point = kmeans.predict(X_new)
 
 
 
-## 2.8 Scores
-## 2.8.1 Regression
+## 8 Scores
+## 8.1 Regression
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 mae = mean_absolute_error(y_test, y_pred)
 mse = mean_squared_error(y_test, y_pred)
@@ -628,8 +725,8 @@ rmse = np.sqrt(mse)
 r2_score = r2_score(y_test, y_pred)
 adjusted_r2 = 1 - (1 - r2) * ((n - 1) / (n - p - 1))
 
-## 2.8.2 Classification
-## 2.8.2.1 automatic calculation
+## 8.2 Classification
+## 8.2.1 automatic calculation
 from sklearn.metrics import confusion_matrix,accuracy_score,roc_auc_score,precision_score,recall_score,f1_score,classification_report
 confusion_matrix(y_test, y_pred)
 accuracy_score(y_test, y_pred)
@@ -639,7 +736,7 @@ f1_score(y_test, y_pred)
 classification_report(y_test, y_pred)
 roc_auc_score(y_test, y_pred)   #better measure of accuracy in unbalanced dataset
 
-## 2.8.2.2 manual calculation
+## 8.2.2 manual calculation
 [tn, fp], [fn, tp] = confusion_matrix(y_test, y_pred).ravel()
 precision = tp / (tp + fp)
 recall_or_sensitivity = tp / (tp + fn)
@@ -649,8 +746,8 @@ specificity = tn / (tn + fp)
 total_support_value = tp + tn + fp + fn
 
 
-## 2.9 Finding Best Hyper Parameters
-## 2.9.1 Values to try
+## 9 Finding Best Hyper Parameters
+## 9.1 Values to try
 param_grid = {
     'n_estimators' : [100,200,300],
     'max_depth' : [None,5,10,15],
@@ -660,7 +757,7 @@ param_grid = {
     'bootstrap': [True, False]
 }
 
-## 2.9.2.1 Grid Search CV
+## 9.2.1 Grid Search CV
 rf = RandomForestClassifier()
 grid_search = GridSearchCV(estimator = rf, 
                             param_grid = param_grid, 
@@ -670,7 +767,7 @@ grid_search = GridSearchCV(estimator = rf,
                             verbose = 1)
 grid_search.fit(X_train, y_train)
 
-## 2.9.2.2 Randomized Search CV
+## 9.2.2 Randomized Search CV
 rand_grid_cv = RandomizedSearchCV(estimator = rf, 
                                     param_distributions = param_grid, 
                                     cv = 5, 
@@ -679,14 +776,14 @@ rand_grid_cv = RandomizedSearchCV(estimator = rf,
                                     verbose = 1)
 rand_grid_cv.fit(X_train, y_train)
 
-## 2.9.3 Finding best params/models from grid
+## 9.3 Finding best params/models from grid
 grid_search.best_estimator_
 grid_search.score(X,y)
 grid_search.best_score_
 grid_search.best_params_
 
 
-## 2.10 Pipeline
+## 10 Pipeline
 #single model
 from sklearn.pipeline import Pipeline,make_pipeline
 #imputation transformer - applying imputation on col with index 3 & 5
@@ -754,134 +851,6 @@ ct.fit_transform(df)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-#### ML MODELS & TECHNIQUES
-
-#### Regression Algo:
-######## 1) Linear Regression [OLS] - Ridge, Lasso, 
-######## 2) Linear Regression [GD] - Batch GD, Stochastic GD, Mini Batch GD 
-######## 3) Polynomial Linear Regression
-######## 4) Decision Tree Regression
-######## 5) Random Forest Regression
-######## 6) Support Vector Regression
-
-#### Classification Algo:
-######## 1) Logistic Regression
-######## 2) Decision Tree Classifier
-######## 3) Random Forest Classifier
-######## 4) K-Nearest Neighbours
-######## 5) Naive Bayes
-######## 6) Support Vector Classifier
-
-
-
-#### 1) Linear Regression
-######## 1) Bias-Variance Trade-Off
-############ 1) Regularization - Ridge Regression
-############ 2) Regularization - Lasso Regression
-############ 3) Regularization - Elastic Net Regression
-
-#### 2) Multiple Linear Regression
-
-#### 3) Gradient Descent
-######## 2.1) Batch Gradient Descent
-######## 2.2) Stochastic Gradient Descent
-######## 2.3) Mini Batch Gradient Descent
-
-#### 4) Polynomial Linear Regression
-
-
-
-
-#### 6) Logistic Regression
-
-
-
-
-
-
-#### 7) Decision Tree Classification
-######## Maximum (Entropy Reduction) OR (Info Gain) is required
-######## General Formula for Entropy at a node = H = P1*log(P1) + P2*log(P2) ------> Max value 1 at P1=P2=0.5
-######## where P1, P2 are probabilities of event 1, 2 at the node
-######## Info_Gain = H_parent - w_avg(H_children)
-
-######## Gini = Measure of impurity (alternative of Entropy H)
-######## Gini = 1 - [P1^2 + P2^2] ------> Max value 0.5 at P1=P2=0.5 [Computationally easier than Entropy calculation]
-######## Info_Gain = Gini_parent - w_avg(Gini_children)
-
-#### 8) Decision Tree Regression
-######## Info_Gain = Variance_parent - w_avg(Variance_children)
-
-#### 9) Random Forest Classification
-###############################################################################################################
-
-
-
-
-
-
-
-
-
-
-
-
-###############################################################################################################
-#### 3. Deep Learning (DL)
-###############################################################################################################
-# Deep Learning Project (Predict handwritten digits):
-# 1) Recognizing handwritten digits in training data
-import os
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-os.getcwd() #get the current working directory
-os.listdir() #list the items in cwd
-
-from PIL import Image #calling Pillow Library (PIL) and then loading the function/method Image
-image_path = r"C:\Users\think\OneDrive\TRAINING\INTELLIPAAT\DEEP LEARNING\09. AI and DL IITR-07Sep2025(M)\number_7.png"
-img = Image.open(image_path) #Pillow lib is used to open and load the image
-img #print the image
-img = img.convert('RGB') #convert the raw image to standard RGB image
-img_gray = img.convert('L') #convert the standard RGB image to grayscale. L stands for Luminance
-width, height = img_gray.size #it returns a tuple (width, height) of the image in pixels
-img_gray_resized = img_gray.resize((28,28)) #Convert this image from (width X height) to (28 X 28)
-img_gray_resized_array = np.array(img_gray_resized) # Convert the resized grayscale image into a pixelated np array
-
-### Plotting the `pixelated image` as a 28 by 28 grid
-plt.figure(figsize = (4,4))
-plt.imshow(img_gray_resized_array, cmap='gray')
-plt.colorbar()
-plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###############################################################################################################
 #### Statistics
 ###############################################################################################################
@@ -911,16 +880,6 @@ st.harmonic_mean(arr1)
 
 # create random Sample of 500 datapoints from population
 df_sample = df.sample(500, random_state=0)
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -964,10 +923,6 @@ z_stat, p_val = proportions_ztest(count=arr1_count, nobs=total_pop, value=0.50, 
 
  
 
-
- 
-
-
 ###############################################################################################################
 #### T-Test, T Test
 ###############################################################################################################
@@ -994,14 +949,8 @@ from scipy.stats import ttest_ind
 t_stat, p_val = ttest_ind(arr1, arr2)
 
 
-
 ####Paired (related) t-test:
 from scipy.stats import ttest_rel
-
- 
-
-
- 
 
 
  
@@ -1026,10 +975,7 @@ from scipy.stats import chisquare
 chi2_stat, p_val = chisquare(f_obs = obs_arr, f_exp = exp_arr)
  
  
- 
- 
- 
- 
+
  
 ###############################################################################################################
 #### F-Test, F Test (ANOVA)
@@ -1042,84 +988,6 @@ p_val = stats.f.cdf(f_stat, df1, df2)                                           
 
 from scipy.stats import f_oneway                                                      #one way anova
 f_stat, p_val = f_oneway(arr1, arr2, arr3)                                            #one way anova
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-###############################################################################################################
-#### 3. Machine Learning - Model Building
-###############################################################################################################
-
-# IMPORT LIBRARY
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import *
-
-
-# x-y SPLIT
-x = df.drop(columns = [out_col])
-y = df[out_col]
-
-
-# TRAIN-TEST SPLIT
-x_train, x_test, y_train, y_test = train_test_split(x, y, train_size= 0.7, random_state = 42)
-
-
-# TRAINING
-my_model = LinearRegression()
-my_model.fit(x_train,y_train)
-
-
-# TESTING
-y_pred = my_model.predict(x_test)
-
-
-# EVALUATION
-r2_score(y_test,y_pred)                                            #r-squared value
-mean_absolute_error(y_test,y_pred)
-mean_squared_error(y_test,y_pred)
-np.sqrt(mse)                                                       #root-mean-squared error (rmse)
-sns.regplot(x = y_pred, y =y_test,line_kws={'color':'red'})
-
-
-# 10-different models for same data
-r_sq = []
-rmse = []
-for i in range(10):
-    x_train, x_test, y_train, y_test = train_test_split(x, y, train_size= 0.7)
-    my_model = LinearRegression()
-    my_model.fit(x_train,y_train)
-    y_pred = my_model.predict(x_test)
-    r2_score(y_test,y_pred)
-    mean_absolute_error(y_test,y_pred)
-    mse = mean_squared_error(y_test,y_pred)
-    rmse.append(np.sqrt(mse))
-
-print(r_sq)
-print(rmse)
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1316,12 +1184,6 @@ dt =
 
 
 
-
-
-
-
-
-
 ###############################################################################################################
 #### pandas - Everything
 ###############################################################################################################
@@ -1456,28 +1318,11 @@ sr.plot(kind='pie')                                                 #pie chart w
 
 
 
-
-
-
-
-
-
-
-
 # #### sr.insert()                                          #pandas series don't have insert method, so, convert to dataframe first
 pd.concat([s[:5], pd.Series([50], index=[5]), s[5:]])             #use concat to insert at index 5 in pandas series
 
 
 sr + sr2                                               #gives union of both the series
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1844,30 +1689,11 @@ df['col1','col2','col3'].plot(kind='pie',
 
 
 
-
-
-
-
-
 np.array_split(df, 2)                                             #split df into 2 np arrays of almost equal rows
 np.array_split(df, 2, axis=0)                                     #split df into 2 np arrays of almost equal rows
 np.array_split(df, 2, axis=1)                                     #split df into 2 np arrays of almost equal columns
 
 df.transform(lambda x: x+10)                                      #transform data column-wise
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2086,22 +1912,6 @@ plt.ylabel('y')
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Intellipaat
 # Single Chart/Plot
 plt.stackplot(x,y)                                #Area/stack plot, y can be 2-d array
@@ -2110,9 +1920,6 @@ plt.violinplot(y)                                          #used to find outlier
                 
 # arguments of imshow() method:         
     # cmap = 'autumn', 'summer', 'winter','spring'                  #different color schemes
-
-
-
 
 
 
@@ -2184,29 +1991,6 @@ ax.legend(loc=0)                                                    #0-best fit 
     # radius=1.5                                                    #only in pie chart, to change pie to donut
     # labels                                                        #labels
     # hue='col2'                                                    #Segregate based on col2
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2527,41 +2311,10 @@ g.plot(sns.scatterplot,sns.histplot)
 
 
 
-
-
-
-
-
-
-
 ##Intellipaat
 ################## Subplots in seaborn
 fig, axis = plt.subplots(nrows=2, ncols=2, figsize=(12,8))
 sns.barplot(data=df, x='col1', y='col2', hue='col3', ax = axis[0,0])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2802,18 +2555,6 @@ fig.show()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 ###############################################################################################################
 #### Plotly Express (px)
 ###############################################################################################################
@@ -2948,19 +2689,6 @@ px.scatter(df,
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###############################################################################################################
 #### selenium - Everything (download the html page of a website)
 ###############################################################################################################
@@ -3001,20 +2729,6 @@ with open('my_file.html','w',encoding='utf-8') as f:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###############################################################################################################
 #### BeautifulSoup - Everything (take out elements from an html document)
 ###############################################################################################################
@@ -3047,46 +2761,12 @@ for div in divs:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###############################################################################################################
 #### sys - Everything
 ###############################################################################################################
 
 import sys
 sys.getsizeof(a)                                                    #memory size occupied by a(can be anything)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3317,16 +2997,6 @@ def square(num):
 
 hello()
 square(5)
-
-
-
-
-
-
-
-
-
-
 
 
 
