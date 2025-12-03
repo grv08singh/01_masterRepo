@@ -704,7 +704,13 @@ from xgboost import XGBClassifier
 xgb_c = XGBClassifier(objective="binary:logistic", n_estimators=100,
                         learning_rate=0.1, max_depth=3, random_state=42)
 
-## 7.23 K-Means Clustering [Unsupervised Algo]
+## 7.23 Naive Bayes Classifier (good for text data)
+from sklearn.naive_bayes import GaussianNB
+gnb = GaussianNB()
+gnb.fit(X_train, y_train)
+
+
+## 7.24 K-Means Clustering [Unsupervised Algo]
 from sklearn.cluster import KMeans
 kmeans = KMeans(n_clusters=3, init='k-means++', 
                 n_init='auto', random_state=0, max_iter=200)
@@ -713,6 +719,10 @@ clustered_result = kmeans.labels_
 centers = kmeans.cluster_centers_
 sum_of_within_cluster_variance = kmeans.inertia_
 cluster_pred_for_new_data_point = kmeans.predict(X_new)
+
+
+
+
 
 
 
@@ -3000,6 +3010,10 @@ square(5)
 
 
 
+
+
+
+
 ###############################################################################################################
 #### Web Scraping - requests
 ###############################################################################################################
@@ -3035,11 +3049,12 @@ response = request.delete(uri)
 
 
 #response attributes & methods
-response.status_code        #status_code=200 succesful
-response.headers            #headers from server
-response.text               #response content in string format
-response.content            #response content in binary format
-response.json()             #response content in json format
+response.status_code                    #status_code=200 succesful
+response.headers                        #headers from server
+response.text                           #response content in string format
+response.content                        #response content in binary format
+response.json()                         #response content in json format
+print(response.raise_for_status())      #error if any
 
 
 #exception handling in get
@@ -3062,30 +3077,6 @@ else:
 		print("Unsuccessful GET request!")
 
 
-#exception handling in post
-new_post = {
-	"title": "Sample Post",
-	"body": "This is a sample post",
-	"userId": 101
-}
-try:
-	response = requests.post(url, data=new_post)
-	response.raise_for_status()
-except Exception as e:
-	print(e)
-else:
-	status_code = response.status_code
-	if status_code == 201:
-		print(f"Status Code: {status_code}")
-		print("\nSuccessful POST request!")
-		post = response.json()
-		print("\nPost:")
-		print(post)
-	else:
-		print(f"Status Code: {status_code}")
-		print("\nUnsuccessful POST request!")
-
-
 
 
 
@@ -3094,6 +3085,63 @@ else:
 ###############################################################################################################
 #### Web Scraping - beautifulsoup4
 ###############################################################################################################
+from bs4 import BeautifulSoup
+
+#create soup obj from html file
+with open("abc.html") as file:
+    soup = BeautifulSoup(file, "html.parser")
+#OR create soup obj from direct website
+soup = BeautifulSoup(response.content, "html.parser")
+
+soup.prettify()
+
+soup.title                                      #title tag
+soup.p                                          #1st paragraph tag
+soup.a                                          #1st anchor tag
+
+soup.title.text                                 #title in str form
+soup.title.name                                 #label of tag i.e. title in str form
+soup.title.parent                               #parent tag
+
+soup.body.get_text(strip=True)                  #print all text in body tag
+
+#print child tags only
+for child in soup.body.children:
+    print(child)
+
+#print nested children
+for descendant in soup.body.descendant:
+    print(descendant)
+
+#find 1st occurence of a tag
+soup.find('div', class_='<class_name>')
+#find all occurences of a particular tag
+soup.find_all('div', class_='<class_name>')
+
+#when a particular tag contains multiple attributes in it.
+#i.e.
+#<a class="sister" href="https://example.com/elsie" id="link1">Elsie</a>
+soup.a["class"]                                 #'sister'
+soup.a["href"]                                  #"https://example.com/elsie"
+soup.a["id"]                                    #"link1"
+#OR
+soup.a.get('class')                             #"sister"
+soup.a.get('href')                              #"https://example.com/elsie"
+soup.a.get('id')                                #"link1"
+
+
+
+url = "https://jsonplaceholder.typicode.com/posts"
+try:
+	response = requests.get(url)
+	response.raise_for_status()
+except Exception as e:
+	print(e)
+else:
+	soup = BeautifulSoup(response.content, "html.parser")
+    print("Successful..!!")
+    print(soup.prettify())
+
 
 
 
