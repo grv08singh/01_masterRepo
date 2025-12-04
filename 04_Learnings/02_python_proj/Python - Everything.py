@@ -3213,6 +3213,30 @@ multi_select.select_by_visible_text("<any visible value from dropdown>")
 multi_select.deselect_by_index(2)
 multi_select.deselect_all()
 
+#scrolling a webpage
+#scroll to a specific element using scrollIntoView
+driver.execute_script("arguments[0].scrollIntoView();",element)
+#scroll 1000px down vertically using scrollBy
+driver.execute_script("window.scrollBy(0,500);")
+#scroll 500px up vertically using scrollBy
+driver.execute_script("window.scrollBy(0,-500);")
+#scroll down to page bottom using scrollTo
+driver.execute_script("window.scrollTo(0,document.body.scrollHeight);")
+#scroll up to page top using scrollTo
+driver.execute_script("window.scrollTo(0,-document.body.scrollHeight);")
+#infinite scrolling 
+prev_height = driver.execute_script('return document.body.scrollHeight')
+while True:
+    driver.execute_script("window.scrollTo(0,document.body.scrollHeight);")
+    new_height = driver.execute_script('return document.body.scrollHeight')
+    if prev_height == new_height:
+        break
+    prev_height = new_height
+
+
+
+
+
 
 
 driver.quit()                                                       #close browser
