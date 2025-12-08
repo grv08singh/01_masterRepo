@@ -9,6 +9,56 @@
 
 
 ###############################################################################################################
+#### cmd
+###############################################################################################################
+#1) Windows not genuine watermark removal:
+bcdedit -set TESTSIGNING OFF;
+or
+slmgr /rearm
+or
+irm https://get.activated.win | iex
+
+#2) get disk names
+wmic logicaldisk get name
+
+#3) Make Backup using cmd:
+robocopy <source> <destination> /E /Z /DCOPY:DAT;
+#OR
+#max speed, use all threads, copy everything, with timestamp:
+robocopy <source> <destination> /E /MT:64 /R:3 /W:3 /NP /A-:SH /DCOPY:DAT /COPYALL 
+#OR
+#exclude recycle bin content:
+robocopy <source> <destination> /E /MT:64 /R:3 /W:3 /NP /A-:SH /DCOPY:DAT /COPYALL /XD "$RECYCLE.BIN" 
+#OR
+#unhide folder:
+attrib -s -h <folder_path>
+#OR
+#parallel thread copying:
+robocopy <source> <destination> /E /MT:64 /R:3 /W:3 /NFL /NDL
+
+#4) Check battery health:
+powercfg /batteryreport;
+
+#5) Wifi Pw:
+netsh wlan show profile;
+netsh wlan export profile <profile name> folder=C:\ key=clear;
+
+#6) remove temp files:
+del /q/f/s %temp%\*
+
+#7) download youtube videos in highest available quality
+winget install yt-dlp;
+yt-dlp "youtube_video_link";
+
+#8) check windows assessment score [Win Power Shell only]:
+winsat formal;
+get-ciminstance win32_winsat;
+
+
+
+
+
+###############################################################################################################
 #### GIT
 ###############################################################################################################
 git config --global user.name "Gaurav Singh"
