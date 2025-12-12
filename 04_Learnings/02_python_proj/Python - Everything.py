@@ -3378,17 +3378,26 @@ finally:
 import scrapy
 
 #create project folder structure
+#in terminal
 scrapy startproject <proj_name>
 
 #Adding a new website to scrape         -       add a new file in spiders/
 #changing export format                 -       settings.py
 #Validating data                        -       pipelines.py
 #dealing with CAPTCHAs or blocking      -       middlewares.py
-#Testing a single spider                -       scrapy crawl <spider_file.py>
+#Testing a single spider                -       scrapy crawl spider_name
 #reusing data structures                -       define once in items.py & use across spiders
 
+#creating a spider (scraper) in spiders folder 
+#terminal in project folder
+scrapy genspider spider_name website_url
 
+#create code i.e.
+def parse(self, response):
+    yield('response':response)
 
+#run the spider and save the json
+scrapy crawl spider_name -o output.json
 
 
 
