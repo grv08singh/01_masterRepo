@@ -57,6 +57,7 @@ pip install scipy
 pip install statsmodels
 
 pip install scikit-learn
+pip install xgboost
 pip install imbalanced-learn
 pip install mlxtend
 
@@ -252,11 +253,12 @@ from imblearn.over_sampling import SMOTE                #SMOTE - Synthetic Minor
 
 from sklearn.linear_model import LinearRegression,LogisticRegression,SGDRegressor,SGDClassifier,Ridge,Lasso,ElasticNet
 from sklearn.tree import DecisionTreeRegressor,DecisionTreeClassifier
-from sklearn.ensemble import RandomForestRegressor,RandomForestClassifier
+from sklearn.ensemble import RandomForestRegressor,RandomForestClassifier,GradientBoostingRegressor,GradientBoostingClassifier
 from sklearn.svm import SVR,SVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import r2_score,accuracy_score,roc_auc_score,precision_score,recall_score,f1_score
                             ,confusion_matrix,ConfusionMatrixDisplay,classification_report
+from xgboost import XGBRegressor, XGBClassifier
 
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
