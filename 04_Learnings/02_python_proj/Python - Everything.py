@@ -13,29 +13,33 @@
 ## Open jupyter notebook at a specified path:
 ## Type in Anaconda Prompt
 ## jupyter notebook --notebook-dir="specified_path"
+<<<<<<< HEAD
 ## jupyter notebook --notebook-dir="D:\05 GIT\01_Docs\04_Learnings\07_self_ml_dl_models"
+=======
+## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_Docs\04_Learnings\07_self_ml_dl_models"
+>>>>>>> e347f1867af41eaae912c1f8e1feb50f3a9e0491
 ## jupyter notebook --notebook-dir="D:\git_repo_DS\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\17 EPGC - ML - Decision Tree Quiz"
 ## jupyter notebook --notebook-dir="D:\Projects\streamlit_startup_dashboard"
 ## C:\Users\grv06\AppData\Roaming\Code\User\settings.json
 
 #Create Python env using conda
-conda create --name dummy_env python=3.8
+conda create --name <dummy_env> python=3.8
 #list of env
 conda env list
 #activate an env
-conda activate dummy_env
+conda activate <dummy_env>
 #deactivate current env
 conda deactivate
 #list of installed packages in activated env
 conda list
 #export env
-conda env export --name dummy_env --file dummy_env.yml
+conda env export --name <dummy_env> --file <dummy_env>.yml
 #import env OR create env from yml file
-conda env create --file dummy_env.yml
+conda env create --file <dummy_env>.yml
 #remove / delete env
-conda remove --name dummy_env --all
+conda remove --name <dummy_env> --all
 #create an appropriate Jupyter Notebook kernel mapped to new environment
-python -m ipykernel install --user --name=dummy_env
+python -m ipykernel install --user --name=<dummy_env>
 
 
 
@@ -61,7 +65,7 @@ pip install xgboost
 pip install imbalanced-learn
 pip install mlxtend
 
-pip install tensorflow
+conda install tensorflow
 
 pip install requests
 pip install beautifulsoup4
@@ -613,6 +617,7 @@ X_test_lda = LDA.transform(X_test)
 
 
 # 7 Initializing Different ML Model
+## Regressors
 ## 7.1 Linear Regressor (OLS)
 from sklearn.linear_model import LinearRegression
 lr = LinearRegression()
@@ -666,6 +671,9 @@ xgb_r = XGBRegressor(objective='reg:squarederror',n_estimators=100,
 from sklearn.linear_model import LogisticRegression
 LoR = LogisticRegression()
 
+
+
+## Classifiers
 ## 7.13 SGDClassifier
 from sklearn.linear_model import SGDClassifier
 sgd_c = SGDClassifier(loss='log_loss', penalty='l2', max_iter=1000, random_state=42)
