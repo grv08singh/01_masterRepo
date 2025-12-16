@@ -613,6 +613,7 @@ X_test_lda = LDA.transform(X_test)
 
 
 # 7 Initializing Different ML Model
+## Regressors
 ## 7.1 Linear Regressor (OLS)
 from sklearn.linear_model import LinearRegression
 lr = LinearRegression()
@@ -666,6 +667,9 @@ xgb_r = XGBRegressor(objective='reg:squarederror',n_estimators=100,
 from sklearn.linear_model import LogisticRegression
 LoR = LogisticRegression()
 
+
+
+## Classifiers
 ## 7.13 SGDClassifier
 from sklearn.linear_model import SGDClassifier
 sgd_c = SGDClassifier(loss='log_loss', penalty='l2', max_iter=1000, random_state=42)
