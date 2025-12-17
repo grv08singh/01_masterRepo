@@ -13,11 +13,8 @@
 ## Open jupyter notebook at a specified path:
 ## Type in Anaconda Prompt
 ## jupyter notebook --notebook-dir="specified_path"
-<<<<<<< HEAD
 ## jupyter notebook --notebook-dir="D:\05 GIT\01_Docs\04_Learnings\07_self_ml_dl_models"
-=======
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_Docs\04_Learnings\07_self_ml_dl_models"
->>>>>>> e347f1867af41eaae912c1f8e1feb50f3a9e0491
 ## jupyter notebook --notebook-dir="D:\git_repo_DS\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\17 EPGC - ML - Decision Tree Quiz"
 ## jupyter notebook --notebook-dir="D:\Projects\streamlit_startup_dashboard"
 ## C:\Users\grv06\AppData\Roaming\Code\User\settings.json
