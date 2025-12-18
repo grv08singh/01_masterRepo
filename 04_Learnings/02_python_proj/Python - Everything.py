@@ -4,7 +4,7 @@
 # pw: 
 # 
 
-
+#E97550
 
 ###############################################################################################################
 #### Python Environment
@@ -3484,7 +3484,16 @@ yt-dlp "youtube_video_link";
 winsat formal;
 get-ciminstance win32_winsat;
 
-
+#Office System
+CPUScore              : 9.4
+D3DScore              : 9.9
+DiskScore             : 8.95
+GraphicsScore         : 8.1
+MemoryScore           : 9.4
+TimeTaken             : MostRecentAssessment
+WinSATAssessmentState : 1
+WinSPRLevel           : 8.1
+PSComputerName        :
 
 
 
