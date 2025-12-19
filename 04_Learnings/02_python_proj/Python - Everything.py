@@ -6,6 +6,9 @@
 
 #E97550
 
+IBDP Math
+Core SL 1
+
 ###############################################################################################################
 #### Python Environment
 ###############################################################################################################
@@ -3104,6 +3107,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 
 driver = webdriver.Chrome()
 driver.maximize_window()
@@ -3196,6 +3200,25 @@ EC.element_to_be_clickable                                          #wait for th
 EC.alert_is_present                                                 #wait for a browser alert to pop up
 EC.title_is                                                         #wait for page title to match a given value
 EC.title_contains                                                   #wait for page title to contain specific text
+EC.presence_of_element_located((By.XPATH, "<>absolute XPATH"))      #wait for page title to contain specific text
+#wait until the page is fully loaded
+page_title = driver.title
+try:
+    wait.until(lambda d: d.execute_script("return document.readyState") == "complete")
+    #here, d will automatically pick driver instance
+except:
+    print(f"The page {page_title} didn't load in given duration.")
+else:
+    print(f"The page {page_title} Succesfully loaded.")
+    
+#wait until presence of an element is located on webpage
+#hovering on an element
+actions = ActionChains(driver)
+element1 = wait.until(EC.presence_of_element_located((By.XPATH, "<absolute XPATH>")))
+actions.move_to_element(element1).perform()
+#waiting for an element to be clickable
+element2 = wait.until(EC.element_to_be_clickable(By.XPATH, "<absolute XPATH>"))
+element2.click()
 
 
 #implicit wait - waits untill an element is loaded/recognized
@@ -3203,6 +3226,7 @@ EC.title_contains                                                   #wait for pa
 #works for find_element() and find_elements() methods
 driver.get(url)
 driver.implicitly_wait(5)                                           #wait until element loads or 5 secs
+
 
 
 #frames / iframes (another html doc inside an html doc)
