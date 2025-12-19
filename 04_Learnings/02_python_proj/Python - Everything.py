@@ -5,6 +5,9 @@
 # 
 
 #E97550
+#1D78B7
+#0F5989
+#FACE0F
 
 IBDP Math
 Core SL 1
