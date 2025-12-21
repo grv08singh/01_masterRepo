@@ -1220,3 +1220,131 @@
 [CV 4/5] END criterion=log_loss, max_depth=4, max_features=None, n_estimators=300;, score=0.581 total time=99.1min
 [CV 5/5] END criterion=log_loss, max_depth=4, max_features=None, n_estimators=300;, score=0.605 total time=100.3min
 [CV 1/5] END criterion=log_loss, max_depth=4, max_features=sqrt, n_estimators=300;, score=0.814 total time= 8.5min
+[CV 4/5] END criterion=log_loss, max_depth=4, max_features=sqrt, n_estimators=300;, score=0.807 total time= 9.3min
+[CV 2/5] END criterion=log_loss, max_depth=4, max_features=sqrt, n_estimators=300;, score=0.786 total time=12.5min
+[CV 5/5] END criterion=log_loss, max_depth=4, max_features=sqrt, n_estimators=300;, score=0.824 total time= 9.3min
+[CV 3/5] END criterion=log_loss, max_depth=4, max_features=sqrt, n_estimators=300;, score=0.784 total time=12.3min
+[CV 1/5] END criterion=log_loss, max_depth=4, max_features=sqrt, n_estimators=400;, score=0.812 total time=12.1min
+[CV 2/5] END criterion=log_loss, max_depth=4, max_features=sqrt, n_estimators=400;, score=0.792 total time=11.8min
+[CV 3/5] END criterion=log_loss, max_depth=3, max_features=None, n_estimators=500;, score=0.457 total time=193.1min
+[CV 4/5] END criterion=log_loss, max_depth=3, max_features=None, n_estimators=500;, score=0.451 total time=194.2min
+[CV 3/5] END criterion=log_loss, max_depth=4, max_features=sqrt, n_estimators=400;, score=0.790 total time=13.7min
+[CV 5/5] END criterion=log_loss, max_depth=3, max_features=None, n_estimators=500;, score=0.467 total time=195.1min
+[CV 1/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=100;, score=0.800 total time= 3.7min
+[CV 2/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=100;, score=0.796 total time= 3.6min
+[CV 5/5] END criterion=log_loss, max_depth=4, max_features=sqrt, n_estimators=400;, score=0.813 total time=16.0min
+[CV 3/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=100;, score=0.784 total time= 3.6min
+[CV 4/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=100;, score=0.791 total time= 3.7min
+[CV 4/5] END criterion=log_loss, max_depth=4, max_features=sqrt, n_estimators=400;, score=0.800 total time=20.2min
+[CV 5/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=100;, score=0.805 total time= 3.8min
+[CV 1/5] END criterion=log_loss, max_depth=4, max_features=None, n_estimators=300;, score=0.598 total time=157.9min
+[CV 1/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=200;, score=0.808 total time= 7.5min
+[CV 2/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=200;, score=0.790 total time= 7.3min
+[CV 3/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=200;, score=0.786 total time= 7.2min
+[CV 4/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=200;, score=0.804 total time= 7.5min
+[CV 1/5] END criterion=log_loss, max_depth=4, max_features=sqrt, n_estimators=500;, score=0.816 total time=27.3min
+[CV 2/5] END criterion=log_loss, max_depth=4, max_features=sqrt, n_estimators=500;, score=0.792 total time=27.8min
+[CV 5/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=200;, score=0.816 total time= 7.3min
+[CV 3/5] END criterion=log_loss, max_depth=4, max_features=sqrt, n_estimators=500;, score=0.791 total time=29.9min
+[CV 3/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=300;, score=0.792 total time=11.1min
+[CV 1/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=300;, score=0.822 total time=11.5min
+[CV 2/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=300;, score=0.801 total time=11.3min
+[CV 4/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=300;, score=0.802 total time=11.4min
+[CV 4/5] END criterion=log_loss, max_depth=4, max_features=sqrt, n_estimators=500;, score=0.801 total time=30.6min
+[CV 5/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=300;, score=0.823 total time=11.3min
+[CV 5/5] END criterion=log_loss, max_depth=4, max_features=sqrt, n_estimators=500;, score=0.819 total time=31.4min
+[CV 1/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=400;, score=0.822 total time=16.0min
+[CV 2/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=400;, score=0.798 total time=15.9min
+[CV 3/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=400;, score=0.799 total time=16.2min
+[CV 4/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=400;, score=0.811 total time=15.4min
+[CV 5/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=400;, score=0.823 total time=15.9min
+[CV 1/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=500;, score=0.821 total time=19.3min
+[CV 3/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=500;, score=0.791 total time=19.0min
+[CV 2/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=500;, score=0.792 total time=19.8min
+[CV 4/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=500;, score=0.808 total time=19.1min
+[CV 1/5] END criterion=log_loss, max_depth=4, max_features=None, n_estimators=400;, score=0.599 total time=165.3min
+[CV 5/5] END criterion=log_loss, max_depth=4, max_features=log2, n_estimators=500;, score=0.829 total time=19.0min
+[CV 4/5] END criterion=log_loss, max_depth=4, max_features=None, n_estimators=400;, score=0.578 total time=214.0min
+[CV 2/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=100;, score=0.678 total time=94.6min
+[CV 5/5] END criterion=log_loss, max_depth=4, max_features=None, n_estimators=400;, score=0.606 total time=217.7min
+[CV 1/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=100;, score=0.698 total time=98.8min
+[CV 4/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=100;, score=0.681 total time=93.5min
+[CV 3/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=100;, score=0.678 total time=98.8min
+[CV 5/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=100;, score=0.706 total time=98.5min
+[CV 2/5] END criterion=log_loss, max_depth=4, max_features=None, n_estimators=400;, score=0.581 total time=257.4min
+[CV 3/5] END criterion=log_loss, max_depth=4, max_features=None, n_estimators=400;, score=0.577 total time=258.2min
+[CV 1/5] END criterion=log_loss, max_depth=4, max_features=None, n_estimators=500;, score=0.599 total time=275.9min
+[CV 2/5] END criterion=log_loss, max_depth=4, max_features=None, n_estimators=500;, score=0.580 total time=276.1min
+[CV 3/5] END criterion=log_loss, max_depth=4, max_features=None, n_estimators=500;, score=0.576 total time=275.8min
+[CV 3/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=200;, score=0.679 total time=159.3min
+[CV 5/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=200;, score=0.709 total time=158.9min
+[CV 4/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=200;, score=0.683 total time=165.0min
+[CV 1/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=200;, score=0.699 total time=166.7min
+[CV 2/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=200;, score=0.675 total time=166.6min
+[CV 1/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=100;, score=0.829 total time= 5.2min
+[CV 2/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=100;, score=0.825 total time= 5.4min
+[CV 3/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=100;, score=0.811 total time= 5.3min
+[CV 4/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=100;, score=0.823 total time= 5.4min
+[CV 5/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=100;, score=0.835 total time= 5.4min
+[CV 1/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=200;, score=0.837 total time=11.1min
+[CV 4/5] END criterion=log_loss, max_depth=4, max_features=None, n_estimators=500;, score=0.582 total time=312.7min
+[CV 2/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=200;, score=0.822 total time=10.9min
+[CV 3/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=200;, score=0.823 total time=10.6min
+[CV 4/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=200;, score=0.827 total time= 9.6min
+[CV 5/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=200;, score=0.848 total time= 9.0min
+[CV 1/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=300;, score=0.841 total time=13.5min
+[CV 2/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=300;, score=0.825 total time=13.4min
+[CV 5/5] END criterion=log_loss, max_depth=4, max_features=None, n_estimators=500;, score=0.598 total time=315.3min
+[CV 3/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=300;, score=0.822 total time=12.9min
+[CV 4/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=300;, score=0.835 total time=13.2min
+[CV 5/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=300;, score=0.843 total time=13.1min
+[CV 1/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=400;, score=0.843 total time=17.1min
+[CV 2/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=400;, score=0.823 total time=17.4min
+[CV 3/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=400;, score=0.829 total time=17.7min
+[CV 4/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=400;, score=0.834 total time=17.4min
+[CV 1/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=300;, score=0.698 total time=223.8min
+[CV 5/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=400;, score=0.842 total time=16.8min
+[CV 1/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=100;, score=0.836 total time= 2.4min
+[CV 2/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=100;, score=0.816 total time= 2.5min
+[CV 3/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=100;, score=0.814 total time= 2.4min
+[CV 1/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=500;, score=0.844 total time=21.8min
+[CV 4/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=100;, score=0.819 total time= 2.6min
+[CV 5/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=100;, score=0.838 total time= 2.6min
+[CV 2/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=500;, score=0.827 total time=21.4min
+[CV 3/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=500;, score=0.823 total time=21.8min
+[CV 1/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=200;, score=0.852 total time= 4.9min
+[CV 4/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=500;, score=0.834 total time=21.6min
+[CV 2/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=200;, score=0.824 total time= 5.1min
+[CV 5/5] END criterion=log_loss, max_depth=5, max_features=sqrt, n_estimators=500;, score=0.847 total time=21.3min
+[CV 3/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=200;, score=0.824 total time= 4.9min
+[CV 4/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=200;, score=0.830 total time= 5.1min
+[CV 5/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=200;, score=0.850 total time= 5.1min
+[CV 1/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=300;, score=0.853 total time= 7.6min
+[CV 2/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=300;, score=0.825 total time= 7.5min
+[CV 3/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=300;, score=0.827 total time= 8.1min
+[CV 4/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=300;, score=0.840 total time= 7.8min
+[CV 4/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=300;, score=0.683 total time=169.1min
+[CV 2/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=300;, score=0.675 total time=173.7min
+[CV 5/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=300;, score=0.850 total time= 7.6min
+[CV 5/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=300;, score=0.708 total time=170.7min
+[CV 1/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=400;, score=0.851 total time=10.4min
+[CV 2/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=400;, score=0.830 total time= 9.9min
+[CV 3/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=400;, score=0.830 total time= 9.9min
+[CV 4/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=400;, score=0.837 total time=10.0min
+[CV 5/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=400;, score=0.858 total time=10.1min
+[CV 2/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=500;, score=0.836 total time=12.0min
+[CV 1/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=500;, score=0.851 total time=12.2min
+[CV 3/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=500;, score=0.831 total time=11.6min
+[CV 4/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=500;, score=0.840 total time=11.7min
+[CV 5/5] END criterion=log_loss, max_depth=5, max_features=log2, n_estimators=500;, score=0.853 total time=10.5min
+[CV 3/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=300;, score=0.680 total time=187.5min
+[CV 2/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=400;, score=0.675 total time=203.4min
+[CV 3/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=400;, score=0.680 total time=201.8min
+[CV 1/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=400;, score=0.698 total time=212.6min
+[CV 4/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=400;, score=0.683 total time=197.7min
+[CV 5/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=400;, score=0.708 total time=197.2min
+[CV 3/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=500;, score=0.679 total time=184.8min
+[CV 2/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=500;, score=0.675 total time=185.3min
+[CV 1/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=500;, score=0.698 total time=185.7min
+[CV 4/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=500;, score=0.682 total time=176.5min
+[CV 5/5] END criterion=log_loss, max_depth=5, max_features=None, n_estimators=500;, score=0.707 total time=176.4min
