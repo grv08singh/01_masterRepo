@@ -81,6 +81,8 @@ pip install Pillow
 pip install pytesseract
 pip install opencv-python
 
+pip install openpyxl
+
 
 
 
