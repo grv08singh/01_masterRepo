@@ -34,3 +34,12 @@
 2025-12-14 06:11:05  D:\05 GIT\01_Docs\Notepad++\session.xml  3292/3292 bytes are written.
 2025-12-14 06:11:05  D:\05 GIT\01_Docs\Notepad++\session.xml is closed.
 2025-12-14 06:11:05  WM_DESTROY (isEndSessionStarted == true)
+2025-12-27 21:19:53  WM_QUERYENDSESSION (lParam: 0 - ordinary system shutdown/restart) =====================================
+2025-12-27 21:19:53  WM_ENDSESSION (wParam: TRUE, lParam: 0 - ordinary system shutdown/restart)
+2025-12-27 21:19:53  D:\05 GIT\01_Docs\Notepad++\config.xml is opened.
+2025-12-27 21:19:53  D:\05 GIT\01_Docs\Notepad++\config.xml  9640/9640 bytes are written.
+2025-12-27 21:19:53  D:\05 GIT\01_Docs\Notepad++\config.xml is closed.
+2025-12-27 21:19:53  D:\05 GIT\01_Docs\Notepad++\session.xml is opened.
+2025-12-27 21:19:53  D:\05 GIT\01_Docs\Notepad++\session.xml  3285/3285 bytes are written.
+2025-12-27 21:19:53  D:\05 GIT\01_Docs\Notepad++\session.xml is closed.
+2025-12-27 21:19:53  WM_DESTROY (isEndSessionStarted == true)
