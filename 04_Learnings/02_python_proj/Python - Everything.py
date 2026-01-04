@@ -19,7 +19,7 @@ Core SL 1
 ## Open jupyter notebook at a specified path:
 ## Type in Anaconda Prompt
 ## jupyter notebook --notebook-dir="specified_path"
-## jupyter notebook --notebook-dir="D:\05 GIT\01_Docs\04_Learnings\07_self_ml_dl_models"
+## jupyter notebook --notebook-dir="D:\05 GIT\08_WS_ML_DL_Project"
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_Docs\04_Learnings\07_self_ml_dl_models"
 ## jupyter notebook --notebook-dir="D:\git_repo_DS\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\17 EPGC - ML - Decision Tree Quiz"
 ## jupyter notebook --notebook-dir="D:\Projects\streamlit_startup_dashboard"
@@ -3113,12 +3113,26 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.chrome.options import Options
 
-driver = webdriver.Chrome()
+chrome_options = Options()
+chrome_options.add_argument("--disable-http2")
+chrome_options.add_argument("--incognito")
+chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+chrome_options.add_argument("--ignore-certificate-errors")
+chrome_options.add_argument("--enable-features=NetworkServiceInProcess")
+chrome_options.add_argument("--disable-features=NetworkService")
+chrome_options.add_argument(
+    "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"
+)
+
+
+
+driver = webdriver.Chrome(options=chrome_options)
 driver.maximize_window()
+wait = WebDriverWait(driver, 5)
 
 #OR -- headless browser instance (No GUI)
-from selenium.webdriver.chrome.options import Options
 options = Options()
 options.add_argument("--headless")
 driver = webdriver.Chrome(options=options)
@@ -3138,13 +3152,13 @@ element = driver.find_element("tag name","<element tag>")
 element = driver.find_element("xpath","<element xpath link>")       #slow
 #OR
 from selenium.webdriver.common.by import By
-element = driver.find_element(by=By.ID,"<element id>")
-element = driver.find_element(by=By.CLASS_NAME,"<element class id>")
-element = driver.find_element(by=By.TAG_NAME,"<element tag>")
-element = driver.find_element(by=By.XPATH,"<element xpath link>")
+element = driver.find_element(By.ID,"<element id>")
+element = driver.find_element(By.CLASS_NAME,"<element class id>")
+element = driver.find_element(By.TAG_NAME,"<element tag>")
+element = driver.find_element(By.XPATH,"<element xpath link>")
 
 #entering Text value in Text Box
-txt_element = driver.find_element(by=By.XPATH, "<element xpath link>")
+txt_element = driver.find_element(By.XPATH, "<element xpath link>")
 txt_element.clear()                                                     #clear the text box
 txt_element.send_keys("machine learning")                               #enter the value "machine learning"
 
@@ -3153,17 +3167,17 @@ from selenium.webdriver.common.keys import Keys
 txt_element.send_keys(Keys.ENTER)
 
 #clicking a button or a link
-button = driver.find_element(by=By.XPATH, "<element xpath link>")
+button = driver.find_element(By.XPATH, "<element xpath link>")
 button.click()
 
 #selecting value from dropdown
-drop_field = driver.find_element(by=By.XPATH, "<element xpath link>")
+drop_field = driver.find_element(By.XPATH, "<element xpath link>")
 drop_down = Select(drop_field)
 drop_down.select_by_index(5)
 drop_down.select_by_visible_text("<any visible value from dropdown>")
 
 #multiselect values
-multi_field = driver.find_element(by=By.XPATH, "<element xpath link>")
+multi_field = driver.find_element(By.XPATH, "<element xpath link>")
 multi_select = Select(multi_field)
 multi_select.select_by_index(1)
 multi_select.select_by_visible_text("<any visible value from dropdown>")
@@ -3172,11 +3186,11 @@ multi_select.deselect_by_index(2)
 multi_select.deselect_all()
 
 #scrolling a webpage
-#scroll to a specific element using scrollIntoView
-driver.execute_script("arguments[0].scrollIntoView();",element)
-#scroll 1000px down vertically using scrollBy
+#scroll down to a specific element using scrollIntoView
+driver.execute_script("arguments[0].scrollIntoView(true);",element)
+#scroll down 500px vertically using scrollBy
 driver.execute_script("window.scrollBy(0,500);")
-#scroll 500px up vertically using scrollBy
+#scroll up 500px vertically using scrollBy
 driver.execute_script("window.scrollBy(0,-500);")
 #scroll down to page bottom using scrollTo
 driver.execute_script("window.scrollTo(0,document.body.scrollHeight);")
