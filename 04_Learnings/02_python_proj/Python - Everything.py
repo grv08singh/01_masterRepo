@@ -22,7 +22,7 @@ Core SL 1
 ## jupyter notebook --notebook-dir="D:\05 GIT\08_WS_ML_DL_Project"
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_Docs\04_Learnings\07_self_ml_dl_models"
 ## jupyter notebook --notebook-dir="D:\git_repo_DS\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\17 EPGC - ML - Decision Tree Quiz"
-## jupyter notebook --notebook-dir="D:\Projects\streamlit_startup_dashboard"
+## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\08_WS_ML_DL_Project"
 ## C:\Users\grv06\AppData\Roaming\Code\User\settings.json
 
 #Create Python env using conda
