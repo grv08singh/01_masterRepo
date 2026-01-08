@@ -2777,6 +2777,80 @@ str.isalpha()                               #checks if string is alphabetical
 str.isdigit()                               #checks if string is numeric
 str.islower()                               #checks if string is all lower characters
 str.isupper()                               #checks if string is all upper characters
+
+
+
+
+
+###############################################################################################################
+#### Regular Expressions (RE) or (regex) - Everything
+###############################################################################################################
+import re
+
+#Meta Characters
+.
+^                       #complementary character / NOT character (takes only index 0 in classes)
+
+$
+
+*                       #Repeating Meta character, match previous character or class any number of times
+[ca*t]                  #matches 'ct', 'cat', 'caat', 'caaat' and so on..
+a[bcd]*b                #matches letter 'a' + zero or more letters from class [bcd] + letter 'b'
+
++                       #Repeating Meta character, match previous character or class at least once
+[ca+t]                  #matches 'cat', 'caat', 'caaat' and so on..
+
+?                       #Repeating operator or quantifier, matches previous character either once or zero times.
+[home-?brew]            #matches 'homebrew' or 'home-brew'
+
+{}                      #quantifier
+{m,n}                   #matches previous character m through n times
+{m}                     #matches previous character exactly m times
+{m,}                    #matches previous character m through infinite number of times
+{,n}                    #matches previous character 0 through n times
+[a/{1,3}b]              #matches 'a/b', 'a//b' and 'a///b'
+[a/{,3}b]               #matches 'ab', 'a/b', 'a//b' and 'a///b'
+[a/{1,}b]               #matches 'a/b', 'a//b', 'a///b', and so on...
+[a/{3}b]                #matches 'a///b'
+
+[]                      #to specify a character class
+
+\                       #to match metacharacters in pattern
+
+|
+
+()
+
+
+
+#Examples
+[0-9]                   #matches any digit_dataset
+\d                      #matches any digit_dataset
+[368]                   #matches 3, 6, 8 from digits
+
+[^0-9]                  #matches any non-digit character
+\D                      #matches any non-digit character
+[^5]                    #matches any character except 5
+
+[a-zA-Z0-9_]            #matches any alphanumeric pattern
+\w                      #matches any alphanumeric pattern
+[abc]                   #matches characters in 'a', 'b' or 'c'
+[a-c]                   #matches characters in 'a' through 'c'
+[a-z]                   #matches characters in 'a' through 'z' in smallcap
+[abc\+]                 #matches characters in 'a', 'b', 'c' or '+'
+
+[^a-zA-Z0-9_]           #matches any non-alphanumeric pattern
+\W                      #matches any non-alphanumeric pattern
+[^a-c]                  #matches characters in 'a' through 'c'
+
+[ \t\n\r\f\v]           #matches any white space character
+\s                      #matches any white space character
+
+[^ \t\n\r\f\v]          #matches any non-white space character
+\S                      #matches any non-white space character
+
+
+
                     
                     
                     
