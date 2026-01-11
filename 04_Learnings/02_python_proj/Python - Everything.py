@@ -21,7 +21,7 @@ Core SL 1
 ## jupyter notebook --notebook-dir="specified_path"
 ## jupyter notebook --notebook-dir="D:\05 GIT\08_WS_ML_DL_Project"
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_Docs\04_Learnings\07_self_ml_dl_models"
-## jupyter notebook --notebook-dir="D:\git_repo_DS\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\17 EPGC - ML - Decision Tree Quiz"
+## jupyter notebook --notebook-dir="D:\05 GIT\08_WS_ML_DL_Project"
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\08_WS_ML_DL_Project"
 ## C:\Users\grv06\AppData\Roaming\Code\User\settings.json
 
@@ -1632,9 +1632,10 @@ df['col1'].str.replace('abc','xyz')                                 #replace abc
 df['col1'].str.startswith('a')                                      #True if item starts with 'a'
 df['col1'].str.endswith('a')                                        #True if item ends with 'a'
 df['col1'].str.isdigit()                                            #True if item is numeric
+df['col1'].str.extract(r"(\d\.\d+)")                                #extract float in 1.2, 3.45, 6.789 etc. format
+df['col1'].str.extract(r"\((.*?)(?= sq.m.)")
 df['col1'].str.contains('abc')                                      #True if item contains abc
-df['col1'].str.contains('^[^aeiouAEIOU].+[aeiouAEIOU]$')            #^ means 1st char, . means any no of chars, $ means last char
-                                                                    #^ starts wit consonant (NOT vowel), $ ends with vowel
+df['col1'].str.contains('^[^aeiouAEIOU].+[aeiouAEIOU]$')            #1st char not alphabet, then . once or more times, then last char alphabet
 
 #Pandas Timestamp
 pd.Timestamp.now()
@@ -2788,66 +2789,72 @@ str.isupper()                               #checks if string is all upper chara
 import re
 
 #Meta Characters
-.
-^                       #complementary character / NOT character (takes only index 0 in classes)
+# \.^$*+?{}[]()|
 
-$
-
+\                       #special meta character
+\.                      #any character
+^                       #start after this meta character
+$                       #end after this meta character
 *                       #Repeating Meta character, match previous character or class any number of times
++                       #Repeating Meta character, match previous character or class at least once
+?                       #Repeating operator or quantifier, match previous character either once or zero times.
+{}                      #quantifier
+{m,n}                   #match previous character m through n times
+{m}                     #match previous character exactly m times
+{m,}                    #match previous character m through infinite number of times
+{,n}                    #match previous character 0 through n times
+[]                      #to specify a character class
+()
+|                       #OR operator
+
+
+
+
+\b                      #any boundary: start or end of the word
+\w                      #any alphanumeric
+\d                      #any digit
+\s                      #any white space
+
+\W                      #any non-alphanumeric
+\D                      #any non-digit
+\S                      #any non-white space
+
+
+
 [ca*t]                  #matches 'ct', 'cat', 'caat', 'caaat' and so on..
 a[bcd]*b                #matches letter 'a' + zero or more letters from class [bcd] + letter 'b'
-
-+                       #Repeating Meta character, match previous character or class at least once
 [ca+t]                  #matches 'cat', 'caat', 'caaat' and so on..
-
-?                       #Repeating operator or quantifier, matches previous character either once or zero times.
 [home-?brew]            #matches 'homebrew' or 'home-brew'
-
-{}                      #quantifier
-{m,n}                   #matches previous character m through n times
-{m}                     #matches previous character exactly m times
-{m,}                    #matches previous character m through infinite number of times
-{,n}                    #matches previous character 0 through n times
 [a/{1,3}b]              #matches 'a/b', 'a//b' and 'a///b'
 [a/{,3}b]               #matches 'ab', 'a/b', 'a//b' and 'a///b'
 [a/{1,}b]               #matches 'a/b', 'a//b', 'a///b', and so on...
 [a/{3}b]                #matches 'a///b'
 
-[]                      #to specify a character class
-
-\                       #to match metacharacters in pattern
-
-|
-
-()
-
 
 
 #Examples
 [0-9]                   #matches any digit_dataset
-\d                      #matches any digit_dataset
 [368]                   #matches 3, 6, 8 from digits
 
 [^0-9]                  #matches any non-digit character
-\D                      #matches any non-digit character
 [^5]                    #matches any character except 5
 
 [a-zA-Z0-9_]            #matches any alphanumeric pattern
-\w                      #matches any alphanumeric pattern
 [abc]                   #matches characters in 'a', 'b' or 'c'
 [a-c]                   #matches characters in 'a' through 'c'
 [a-z]                   #matches characters in 'a' through 'z' in smallcap
 [abc\+]                 #matches characters in 'a', 'b', 'c' or '+'
 
 [^a-zA-Z0-9_]           #matches any non-alphanumeric pattern
-\W                      #matches any non-alphanumeric pattern
 [^a-c]                  #matches characters in 'a' through 'c'
 
 [ \t\n\r\f\v]           #matches any white space character
-\s                      #matches any white space character
 
 [^ \t\n\r\f\v]          #matches any non-white space character
-\S                      #matches any non-white space character
+
+$                       #end of line character
+^                       #start of line character
+
 
 
 
