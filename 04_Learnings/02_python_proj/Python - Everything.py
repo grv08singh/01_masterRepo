@@ -2821,17 +2821,6 @@ $                       #end after this meta character
 
 
 
-[ca*t]                  #matches 'ct', 'cat', 'caat', 'caaat' and so on..
-a[bcd]*b                #matches letter 'a' + zero or more letters from class [bcd] + letter 'b'
-[ca+t]                  #matches 'cat', 'caat', 'caaat' and so on..
-[home-?brew]            #matches 'homebrew' or 'home-brew'
-[a/{1,3}b]              #matches 'a/b', 'a//b' and 'a///b'
-[a/{,3}b]               #matches 'ab', 'a/b', 'a//b' and 'a///b'
-[a/{1,}b]               #matches 'a/b', 'a//b', 'a///b', and so on...
-[a/{3}b]                #matches 'a///b'
-
-
-
 #Examples
 [0-9]                   #matches any digit_dataset
 [368]                   #matches 3, 6, 8 from digits
@@ -2856,6 +2845,74 @@ $                       #end of line character
 ^                       #start of line character
 
 
+
+
+
+[ca*t]                  #matches 'ct', 'cat', 'caat', 'caaat' and so on..
+a[bcd]*b                #matches letter 'a' + zero or more letters from class [bcd] + letter 'b'
+[ca+t]                  #matches 'cat', 'caat', 'caaat' and so on..
+[home-?brew]            #matches 'homebrew' or 'home-brew'
+[a/{1,3}b]              #matches 'a/b', 'a//b' and 'a///b'
+[a/{,3}b]               #matches 'ab', 'a/b', 'a//b' and 'a///b'
+[a/{1,}b]               #matches 'a/b', 'a//b', 'a///b', and so on...
+[a/{3}b]                #matches 'a///b'
+
+
+Pattern = re.compile(pattern_, flags=0)                 #compile a regular expression pattern into Pattern object
+
+re.match(pattern_, string, flags=0)                     #returns match obj if pattern matches the beginning of string
+re.fullmatch(pattern_, string, flags=0)                 #returns match obj if pattern matches the whole string
+re.search(pattern_, string, flags=0)                    #returns match obj if pattern matches anywhere in the string
+re.findall(pattern_, string, flags=0)                   #returns match obj return all non-overlapping matches of pattern in string
+re.finditer(pattern_, string, flags=0)                  #
+
+re.split(pattern_, string, maxsplit=0, flags=0)         #split the string wherever pattern is found
+re.sub(pattern_, repl, string, count=0, flags=0)        #replace the leftmost occurrence of pattern in string by repl & return string
+re.subn(pattern_, repl, string, count=0, flags=0)       #replace all occurrences of pattern in string by repl & return tuple (string, no_of_subs)
+re.escape(pattern_)
+re.purge()                                              #clear regex cache
+
+Pattern.match(string[, pos[, endpos]])                  #same as re.match()
+Pattern.fullmatch(string[, pos[, endpos]])              #same as re.fullmatch()
+Pattern.search(string[, pos[, endpos]])                 #same as re.search()
+Pattern.findall(string[, pos[, endpos]])                #same as re.findall()
+Pattern.finditer(string[, pos[, endpos]])               #same as re.finditer()
+
+Pattern.split(string, maxsplit=0)                       #same as re.split()
+Pattern.sub(repl, string, count=0)                      #same as re.sub()
+Pattern.subn(repl, string, count=0)                     #same as re.subn()
+Pattern.pattern                                         #pattern_ string
+
+m=re.match(r"(\w+) (\w+)","Isaac Newton, physicist")    #m = Match_obj is return by class match & search
+m.expand(template)                                      #
+m.group()                                               #Returns one or more subgroups of the match
+m.group(0)                                              #Returns the entire match
+m[0]                                                    #same as above
+m.group(1)                                              #Returns the 1st parenthesized subgroup = 'Isaac'
+m[1]                                                    #same as above
+m.group(2)                                              #Returns the 2nd parenthesized subgroup = 'Newton'
+m.group(1,2)                                            #Returns a tuple (1st, 2nd) parenthesized subgroup = ('Isaac','Newton')
+
+m = re.match(r"(\d+)\.(\d+)", "24.1632")
+m.groups()                                              #('24', '1632')
+
+m = re.match(r"(\d+)\.?(\d+)?", "24")
+m.groups()                                              #('24', None)
+m.groups('0')                                           #('24', '0')
+
+
+
+
+
+re.match("c", "abcdef")                             #'c' matches 'abcdef'?; No Match
+re.search("c", "abcdef")                            #'c' found in 'abcdef'?; Match
+re.fullmatch("p.*n", "python")                      #'p_____n' matches completely with 'python'?; Match
+re.fullmatch("r.*n", "python")                      #'r_____n' matches completely with 'python'?; No Match
+
+re.search("^c", "abcdef")                           #'abcdef' starts with 'c'?; No Match
+re.search("^a", "abcdef")                           #'abcdef' starts with 'a'?; Match
+
+re.match("X", "A\nB\nX", re.MULTILINE)
 
 
                     
