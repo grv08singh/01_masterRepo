@@ -23,6 +23,7 @@ Core SL 1
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_Docs\04_Learnings\07_self_ml_dl_models"
 ## jupyter notebook --notebook-dir="D:\05 GIT\08_WS_ML_DL_Project"
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\08_WS_ML_DL_Project"
+## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_Docs\07_nso_work"
 ## C:\Users\grv06\AppData\Roaming\Code\User\settings.json
 
 #Create Python env using conda
@@ -82,6 +83,7 @@ pip install pytesseract
 pip install opencv-python
 
 pip install openpyxl
+pip install pyodbc
 
 
 
