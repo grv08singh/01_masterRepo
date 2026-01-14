@@ -1572,13 +1572,13 @@ df.loc[('d1',2)]                                                    #indexing-->
 pd.concat([df1,df2],axis=0)                                         #concatenate data vertically / append rows
 pd.concat([df1,df2],axis=1)                                         #concatenate data horizontally / add colums
 
-#Merge Data (SQL joins)
+#Column based joins
 pd.merge(df1,df2,how='inner',on='col3')                             #SQL INNER JOIN on col3
 pd.merge(df1,df2,how='inner',left_on='col3',right_on='col1')        #common col has diff name in both tables/df
 pd.merge(df1,df2,how='outer',on=['col3','col5'])                    #SQL OUTER JOIN on col3 and col5
 pd.merge(df1,df2,how='left',on='col5')                              #SQL LEFT JOIN on col5
 
-#Join Data
+#Index based joins
 df1.join(df2)                                                       #SQL INNER JOIN based on row_index
 df1.join(df2,how='left')                                            #SQL LEFT JOIN based on row_index
 
