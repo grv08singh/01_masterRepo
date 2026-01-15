@@ -1,0 +1,1019 @@
+SEASONCODE,SEASONNAME,STATE,STATENAME,ROCODE,RONAME,DISTRICT,DISTRICTNAME
+1,Kharif,1,Jammu & Kashmir,11,Jammu,9,Doda
+1,Kharif,1,Jammu & Kashmir,11,Jammu,10,Udhampur
+1,Kharif,1,Jammu & Kashmir,11,Jammu,11,Poonch
+1,Kharif,1,Jammu & Kashmir,11,Jammu,12,Rajouri
+1,Kharif,1,Jammu & Kashmir,11,Jammu,13,Jammu
+1,Kharif,1,Jammu & Kashmir,11,Jammu,14,Kathua
+1,Kharif,1,Jammu & Kashmir,11,Jammu,15,Samba
+1,Kharif,1,Jammu & Kashmir,11,Jammu,16,Kishtwar
+1,Kharif,1,Jammu & Kashmir,11,Jammu,17,Reasi
+1,Kharif,1,Jammu & Kashmir,11,Jammu,18,Ramban
+1,Kharif,1,Jammu & Kashmir,12,Srinagar,1,Kupwara
+1,Kharif,1,Jammu & Kashmir,12,Srinagar,2,Baramula
+1,Kharif,1,Jammu & Kashmir,12,Srinagar,4,Badgam
+1,Kharif,1,Jammu & Kashmir,12,Srinagar,5,Pulwama
+1,Kharif,1,Jammu & Kashmir,12,Srinagar,6,Anantnag
+1,Kharif,1,Jammu & Kashmir,12,Srinagar,19,Ganderbal
+1,Kharif,1,Jammu & Kashmir,12,Srinagar,20,Kulgam
+1,Kharif,1,Jammu & Kashmir,12,Srinagar,22,Bandipora
+1,Kharif,2,Himachal Pradesh,21,Shimla,1,Chamba
+4,Rabi,2,Himachal Pradesh,21,Shimla,1,Chamba
+1,Kharif,2,Himachal Pradesh,21,Shimla,2,Kangra
+4,Rabi,2,Himachal Pradesh,21,Shimla,2,Kangra
+1,Kharif,2,Himachal Pradesh,21,Shimla,4,Kullu
+4,Rabi,2,Himachal Pradesh,21,Shimla,4,Kullu
+1,Kharif,2,Himachal Pradesh,21,Shimla,5,Mandi
+4,Rabi,2,Himachal Pradesh,21,Shimla,5,Mandi
+1,Kharif,2,Himachal Pradesh,21,Shimla,6,Hamirpur
+4,Rabi,2,Himachal Pradesh,21,Shimla,6,Hamirpur
+1,Kharif,2,Himachal Pradesh,21,Shimla,7,Una
+4,Rabi,2,Himachal Pradesh,21,Shimla,7,Una
+1,Kharif,2,Himachal Pradesh,21,Shimla,8,Bilaspur
+4,Rabi,2,Himachal Pradesh,21,Shimla,8,Bilaspur
+1,Kharif,2,Himachal Pradesh,21,Shimla,9,Solan
+4,Rabi,2,Himachal Pradesh,21,Shimla,9,Solan
+1,Kharif,2,Himachal Pradesh,21,Shimla,10,Sirmaur
+4,Rabi,2,Himachal Pradesh,21,Shimla,10,Sirmaur
+1,Kharif,2,Himachal Pradesh,21,Shimla,11,Shimla
+4,Rabi,2,Himachal Pradesh,21,Shimla,11,Shimla
+4,Rabi,2,Himachal Pradesh,21,Shimla,12,Kinnour
+1,Kharif,3,Punjab,31,Jalandhar,1,Gurdaspur
+1,Kharif,3,Punjab,31,Jalandhar,2,Amritsar
+1,Kharif,3,Punjab,31,Jalandhar,3,Kapurthala
+1,Kharif,3,Punjab,31,Jalandhar,4,Jalandhar
+1,Kharif,3,Punjab,31,Jalandhar,5,Hoshiarpur
+1,Kharif,3,Punjab,31,Jalandhar,6,Sbs Nagar
+1,Kharif,3,Punjab,31,Jalandhar,20,Tarn Taran
+1,Kharif,3,Punjab,31,Jalandhar,21,Pathankot
+1,Kharif,3,Punjab,32,Mohali,7,Ropar
+1,Kharif,3,Punjab,32,Mohali,8,Fatehgarh Sahib
+1,Kharif,3,Punjab,32,Mohali,9,Ludhiana
+1,Kharif,3,Punjab,32,Mohali,10,Moga
+1,Kharif,3,Punjab,32,Mohali,11,Ferozpur
+1,Kharif,3,Punjab,32,Mohali,12,Mukatsar
+1,Kharif,3,Punjab,32,Mohali,13,Faridkot
+1,Kharif,3,Punjab,32,Mohali,14,Bhatinda
+1,Kharif,3,Punjab,32,Mohali,15,Mansa
+1,Kharif,3,Punjab,32,Mohali,16,Sangrur
+1,Kharif,3,Punjab,32,Mohali,17,Patiala
+1,Kharif,3,Punjab,32,Mohali,18,Mohali
+1,Kharif,3,Punjab,32,Mohali,19,Barnala
+1,Kharif,3,Punjab,32,Mohali,22,Fazilka
+1,Kharif,3,Punjab,32,Mohali,23,Malerkotla
+1,Kharif,5,Uttarakhand,51,Dehradun,1,Uttarkashi
+4,Rabi,5,Uttarakhand,51,Dehradun,1,Uttarkashi
+1,Kharif,5,Uttarakhand,51,Dehradun,2,Chamoli
+4,Rabi,5,Uttarakhand,51,Dehradun,2,Chamoli
+1,Kharif,5,Uttarakhand,51,Dehradun,3,Rudraprayag
+4,Rabi,5,Uttarakhand,51,Dehradun,3,Rudraprayag
+1,Kharif,5,Uttarakhand,51,Dehradun,4,Tehrigarhwal
+4,Rabi,5,Uttarakhand,51,Dehradun,4,Tehrigarhwal
+1,Kharif,5,Uttarakhand,51,Dehradun,5,Dehradun(Plains)
+4,Rabi,5,Uttarakhand,51,Dehradun,5,Dehradun(Plains)
+1,Kharif,5,Uttarakhand,51,Dehradun,6,Pourigarhwal
+4,Rabi,5,Uttarakhand,51,Dehradun,6,Pourigarhwal
+1,Kharif,5,Uttarakhand,51,Dehradun,7,Pithoragarh
+4,Rabi,5,Uttarakhand,51,Dehradun,7,Pithoragarh
+1,Kharif,5,Uttarakhand,51,Dehradun,8,Champawat
+4,Rabi,5,Uttarakhand,51,Dehradun,8,Champawat
+1,Kharif,5,Uttarakhand,51,Dehradun,9,Almora
+4,Rabi,5,Uttarakhand,51,Dehradun,9,Almora
+1,Kharif,5,Uttarakhand,51,Dehradun,10,Bageshwar
+4,Rabi,5,Uttarakhand,51,Dehradun,10,Bageshwar
+1,Kharif,5,Uttarakhand,51,Dehradun,11,Nainital(Plains)
+4,Rabi,5,Uttarakhand,51,Dehradun,11,Nainital(Plains)
+1,Kharif,5,Uttarakhand,51,Dehradun,12,Udhamsinghnagar
+4,Rabi,5,Uttarakhand,51,Dehradun,12,Udhamsinghnagar
+1,Kharif,5,Uttarakhand,51,Dehradun,13,Haridwar
+4,Rabi,5,Uttarakhand,51,Dehradun,13,Haridwar
+1,Kharif,5,Uttarakhand,51,Dehradun,14,Nainital(Hills)
+1,Kharif,5,Uttarakhand,51,Dehradun,15,Dehradun(Hills)
+1,Kharif,6,Haryana,61,Chandigarh,1,Panchkula
+1,Kharif,6,Haryana,61,Chandigarh,2,Ambala
+1,Kharif,6,Haryana,61,Chandigarh,3,Yamunanagar
+1,Kharif,6,Haryana,61,Chandigarh,4,Kurukshetra
+1,Kharif,6,Haryana,61,Chandigarh,5,Kaithal
+1,Kharif,6,Haryana,61,Chandigarh,6,Karnal
+1,Kharif,6,Haryana,61,Chandigarh,7,Panipat
+1,Kharif,6,Haryana,61,Chandigarh,8,Sonepat
+1,Kharif,6,Haryana,61,Chandigarh,9,Jind
+1,Kharif,6,Haryana,61,Chandigarh,10,Fatehabad
+1,Kharif,6,Haryana,61,Chandigarh,11,Sirsa
+1,Kharif,6,Haryana,61,Chandigarh,12,Hisar
+1,Kharif,6,Haryana,61,Chandigarh,13,Bhiwani
+1,Kharif,6,Haryana,61,Chandigarh,14,Rohtak
+1,Kharif,6,Haryana,61,Chandigarh,14,Rohtak 
+1,Kharif,6,Haryana,61,Chandigarh,15,Jhajjar
+1,Kharif,6,Haryana,61,Chandigarh,16,Mahendergarh
+1,Kharif,6,Haryana,61,Chandigarh,17,Rewari
+1,Kharif,6,Haryana,61,Chandigarh,18,Gurugram
+1,Kharif,6,Haryana,61,Chandigarh,19,Faridabad
+1,Kharif,6,Haryana,61,Chandigarh,20,Mewat
+1,Kharif,6,Haryana,61,Chandigarh,21,Palwal
+1,Kharif,6,Haryana,61,Chandigarh,22,Charki Dadri
+1,Kharif,8,Rajasthan,81,Ajmer,14,Nagaur
+1,Kharif,8,Rajasthan,81,Ajmer,15,Jodhpur
+1,Kharif,8,Rajasthan,81,Ajmer,16,Jaisalmer
+1,Kharif,8,Rajasthan,81,Ajmer,17,Barmer
+1,Kharif,8,Rajasthan,81,Ajmer,18,Jalore
+1,Kharif,8,Rajasthan,81,Ajmer,19,Sirohi
+1,Kharif,8,Rajasthan,81,Ajmer,20,Pali
+1,Kharif,8,Rajasthan,81,Ajmer,21,Ajmer
+1,Kharif,8,Rajasthan,81,Ajmer,24,Bhilwara
+1,Kharif,8,Rajasthan,81,Ajmer,25,Rajsamand
+1,Kharif,8,Rajasthan,81,Ajmer,26,Udaipur
+1,Kharif,8,Rajasthan,81,Ajmer,27,Dungarpur
+1,Kharif,8,Rajasthan,81,Ajmer,28,Banswara
+1,Kharif,8,Rajasthan,81,Ajmer,29,Chittorgarh
+1,Kharif,8,Rajasthan,81,Ajmer,33,Pratapgarh
+1,Kharif,8,Rajasthan,81,Ajmer,34,Balotra
+1,Kharif,8,Rajasthan,81,Ajmer,35,Beawar
+1,Kharif,8,Rajasthan,81,Ajmer,36,Deedvana And Kuchamn
+1,Kharif,8,Rajasthan,81,Ajmer,38,Phalodi
+1,Kharif,8,Rajasthan,81,Ajmer,41,Salumbar
+1,Kharif,8,Rajasthan,82,Jaipur,1,Sri Ganganagar
+1,Kharif,8,Rajasthan,82,Jaipur,2,Hanumangarh
+1,Kharif,8,Rajasthan,82,Jaipur,3,Bikaner
+1,Kharif,8,Rajasthan,82,Jaipur,4,Churu
+1,Kharif,8,Rajasthan,82,Jaipur,5,Jhunjhunu
+1,Kharif,8,Rajasthan,82,Jaipur,6,Alwar
+1,Kharif,8,Rajasthan,82,Jaipur,7,Bharatpur
+1,Kharif,8,Rajasthan,82,Jaipur,8,Dholpur
+1,Kharif,8,Rajasthan,82,Jaipur,9,Karauli
+1,Kharif,8,Rajasthan,82,Jaipur,10,Sawai Madhopur
+1,Kharif,8,Rajasthan,82,Jaipur,11,Dausa
+1,Kharif,8,Rajasthan,82,Jaipur,12,Jaipur 
+1,Kharif,8,Rajasthan,82,Jaipur,13,Sikar
+1,Kharif,8,Rajasthan,82,Jaipur,22,Tonk
+1,Kharif,8,Rajasthan,82,Jaipur,23,Bundi
+1,Kharif,8,Rajasthan,82,Jaipur,30,Kota
+1,Kharif,8,Rajasthan,82,Jaipur,31,Baran
+1,Kharif,8,Rajasthan,82,Jaipur,32,Jhalawar
+1,Kharif,8,Rajasthan,82,Jaipur,37,Deeg
+1,Kharif,8,Rajasthan,82,Jaipur,39,Khairthal-Tizara
+1,Kharif,8,Rajasthan,82,Jaipur,40,Kotputli-Behror
+1,Kharif,9,Uttar Pradesh,91,Agra,7,Meerut
+1,Kharif,9,Uttar Pradesh,91,Agra,8,Bagpat
+1,Kharif,9,Uttar Pradesh,91,Agra,9,Ghaziabad
+1,Kharif,9,Uttar Pradesh,91,Agra,10,G.B. Nagar 
+1,Kharif,9,Uttar Pradesh,91,Agra,11,Bulandsehar
+1,Kharif,9,Uttar Pradesh,91,Agra,12,Aligarh
+1,Kharif,9,Uttar Pradesh,91,Agra,13,Mahamaya Nagar
+1,Kharif,9,Uttar Pradesh,91,Agra,14,Mathura
+1,Kharif,9,Uttar Pradesh,91,Agra,15,Agra
+1,Kharif,9,Uttar Pradesh,91,Agra,16,Firozabad
+1,Kharif,9,Uttar Pradesh,91,Agra,17,Etah
+1,Kharif,9,Uttar Pradesh,91,Agra,18,Mainpuri
+1,Kharif,9,Uttar Pradesh,91,Agra,29,Farrukhabad
+1,Kharif,9,Uttar Pradesh,91,Agra,30,Kannauj
+1,Kharif,9,Uttar Pradesh,91,Agra,31,Etawah
+1,Kharif,9,Uttar Pradesh,91,Agra,32,Auraiya
+1,Kharif,9,Uttar Pradesh,91,Agra,71,Kasganj
+1,Kharif,9,Uttar Pradesh,91,Agra,72,Hapur
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,43,Pratapgarh
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,44,Kaushambi
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,45,Prayagraj
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,47,Faizabad
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,47,Ayodhya
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,48,Ambedkar Nagar
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,49,Sultanpur
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,54,Siddarthnagar
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,55,Basti
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,56,Sant Kabir Nagar
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,57,Maharajganj
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,58,Gorakhpur
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,59,Kushinagar
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,60,Deoria
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,61,Azamgarh
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,62,Mau
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,63,Baliya
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,64,Jaunpur
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,65,Ghazipur
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,66,Chandauli
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,67,Varanasi
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,68,Sant Ravidas Nagar
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,69,Mirzapur
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,70,Sonbhadra
+1,Kharif,9,Uttar Pradesh,92,Prayagraj,73,Amethi
+1,Kharif,9,Uttar Pradesh,93,Bareilly,1,Saharanpur
+1,Kharif,9,Uttar Pradesh,93,Bareilly,2,Muzaffarnagar
+1,Kharif,9,Uttar Pradesh,93,Bareilly,3,Bijnor
+1,Kharif,9,Uttar Pradesh,93,Bareilly,4,Moradabad
+1,Kharif,9,Uttar Pradesh,93,Bareilly,5,Rampur
+1,Kharif,9,Uttar Pradesh,93,Bareilly,6,J. P. Nagar
+1,Kharif,9,Uttar Pradesh,93,Bareilly,19,Badaun
+1,Kharif,9,Uttar Pradesh,93,Bareilly,20,Bareilly
+1,Kharif,9,Uttar Pradesh,93,Bareilly,21,Pilibhit
+1,Kharif,9,Uttar Pradesh,93,Bareilly,22,Shahjahanpur
+1,Kharif,9,Uttar Pradesh,93,Bareilly,23,Khiri
+1,Kharif,9,Uttar Pradesh,93,Bareilly,24,Sitapur
+1,Kharif,9,Uttar Pradesh,93,Bareilly,25,Hardoi
+1,Kharif,9,Uttar Pradesh,93,Bareilly,74,Sambhal
+1,Kharif,9,Uttar Pradesh,93,Bareilly,75,Shamli
+1,Kharif,9,Uttar Pradesh,94,Lucknow,26,Unnao
+1,Kharif,9,Uttar Pradesh,94,Lucknow,27,Lucknow
+1,Kharif,9,Uttar Pradesh,94,Lucknow,28,Raibareilly
+1,Kharif,9,Uttar Pradesh,94,Lucknow,33,Kanpur Dehat
+1,Kharif,9,Uttar Pradesh,94,Lucknow,34,Kanpur Nagar
+1,Kharif,9,Uttar Pradesh,94,Lucknow,35,Jalaun
+1,Kharif,9,Uttar Pradesh,94,Lucknow,36,Jhansi
+1,Kharif,9,Uttar Pradesh,94,Lucknow,37,Lalitpur
+1,Kharif,9,Uttar Pradesh,94,Lucknow,38,Hamirpur
+1,Kharif,9,Uttar Pradesh,94,Lucknow,39,Mahoba
+1,Kharif,9,Uttar Pradesh,94,Lucknow,40,Banda
+1,Kharif,9,Uttar Pradesh,94,Lucknow,41,Chitrakoot
+1,Kharif,9,Uttar Pradesh,94,Lucknow,42,Fatehpur
+1,Kharif,9,Uttar Pradesh,94,Lucknow,46,Barabanki
+1,Kharif,9,Uttar Pradesh,94,Lucknow,50,Bahraich
+1,Kharif,9,Uttar Pradesh,94,Lucknow,51,Shrawasti
+1,Kharif,9,Uttar Pradesh,94,Lucknow,52,Balrampur
+1,Kharif,9,Uttar Pradesh,94,Lucknow,53,Gonda
+2,Bhadai,10,Bihar,101,Muzaffarpur,1,W. Champaran
+3,Aghani,10,Bihar,101,Muzaffarpur,1,W. Champaran
+4,Rabi,10,Bihar,101,Muzaffarpur,1,W. Champaran
+2,Bhadai,10,Bihar,101,Muzaffarpur,2,E.Champaran
+3,Aghani,10,Bihar,101,Muzaffarpur,2,E.Champaran
+4,Rabi,10,Bihar,101,Muzaffarpur,2,E.Champaran
+2,Bhadai,10,Bihar,101,Muzaffarpur,3,Sheohar
+3,Aghani,10,Bihar,101,Muzaffarpur,3,Sheohar
+2,Bhadai,10,Bihar,101,Muzaffarpur,4,Sitamarhi
+3,Aghani,10,Bihar,101,Muzaffarpur,4,Sitamarhi
+4,Rabi,10,Bihar,101,Muzaffarpur,4,Sitamarhi
+2,Bhadai,10,Bihar,101,Muzaffarpur,5,Madhubani
+3,Aghani,10,Bihar,101,Muzaffarpur,5,Madhubani
+4,Rabi,10,Bihar,101,Muzaffarpur,5,Madhubani
+5,Summer,10,Bihar,101,Muzaffarpur,5,Madhubani
+2,Bhadai,10,Bihar,101,Muzaffarpur,6,Supaul
+3,Aghani,10,Bihar,101,Muzaffarpur,6,Supaul
+4,Rabi,10,Bihar,101,Muzaffarpur,6,Supaul
+4,Rabi,10,Bihar,101,Muzaffarpur,7,Araria
+5,Summer,10,Bihar,101,Muzaffarpur,7,Araria
+3,Aghani,10,Bihar,101,Muzaffarpur,8,Kishanganj
+5,Summer,10,Bihar,101,Muzaffarpur,8,Kishanganj
+2,Bhadai,10,Bihar,101,Muzaffarpur,9,Purnia
+3,Aghani,10,Bihar,101,Muzaffarpur,9,Purnia
+4,Rabi,10,Bihar,101,Muzaffarpur,9,Purnia
+5,Summer,10,Bihar,101,Muzaffarpur,9,Purnia
+2,Bhadai,10,Bihar,101,Muzaffarpur,10,Katihar
+3,Aghani,10,Bihar,101,Muzaffarpur,10,Katihar
+4,Rabi,10,Bihar,101,Muzaffarpur,10,Katihar
+5,Summer,10,Bihar,101,Muzaffarpur,10,Katihar
+2,Bhadai,10,Bihar,101,Muzaffarpur,11,Madhepura
+3,Aghani,10,Bihar,101,Muzaffarpur,11,Madhepura
+4,Rabi,10,Bihar,101,Muzaffarpur,11,Madhepura
+2,Bhadai,10,Bihar,101,Muzaffarpur,12,Saharsa
+3,Aghani,10,Bihar,101,Muzaffarpur,12,Saharsa
+4,Rabi,10,Bihar,101,Muzaffarpur,12,Saharsa
+5,Summer,10,Bihar,101,Muzaffarpur,12,Saharsa
+2,Bhadai,10,Bihar,101,Muzaffarpur,13,Darbhanga
+3,Aghani,10,Bihar,101,Muzaffarpur,13,Darbhanga
+4,Rabi,10,Bihar,101,Muzaffarpur,13,Darbhanga
+2,Bhadai,10,Bihar,101,Muzaffarpur,14,Muzaffarpur
+3,Aghani,10,Bihar,101,Muzaffarpur,14,Muzaffarpur
+4,Rabi,10,Bihar,101,Muzaffarpur,14,Muzaffarpur
+2,Bhadai,10,Bihar,101,Muzaffarpur,15,Gopalganj
+3,Aghani,10,Bihar,101,Muzaffarpur,15,Gopalganj
+4,Rabi,10,Bihar,101,Muzaffarpur,15,Gopalganj
+2,Bhadai,10,Bihar,101,Muzaffarpur,16,Siwan
+3,Aghani,10,Bihar,101,Muzaffarpur,16,Siwan
+4,Rabi,10,Bihar,101,Muzaffarpur,16,Siwan
+2,Bhadai,10,Bihar,101,Muzaffarpur,17,Saran
+3,Aghani,10,Bihar,101,Muzaffarpur,17,Saran
+4,Rabi,10,Bihar,101,Muzaffarpur,17,Saran
+2,Bhadai,10,Bihar,101,Muzaffarpur,18,Vaishali
+3,Aghani,10,Bihar,101,Muzaffarpur,18,Vaishali
+4,Rabi,10,Bihar,101,Muzaffarpur,18,Vaishali
+2,Bhadai,10,Bihar,101,Muzaffarpur,19,Samastipur
+3,Aghani,10,Bihar,101,Muzaffarpur,19,Samastipur
+4,Rabi,10,Bihar,101,Muzaffarpur,19,Samastipur
+2,Bhadai,10,Bihar,101,Muzaffarpur,20,Begusarai
+3,Aghani,10,Bihar,101,Muzaffarpur,20,Begusarai
+4,Rabi,10,Bihar,101,Muzaffarpur,20,Begusarai
+2,Bhadai,10,Bihar,101,Muzaffarpur,21,Khagaria
+4,Rabi,10,Bihar,101,Muzaffarpur,21,Khagaria
+2,Bhadai,10,Bihar,102,Patna,22,Bhagalpur
+3,Aghani,10,Bihar,102,Patna,22,Bhagalpur
+4,Rabi,10,Bihar,102,Patna,22,Bhagalpur
+2,Bhadai,10,Bihar,102,Patna,23,Banka
+3,Aghani,10,Bihar,102,Patna,23,Banka
+4,Rabi,10,Bihar,102,Patna,23,Banka
+2,Bhadai,10,Bihar,102,Patna,24,Munger
+4,Rabi,10,Bihar,102,Patna,24,Munger
+2,Bhadai,10,Bihar,102,Patna,25,Lakhisarai
+3,Aghani,10,Bihar,102,Patna,25,Lakhisarai
+4,Rabi,10,Bihar,102,Patna,25,Lakhisarai
+3,Aghani,10,Bihar,102,Patna,26,Shekhpura
+4,Rabi,10,Bihar,102,Patna,26,Shekhpura
+3,Aghani,10,Bihar,102,Patna,27,Nalanda
+4,Rabi,10,Bihar,102,Patna,27,Nalanda
+2,Bhadai,10,Bihar,102,Patna,28,Patna
+3,Aghani,10,Bihar,102,Patna,28,Patna
+4,Rabi,10,Bihar,102,Patna,28,Patna
+3,Aghani,10,Bihar,102,Patna,29,Bhojpur
+4,Rabi,10,Bihar,102,Patna,29,Bhojpur
+3,Aghani,10,Bihar,102,Patna,30,Buxar
+4,Rabi,10,Bihar,102,Patna,30,Buxar
+3,Aghani,10,Bihar,102,Patna,31,Bhabhua
+4,Rabi,10,Bihar,102,Patna,31,Bhabhua
+3,Aghani,10,Bihar,102,Patna,32,Rohtash
+4,Rabi,10,Bihar,102,Patna,32,Rohtash
+3,Aghani,10,Bihar,102,Patna,33,Jehanabad
+4,Rabi,10,Bihar,102,Patna,33,Jehanabad
+3,Aghani,10,Bihar,102,Patna,34,Aurangabad
+4,Rabi,10,Bihar,102,Patna,34,Aurangabad
+4,Rabi,10,Bihar,102,Patna,35,Gaya
+3,Aghani,10,Bihar,102,Patna,35,Gaya
+3,Aghani,10,Bihar,102,Patna,36,Nawada
+4,Rabi,10,Bihar,102,Patna,36,Nawada
+2,Bhadai,10,Bihar,102,Patna,37,Jamuai
+3,Aghani,10,Bihar,102,Patna,37,Jamuai
+4,Rabi,10,Bihar,102,Patna,37,Jamuai
+4,Rabi,10,Bihar,102,Patna,38,Arwal
+2,Early Kharif,18,Assam,181,Guwahati,1,Kokrajhar
+3,Late Kharif,18,Assam,181,Guwahati,1,Kokrajhar
+4,Rabi,18,Assam,181,Guwahati,1,Kokrajhar
+5,Summer,18,Assam,181,Guwahati,1,Kokrajhar
+2,Early Kharif,18,Assam,181,Guwahati,2,Dhubri
+3,Late Kharif,18,Assam,181,Guwahati,2,Dhubri
+4,Rabi,18,Assam,181,Guwahati,2,Dhubri
+5,Summer,18,Assam,181,Guwahati,2,Dhubri
+2,Early Kharif,18,Assam,181,Guwahati,3,Goalpara
+3,Late Kharif,18,Assam,181,Guwahati,3,Goalpara
+4,Rabi,18,Assam,181,Guwahati,3,Goalpara
+5,Summer,18,Assam,181,Guwahati,3,Goalpara
+4,Rabi,18,Assam,181,Guwahati,4,Bongaigaon
+2,Early Kharif,18,Assam,181,Guwahati,4,Bongaigaon
+3,Late Kharif,18,Assam,181,Guwahati,4,Bongaigaon
+5,Summer,18,Assam,181,Guwahati,4,Bongaigaon
+2,Early Kharif,18,Assam,181,Guwahati,5,Barpeta
+3,Late Kharif,18,Assam,181,Guwahati,5,Barpeta
+4,Rabi,18,Assam,181,Guwahati,5,Barpeta
+5,Summer,18,Assam,181,Guwahati,5,Barpeta
+2,Early Kharif,18,Assam,181,Guwahati,6,Kamrup®
+3,Late Kharif,18,Assam,181,Guwahati,6,Kamrup®
+4,Rabi,18,Assam,181,Guwahati,6,Kamrup®
+5,Summer,18,Assam,181,Guwahati,6,Kamrup®
+3,Late Kharif,18,Assam,181,Guwahati,7,Nalbari
+4,Rabi,18,Assam,181,Guwahati,7,Nalbari
+5,Summer,18,Assam,181,Guwahati,7,Nalbari
+2,Early Kharif,18,Assam,181,Guwahati,7,Nalbari
+2,Early Kharif,18,Assam,181,Guwahati,19,Karbianglong
+4,Rabi,18,Assam,181,Guwahati,19,Karbianglong
+5,Summer,18,Assam,181,Guwahati,19,Karbianglong
+2,Early Kharif,18,Assam,181,Guwahati,19,Karbi Anglong
+4,Rabi,18,Assam,181,Guwahati,19,Karbi Anglong
+2,Early Kharif,18,Assam,181,Guwahati,20,Dimo Hasao
+3,Late Kharif,18,Assam,181,Guwahati,21,Cachar
+3,Late Kharif,18,Assam,181,Guwahati,22,Karimganj
+5,Summer,18,Assam,181,Guwahati,22,Karimganj
+2,Early Kharif,18,Assam,181,Guwahati,22,Karimganj
+3,Late Kharif,18,Assam,181,Guwahati,24,Chirang
+4,Rabi,18,Assam,181,Guwahati,24,Chirang
+5,Summer,18,Assam,181,Guwahati,25,Baksa
+2,Early Kharif,18,Assam,181,Guwahati,25,Baksa
+3,Late Kharif,18,Assam,181,Guwahati,25,Baksa
+4,Rabi,18,Assam,181,Guwahati,25,Baksa
+5,Summer,18,Assam,181,Guwahati,26,Kamrup(M)
+2,Early Kharif,18,Assam,181,Guwahati,32,West Karbianglong
+5,Summer,18,Assam,181,Guwahati,32,West Karbianglong
+3,Late Kharif,18,Assam,181,Guwahati,33,South Salmara
+4,Rabi,18,Assam,181,Guwahati,33,South Salmara
+2,Early Kharif,18,Assam,182,Dibrugarh,8,Darrang
+3,Late Kharif,18,Assam,182,Dibrugarh,8,Darrang
+4,Rabi,18,Assam,182,Dibrugarh,8,Darrang
+5,Summer,18,Assam,182,Dibrugarh,8,Darrang
+2,Early Kharif,18,Assam,182,Dibrugarh,9,Morigaon
+3,Late Kharif,18,Assam,182,Dibrugarh,9,Morigaon
+4,Rabi,18,Assam,182,Dibrugarh,9,Morigaon
+5,Summer,18,Assam,182,Dibrugarh,9,Morigaon
+2,Early Kharif,18,Assam,182,Dibrugarh,10,Nagaon
+3,Late Kharif,18,Assam,182,Dibrugarh,10,Nagaon
+4,Rabi,18,Assam,182,Dibrugarh,10,Nagaon
+5,Summer,18,Assam,182,Dibrugarh,10,Nagaon
+2,Early Kharif,18,Assam,182,Dibrugarh,11,Sonitpur
+3,Late Kharif,18,Assam,182,Dibrugarh,11,Sonitpur
+4,Rabi,18,Assam,182,Dibrugarh,11,Sonitpur
+5,Summer,18,Assam,182,Dibrugarh,11,Sonitpur
+2,Early Kharif,18,Assam,182,Dibrugarh,12,Lakhimpur
+3,Late Kharif,18,Assam,182,Dibrugarh,12,Lakhimpur
+4,Rabi,18,Assam,182,Dibrugarh,12,Lakhimpur
+5,Summer,18,Assam,182,Dibrugarh,12,Lakhimpur
+2,Early Kharif,18,Assam,182,Dibrugarh,13,Dhemaji
+3,Late Kharif,18,Assam,182,Dibrugarh,13,Dhemaji
+5,Summer,18,Assam,182,Dibrugarh,13,Dhemaji
+4,Rabi,18,Assam,182,Dibrugarh,13,Dhemaji
+3,Late Kharif,18,Assam,182,Dibrugarh,14,Tinsukia
+2,Early Kharif,18,Assam,182,Dibrugarh,14,Tinsukia
+4,Rabi,18,Assam,182,Dibrugarh,14,Tinsukia
+3,Late Kharif,18,Assam,182,Dibrugarh,15,Dibrugarh
+3,Late Kharif,18,Assam,182,Dibrugarh,16,Sivasagar
+4,Rabi,18,Assam,182,Dibrugarh,16,Sivasagar
+3,Late Kharif,18,Assam,182,Dibrugarh,17,Jorhat
+4,Rabi,18,Assam,182,Dibrugarh,17,Jorhat
+2,Early Kharif,18,Assam,182,Dibrugarh,18,Golaghat
+4,Rabi,18,Assam,182,Dibrugarh,18,Golaghat
+3,Late Kharif,18,Assam,182,Dibrugarh,18,Golaghat
+5,Summer,18,Assam,182,Dibrugarh,18,Golaghat
+2,Early Kharif,18,Assam,182,Dibrugarh,27,Udalguri
+3,Late Kharif,18,Assam,182,Dibrugarh,27,Udalguri
+4,Rabi,18,Assam,182,Dibrugarh,27,Udalguri
+5,Summer,18,Assam,182,Dibrugarh,27,Udalguri
+4,Rabi,18,Assam,182,Dibrugarh,28,Biswanath
+2,Early Kharif,18,Assam,182,Dibrugarh,28,Biswanath
+3,Late Kharif,18,Assam,182,Dibrugarh,28,Biswanath
+5,Summer,18,Assam,182,Dibrugarh,28,Biswanath
+2,Early Kharif,18,Assam,182,Dibrugarh,30,Majuli
+4,Rabi,18,Assam,182,Dibrugarh,30,Majuli
+2,Early Kharif,18,Assam,182,Dibrugarh,31,Hojai
+3,Late Kharif,18,Assam,182,Dibrugarh,31,Hojai
+4,Rabi,18,Assam,182,Dibrugarh,31,Hojai
+5,Summer,18,Assam,182,Dibrugarh,31,Hojai
+5,Summer,19,West Bengal,191,Burdwan,9,Barddhaman (East)
+4,Rabi,19,West Bengal,191,Burdwan,9,Barddhaman (East)
+2,Early Kharif,19,West Bengal,191,Burdwan,9,Barddhaman (East)
+3,Late Kharif,19,West Bengal,191,Burdwan,9,Barddhaman (East)
+5,Summer,19,West Bengal,191,Burdwan,10,Nadia
+2,Early Kharif,19,West Bengal,191,Burdwan,10,Nadia
+4,Rabi,19,West Bengal,191,Burdwan,10,Nadia
+3,Late Kharif,19,West Bengal,191,Burdwan,10,Nadia
+5,Summer,19,West Bengal,191,Burdwan,12,Hoogly
+2,Early Kharif,19,West Bengal,191,Burdwan,12,Hoogly
+3,Late Kharif,19,West Bengal,191,Burdwan,12,Hoogly
+5,Summer,19,West Bengal,191,Burdwan,13,Bankura
+4,Rabi,19,West Bengal,191,Burdwan,13,Bankura
+2,Early Kharif,19,West Bengal,191,Burdwan,13,Bankura
+3,Late Kharif,19,West Bengal,191,Burdwan,13,Bankura
+3,Late Kharif,19,West Bengal,191,Burdwan,14,Purulia
+5,Summer,19,West Bengal,191,Burdwan,18,Medinipur (W)
+2,Early Kharif,19,West Bengal,191,Burdwan,18,Medinipur (W)
+3,Late Kharif,19,West Bengal,191,Burdwan,18,Medinipur (W)
+5,Summer,19,West Bengal,191,Burdwan,19,Medinipur (E)
+2,Early Kharif,19,West Bengal,191,Burdwan,19,Medinipur (E)
+3,Late Kharif,19,West Bengal,191,Burdwan,19,Medinipur (E)
+2,Early Kharif,19,West Bengal,191,Burdwan,23,Jhargram
+3,Late Kharif,19,West Bengal,191,Burdwan,23,Jhargram
+5,Summer,19,West Bengal,192,Kolkata,11,24 Pargana( N)
+2,Early Kharif,19,West Bengal,192,Kolkata,11,24 Pargana( N)
+4,Rabi,19,West Bengal,192,Kolkata,11,24 Pargana( N)
+3,Late Kharif,19,West Bengal,192,Kolkata,11,24 Pargana( N)
+5,Summer,19,West Bengal,192,Kolkata,15,Howrah
+5,Summer,19,West Bengal,192,Kolkata,17,24 Pargana (S)
+3,Late Kharif,19,West Bengal,192,Kolkata,17,24 Pargana (S)
+2,Early Kharif,19,West Bengal,193,Maldah,2,Jalpaiguri
+3,Late Kharif,19,West Bengal,193,Maldah,2,Jalpaiguri
+5,Summer,19,West Bengal,193,Maldah,3,Coochbihar
+2,Early Kharif,19,West Bengal,193,Maldah,3,Coochbihar
+4,Rabi,19,West Bengal,193,Maldah,3,Coochbihar
+3,Late Kharif,19,West Bengal,193,Maldah,3,Coochbihar
+5,Summer,19,West Bengal,193,Maldah,4,Uttar Dinajpur
+4,Rabi,19,West Bengal,193,Maldah,4,Uttar Dinajpur
+2,Early Kharif,19,West Bengal,193,Maldah,4,Uttar Dinajpur
+3,Late Kharif,19,West Bengal,193,Maldah,4,Uttar Dinajpur
+4,Rabi,19,West Bengal,193,Maldah,5,Dakshin Dinajpur
+2,Early Kharif,19,West Bengal,193,Maldah,5,Dakshin Dinajpur
+3,Late Kharif,19,West Bengal,193,Maldah,5,Dakshin Dinajpur
+5,Summer,19,West Bengal,193,Maldah,5,Dakshin Dinajpur
+5,Summer,19,West Bengal,193,Maldah,6,Maldah
+4,Rabi,19,West Bengal,193,Maldah,6,Maldah
+2,Early Kharif,19,West Bengal,193,Maldah,6,Maldah
+3,Late Kharif,19,West Bengal,193,Maldah,6,Maldah
+5,Summer,19,West Bengal,193,Maldah,7,Murshidabad
+2,Early Kharif,19,West Bengal,193,Maldah,7,Murshidabad
+4,Rabi,19,West Bengal,193,Maldah,7,Murshidabad
+3,Late Kharif,19,West Bengal,193,Maldah,7,Murshidabad
+5,Summer,19,West Bengal,193,Maldah,8,Birbhum
+4,Rabi,19,West Bengal,193,Maldah,8,Birbhum
+3,Late Kharif,19,West Bengal,193,Maldah,8,Birbhum
+2,Early Kharif,19,West Bengal,193,Maldah,20,Alipurduar
+2,Bhadai,20,Jharkhand,201,Ranchi,1,Garhwa
+3,Agahani,20,Jharkhand,201,Ranchi,1,Garhwa
+2,Bhadai,20,Jharkhand,201,Ranchi,2,Palamu
+3,Agahani,20,Jharkhand,201,Ranchi,2,Palamu
+2,Bhadai,20,Jharkhand,201,Ranchi,3,Chatra
+2,Bhadai,20,Jharkhand,201,Ranchi,4,Hazaribagh
+3,Agahani,20,Jharkhand,201,Ranchi,4,Hazaribagh
+2,Bhadai,20,Jharkhand,201,Ranchi,6,Giridih
+3,Agahani,20,Jharkhand,201,Ranchi,6,Giridih
+2,Bhadai,20,Jharkhand,201,Ranchi,7,Deoghar
+3,Agahani,20,Jharkhand,201,Ranchi,7,Deoghar
+3,Agahani,20,Jharkhand,201,Ranchi,8,Godda
+2,Bhadai,20,Jharkhand,201,Ranchi,9,Sahebganj
+3,Agahani,20,Jharkhand,201,Ranchi,9,Sahebganj
+2,Bhadai,20,Jharkhand,201,Ranchi,10,Pakud
+3,Agahani,20,Jharkhand,201,Ranchi,10,Pakud
+2,Bhadai,20,Jharkhand,201,Ranchi,11,Dumka
+3,Agahani,20,Jharkhand,201,Ranchi,11,Dumka
+3,Agahani,20,Jharkhand,201,Ranchi,12,Dhanbad
+3,Agahani,20,Jharkhand,201,Ranchi,13,Bokaro
+2,Bhadai,20,Jharkhand,201,Ranchi,14,Ranchi
+3,Agahani,20,Jharkhand,201,Ranchi,14,Ranchi
+2,Bhadai,20,Jharkhand,201,Ranchi,15,Lohardaga
+3,Agahani,20,Jharkhand,201,Ranchi,15,Lohardaga
+2,Bhadai,20,Jharkhand,201,Ranchi,16,Gumla
+3,Agahani,20,Jharkhand,201,Ranchi,16,Gumla
+2,Bhadai,20,Jharkhand,201,Ranchi,17,W.Singhbhum
+2,Bhadai,20,Jharkhand,201,Ranchi,18,E. Singhbhum
+3,Agahani,20,Jharkhand,201,Ranchi,18,E. Singhbhum
+2,Bhadai,20,Jharkhand,201,Ranchi,19,Latehar
+3,Agahani,20,Jharkhand,201,Ranchi,19,Latehar
+2,Bhadai,20,Jharkhand,201,Ranchi,20,Simdega
+3,Agahani,20,Jharkhand,201,Ranchi,20,Simdega
+3,Agahani,20,Jharkhand,201,Ranchi,21,Jamtara
+2,Bhadai,20,Jharkhand,201,Ranchi,24,Khunti
+3,Agahani,20,Jharkhand,201,Ranchi,24,Khunti
+2,Autumn,21,Odisha,211,Bhubaneswar,6,Keonjhar
+3,Winter,21,Odisha,211,Bhubaneswar,6,Keonjhar
+2,Autumn,21,Odisha,211,Bhubaneswar,7,Mayurbhanj
+3,Winter,21,Odisha,211,Bhubaneswar,7,Mayurbhanj
+5,Summer,21,Odisha,211,Bhubaneswar,7,Mayurbhanj
+5,Summer,21,Odisha,211,Bhubaneswar,8,Baleshwar
+3,Winter,21,Odisha,211,Bhubaneswar,8,Baleshwar
+3,Winter,21,Odisha,211,Bhubaneswar,9,Bhadrak
+3,Winter,21,Odisha,211,Bhubaneswar,10,Kendrapada
+5,Summer,21,Odisha,211,Bhubaneswar,10,Kendrapada
+3,Winter,21,Odisha,211,Bhubaneswar,11,Jagatsinghpur
+5,Summer,21,Odisha,211,Bhubaneswar,11,Jagatsinghpur
+3,Winter,21,Odisha,211,Bhubaneswar,12,Cuttack
+5,Summer,21,Odisha,211,Bhubaneswar,12,Cuttack
+2,Autumn,21,Odisha,211,Bhubaneswar,13,Jajpur
+3,Winter,21,Odisha,211,Bhubaneswar,13,Jajpur
+5,Summer,21,Odisha,211,Bhubaneswar,13,Jajpur
+3,Winter,21,Odisha,211,Bhubaneswar,14,Dhankenal
+3,Winter,21,Odisha,211,Bhubaneswar,15,Angul
+3,Winter,21,Odisha,211,Bhubaneswar,16,Nayagarh
+5,Summer,21,Odisha,211,Bhubaneswar,16,Nayagarh
+3,Winter,21,Odisha,211,Bhubaneswar,17,Khurda
+5,Summer,21,Odisha,211,Bhubaneswar,17,Khurda
+3,Winter,21,Odisha,211,Bhubaneswar,18,Puri
+5,Summer,21,Odisha,211,Bhubaneswar,18,Puri
+3,Winter,21,Odisha,211,Bhubaneswar,19,Ganjam
+2,Autumn,21,Odisha,211,Bhubaneswar,20,Gajapati
+3,Winter,21,Odisha,211,Bhubaneswar,20,Gajapati
+3,Winter,21,Odisha,211,Bhubaneswar,21,Kandhamal
+3,Winter,21,Odisha,211,Bhubaneswar,22,Boudha
+2,Autumn,21,Odisha,212,Sambalpur,1,Bargarh
+3,Winter,21,Odisha,212,Sambalpur,1,Bargarh
+5,Summer,21,Odisha,212,Sambalpur,1,Bargarh
+2,Autumn,21,Odisha,212,Sambalpur,2,Jharsuguda
+3,Winter,21,Odisha,212,Sambalpur,2,Jharsuguda
+2,Autumn,21,Odisha,212,Sambalpur,3,Sambalpur
+3,Winter,21,Odisha,212,Sambalpur,3,Sambalpur
+5,Summer,21,Odisha,212,Sambalpur,3,Sambalpur
+2,Autumn,21,Odisha,212,Sambalpur,4,Deogarh
+3,Winter,21,Odisha,212,Sambalpur,4,Deogarh
+2,Autumn,21,Odisha,212,Sambalpur,5,Sundargarh
+3,Winter,21,Odisha,212,Sambalpur,5,Sundargarh
+2,Autumn,21,Odisha,212,Sambalpur,23,Subarnapur
+3,Winter,21,Odisha,212,Sambalpur,23,Subarnapur
+5,Summer,21,Odisha,212,Sambalpur,23,Subarnapur
+2,Autumn,21,Odisha,212,Sambalpur,24,Bolangir
+3,Winter,21,Odisha,212,Sambalpur,24,Bolangir
+5,Summer,21,Odisha,212,Sambalpur,24,Bolangir
+2,Autumn,21,Odisha,212,Sambalpur,25,Nuapada
+3,Winter,21,Odisha,212,Sambalpur,25,Nuapada
+5,Summer,21,Odisha,212,Sambalpur,25,Nuapada
+2,Autumn,21,Odisha,212,Sambalpur,26,Kalahandi
+3,Winter,21,Odisha,212,Sambalpur,26,Kalahandi
+5,Summer,21,Odisha,212,Sambalpur,26,Kalahandi
+3,Winter,21,Odisha,212,Sambalpur,27,Rayagada
+2,Autumn,21,Odisha,212,Sambalpur,27,Rayagada
+2,Autumn,21,Odisha,212,Sambalpur,28,Nawrangpur
+3,Winter,21,Odisha,212,Sambalpur,28,Nawrangpur
+2,Autumn,21,Odisha,212,Sambalpur,29,Koraput
+3,Winter,21,Odisha,212,Sambalpur,29,Koraput
+5,Summer,21,Odisha,212,Sambalpur,29,Koraput
+2,Autumn,21,Odisha,212,Sambalpur,30,Malkangiri
+3,Winter,21,Odisha,212,Sambalpur,30,Malkangiri
+4,Rabi,22,Chattisgarh,221,Raipur,1,Korea
+1,Kharif,22,Chattisgarh,221,Raipur,1,Korea
+1,Kharif,22,Chattisgarh,221,Raipur,2,Sarguja
+4,Rabi,22,Chattisgarh,221,Raipur,2,Sarguja
+1,Kharif,22,Chattisgarh,221,Raipur,3,Jashpur
+4,Rabi,22,Chattisgarh,221,Raipur,3,Jashpur
+1,Kharif,22,Chattisgarh,221,Raipur,4,Raigarh
+4,Rabi,22,Chattisgarh,221,Raipur,4,Raigarh
+1,Kharif,22,Chattisgarh,221,Raipur,5,Korba
+1,Kharif,22,Chattisgarh,221,Raipur,7,Bilaspur
+4,Rabi,22,Chattisgarh,221,Raipur,7,Bilaspur
+1,Kharif,22,Chattisgarh,221,Raipur,8,Kabirdham
+4,Rabi,22,Chattisgarh,221,Raipur,8,Kabirdham
+1,Kharif,22,Chattisgarh,221,Raipur,9,Rajnandgaon
+4,Rabi,22,Chattisgarh,221,Raipur,9,Rajnandgaon
+4,Rabi,22,Chattisgarh,221,Raipur,10,Durg
+4,Rabi,22,Chattisgarh,221,Raipur,11,Raipur
+1,Kharif,22,Chattisgarh,221,Raipur,11,Raipur
+1,Kharif,22,Chattisgarh,221,Raipur,12,Mahasamund
+4,Rabi,22,Chattisgarh,221,Raipur,13,Dhamtri
+1,Kharif,22,Chattisgarh,221,Raipur,13,Dhamtri
+1,Kharif,22,Chattisgarh,221,Raipur,14,Kanker
+1,Kharif,22,Chattisgarh,221,Raipur,15,Baster
+1,Kharif,22,Chattisgarh,221,Raipur,16,Dantewara
+1,Kharif,22,Chattisgarh,221,Raipur,19,Sukma
+1,Kharif,22,Chattisgarh,221,Raipur,20,Kondan Gaon
+1,Kharif,22,Chattisgarh,221,Raipur,21,Baloda Bazar
+4,Rabi,22,Chattisgarh,221,Raipur,21,Baloda Bazar
+1,Kharif,22,Chattisgarh,221,Raipur,22,Gariyaband
+1,Kharif,22,Chattisgarh,221,Raipur,23,Bemetara
+4,Rabi,22,Chattisgarh,221,Raipur,23,Bemetara
+4,Rabi,22,Chattisgarh,221,Raipur,24,Balod
+1,Kharif,22,Chattisgarh,221,Raipur,24,Balod
+1,Kharif,22,Chattisgarh,221,Raipur,25,Mungeli
+4,Rabi,22,Chattisgarh,221,Raipur,25,Mungeli
+1,Kharif,22,Chattisgarh,221,Raipur,26,Surajpur
+4,Rabi,22,Chattisgarh,221,Raipur,26,Surajpur
+1,Kharif,22,Chattisgarh,221,Raipur,27,Balrampur
+4,Rabi,22,Chattisgarh,221,Raipur,27,Balrampur
+1,Kharif,22,Chattisgarh,221,Raipur,28,Mc Bharatpur
+4,Rabi,22,Chattisgarh,221,Raipur,28,Mc Bharatpur
+1,Kharif,22,Chattisgarh,221,Raipur,29,S Bilaigarh
+1,Kharif,22,Chattisgarh,221,Raipur,31,Gorela Pendra
+1,Kharif,22,Chattisgarh,221,Raipur,32,Kc Gandai
+4,Rabi,22,Chattisgarh,221,Raipur,32,Kc Gandai
+4,Rabi,22,Chattisgarh,221,Raipur,33,Mm Ambagarh Chowki
+1,Kharif,22,Chattisgarh,221,Raipur,33,Mm Ambagarh Chowki
+1,Kharif,23,Madhya Pradesh,231,Bhopal,25,Dhar
+4,Rabi,23,Madhya Pradesh,231,Bhopal,25,Dhar
+4,Rabi,23,Madhya Pradesh,231,Bhopal,26,Indore
+1,Kharif,23,Madhya Pradesh,231,Bhopal,27,Khargone
+4,Rabi,23,Madhya Pradesh,231,Bhopal,27,Khargone
+1,Kharif,23,Madhya Pradesh,231,Bhopal,28,Barwani
+4,Rabi,23,Madhya Pradesh,231,Bhopal,28,Barwani
+1,Kharif,23,Madhya Pradesh,231,Bhopal,29,Khandwa
+4,Rabi,23,Madhya Pradesh,231,Bhopal,29,Khandwa
+4,Rabi,23,Madhya Pradesh,231,Bhopal,31,Vidisha
+1,Kharif,23,Madhya Pradesh,231,Bhopal,31,Vidisha
+1,Kharif,23,Madhya Pradesh,231,Bhopal,33,Sehore
+4,Rabi,23,Madhya Pradesh,231,Bhopal,33,Sehore
+1,Kharif,23,Madhya Pradesh,231,Bhopal,34,Raisen
+4,Rabi,23,Madhya Pradesh,231,Bhopal,34,Raisen
+1,Kharif,23,Madhya Pradesh,231,Bhopal,35,Betul
+4,Rabi,23,Madhya Pradesh,231,Bhopal,35,Betul
+1,Kharif,23,Madhya Pradesh,231,Bhopal,36,Harda
+4,Rabi,23,Madhya Pradesh,231,Bhopal,36,Harda
+1,Kharif,23,Madhya Pradesh,231,Bhopal,37,Hoshangabad
+4,Rabi,23,Madhya Pradesh,231,Bhopal,37,Hoshangabad
+4,Rabi,23,Madhya Pradesh,231,Bhopal,43,Chhindwara
+1,Kharif,23,Madhya Pradesh,231,Bhopal,43,Chhindwara
+1,Kharif,23,Madhya Pradesh,231,Bhopal,45,Balaghat
+4,Rabi,23,Madhya Pradesh,231,Bhopal,45,Balaghat
+1,Kharif,23,Madhya Pradesh,231,Bhopal,48,Burhanpur
+4,Rabi,23,Madhya Pradesh,232,Gwalior,1,Seopur
+1,Kharif,23,Madhya Pradesh,232,Gwalior,1,Seopur
+4,Rabi,23,Madhya Pradesh,232,Gwalior,2,Murena
+1,Kharif,23,Madhya Pradesh,232,Gwalior,2,Murena
+1,Kharif,23,Madhya Pradesh,232,Gwalior,3,Bhind
+4,Rabi,23,Madhya Pradesh,232,Gwalior,3,Bhind
+1,Kharif,23,Madhya Pradesh,232,Gwalior,4,Gwalior
+4,Rabi,23,Madhya Pradesh,232,Gwalior,4,Gwalior
+4,Rabi,23,Madhya Pradesh,232,Gwalior,5,Datia
+1,Kharif,23,Madhya Pradesh,232,Gwalior,5,Datia
+1,Kharif,23,Madhya Pradesh,232,Gwalior,6,Shivpuri
+4,Rabi,23,Madhya Pradesh,232,Gwalior,6,Shivpuri
+1,Kharif,23,Madhya Pradesh,232,Gwalior,7,Guna
+4,Rabi,23,Madhya Pradesh,232,Gwalior,7,Guna
+1,Kharif,23,Madhya Pradesh,232,Gwalior,8,Tikamgarh
+4,Rabi,23,Madhya Pradesh,232,Gwalior,8,Tikamgarh
+4,Rabi,23,Madhya Pradesh,232,Gwalior,9,Chhatarpur
+1,Kharif,23,Madhya Pradesh,232,Gwalior,9,Chhatarpur
+4,Rabi,23,Madhya Pradesh,232,Gwalior,18,Neemuch
+4,Rabi,23,Madhya Pradesh,232,Gwalior,19,Mandsaur
+1,Kharif,23,Madhya Pradesh,232,Gwalior,19,Mandsaur
+4,Rabi,23,Madhya Pradesh,232,Gwalior,20,Ratlam
+1,Kharif,23,Madhya Pradesh,232,Gwalior,20,Ratlam
+1,Kharif,23,Madhya Pradesh,232,Gwalior,21,Ujjain
+4,Rabi,23,Madhya Pradesh,232,Gwalior,21,Ujjain
+1,Kharif,23,Madhya Pradesh,232,Gwalior,22,Shajapur
+4,Rabi,23,Madhya Pradesh,232,Gwalior,22,Shajapur
+1,Kharif,23,Madhya Pradesh,232,Gwalior,23,Dewas
+4,Rabi,23,Madhya Pradesh,232,Gwalior,23,Dewas
+1,Kharif,23,Madhya Pradesh,232,Gwalior,24,Jhabua
+4,Rabi,23,Madhya Pradesh,232,Gwalior,24,Jhabua
+1,Kharif,23,Madhya Pradesh,232,Gwalior,30,Rajgarh
+4,Rabi,23,Madhya Pradesh,232,Gwalior,30,Rajgarh
+4,Rabi,23,Madhya Pradesh,232,Gwalior,46,Ashok Nagar
+1,Kharif,23,Madhya Pradesh,232,Gwalior,46,Ashok Nagar
+1,Kharif,23,Madhya Pradesh,232,Gwalior,49,Alirajpur
+1,Kharif,23,Madhya Pradesh,232,Gwalior,51,Agar Malwa
+1,Kharif,23,Madhya Pradesh,233,Jabalpur,10,Panna
+4,Rabi,23,Madhya Pradesh,233,Jabalpur,10,Panna
+4,Rabi,23,Madhya Pradesh,233,Jabalpur,11,Sagar
+1,Kharif,23,Madhya Pradesh,233,Jabalpur,11,Sagar
+4,Rabi,23,Madhya Pradesh,233,Jabalpur,12,Damoh
+1,Kharif,23,Madhya Pradesh,233,Jabalpur,12,Damoh
+1,Kharif,23,Madhya Pradesh,233,Jabalpur,13,Satna
+4,Rabi,23,Madhya Pradesh,233,Jabalpur,13,Satna
+1,Kharif,23,Madhya Pradesh,233,Jabalpur,14,Rewa
+4,Rabi,23,Madhya Pradesh,233,Jabalpur,14,Rewa
+1,Kharif,23,Madhya Pradesh,233,Jabalpur,15,Umaria
+4,Rabi,23,Madhya Pradesh,233,Jabalpur,15,Umaria
+4,Rabi,23,Madhya Pradesh,233,Jabalpur,16,Shahdol
+1,Kharif,23,Madhya Pradesh,233,Jabalpur,16,Shahdol
+1,Kharif,23,Madhya Pradesh,233,Jabalpur,17,Sidhi
+4,Rabi,23,Madhya Pradesh,233,Jabalpur,17,Sidhi
+1,Kharif,23,Madhya Pradesh,233,Jabalpur,38,Katni
+4,Rabi,23,Madhya Pradesh,233,Jabalpur,38,Katni
+1,Kharif,23,Madhya Pradesh,233,Jabalpur,39,Jabalpur
+4,Rabi,23,Madhya Pradesh,233,Jabalpur,39,Jabalpur
+1,Kharif,23,Madhya Pradesh,233,Jabalpur,40,Narsinghpur
+4,Rabi,23,Madhya Pradesh,233,Jabalpur,40,Narsinghpur
+1,Kharif,23,Madhya Pradesh,233,Jabalpur,41,Dindori
+4,Rabi,23,Madhya Pradesh,233,Jabalpur,41,Dindori
+1,Kharif,23,Madhya Pradesh,233,Jabalpur,42,Mandla
+4,Rabi,23,Madhya Pradesh,233,Jabalpur,42,Mandla
+1,Kharif,23,Madhya Pradesh,233,Jabalpur,44,Seoni
+4,Rabi,23,Madhya Pradesh,233,Jabalpur,44,Seoni
+4,Rabi,23,Madhya Pradesh,233,Jabalpur,47,Anup Pur
+1,Kharif,23,Madhya Pradesh,233,Jabalpur,47,Anup Pur
+1,Kharif,23,Madhya Pradesh,233,Jabalpur,50,Singrauli
+4,Rabi,23,Madhya Pradesh,233,Jabalpur,50,Singrauli
+1,Kharif,24,Gujarat,241,Ahmedabad,1,Kachchh
+1,Kharif,24,Gujarat,241,Ahmedabad,6,Gandhinagar
+1,Kharif,24,Gujarat,241,Ahmedabad,7,Ahmedabad
+1,Kharif,24,Gujarat,241,Ahmedabad,8,Surendranagar
+1,Kharif,24,Gujarat,241,Ahmedabad,9,Rajkot
+1,Kharif,24,Gujarat,241,Ahmedabad,10,Jamnagar
+1,Kharif,24,Gujarat,241,Ahmedabad,11,Porbandar
+1,Kharif,24,Gujarat,241,Ahmedabad,12,Junagadh
+1,Kharif,24,Gujarat,241,Ahmedabad,13,Amreli
+1,Kharif,24,Gujarat,241,Ahmedabad,14,Bhavnagar
+1,Kharif,24,Gujarat,241,Ahmedabad,28,Botad
+1,Kharif,24,Gujarat,241,Ahmedabad,30,Devbhumi Dwarka
+1,Kharif,24,Gujarat,241,Ahmedabad,31,Gir Somnath
+1,Kharif,24,Gujarat,241,Ahmedabad,33,Morbi
+1,Kharif,24,Gujarat,242,Vadodara,2,Banaskantha
+1,Kharif,24,Gujarat,242,Vadodara,3,Patan
+1,Kharif,24,Gujarat,242,Vadodara,4,Mehsana
+1,Kharif,24,Gujarat,242,Vadodara,5,Sabarkantha
+1,Kharif,24,Gujarat,242,Vadodara,15,Anand
+1,Kharif,24,Gujarat,242,Vadodara,16,Kheda
+1,Kharif,24,Gujarat,242,Vadodara,17,Panchmahal
+1,Kharif,24,Gujarat,242,Vadodara,18,Dohad
+1,Kharif,24,Gujarat,242,Vadodara,19,Vadodara
+1,Kharif,24,Gujarat,242,Vadodara,20,Narmada
+1,Kharif,24,Gujarat,242,Vadodara,21,Bharuch
+1,Kharif,24,Gujarat,242,Vadodara,22,Surat
+1,Kharif,24,Gujarat,242,Vadodara,23,Dangs
+1,Kharif,24,Gujarat,242,Vadodara,24,Navsari
+1,Kharif,24,Gujarat,242,Vadodara,25,Valsad
+1,Kharif,24,Gujarat,242,Vadodara,26,Tapi
+1,Kharif,24,Gujarat,242,Vadodara,27,Arvalli
+1,Kharif,24,Gujarat,242,Vadodara,29,"Chhota
+Udepur"
+1,Kharif,24,Gujarat,242,Vadodara,32,Mahisagar
+1,Kharif,27,Maharashtra,271,C S Nagar,1,Nandurbar
+1,Kharif,27,Maharashtra,271,C S Nagar,2,Dhule
+1,Kharif,27,Maharashtra,271,C S Nagar,3,Jalgaon
+1,Kharif,27,Maharashtra,271,C S Nagar,15,Nanded
+1,Kharif,27,Maharashtra,271,C S Nagar,16,Hingoli
+1,Kharif,27,Maharashtra,271,C S Nagar,17,Parbhani
+1,Kharif,27,Maharashtra,271,C S Nagar,18,Jalna
+1,Kharif,27,Maharashtra,271,C S Nagar,19,C S Nagar
+1,Kharif,27,Maharashtra,271,C S Nagar,20,Nasik
+1,Kharif,27,Maharashtra,271,C S Nagar,27,Beed
+1,Kharif,27,Maharashtra,271,C S Nagar,28,Latur
+1,Kharif,27,Maharashtra,272,Mumbai,36,Palghar
+1,Kharif,27,Maharashtra,273,Nagpur,4,Buldhana
+1,Kharif,27,Maharashtra,273,Nagpur,5,Akola
+1,Kharif,27,Maharashtra,273,Nagpur,6,Wasim
+1,Kharif,27,Maharashtra,273,Nagpur,7,Amravati
+1,Kharif,27,Maharashtra,273,Nagpur,14,Yeotmal
+1,Kharif,27,Maharashtra,274,Pune,25,Pune
+1,Kharif,27,Maharashtra,274,Pune,26,Ahilyanagar
+1,Kharif,27,Maharashtra,274,Pune,29,Dharashiv
+1,Kharif,27,Maharashtra,274,Pune,30,Solapur
+1,Kharif,27,Maharashtra,274,Pune,31,Satara
+1,Kharif,27,Maharashtra,274,Pune,34,Kolhapur
+1,Kharif,27,Maharashtra,274,Pune,35,Sangali
+1,Kharif,28,Andhra Pradesh,281,Kadapa,7,Guntur
+4,Rabi,28,Andhra Pradesh,281,Kadapa,7,Guntur
+1,Kharif,28,Andhra Pradesh,281,Kadapa,8,Prakasam
+4,Rabi,28,Andhra Pradesh,281,Kadapa,8,Prakasam
+1,Kharif,28,Andhra Pradesh,281,Kadapa,9,S.P.S.Nellore
+4,Rabi,28,Andhra Pradesh,281,Kadapa,9,S.P.S.Nellore
+1,Kharif,28,Andhra Pradesh,281,Kadapa,10,Y.S.R.District
+4,Rabi,28,Andhra Pradesh,281,Kadapa,10,Y.S.R.District
+1,Kharif,28,Andhra Pradesh,281,Kadapa,11,Kurnool
+4,Rabi,28,Andhra Pradesh,281,Kadapa,11,Kurnool
+1,Kharif,28,Andhra Pradesh,281,Kadapa,12,Anathapuram
+4,Rabi,28,Andhra Pradesh,281,Kadapa,12,Anathapuram
+1,Kharif,28,Andhra Pradesh,281,Kadapa,13,Chittoor
+4,Rabi,28,Andhra Pradesh,281,Kadapa,13,Chittoor
+1,Kharif,28,Andhra Pradesh,281,Kadapa,14,Palnadu
+4,Rabi,28,Andhra Pradesh,281,Kadapa,14,Palnadu
+1,Kharif,28,Andhra Pradesh,281,Kadapa,15,Baptla
+4,Rabi,28,Andhra Pradesh,281,Kadapa,15,Baptla
+1,Kharif,28,Andhra Pradesh,281,Kadapa,16,Tirupati
+4,Rabi,28,Andhra Pradesh,281,Kadapa,16,Tirupati
+1,Kharif,28,Andhra Pradesh,281,Kadapa,17,Annamayya
+4,Rabi,28,Andhra Pradesh,281,Kadapa,17,Annamayya
+1,Kharif,28,Andhra Pradesh,281,Kadapa,18,Nandyala
+4,Rabi,28,Andhra Pradesh,281,Kadapa,18,Nandyala
+1,Kharif,28,Andhra Pradesh,281,Kadapa,19,Sri Satya Sai
+1,Kharif,28,Andhra Pradesh,281,Kadapa,21,Nandyala
+1,Kharif,28,Andhra Pradesh,281,Kadapa,23,Palnadu
+1,Kharif,28,Andhra Pradesh,282,Vijayawada,1,Srikakulam
+4,Rabi,28,Andhra Pradesh,282,Vijayawada,1,Srikakulam
+1,Kharif,28,Andhra Pradesh,282,Vijayawada,2,Vizianagaram
+4,Rabi,28,Andhra Pradesh,282,Vijayawada,2,Vizianagaram
+1,Kharif,28,Andhra Pradesh,282,Vijayawada,4,East Godavari
+4,Rabi,28,Andhra Pradesh,282,Vijayawada,4,East Godavari
+1,Kharif,28,Andhra Pradesh,282,Vijayawada,5,West Godavari
+4,Rabi,28,Andhra Pradesh,282,Vijayawada,5,West Godavari
+1,Kharif,28,Andhra Pradesh,282,Vijayawada,6,Krishna
+4,Rabi,28,Andhra Pradesh,282,Vijayawada,6,Krishna
+1,Kharif,28,Andhra Pradesh,282,Vijayawada,20,Alluri Seetha Ramaraju
+4,Rabi,28,Andhra Pradesh,282,Vijayawada,20,Alluri Seetha Ramaraju
+1,Kharif,28,Andhra Pradesh,282,Vijayawada,21,Anakapalli
+1,Kharif,28,Andhra Pradesh,282,Vijayawada,22,Ntr
+1,Kharif,28,Andhra Pradesh,282,Vijayawada,22,Konaseema
+4,Rabi,28,Andhra Pradesh,282,Vijayawada,22,Konaseema
+1,Kharif,28,Andhra Pradesh,282,Vijayawada,23,Eluru
+4,Rabi,28,Andhra Pradesh,282,Vijayawada,23,Eluru
+1,Kharif,28,Andhra Pradesh,282,Vijayawada,24,Kakinada
+4,Rabi,28,Andhra Pradesh,282,Vijayawada,24,Kakinada
+1,Kharif,28,Andhra Pradesh,282,Vijayawada,25,Parvathipuram Manyam
+4,Rabi,28,Andhra Pradesh,282,Vijayawada,25,Parvathipuram Manyam
+1,Kharif,28,Andhra Pradesh,282,Vijayawada,26,Ntr
+4,Rabi,28,Andhra Pradesh,282,Vijayawada,26,Ntr
+1,Kharif,29,Karnataka,291,Bengaluru,15,Shivamogga
+1,Kharif,29,Karnataka,291,Bengaluru,16,Udupi
+1,Kharif,29,Karnataka,291,Bengaluru,17,Chickmagaluru
+1,Kharif,29,Karnataka,291,Bengaluru,18,Tumakuru
+1,Kharif,29,Karnataka,291,Bengaluru,19,Kolar
+1,Kharif,29,Karnataka,291,Bengaluru,21,Bengaluru(R)
+1,Kharif,29,Karnataka,291,Bengaluru,22,Mandya
+1,Kharif,29,Karnataka,291,Bengaluru,23,Hassan
+1,Kharif,29,Karnataka,291,Bengaluru,23,Hassan 
+1,Kharif,29,Karnataka,291,Bengaluru,24,Dakshina Kannada
+1,Kharif,29,Karnataka,291,Bengaluru,25,Kodagu
+1,Kharif,29,Karnataka,291,Bengaluru,26,Mysuru
+1,Kharif,29,Karnataka,291,Bengaluru,27,Chamarajanagar
+1,Kharif,29,Karnataka,291,Bengaluru,28,Ramnagara
+1,Kharif,29,Karnataka,291,Bengaluru,29,Chikkaballapura
+1,Kharif,29,Karnataka,292,Hubli,1,Belgavi
+1,Kharif,29,Karnataka,292,Hubli,2,Bagalkot
+1,Kharif,29,Karnataka,292,Hubli,3,Vijayapura
+1,Kharif,29,Karnataka,292,Hubli,4,Kalaburgi
+1,Kharif,29,Karnataka,292,Hubli,5,Bidar
+1,Kharif,29,Karnataka,292,Hubli,6,Raichur
+1,Kharif,29,Karnataka,292,Hubli,7,Koppal
+1,Kharif,29,Karnataka,292,Hubli,8,Gadag
+1,Kharif,29,Karnataka,292,Hubli,9,Dharwad
+1,Kharif,29,Karnataka,292,Hubli,10,Uttara Kannada
+1,Kharif,29,Karnataka,292,Hubli,11,Haveri
+1,Kharif,29,Karnataka,292,Hubli,12,Bellary
+1,Kharif,29,Karnataka,292,Hubli,13,Chitradurga
+1,Kharif,29,Karnataka,292,Hubli,14,Davanagere
+1,Kharif,29,Karnataka,292,Hubli,30,Yadgir
+1,Kharif,29,Karnataka,292,Hubli,31,Vijayanagara
+2,Autumn,32,Kerala,321,Kozhikode,1,Kasargod
+6,Whole Year,32,Kerala,321,Kozhikode,1,Kasargod
+2,Autumn,32,Kerala,321,Kozhikode,2,Kannur
+6,Whole Year,32,Kerala,321,Kozhikode,2,Kannur
+6,Whole Year,32,Kerala,321,Kozhikode,3,Wayanad
+2,Autumn,32,Kerala,321,Kozhikode,4,Kozhikode
+6,Whole Year,32,Kerala,321,Kozhikode,4,Kozhikode
+2,Autumn,32,Kerala,321,Kozhikode,5,Malapuram
+6,Whole Year,32,Kerala,321,Kozhikode,5,Malapuram
+2,Autumn,32,Kerala,321,Kozhikode,6,Palakkad
+6,Whole Year,32,Kerala,321,Kozhikode,6,Palakkad
+2,Autumn,32,Kerala,321,Kozhikode,7,Thrissur
+6,Whole Year,32,Kerala,321,Kozhikode,7,Thrissur
+2,Autumn,32,Kerala,322,Thiruvananthapuram,8,Ernakulam
+6,Whole Year,32,Kerala,322,Thiruvananthapuram,8,Ernakulam
+2,Autumn,32,Kerala,322,Thiruvananthapuram,9,Idukki
+6,Whole Year,32,Kerala,322,Thiruvananthapuram,9,Idukki
+2,Autumn,32,Kerala,322,Thiruvananthapuram,10,Kottayam
+6,Whole Year,32,Kerala,322,Thiruvananthapuram,10,Kottayam
+2,Autumn,32,Kerala,322,Thiruvananthapuram,11,Alappuzha
+6,Whole Year,32,Kerala,322,Thiruvananthapuram,11,Alappuzha
+6,Whole Year,32,Kerala,322,Thiruvananthapuram,12,Pathanamthitta
+2,Autumn,32,Kerala,322,Thiruvananthapuram,13,Kollam
+6,Whole Year,32,Kerala,322,Thiruvananthapuram,13,Kollam
+2,Autumn,32,Kerala,322,Thiruvananthapuram,14,Thiruvananthapuram
+6,Whole Year,32,Kerala,322,Thiruvananthapuram,14,Thiruvananthapuram
+1,Kharif,33,Tamil Nadu,331,Coimbatore,5,Dharmapuri
+4,Rabi,33,Tamil Nadu,331,Coimbatore,5,Dharmapuri
+1,Kharif,33,Tamil Nadu,331,Coimbatore,8,Salem
+4,Rabi,33,Tamil Nadu,331,Coimbatore,8,Salem
+1,Kharif,33,Tamil Nadu,331,Coimbatore,9,Namakkal
+4,Rabi,33,Tamil Nadu,331,Coimbatore,9,Namakkal
+1,Kharif,33,Tamil Nadu,331,Coimbatore,10,Erode
+4,Rabi,33,Tamil Nadu,331,Coimbatore,10,Erode
+1,Kharif,33,Tamil Nadu,331,Coimbatore,12,Coimbatore
+4,Rabi,33,Tamil Nadu,331,Coimbatore,12,Coimbatore
+1,Kharif,33,Tamil Nadu,331,Coimbatore,14,Karur
+4,Rabi,33,Tamil Nadu,331,Coimbatore,14,Karur
+1,Kharif,33,Tamil Nadu,331,Coimbatore,15,Tiruchirapalli
+4,Rabi,33,Tamil Nadu,331,Coimbatore,15,Tiruchirapalli
+1,Kharif,33,Tamil Nadu,331,Coimbatore,15,Tiruchirappalli
+1,Kharif,33,Tamil Nadu,331,Coimbatore,16,Perambalur
+4,Rabi,33,Tamil Nadu,331,Coimbatore,16,Perambalur
+1,Kharif,33,Tamil Nadu,331,Coimbatore,17,Ariyalur
+4,Rabi,33,Tamil Nadu,331,Coimbatore,17,Ariyalur
+1,Kharif,33,Tamil Nadu,331,Coimbatore,22,Pudukottai
+4,Rabi,33,Tamil Nadu,331,Coimbatore,22,Pudukottai
+1,Kharif,33,Tamil Nadu,331,Coimbatore,31,Krishnagiri
+4,Rabi,33,Tamil Nadu,331,Coimbatore,31,Krishnagiri
+1,Kharif,33,Tamil Nadu,331,Coimbatore,32,Thiruppur
+4,Rabi,33,Tamil Nadu,331,Coimbatore,32,Thiruppur
+4,Rabi,33,Tamil Nadu,331,Coimbatore,32,Tiruppur
+1,Kharif,33,Tamil Nadu,332,Chennai,1,Thiruvallur
+4,Rabi,33,Tamil Nadu,332,Chennai,1,Thiruvallur
+1,Kharif,33,Tamil Nadu,332,Chennai,3,Kancheepuram
+1,Kharif,33,Tamil Nadu,332,Chennai,4,Vellore
+1,Kharif,33,Tamil Nadu,332,Chennai,6,Thiruvannamalai
+4,Rabi,33,Tamil Nadu,332,Chennai,6,Thiruvannamalai
+1,Kharif,33,Tamil Nadu,332,Chennai,6,Tiruvannamalai
+1,Kharif,33,Tamil Nadu,332,Chennai,7,Villupuram
+4,Rabi,33,Tamil Nadu,332,Chennai,7,Villupuram
+1,Kharif,33,Tamil Nadu,332,Chennai,18,Cuddalore
+4,Rabi,33,Tamil Nadu,332,Chennai,18,Cuddalore
+1,Kharif,33,Tamil Nadu,332,Chennai,33,Chengalpattu
+4,Rabi,33,Tamil Nadu,332,Chennai,33,Chengalpattu
+1,Kharif,33,Tamil Nadu,332,Chennai,34,Kallakurichi
+4,Rabi,33,Tamil Nadu,332,Chennai,34,Kallakurichi
+1,Kharif,33,Tamil Nadu,332,Chennai,35,Ranipet
+4,Rabi,33,Tamil Nadu,332,Chennai,35,Ranipet
+1,Kharif,33,Tamil Nadu,332,Chennai,36,Tirupathur
+4,Rabi,33,Tamil Nadu,332,Chennai,36,Tirupathur
+1,Kharif,33,Tamil Nadu,333,Madurai,13,Dindigul
+4,Rabi,33,Tamil Nadu,333,Madurai,13,Dindigul
+1,Kharif,33,Tamil Nadu,333,Madurai,19,Nagapattinam
+4,Rabi,33,Tamil Nadu,333,Madurai,19,Nagapattinam
+1,Kharif,33,Tamil Nadu,333,Madurai,20,Thiruvarur
+4,Rabi,33,Tamil Nadu,333,Madurai,20,Thiruvarur
+1,Kharif,33,Tamil Nadu,333,Madurai,21,Thanjavur
+4,Rabi,33,Tamil Nadu,333,Madurai,21,Thanjavur
+1,Kharif,33,Tamil Nadu,333,Madurai,23,Sivagangai
+1,Kharif,33,Tamil Nadu,333,Madurai,24,Madurai
+4,Rabi,33,Tamil Nadu,333,Madurai,24,Madurai
+1,Kharif,33,Tamil Nadu,333,Madurai,25,Theni
+4,Rabi,33,Tamil Nadu,333,Madurai,25,Theni
+1,Kharif,33,Tamil Nadu,333,Madurai,26,Virudhunagar
+4,Rabi,33,Tamil Nadu,333,Madurai,26,Virudhunagar
+4,Rabi,33,Tamil Nadu,333,Madurai,27,Ramanathapuram
+4,Rabi,33,Tamil Nadu,333,Madurai,28,Thoothukudi
+1,Kharif,33,Tamil Nadu,333,Madurai,29,Tirunelveli
+1,Kharif,33,Tamil Nadu,333,Madurai,30,Kanyakumari
+1,Kharif,33,Tamil Nadu,333,Madurai,37,Tenkasi
+4,Rabi,33,Tamil Nadu,333,Madurai,37,Tenkasi
+1,Kharif,33,Tamil Nadu,333,Madurai,38,Myladuthurai
+4,Rabi,33,Tamil Nadu,333,Madurai,38,Myladuthurai
+1,Kharif,34,Puducherry,332,Chennai,2,Puducherry
+4,Rabi-I,34,Puducherry,332,Chennai,2,Puducherry
+5,Rabi-Ii,34,Puducherry,332,Chennai,2,Puducherry
+1,Kharif,34,Puducherry,332,Chennai,4,Karaikal
+4,Rabi-I,34,Puducherry,332,Chennai,4,Karaikal
+1,Kharif,36,Telangana,361,Hyderabad,1,Adilabad
+1,Kharif,36,Telangana,361,Hyderabad,2,Komaram Bheem
+1,Kharif,36,Telangana,361,Hyderabad,3,Mancherial
+4,Rabi,36,Telangana,361,Hyderabad,4,Nirmal
+1,Kharif,36,Telangana,361,Hyderabad,4,Nirmal
+1,Kharif,36,Telangana,361,Hyderabad,5,Nizamabad
+4,Rabi,36,Telangana,361,Hyderabad,5,Nizamabad
+1,Kharif,36,Telangana,361,Hyderabad,6,Jagtial
+4,Rabi,36,Telangana,361,Hyderabad,6,Jagtial
+1,Kharif,36,Telangana,361,Hyderabad,7,Peddapalli
+4,Rabi,36,Telangana,361,Hyderabad,7,Peddapalli
+1,Kharif,36,Telangana,361,Hyderabad,8,Jayashankar
+1,Kharif,36,Telangana,361,Hyderabad,9,Bhadradri
+1,Kharif,36,Telangana,361,Hyderabad,10,Mahabubabad
+4,Rabi,36,Telangana,361,Hyderabad,10,Mahabubabad
+4,Rabi,36,Telangana,361,Hyderabad,11,Warangal Rural
+1,Kharif,36,Telangana,361,Hyderabad,11,Warangal Rural
+4,Rabi,36,Telangana,361,Hyderabad,12,Hanumakonda
+1,Kharif,36,Telangana,361,Hyderabad,12,Hanumakonda
+1,Kharif,36,Telangana,361,Hyderabad,13,Karimnagar
+4,Rabi,36,Telangana,361,Hyderabad,13,Karimnagar
+4,Rabi,36,Telangana,361,Hyderabad,14,Rajanna
+1,Kharif,36,Telangana,361,Hyderabad,14,Rajanna
+1,Kharif,36,Telangana,361,Hyderabad,15,Kamareddy
+4,Rabi,36,Telangana,361,Hyderabad,15,Kamareddy
+1,Kharif,36,Telangana,361,Hyderabad,16,Sangareddy
+4,Rabi,36,Telangana,361,Hyderabad,17,Medak
+1,Kharif,36,Telangana,361,Hyderabad,17,Medak
+4,Rabi,36,Telangana,361,Hyderabad,18,Siddipet
+1,Kharif,36,Telangana,361,Hyderabad,18,Siddipet
+1,Kharif,36,Telangana,361,Hyderabad,19,Jangaon
+4,Rabi,36,Telangana,361,Hyderabad,19,Jangaon
+4,Rabi,36,Telangana,361,Hyderabad,20,Yadadri
+1,Kharif,36,Telangana,361,Hyderabad,20,Yadadri
+1,Kharif,36,Telangana,361,Hyderabad,23,Rangareddy
+1,Kharif,36,Telangana,361,Hyderabad,24,Vikarabad
+1,Kharif,36,Telangana,361,Hyderabad,25,Mahbubnagar
+4,Rabi,36,Telangana,361,Hyderabad,25,Mahbubnagar
+1,Kharif,36,Telangana,361,Hyderabad,26,Jogulamba
+4,Rabi,36,Telangana,361,Hyderabad,26,Jogulamba
+4,Rabi,36,Telangana,361,Hyderabad,27,Wanaparthy
+1,Kharif,36,Telangana,361,Hyderabad,27,Wanaparthy
+1,Kharif,36,Telangana,361,Hyderabad,28,Nagarkurnool
+4,Rabi,36,Telangana,361,Hyderabad,28,Nagarkurnool
+1,Kharif,36,Telangana,361,Hyderabad,29,Nalgonda
+4,Rabi,36,Telangana,361,Hyderabad,29,Nalgonda
+4,Rabi,36,Telangana,361,Hyderabad,30,Suryapet
+1,Kharif,36,Telangana,361,Hyderabad,30,Suryapet
+1,Kharif,36,Telangana,361,Hyderabad,31,Khammam
+4,Rabi,36,Telangana,361,Hyderabad,31,Khammam
+1,Kharif,36,Telangana,361,Hyderabad,33,Narayanpet
