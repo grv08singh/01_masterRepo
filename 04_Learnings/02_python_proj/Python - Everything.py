@@ -19,7 +19,7 @@ Core SL 1
 ## Open jupyter notebook at a specified path:
 ## Type in Anaconda Prompt
 ## jupyter notebook --notebook-dir="specified_path"
-## jupyter notebook --notebook-dir="D:\05 GIT\08_WS_ML_DL_Project"
+## jupyter notebook --notebook-dir="D:\05 GIT\01_masterRepo\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\33 EPGC - DL - Module 3 Intro to NN Frameworks - Assignment"
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_Docs\04_Learnings\07_self_ml_dl_models"
 ## jupyter notebook --notebook-dir="D:\05 GIT\08_WS_ML_DL_Project"
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\08_WS_ML_DL_Project"
@@ -530,7 +530,7 @@ df['col1'] = pd.DataFrame(oe.fit_transform(df[['col1']]))
 
 # 3.1.3 One Hot Encoding
 from sklearn.preprocessing import OneHotEncoder
-ohe = OneHotEncoder(drop='First', sparse=False, handle_unknown='ignore')
+ohe = OneHotEncoder(drop='First', sparse_output=False, handle_unknown='ignore')
 df['col1'] = pd.DataFrame(ohe.fit_transform(df[['col1']]))
 ## One Hot Encoding - using Pandas [column names retained]
 pd.get_dummies(df,columns=['col1','col2'],drop_first=True)      #OHE for col1 and col2
@@ -1173,6 +1173,8 @@ np.unique(a1)                                                   #unique items fr
 np.expanddims(a1)                                               #converts a 1-d array into 2-d
 np.where(a1>50)                                                 #returns index of items where condition meets
 np.where(a1>50,n,a1)                                            #replace with n where condition meets (condition,ifTRUE,else)
+np.unique(a1)                                                   #returns an array of unique values in a1
+np.unique(a1,return_counts=True)                                #returns two arrays with unique values & their counts in a1 (aggregation)
 np.isin(a1,[x,y,z])                                             #checks if x,y,z exist in a1
 np.in1d(a1, 100)                                                #checks if 100 exist in 1-d a1
 np.clip(a1, a_min=25, a_max=75)                                 #keeps all values of a1 bw 25 and 75
@@ -3694,3 +3696,62 @@ git clone https://github.com/grv08singh/05_selenium_ktk_v1.git
 git clone https://github.com/grv08singh/06_selenium_ktk_v2.git
 git clone https://github.com/grv08singh/07_st_censusDA.git
 git clone https://github.com/grv08singh/01_Docs.git
+
+
+
+
+
+###############################################################################################################
+#### Single Perceptron architecture code from scratch
+###############################################################################################################
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+#sample data
+x1 = 3
+x2 = 2
+y_actual = 17
+
+#feed forward - initializing weights randomly bw 1 & 10
+w1 = np.random.randint(1,10,1)[0]
+w2 = np.random.randint(1,10,1)[0]
+
+#prediction
+y_pred = x1*w1 + x2*w2
+
+#error calculation
+error = (y_actual - y_pred)**2
+
+#back propagation - calculating gradients
+grad_w1 = 2*(y_actual - y_pred)*(-x1)
+grad_w2 = 2*(y_actual - y_pred)*(-x2)
+
+#updating weights using gradients & learning rate
+learning_rate = 0.01
+w1 -= learning_rate*grad_w1
+w2 -= learning_rate*grad_w2
+
+#training for 20 more epochs
+y_pred_history = [y_pred]
+error_history = [error]
+for epoch in range(20):
+    y_pred = x1*w1 + x2*w2
+    y_pred_history.append(y_pred)
+    error = (y_actual - y_pred)**2
+    error_history.append(error)
+    grad_w1 = 2*(y_actual - y_pred)*(-x1)
+    grad_w2 = 2*(y_actual - y_pred)*(-x2)
+    w1 -= learning_rate*grad_w1
+    w2 -= learning_rate*grad_w2
+
+#visualizing error & prediction vs. epochs
+fig,ax = plt.subplots(figsize=(12,4))
+ax.plot(np.arange(21),error_history,marker=".",markersize=10, label="Sum Squared Error", color='red')
+ax.plot(np.arange(21),y_pred_history,marker=".",markersize=10, label="y_pred", color='blue')
+plt.xlabel("Epoch Number")
+plt.title("Cost & Prediction vs. Epoch")
+plt.legend()
+plt.tight_layout()
+plt.show()
