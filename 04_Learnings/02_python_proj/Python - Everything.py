@@ -20,10 +20,10 @@ Core SL 1
 ## Type in Anaconda Prompt
 ## jupyter notebook --notebook-dir="specified_path"
 ## jupyter notebook --notebook-dir="D:\05 GIT\01_masterRepo\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\33 EPGC - DL - Module 3 Intro to NN Frameworks - Assignment"
-## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_Docs\04_Learnings\07_self_ml_dl_models"
+## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_masterRepo\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\33 EPGC - DL - Module 3 Intro to NN Frameworks - Assignment"
 ## jupyter notebook --notebook-dir="D:\05 GIT\08_WS_ML_DL_Project"
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\08_WS_ML_DL_Project"
-## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_Docs\07_nso_work"
+## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_masterRepo\04_Learnings\07_nso_work"
 ## C:\Users\grv06\AppData\Roaming\Code\User\settings.json
 
 #Create Python env using conda
