@@ -2,16 +2,16 @@
 <NotepadPlus>
     <FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" dlgAlwaysVisible="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="no" fifProjectPanel1="no" fifProjectPanel2="no" fifProjectPanel3="no" regexBackward4PowerUser="no" bookmarkLine="no" purge="no">
         <Filter name="" />
+        <Find name="numpy" />
+        <Find name="numpy ever" />
+        <Find name="fig,ax" />
+        <Find name="np.random" />
+        <Find name="dataframe" />
         <Find name="document.ready" />
         <Find name="to_csv" />
         <Find name="_path" />
         <Find name="=" />
         <Find name="scroll" />
-        <Find name="selenium" />
-        <Find name="warning" />
-        <Find name="max_depth=None, max_features=None," />
-        <Find name="max_features=None" />
-        <Find name="max_features=log2" />
         <Replace name="" />
         <Replace name=":" />
         <Replace name=" " />
@@ -21,9 +21,9 @@
     <History nbMaxFile="10" inSubMenu="no" customLength="-1">
         <File filename="C:\Users\grv06\Desktop\git_push.bat" />
         <File filename="C:\Users\grv06\Desktop\git_pull.bat" />
+        <File filename="C:\Users\grv06\OneDrive\Desktop\Restart.bat" />
         <File filename="C:\Users\grv06\OneDrive\Desktop\git_push.bat" />
         <File filename="C:\Users\grv06\OneDrive\Desktop\git_pull.bat" />
-        <File filename="C:\Users\grv06\OneDrive\Desktop\Restart.bat" />
     </History>
     <ProjectPanels>
         <ProjectPanel id="0" workSpaceFile="" />
@@ -42,7 +42,7 @@
         <GUIConfig name="UserDefineDlg" position="undocked">hide</GUIConfig>
         <GUIConfig name="TabSetting" replaceBySpace="no" size="4" backspaceUnindent="no" />
         <GUIConfig name="AppPosition" x="864" y="41" width="738" height="943" isMaximized="yes" />
-        <GUIConfig name="FindWindowPosition" left="480" top="243" right="1217" bottom="685" isLessModeOn="no" />
+        <GUIConfig name="FindWindowPosition" left="1116" top="76" right="1853" bottom="518" isLessModeOn="no" />
         <GUIConfig name="FinderConfig" wrappedLines="no" purgeBeforeEverySearch="no" showOnlyOneEntryPerFoundLine="yes" />
         <GUIConfig name="noUpdate" intervalDays="15" nextUpdateDate="20080426" autoUpdateMode="0">yes</GUIConfig>
         <GUIConfig name="Auto-detection">yes</GUIConfig>
