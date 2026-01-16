@@ -3755,3 +3755,100 @@ plt.title("Cost & Prediction vs. Epoch")
 plt.legend()
 plt.tight_layout()
 plt.show()
+
+
+
+
+
+
+###############################################################################################################
+#### ANN Model
+###############################################################################################################
+import tensorflow as tf
+from tensorflow import keras
+from keras import Sequential
+from keras.layers import Dense, Flatten, Dropout
+from keras.optimizers import Adam
+from keras.regularizers import l2
+
+
+###############################
+#creating ANN model : method_1
+###############################
+l2_rate = 0.001
+model = Sequential([
+    Flatten(input_shape=X_train_normalized.shape[1:]),
+    Dense(128,activation='relu',kernel_regularizer=l2(l2_rate)),
+    Dropout(0.2),
+    Dense(128,activation='relu',kernel_regularizer=l2(l2_rate)),
+    Dropout(0.2),
+    Dense(10,activation='softmax')
+])
+model.summary()
+
+#compiling model
+model.compile(optimizer = 'adam',
+    loss = 'sparse_categorical_crossentropy',
+    metrics = ['accuracy'])
+
+#training model
+history = model.fit(X_train_normalized,
+    y_train, batch_size=32, epochs=50, 
+    validation_split=0.2)
+
+
+###############################
+#creating ANN model : method_2
+###############################
+model = Sequential()
+model.add(Flatten(input_shape=X_train_normalized.shape[1:]))
+model.add(Dense(128,activation='relu'))
+model.add(Dense(128,activation='relu'))
+model.add(Dense(10,activation='softmax'))
+model.summary()
+
+#compiling model
+model.compile(optimizer = 'adam',
+    loss = 'sparse_categorical_crossentropy',
+    metrics = ['accuracy'])
+
+#training model
+history = model.fit(X_train_normalized,
+    y_train, batch_size=32, epochs=50, 
+    validation_split=0.2)
+
+
+
+###############################
+#creating ANN model : method_3
+###############################
+model = Sequential()
+model.add(Flatten(input_shape = X_train_normalized.shape[1:]))              #input layer
+model.add(Dense(units = 128,activation = keras.activations.relu))           #1st hidden layer
+model.add(Dense(units = 128,activation = keras.activations.relu))           #2nd hidden layer
+model.add(Dense(units = 10,activation = keras.activations.softmax))         #output layer
+model.summary()
+
+#compiling model
+adam_optimizer = Adam(learning_rate = 0.01)                                 #initializing optimizers
+model.compile(optimizer = adam_optimizer,
+    loss = keras.losses.sparse_categorical_crossentropy,
+    metrics = ['accuracy']
+)
+
+#training model
+history = model.fit(X_train_normalized, 
+    y_train, batch_size=32, epochs=20, 
+    validation_data=(X_test_normalized, y_test)
+)
+
+
+
+
+
+
+
+
+
+
+
