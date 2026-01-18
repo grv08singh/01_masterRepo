@@ -19,7 +19,7 @@ Core SL 1
 ## Open jupyter notebook at a specified path:
 ## Type in Anaconda Prompt
 ## jupyter notebook --notebook-dir="specified_path"
-## jupyter notebook --notebook-dir="D:\05 GIT\01_masterRepo\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\33 EPGC - DL - Module 3 Intro to NN Frameworks - Assignment"
+## jupyter notebook --notebook-dir="D:\05 GIT\01_masterRepo\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\34 EPGC - DL - Module 4 Intro to Fully Connected NN - Assignment"
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_masterRepo\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\33 EPGC - DL - Module 3 Intro to NN Frameworks - Assignment"
 ## jupyter notebook --notebook-dir="D:\05 GIT\08_WS_ML_DL_Project"
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\08_WS_ML_DL_Project"
