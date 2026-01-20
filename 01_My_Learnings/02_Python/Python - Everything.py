@@ -27,6 +27,20 @@ After setting KAGGLE_API_TOKEN, you can use the client as follows:
 
 
 
+import os
+os.environ['KAGGLE_USERNAME'] = 'grv08singh'                        #kaggle username
+os.environ['KAGGLE_KEY'] = 'ffaf1f8f5a0a37757293ea35a2352255'       #kaggle password key
+
+from kaggle.api.kaggle_api_extended import KaggleApi
+api = KaggleApi()
+api.authenticate()
+
+dataset_slug = 'salader/dogsvscats'           #kaggle dataset online path
+download_path = 'D:/Downloads/data'           #local machine download path
+api.dataset_download_files(dataset=dataset_slug, path=download_path, unzip=True)
+
+
+
 
 
 ###############################################################################################################
@@ -36,7 +50,7 @@ After setting KAGGLE_API_TOKEN, you can use the client as follows:
 ## Open jupyter notebook at a specified path:
 ## Type in Anaconda Prompt
 ## jupyter notebook --notebook-dir="specified_path"
-## jupyter notebook --notebook-dir="D:\05 GIT\01_masterRepo\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\34 EPGC - DL - Module 4 Intro to Fully Connected NN - Assignment"
+## jupyter notebook --notebook-dir="D:\05 GIT\01_masterRepo\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\35 EPGC - DL - Module 5 Intro to Convolution NN - Assignment"
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_MasterRepo\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\35 EPGC - DL - Module 5 Intro to Convolution NN - Assignment"
 ## jupyter notebook --notebook-dir="D:\05 GIT\08_WS_ML_DL_Project"
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\08_WS_ML_DL_Project"
