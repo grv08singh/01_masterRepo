@@ -2,17 +2,17 @@
 <NotepadPlus>
     <FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" dlgAlwaysVisible="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="no" fifProjectPanel1="no" fifProjectPanel2="no" fifProjectPanel3="no" regexBackward4PowerUser="no" bookmarkLine="no" purge="no">
         <Filter name="" />
+        <Find name="fig,ax" />
+        <Find name="groupby" />
+        <Find name="np.groupby" />
+        <Find name="numpy - ev" />
+        <Find name="sns.bar" />
+        <Find name="sns.plot" />
+        <Find name="&#x25CF;" />
+        <Find name="np.arg" />
         <Find name="numpy" />
         <Find name="numpy ever" />
-        <Find name="fig,ax" />
-        <Find name="np.random" />
-        <Find name="dataframe" />
-        <Find name="document.ready" />
-        <Find name="to_csv" />
-        <Find name="_path" />
-        <Find name="=" />
-        <Find name="scroll" />
-        <Replace name="" />
+        <Replace name="*" />
         <Replace name=":" />
         <Replace name=" " />
         <Replace name=" 3." />
@@ -24,6 +24,7 @@
         <File filename="C:\Users\grv06\OneDrive\Desktop\Restart.bat" />
         <File filename="C:\Users\grv06\OneDrive\Desktop\git_push.bat" />
         <File filename="C:\Users\grv06\OneDrive\Desktop\git_pull.bat" />
+        <File filename="D:\05 GIT\01_masterRepo\kaggle.json" />
     </History>
     <ProjectPanels>
         <ProjectPanel id="0" workSpaceFile="" />

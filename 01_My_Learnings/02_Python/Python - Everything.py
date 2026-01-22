@@ -50,7 +50,7 @@ api.dataset_download_files(dataset=dataset_slug, path=download_path, unzip=True)
 ## Open jupyter notebook at a specified path:
 ## Type in Anaconda Prompt
 ## jupyter notebook --notebook-dir="specified_path"
-## jupyter notebook --notebook-dir="D:\05 GIT\01_masterRepo\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\35 EPGC - DL - Module 5 Intro to Convolution NN - Assignment"
+## jupyter notebook --notebook-dir="D:\05 GIT\01_masterRepo\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\36 EPGC - DL - Module 6 Post Modeling Activities - Assignment"
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_MasterRepo\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\35 EPGC - DL - Module 5 Intro to Convolution NN - Assignment"
 ## jupyter notebook --notebook-dir="D:\05 GIT\08_WS_ML_DL_Project"
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\08_WS_ML_DL_Project"
@@ -85,6 +85,21 @@ python -m ipykernel install --user --name=<dummy_env>
 # pip install -r requirements.txt
 
 
+######creating a GPU enabled env in cmd
+conda create --name tf-gpu python=3.9 -y
+conda activate tf-gpu
+conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0 -y
+pip install "tensorflow<2.11"
+conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+pip install jupyter notebook ipykernel
+python -m ipykernel install --user --name=tf-gpu --display-name "TensorFlow-GPU"
+
+import tensorflow as tf
+print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
+import torch
+print(torch.cuda.is_available())
+
+
 
 pip install numpy
 pip install pandas
@@ -116,7 +131,7 @@ pip install opencv-python
 pip install openpyxl
 pip install pyodbc
 pip install kaggle
-
+conda install -c conda-forge opencv
 
 
 
@@ -3875,9 +3890,22 @@ history = model.fit(X_train_normalized,
 
 
 
-###############################
-#creating CNN model : method
-###############################
+#################################################
+#creating CNN model : without data augmentation
+#################################################
+import numpy as np
+import pandas as pd
+import json
+import os
+from pathlib import Path
+from kaggle.api.kaggle_api_extended import KaggleApi
+import tensorflow as tf
+from tensorflow import keras
+from keras import Sequential
+from keras.layers import Conv2D, MaxPooling2D, BatchNormalization, Flatten, Dense, Dropout
+import warnings
+warnings.filterwarnings('ignore')
+
 train_ds = keras.utils.image_dataset_from_directory(
     directory = '/kaggle/input/dogsvscats/train',
     labels = 'inferred',
@@ -3926,9 +3954,131 @@ model.summary()
 
 
 model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
-history = model.fit(train_ds, epochs = 10, validation_data = validation_ds)
+history = model.fit(
+    x = train_ds, 
+    epochs = 10, 
+    validation_data = validation_ds
+)
+
+#Saving Trained Model
+model.save("cnn_model.keras")
 
 
+
+
+#################################################
+#creating CNN model : with data augmentation
+#################################################
+from keras.preprocessing import image
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+#Data Augmentation
+train_datagen = ImageDataGenerator(
+    rotation_range = 30,
+    rescale = 1/255,
+    shear_range = 0.2,
+    width_shift_range = 0.2,
+    height_shift_range = 0.2,
+    zoom_range = 0.2,
+    horizontal_flip = True
+)
+test_datagen = ImageDataGenerator(rescale = 1/255)
+
+batch_size = 16
+train_generator = train_datagen.flow_from_directory(
+    directory = 'D:/Downloads/data/train',
+    target_size = (256,256),
+    batch_size = batch_size,
+    class_mode = 'binary'
+)
+test_generator = test_datagen.flow_from_directory(
+    directory = 'D:/Downloads/data/test',
+    target_size = (256,256),
+    batch_size = batch_size,
+    class_mode = 'binary'
+)
+
+#Training model
+history = model.fit(
+    x = train_generator,
+    steps_per_epoch = len(train_generator),
+    validation_data = test_generator,
+    validation_steps=len(test_generator),
+    epochs = 50
+)
+
+
+
+#################################################
+#Prediction using CNN model
+#################################################
+paths = [
+    "D:/Downloads/data/new_images/cat_1.jpg"
+    ,"D:/Downloads/data/new_images/cat_2.jpg"
+    ,"D:/Downloads/data/new_images/cat_3.jpg"
+    ,"D:/Downloads/data/new_images/cat_4.jpg"
+    ,"D:/Downloads/data/new_images/cat_5.jpg"
+    ,"D:/Downloads/data/new_images/dog_1.jpg"
+    ,"D:/Downloads/data/new_images/dog_2.jpg"
+    ,"D:/Downloads/data/new_images/dog_3.jpg"
+    ,"D:/Downloads/data/new_images/dog_4.jpg"
+    ,"D:/Downloads/data/new_images/dog_5.jpg"
+]
+
+for image_path in paths:
+    img = image.load_img(image_path, target_size=(256,256))
+    plt.figure(figsize=(1,1))
+    plt.imshow(img)
+    plt.show()
+    
+    img_arr = image.img_to_array(img)
+    img_arr = np.expand_dims(img_arr, axis=0)
+    img_arr_scaled = img_arr/255.
+    
+    prediction = model.predict(img_arr_scaled)
+    confidence = prediction[0][0]
+    
+    if confidence > 0.5:
+        class_name = 'Dog'
+        confidence = confidence
+    else:
+        class_name = 'Cat'
+        confidence = 1 - confidence
+    
+    print(f"Predicted Class: {class_name} with Confidence Level: {confidence:.2%}")
+
+
+
+
+
+
+
+#################################################
+#creating images with data augmentation
+#################################################
+from keras.preprocessing import image
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+img = image.load_img("D:\Downloads\data\train\dogs\dog.99.jpg", target_size=(200,200))
+datagen = ImageDataGenerator(
+    rotation_range = 30,
+    rescale = 1/255,
+    shear_range = 0.2,
+    width_shift_range = 0.2,
+    height_shift_range = 0.2,
+    zoom_range = 0.2,
+    horizontal_flip = True
+)
+img_arr = image.img_to_array(img)
+img_arr.shape                       #output = (200,200,3)
+
+input_batch = img_arr.reshape(1,200,200,3)
+
+i=0
+for output in datagen.flow(input_batch, batch_size=1, save_to_dir='D:/Downloads/data/aug'):
+    i += 1
+    if i == 10:                     #create only 10 images
+        break
 
 
 
