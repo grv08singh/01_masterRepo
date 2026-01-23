@@ -3810,89 +3810,6 @@ plt.show()
 ###############################################################################################################
 #### ANN Model
 ###############################################################################################################
-import tensorflow as tf
-from tensorflow import keras
-from keras import Sequential
-from keras.layers import Conv2D, MaxPooling2D, BatchNormalization, Flatten, Dense, Dropout
-from keras.optimizers import Adam
-from keras.regularizers import l2
-
-
-###############################
-#creating ANN model : method_1
-###############################
-l2_rate = 0.001
-model = Sequential([
-    Flatten(input_shape=X_train_normalized.shape[1:]),
-    Dense(128,activation='relu',kernel_regularizer=l2(l2_rate)),
-    Dropout(0.2),
-    Dense(128,activation='relu',kernel_regularizer=l2(l2_rate)),
-    Dropout(0.2),
-    Dense(10,activation='softmax')
-])
-model.summary()
-
-#compiling model
-model.compile(optimizer = 'adam',
-    loss = 'sparse_categorical_crossentropy',
-    metrics = ['accuracy'])
-
-#training model
-history = model.fit(X_train_normalized,
-    y_train, batch_size=32, epochs=50, 
-    validation_split=0.2)
-
-
-###############################
-#creating ANN model : method_2
-###############################
-model = Sequential()
-model.add(Flatten(input_shape=X_train_normalized.shape[1:]))
-model.add(Dense(128,activation='relu'))
-model.add(Dense(128,activation='relu'))
-model.add(Dense(10,activation='softmax'))
-model.summary()
-
-#compiling model
-model.compile(optimizer = 'adam',
-    loss = 'sparse_categorical_crossentropy',
-    metrics = ['accuracy'])
-
-#training model
-history = model.fit(X_train_normalized,
-    y_train, batch_size=32, epochs=50, 
-    validation_split=0.2)
-
-
-
-###############################
-#creating ANN model : method_3
-###############################
-model = Sequential()
-model.add(Flatten(input_shape = X_train_normalized.shape[1:]))              #input layer
-model.add(Dense(units = 128,activation = keras.activations.relu))           #1st hidden layer
-model.add(Dense(units = 128,activation = keras.activations.relu))           #2nd hidden layer
-model.add(Dense(units = 10,activation = keras.activations.softmax))         #output layer
-model.summary()
-
-#compiling model
-adam_optimizer = Adam(learning_rate = 0.01)                                 #initializing optimizers
-model.compile(optimizer = adam_optimizer,
-    loss = keras.losses.sparse_categorical_crossentropy,
-    metrics = ['accuracy']
-)
-
-#training model
-history = model.fit(X_train_normalized, 
-    y_train, batch_size=32, epochs=20, 
-    validation_data=(X_test_normalized, y_test)
-)
-
-
-
-#################################################
-#creating CNN model : without data augmentation
-#################################################
 import numpy as np
 import pandas as pd
 import json
@@ -3901,10 +3818,231 @@ from pathlib import Path
 from kaggle.api.kaggle_api_extended import KaggleApi
 import tensorflow as tf
 from tensorflow import keras
+from keras.datasets import fashion_mnist
+from keras.utils import to_categorical
+from keras.callbacks import TensorBoard, EarlyStopping, ReduceLROnPlateau
 from keras import Sequential
-from keras.layers import Conv2D, MaxPooling2D, BatchNormalization, Flatten, Dense, Dropout
+from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization, Activation
 import warnings
 warnings.filterwarnings('ignore')
+print(f"TensorFlow Version: {tf.__version__}")
+print(f"GPU Available: {tf.config.list_physical_devices('GPU')}")
+from keras.optimizers import Adam
+from keras.regularizers import l2
+
+###############################
+#creating ANN model : method_1
+###############################
+model = Sequential([
+    Flatten(input_shape=X_train_normalized.shape[1:]),
+    Dense(128,activation='relu',kernel_regularizer=keras.regularizers.l2(0.001)),
+    Dropout(0.2),
+    Dense(128,activation='relu',kernel_regularizer=keras.regularizers.l2(0.001)),
+    Dropout(0.2),
+    Dense(10,activation='softmax')
+])
+
+###############################
+#creating ANN model : method_2
+###############################
+model = Sequential()
+model.add(Flatten(input_shape=X_train_normalized.shape[1:]))
+model.add(Dense(128,activation='relu',kernel_regularizer=l2(0.001)))
+model.add(Dropout(0.2))
+model.add(Dense(128,activation='relu',kernel_regularizer=l2(0.001)))
+model.add(Dropout(0.2))
+model.add(Dense(10,activation='softmax'))
+
+###############################
+#creating ANN model : method_3
+###############################
+model = Sequential()
+model.add(Flatten(input_shape = X_train_normalized.shape[1:]))              #input layer
+model.add(Dense(units = 128,
+                activation = keras.activations.relu,
+                kernel_regularizer = keras.regularizers.l2(0.001)
+    )
+)
+model.add(Dense(units = 128,
+                activation = keras.activations.relu,
+                kernel_regularizer = keras.regularizers.l2(0.001)
+    )
+)
+model.add(Dense(units = 10,activation = keras.activations.softmax))         #output layer
+model.summary()
+
+###############################
+#compiling ANN model : method_1
+###############################
+model.compile(optimizer = 'adam',
+    loss = 'sparse_categorical_crossentropy',
+    metrics = ['accuracy'])
+
+###############################
+#compiling ANN model : method_2
+###############################
+model.compile(optimizer = keras.optimizers.Adam(learning_rate = 0.01),
+    loss = keras.losses.sparse_categorical_crossentropy,
+    metrics = ['accuracy']
+)
+
+#train the model
+history = model.fit(
+    X_train_normalized, 
+    y_train,
+    batch_size=32,
+    epochs=20, 
+    validation_data=(X_test_normalized, y_test)
+)
+
+
+
+
+
+
+#################################################
+#creating CNN model : MNIST Fashion Dataset
+#################################################
+(X_train, y_train),(X_test, y_test) = fashion_mnist.load_data()
+
+#show random images with their label
+n = 15
+idx = np.random.randint(1,X_train.shape[0],n)
+fig,ax = plt.subplots(1,n,figsize=(15,2))
+for i,j in enumerate(idx):
+    ax[i].imshow(X_train[j],cmap='gray')
+    ax[i].set_title(y_train[j])
+    ax[i].axis('off')
+plt.tight_layout()
+plt.show()
+
+#Normalize Input
+X_train_norm = X_train/255
+X_test_norm = X_test/255
+
+#Convert output labels to categorical format (One Host Encoding)
+y_train_cat = to_categorical(y_train, 10)
+y_test_cat = to_categorical(y_test, 10)
+
+#Build the CNN Model
+model = Sequential()
+
+model.add(Conv2D(filters=64, kernel_size=(3,3), padding='valid', input_shape=(28, 28, 1)))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(2,2), strides=2))
+
+model.add(Conv2D(filters=64, kernel_size=(3,3), padding='valid'))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(2,2), strides=2))
+
+model.add(Conv2D(filters=64, kernel_size=(3,3), padding='valid'))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(2,2), strides=2))
+
+model.add(Flatten())
+
+model.add(Dense(512))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(0.2))
+
+model.add(Dense(256))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(0.2))
+
+model.add(Dense(10, activation='softmax'))
+
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+model.summary()
+
+#Create Callbacks [Optional]
+tensorboard_callback = TensorBoard(
+    log_dir="logs/",
+    histogram_freq = 1, #one histogram every epoch
+    write_graph = True,
+    update_freq = 'epoch'
+)
+
+early_stopping_callback = EarlyStopping(
+    monitor = 'val_loss',
+    patience = 10,
+    restore_best_weights = True,
+    verbose = 1
+)
+
+lr_reduce_callback = ReduceLROnPlateau(
+    monitor = 'val_loss',
+    factor = 0.5,
+    patience = 10,
+    min_lr = 1e-5,
+    verbose = 1,
+)
+
+callbacks = [tensorboard_callback, early_stopping_callback, lr_reduce_callback]
+
+#Train Model
+history = model.fit(
+    x = X_train_norm,
+    y = y_train_cat,
+    epochs = 100,
+    validation_data = (X_test_norm, y_test_cat),
+    callbacks = callbacks
+)
+
+#Evaluate Model
+train_loss = history.history['loss']
+val_loss = history.history['val_loss']
+train_accuracy = history.history['accuracy']
+val_accuracy = history.history['val_accuracy']
+
+fig,ax = plt.subplots(1,2,figsize=(12,3))
+ax[0].plot(train_loss, label='Training Loss')
+ax[0].plot(val_loss, label='Test Loss')
+ax[0].set_xlabel("Epoch")
+ax[0].set_ylabel("Loss")
+ax[0].legend()
+ax[0].grid(True)
+
+ax[1].plot(train_accuracy, label='Training Accuracy')
+ax[1].plot(val_accuracy, label='Test Accuracy')
+ax[1].set_xlabel("Epoch")
+ax[1].set_ylabel("Accuracy")
+ax[1].legend()
+ax[1].grid(True)
+
+plt.tight_layout()
+plt.show()
+
+#Analyze Training Process using TensorBoard
+%load_ext tensorboard           #to load initially
+#%reload_ext tensorboard        #to reload after process already started
+%tensorboard --logdir logs/     #provide the log directory
+
+
+#Save the trained model, learned weights & model's architecture
+model.save("my_model.keras")
+model.save_weights("my_model.weights.h5")
+with open("my_model_architecture.json", 'w') as f:
+    f.write(model.to_json())
+
+
+
+
+
+
+
+
+
+
+#################################################
+#create CNN model : Cat vs. Dog Classifier,
+#without data augmentation
+#################################################
+
 
 train_ds = keras.utils.image_dataset_from_directory(
     directory = '/kaggle/input/dogsvscats/train',
@@ -3967,7 +4105,8 @@ model.save("cnn_model.keras")
 
 
 #################################################
-#creating CNN model : with data augmentation
+#creating CNN model : Cat vs. Dog Classifier,
+#with data augmentation
 #################################################
 from keras.preprocessing import image
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -4010,7 +4149,7 @@ history = model.fit(
 
 
 #################################################
-#Prediction using CNN model
+#Prediction on unseen images using CNN model
 #################################################
 paths = [
     "D:/Downloads/data/new_images/cat_1.jpg"
