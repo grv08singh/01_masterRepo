@@ -1,16 +1,10 @@
-# AWS
+# AWS : 
 # Acc ID: 676206921654
-# Username: grv08singh@gmail.com
-# pw: 
-# 
+# Username: grv08singh@gmail.com / 
 
-#E97550
-#1D78B7
-#0F5989
-#FACE0F
+#Power BI: Divya@intellipaatsoft.onmicrosoft.com / Hadoop#4585
 
-IBDP Math
-Core SL 1
+#E97550 #1D78B7 #0F5989 #FACE0F
 
 ###############################################################################################################
 #### Kaggle API
@@ -50,7 +44,7 @@ api.dataset_download_files(dataset=dataset_slug, path=download_path, unzip=True)
 ## Open jupyter notebook at a specified path:
 ## Type in Anaconda Prompt
 ## jupyter notebook --notebook-dir="specified_path"
-## jupyter notebook --notebook-dir="D:\05 GIT\01_masterRepo\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\36 EPGC - DL - Module 6 Post Modeling Activities - Assignment"
+## jupyter notebook --notebook-dir="D:\05 GIT\01_masterRepo\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\39 EPGC - DL - Intro to NLP - Assignment"
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_MasterRepo\02_EPGC_Intellipaat\03 EPGC - Mandatory Assignments\35 EPGC - DL - Module 5 Intro to Convolution NN - Assignment"
 ## jupyter notebook --notebook-dir="D:\05 GIT\08_WS_ML_DL_Project"
 ## jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\08_WS_ML_DL_Project"
@@ -138,18 +132,8 @@ conda install -c conda-forge opencv
 
 
 ###############################################################################################################
-#### Deep Learning (DL)
+#### Python Image Library (PIL)
 ###############################################################################################################
-# Deep Learning Project (Predict handwritten digits):
-# 1) Recognizing handwritten digits in training data
-import os
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-os.getcwd() #get the current working directory
-os.listdir() #list the items in cwd
 
 from PIL import Image #calling Pillow Library (PIL) and then loading the function/method Image
 image_path = r"C:\Users\think\OneDrive\TRAINING\INTELLIPAAT\DEEP LEARNING\09. AI and DL IITR-07Sep2025(M)\number_7.png"
@@ -3808,7 +3792,7 @@ plt.show()
 
 
 ###############################################################################################################
-#### ANN Model
+#### Artificial Neural Networks (ANN) - Deep Learning (DL)
 ###############################################################################################################
 import numpy as np
 import pandas as pd
@@ -3825,10 +3809,13 @@ from keras import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization, Activation
 import warnings
 warnings.filterwarnings('ignore')
-print(f"TensorFlow Version: {tf.__version__}")
-print(f"GPU Available: {tf.config.list_physical_devices('GPU')}")
 from keras.optimizers import Adam
 from keras.regularizers import l2
+
+print(f"TensorFlow Version: {tf.__version__}")
+print(f"GPU Available: {tf.config.list_physical_devices('GPU')}")
+os.getcwd() #get the current working directory
+os.listdir() #list the items in cwd
 
 ###############################
 #creating ANN model : method_1
@@ -3891,7 +3878,7 @@ history = model.fit(
     X_train_normalized, 
     y_train,
     batch_size=32,
-    epochs=20, 
+    epochs=20,
     validation_data=(X_test_normalized, y_test)
 )
 
@@ -3900,9 +3887,9 @@ history = model.fit(
 
 
 
-#################################################
-#creating CNN model : MNIST Fashion Dataset
-#################################################
+###############################################################################################################
+#create CNN model : MNIST Fashion Dataset
+###############################################################################################################
 (X_train, y_train),(X_test, y_test) = fashion_mnist.load_data()
 
 #show random images with their label
@@ -3920,7 +3907,7 @@ plt.show()
 X_train_norm = X_train/255
 X_test_norm = X_test/255
 
-#Convert output labels to categorical format (One Host Encoding)
+#Convert output labels to categorical format (One Hot Encoding)
 y_train_cat = to_categorical(y_train, 10)
 y_test_cat = to_categorical(y_test, 10)
 
@@ -3960,14 +3947,14 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accur
 model.summary()
 
 #Create Callbacks [Optional]
-tensorboard_callback = TensorBoard(
+tb_callback = TensorBoard(
     log_dir="logs/",
     histogram_freq = 1, #one histogram every epoch
     write_graph = True,
     update_freq = 'epoch'
 )
 
-early_stopping_callback = EarlyStopping(
+es_callback = EarlyStopping(
     monitor = 'val_loss',
     patience = 10,
     restore_best_weights = True,
@@ -3982,15 +3969,13 @@ lr_reduce_callback = ReduceLROnPlateau(
     verbose = 1,
 )
 
-callbacks = [tensorboard_callback, early_stopping_callback, lr_reduce_callback]
-
 #Train Model
 history = model.fit(
     x = X_train_norm,
     y = y_train_cat,
     epochs = 100,
     validation_data = (X_test_norm, y_test_cat),
-    callbacks = callbacks
+    callbacks = [tb_callback, es_callback, lr_reduce_callback]
 )
 
 #Evaluate Model
@@ -4045,7 +4030,8 @@ with open("my_model_architecture.json", 'w') as f:
 
 
 train_ds = keras.utils.image_dataset_from_directory(
-    directory = '/kaggle/input/dogsvscats/train',
+    #directory = '/kaggle/input/dogsvscats/train',
+    directory = 'D:/Downloads/data/train',
     labels = 'inferred',
     label_mode = 'int',
     batch_size = 32,
@@ -4053,7 +4039,8 @@ train_ds = keras.utils.image_dataset_from_directory(
 )
 
 validation_ds = keras.utils.image_dataset_from_directory(
-    directory = '/kaggle/input/dogsvscats/test',
+    #directory = '/kaggle/input/dogsvscats/test',
+    directory = 'D:/Downloads/data/test',
     labels = 'inferred',
     label_mode = 'int',
     batch_size = 32,
@@ -4082,10 +4069,17 @@ model.add(BatchNormalization())
 model.add(MaxPooling2D(pool_size = (2,2), strides = 2, padding = 'valid'))
 
 model.add(Flatten())
-model.add(Dense(128, activation = 'relu'))
-model.add(Dropout(.01))
-model.add(Dense(64, activation = 'relu'))
-model.add(Dropout(.01))
+
+model.add(Dense(128))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(0.2))
+
+model.add(Dense(64))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(0.2))
+
 model.add(Dense(1, activation = 'sigmoid'))
 
 model.summary()
@@ -4185,6 +4179,184 @@ for image_path in paths:
         confidence = 1 - confidence
     
     print(f"Predicted Class: {class_name} with Confidence Level: {confidence:.2%}")
+)
+
+
+
+
+
+
+###############################################################################################################
+#create CNN model : Learn from pre-built models (VGG16)
+###############################################################################################################
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import os
+from pathlib import Path
+from kaggle.api.kaggle_api_extended import KaggleApi
+
+import tensorflow as tf
+from tensorflow import keras
+from keras import Sequential
+
+from keras.preprocessing import image
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from keras.layers import Flatten, Dense, Dropout, BatchNormalization, Activation
+from keras.applications.vgg16 import VGG16
+
+
+import warnings as wr
+wr.filterwarnings('ignore')
+
+#downloading data from kaggle.
+kaggle_json_path = Path.home() / ".kaggle" / "kaggle.json"
+with open(kaggle_json_path, "r") as f:
+    creds = json.load(f)
+
+os.environ["KAGGLE_USERNAME"] = creds["username"]
+os.environ["KAGGLE_KEY"] = creds["key"]
+
+api = KaggleApi()
+api.authenticate()
+
+dataset_slug = 'salader/dogsvscats'           #kaggle dataset online path
+download_path = 'D:/Downloads/data'           #local machine download path
+api.dataset_download_files(dataset=dataset_slug, path=download_path, unzip=True)
+
+#Utilizing VGG16 convolution base
+conv_base = VGG16(
+    weights = 'imagenet',
+    include_top = False,
+    input_shape = (150,150,3)
+)
+
+conv_base.summary()
+
+#loading data
+train_ds = keras.utils.image_dataset_from_directory(
+    directory = 'D:/Downloads/data/train',
+    labels = 'inferred',
+    label_mode = 'int',
+    batch_size = 32,
+    image_size = (150,150)
+)
+
+test_ds = keras.utils.image_dataset_from_directory(
+    directory = 'D:/Downloads/data/test',
+    labels = 'inferred',
+    label_mode = 'int',
+    batch_size = 32,
+    image_size = (150,150)
+)
+
+#Data Augmentation
+train_datagen = ImageDataGenerator(
+    rotation_range = 40,
+    rescale = 1/255,
+    shear_range = 0.2,
+    width_shift_range = 0.2,
+    height_shift_range = 0.2,
+    zoom_range = 0.2,
+    horizontal_flip = True
+)
+test_datagen = ImageDataGenerator(rescale = 1/255)
+
+train_generator = train_datagen.flow_from_directory(
+    directory = 'D:/Downloads/data/train',
+    target_size = (150,150),
+    batch_size = 32,
+    class_mode = 'binary'
+)
+test_generator = test_datagen.flow_from_directory(
+    directory = 'D:/Downloads/data/test',
+    target_size = (150,150),
+    batch_size = 32,
+    class_mode = 'binary'
+)
+
+#build model
+model = Sequential()
+
+model.add(conv_base)
+model.add(Flatten())
+
+model.add(Dense(256))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(0.2))
+
+model.add(Dense(128))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(0.2))
+
+model.add(Dense(1, activation='sigmoid'))
+
+model.summary()
+
+#freeze convolution base weights/biases
+conv_base.trainable = False
+model.summary()
+
+#compile
+model.compile(optimizer='sgd', loss='binary_crossentropy', metrics=['accuracy'])
+
+#Train
+history = model.fit(
+    train_generator,
+    epochs = 20,
+    validation_data = test_generator
+)
+
+#Evaluate Accuracy
+train_acc = history.history['accuracy']
+test_acc = history.history['val_accuracy']
+
+plt.figure(figsize=(15,3))
+plt.plot(train_acc, label="Training Accuracy")
+plt.plot(test_acc, label="Test Accuracy")
+plt.xlabel("Epoch")
+plt.ylabel("Accuracy")
+plt.legend()
+plt.show()
+
+#make a system to predict single image/batch of images
+paths = [
+    "D:/Downloads/data/new_images/cat_1.jpg"
+    ,"D:/Downloads/data/new_images/cat_2.jpg"
+    ,"D:/Downloads/data/new_images/cat_3.jpg"
+    ,"D:/Downloads/data/new_images/cat_4.jpg"
+    ,"D:/Downloads/data/new_images/cat_5.jpg"
+    ,"D:/Downloads/data/new_images/dog_1.jpg"
+    ,"D:/Downloads/data/new_images/dog_2.jpg"
+    ,"D:/Downloads/data/new_images/dog_3.jpg"
+    ,"D:/Downloads/data/new_images/dog_4.jpg"
+    ,"D:/Downloads/data/new_images/dog_5.jpg"
+]
+
+for image_path in paths:
+    img = image.load_img(image_path, target_size=(150,150))
+    plt.figure(figsize=(1,1))
+    plt.imshow(img)
+    plt.show()
+
+    img_arr = image.img_to_array(img)
+    img_arr = np.expand_dims(img_arr, axis=0)
+    img_arr_scaled = img_arr/255
+
+    prediction = model.predict(img_arr_scaled)
+    confidence = prediction[0][0]
+
+    if confidence > 0.5:
+        class_name = 'Dog'
+    else:
+        class_name = 'Cat'
+        confidence = 1 - confidence
+
+    print(f"{class_name} | Confidence = {confidence}")
+
+
 
 
 
@@ -4193,7 +4365,7 @@ for image_path in paths:
 
 
 #################################################
-#creating images with data augmentation
+#create and save images with data augmentation
 #################################################
 from keras.preprocessing import image
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -4218,6 +4390,116 @@ for output in datagen.flow(input_batch, batch_size=1, save_to_dir='D:/Downloads/
     i += 1
     if i == 10:                     #create only 10 images
         break
+
+
+
+
+
+
+
+
+
+
+
+###############################################################################################################
+#create RNN model : Sentiment Analysis (imdb)
+###############################################################################################################
+import numpy as np
+import pandas as pd
+
+import tensorflow as tf
+from tensorflow import keras
+from keras.datasets import imdb
+#from keras.utils import pad_sequences
+from keras.preprocessing.sequence import pad_sequences
+from keras import Sequential
+from keras.layers import Dense, SimpleRNN, Embedding
+from keras.preprocessing.text import Tokenizer
+
+import warnings as wr
+wr.filterwarnings('ignore')
+
+#loading data that is not Integer Encoded: list of sentences
+reviews = ['go india',
+		'india india',
+		'hip hip hurray',
+		'jeetega bhai jeetega india jeetega',
+		'bharat mata ki jai',
+		'kohli kohli',
+		'sachin sachin',
+		'dhoni dhoni',
+		'modi ji ki jai',
+		'inquilab zindabad']
+#so, there is need of Tokenization & Integer Encoding
+#Tokenization
+tokenizer = Tokenizer(oov_token='abcd')             #oov_token: out of vocab token, words not found in vocab will be replaced with 'abcd'
+tokenizer.fit_on_texts(reviews)
+tokenizer.word_index                                #all unique words along with their index
+tokenizer.word_counts                               #all unique words along with their count in reviews vocabulary
+tokenizer.document_count                            #count of sentences in reviews
+#Integer Encoding
+X_train = tokenizer.texts_to_sequences(reviews)     #converts all the words to their integer index
+
+X_train_pad = pad_sequences(X_train, padding='post')#pad zeros at the end, making length of every sentence same as the maximum length sentence
+
+
+#loading data that is Integer Encoded: i.e. imdb data
+#this imdb data is already tokenized & Integer Encoded
+#so, there is no need to do Tokenization + text_to_sequence()
+#loading data, with 10k most used vocabulary(words)
+vocab_cap = 10000
+(X_train, y_train),(X_test, y_test) = imdb.load_data(num_words=vocab_cap)
+
+#keeping only first 500 words from each review
+max_len = 500
+X_train_pad = pad_sequences(X_train, maxlen=max_len)
+X_test_pad = pad_sequences(X_test, maxlen=max_len)
+
+#build model
+#input_dim: Size of the vocabulary
+#output_dim: Size of the output of embedding layer
+#input_length: Size of each review (number of words in each review.)
+model = Sequential()
+model.add(Embedding(input_dim=vocab_cap, output_dim=32, input_length=max_len))
+model.add(SimpleRNN(64, return_sequences=False, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+model.summary()
+
+#compile model
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+#train model
+history = model.fit(
+    X_train_pad,
+    y_train,
+    batch_size=128,
+    epochs=10,
+    validation_split=0.2
+)
+
+#evaluate model
+test_loss, test_accuracy = model.evaluate(x=X_test_pad, y=y_test, batch_size=128)
+print(f"Test Accuracy: {test_accuracy}")
+
+#predict sentiment: predicting first n reviews from test dataset
+n = 100
+pred = model.predict(X_test_pad[:n])
+for i in range(n):
+    if i%5 == 0:
+        print()
+    if pred[i][0] > 0.5:
+        confidence = pred[i][0]
+        pred_sentiment = 'Positive'
+    else:
+        confidence = 1 - pred[i][0]
+        pred_sentiment = 'Negative'
+    actual = 'Positive' if y_test[i] == 1 else 'Negative'
+    print(f"Confidence Level : {100*confidence:.0f}% | Predicted Sentiment : {pred_sentiment} | Actual Sentiment : {actual}")
+
+
+
+
+
 
 
 
