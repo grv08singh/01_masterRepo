@@ -3732,56 +3732,79 @@ git clone https://github.com/grv08singh/01_Docs.git
 
 
 ###############################################################################################################
-#### Single Perceptron architecture code from scratch
+#### Deep Learning (DL) - Single Perceptron architecture code from scratch
 ###############################################################################################################
 
+import math
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
 
-#sample data
+def sigmoid(z):
+    return 1/(1 + math.exp(-z))
+    
+def tanh(z):
+    return ((math.exp(z) - math.exp(-z))/(math.exp(z) + math.exp(-z)))
+
+def relu(z):
+    return max(0,z)
+
+#Sample Data
 x1 = 3
 x2 = 2
 y_actual = 17
+print(f"x1 = {x1}\nx2 = {x2}\ny_actual = {y_actual}")
 
-#feed forward - initializing weights randomly bw 1 & 10
+#Feed Forward
 w1 = np.random.randint(1,10,1)[0]
 w2 = np.random.randint(1,10,1)[0]
+print(f"w1 = {w1}\nw2 = {w2}")
 
-#prediction
+#Prediction
 y_pred = x1*w1 + x2*w2
+print(y_pred)
 
-#error calculation
+#Loss (error) calculation
 error = (y_actual - y_pred)**2
+print(f"error = {error}")
 
-#back propagation - calculating gradients
+#Back Propagation
 grad_w1 = 2*(y_actual - y_pred)*(-x1)
 grad_w2 = 2*(y_actual - y_pred)*(-x2)
+print(f"grad_w1 = {grad_w1}\ngrad_w2 = {grad_w2}")
 
-#updating weights using gradients & learning rate
+#update weights
 learning_rate = 0.01
 w1 -= learning_rate*grad_w1
 w2 -= learning_rate*grad_w2
+print(f"Updated weights: \nw1 = {w1}\nw2 = {w2}")
 
-#training for 20 more epochs
+#train for 20 more epochs
 y_pred_history = [y_pred]
 error_history = [error]
 for epoch in range(20):
+    print(f"\nepoch {epoch+1}")
     y_pred = x1*w1 + x2*w2
     y_pred_history.append(y_pred)
+    print(f"y_pred = {y_pred}")
     error = (y_actual - y_pred)**2
     error_history.append(error)
+    print(f"error = {error}")
     grad_w1 = 2*(y_actual - y_pred)*(-x1)
     grad_w2 = 2*(y_actual - y_pred)*(-x2)
+    print(f"grad_w1 = {grad_w1}\ngrad_w2 = {grad_w2}")
     w1 -= learning_rate*grad_w1
     w2 -= learning_rate*grad_w2
+    print(f"Updated weights: \nw1 = {w1}\nw2 = {w2}")
 
-#visualizing error & prediction vs. epochs
+#Loss vs. Epoch visulazation 
 fig,ax = plt.subplots(figsize=(12,4))
 ax.plot(np.arange(21),error_history,marker=".",markersize=10, label="Sum Squared Error", color='red')
-ax.plot(np.arange(21),y_pred_history,marker=".",markersize=10, label="y_pred", color='blue')
 plt.xlabel("Epoch Number")
-plt.title("Cost & Prediction vs. Epoch")
+plt.ylabel("Error")
+plt.title("Cost vs. Epoch")
 plt.legend()
 plt.tight_layout()
 plt.show()
@@ -3792,95 +3815,181 @@ plt.show()
 
 
 ###############################################################################################################
-#### Artificial Neural Networks (ANN) - Deep Learning (DL)
+#### DL - Artificial Neural Network (ANN) Architecture
 ###############################################################################################################
+import warnings as wr
+wr.filterwarnings('ignore')
+print(f"TensorFlow Version: {tf.__version__}")
+print(f"GPU Available: {tf.config.list_physical_devices('GPU')}")
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 import json
 import os
 from pathlib import Path
 from kaggle.api.kaggle_api_extended import KaggleApi
 import tensorflow as tf
 from tensorflow import keras
-from keras.datasets import fashion_mnist
+from keras.datasets import mnist,fashion_mnist
 from keras.utils import to_categorical
 from keras.callbacks import TensorBoard, EarlyStopping, ReduceLROnPlateau
 from keras import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization, Activation
-import warnings
-warnings.filterwarnings('ignore')
+
 from keras.optimizers import Adam
 from keras.regularizers import l2
 
-print(f"TensorFlow Version: {tf.__version__}")
-print(f"GPU Available: {tf.config.list_physical_devices('GPU')}")
 os.getcwd() #get the current working directory
 os.listdir() #list the items in cwd
 
-###############################
-#creating ANN model : method_1
-###############################
+
+#load MNIST digits dataset
+(X_train,y_train),(X_test,y_test) = mnist.load_data()
+#load Fashion MNIST dataset
+(X_train, y_train), (X_test, y_test) = fashion_mnist.load_data()
+
+#visualize random images
+n = 10
+fig,ax=plt.subplots(1,n,figsize=(5,2))
+for i in range(n):
+    ax[i].imshow(X_train[i], cmap='gray')
+    ax[i].set_title(y_train[i])
+    ax[i].axis('off')
+fig.tight_layout()
+fig.show()
+
+#bar chart of target class distribution in train & test
+data = pd.DataFrame({
+    'Class': np.concatenate([y_train, y_test]),
+    'Data': ['Train Data']*len(y_train) + ['Test Data']*len(y_test)
+})
+plt.figure(figsize=(6,3))
+sns.countplot(data=data, x='Class', hue='Data')
+plt.title("Count Plot of Class Distribution")
+plt.legend(loc=10)
+plt.show()
+
+#find minimum and maximum value of pixels
+mx = []
+mn = []
+for i in range(X_train.shape[0]):
+    mx.append(X_train[i].max())
+    mn.append(X_train[i].min())
+print(f"max = {max(mx)}")
+print(f"min = {min(mn)}")
+
+#Scale pixel data
+X_train_scaled = X_train/255
+X_test_scaled = X_test/255
+
+#check class balance
+np.unique(y_train,return_counts=True)
+np.unique(y_test,return_counts=True)
+
+#apply one hot encoding (OHE)
+num_classes = 10
+y_train_ohe = to_categorical(y_train, num_classes)
+y_test_ohe = to_categorical(y_test, num_classes)
+
+#build model: method_1
+model = Sequential()
+model.add(Flatten(input_shape = X_train_scaled.shape[1:]))
+model.add(Dense(128, 'relu', kernel_regularizer='l2'))
+model.add(Dropout(0.2))
+model.add(Dense(128, 'relu', kernel_regularizer='l2'))
+model.add(Dropout(0.2))
+model.add(Dense(10, 'softmax'))
+
+#build model: method_2
+model = Sequential()
+model.add(Flatten(input_shape = X_train_scaled.shape[1:]))
+model.add(Dense(
+            128, 
+            activation = keras.activations.relu, 
+            kernel_regularizer = keras.regularizers.l2(0.001)
+            )
+        )
+model.add(Dropout(0.2))
+model.add(Dense(
+            128, 
+            activation = keras.activations.relu, 
+            kernel_regularizer = keras.regularizers.l2(0.001)
+            )
+        )
+model.add(Dropout(0.2))
+model.add(Dense(10, activation = keras.activations.softmax))
+
+#build model: method_3
 model = Sequential([
-    Flatten(input_shape=X_train_normalized.shape[1:]),
-    Dense(128,activation='relu',kernel_regularizer=keras.regularizers.l2(0.001)),
+    Flatten(input_shape = X_train_scaled.shape[1:]),
+    Dense(128, 'relu', kernel_regularizer='l2'),
     Dropout(0.2),
-    Dense(128,activation='relu',kernel_regularizer=keras.regularizers.l2(0.001)),
+    Dense(128, 'relu', kernel_regularizer='l2'),
     Dropout(0.2),
-    Dense(10,activation='softmax')
+    Dense(10, 'softmax')
 ])
 
-###############################
-#creating ANN model : method_2
-###############################
-model = Sequential()
-model.add(Flatten(input_shape=X_train_normalized.shape[1:]))
-model.add(Dense(128,activation='relu',kernel_regularizer=l2(0.001)))
-model.add(Dropout(0.2))
-model.add(Dense(128,activation='relu',kernel_regularizer=l2(0.001)))
-model.add(Dropout(0.2))
-model.add(Dense(10,activation='softmax'))
-
-###############################
-#creating ANN model : method_3
-###############################
-model = Sequential()
-model.add(Flatten(input_shape = X_train_normalized.shape[1:]))              #input layer
-model.add(Dense(units = 128,
-                activation = keras.activations.relu,
-                kernel_regularizer = keras.regularizers.l2(0.001)
-    )
-)
-model.add(Dense(units = 128,
-                activation = keras.activations.relu,
-                kernel_regularizer = keras.regularizers.l2(0.001)
-    )
-)
-model.add(Dense(units = 10,activation = keras.activations.softmax))         #output layer
+#compile model: method_1
 model.summary()
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])          #for OHE target
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])   #for normal target
 
-###############################
-#compiling ANN model : method_1
-###############################
-model.compile(optimizer = 'adam',
-    loss = 'sparse_categorical_crossentropy',
-    metrics = ['accuracy'])
-
-###############################
-#compiling ANN model : method_2
-###############################
+#compile model: method_2
 model.compile(optimizer = keras.optimizers.Adam(learning_rate = 0.01),
-    loss = keras.losses.sparse_categorical_crossentropy,
+    loss = keras.losses.categorical_crossentropy,
     metrics = ['accuracy']
 )
 
-#train the model
-history = model.fit(
-    X_train_normalized, 
-    y_train,
-    batch_size=32,
-    epochs=20,
-    validation_data=(X_test_normalized, y_test)
-)
+#train model with OHE target using categorical_crossentropy
+history = model.fit(X_train_scaled, y_train_ohe, batch_size=32, epochs=20)
+#train model with normal target usig spart_categorical_crossentropy
+history = model.fit(X_train_scaled, y_train, batch_size=32, epochs=20)
+
+#visualize loss & accuracy Vs. Epoch
+epoch = np.arange(len(history.history['accuracy']))
+training_acc, training_loss = history.history['accuracy'], history.history['loss']
+val_acc, val_loss = history.history['val_accuracy'], history.history['val_loss']
+
+fig,ax = plt.subplots(1,2,figsize=(9,3))
+ax[0].plot(epoch,training_acc,color='b', label='Training')
+ax[0].plot(epoch,val_acc,color='g', label='Test')
+ax[0].set_xlabel("Epochs")
+ax[0].set_ylabel("Accuracy")
+ax[0].legend(loc=5)
+
+ax[1].plot(epoch,training_loss,color='r', label='Training')
+ax[1].plot(epoch,val_loss,color='orange', label='Test')
+ax[1].set_xlabel("Epochs")
+ax[1].set_ylabel("Loss")
+ax[1].legend(loc=5)
+
+plt.tight_layout()
+plt.show()
+
+#Evaluate model
+model.evaluate(x=X_test, y=y_test_ohe)          #for OHE targets
+model.evaluate(x=X_test, y=y_test)              #for normal targets
+
+#make prediction on a single image
+random_ix = np.random.randint(0,X_test.shape[0],1)[0]
+y_pred = model.predict(x=X_test[random_ix,:,:].reshape(1,28,28))
+print(f"Prediction : {np.argmax(y_pred)}")
+print(f"Actual     : {y_test[random_ix]}")
+
+#make prediction on a batch of n images
+n = 30
+random_ix = np.random.randint(0,X_test.shape[0],n)
+y_pred = model.predict(x=X_test[random_ix,:,:])
+y_pred_int = np.array([np.argmax(yy) for yy in y_pred])
+print(f"Prediction : {y_pred_int}")
+print(f"Actual     : {y_test[random_ix]}")
+
+#overfitting is reduced by using
+# 1) BatchNormalization
+# 2) Dropout
+# 3) Regularization
+
+
 
 
 
@@ -4411,10 +4520,11 @@ import tensorflow as tf
 from tensorflow import keras
 from keras.datasets import imdb
 #from keras.utils import pad_sequences
+from keras.preprocessing.text import Tokenizer
+from keras.layers import TextVectorization
 from keras.preprocessing.sequence import pad_sequences
 from keras import Sequential
 from keras.layers import Dense, SimpleRNN, Embedding
-from keras.preprocessing.text import Tokenizer
 
 import warnings as wr
 wr.filterwarnings('ignore')
