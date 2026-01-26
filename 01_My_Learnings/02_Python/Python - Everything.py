@@ -110,6 +110,7 @@ pip install imbalanced-learn
 pip install mlxtend
 
 conda install tensorflow
+pip install nltk
 
 pip install requests
 pip install beautifulsoup4
@@ -126,6 +127,9 @@ pip install openpyxl
 pip install pyodbc
 pip install kaggle
 conda install -c conda-forge opencv
+
+pip install emoji
+
 
 
 
@@ -3894,13 +3898,29 @@ y_test_ohe = to_categorical(y_test, num_classes)
 #build model: method_1
 model = Sequential()
 model.add(Flatten(input_shape = X_train_scaled.shape[1:]))
+
+model.add(Dense(128), kernel_regularizer='l2'))         #kernel_regularizer optional
+model.add(BatchNormalization())                         #optional: used to reduce overfitting
+model.add(Activation('relu'))
+model.add(Dropout(0.2))                                 #optional: used to reduce overfitting
+
+model.add(Dense(128), kernel_regularizer='l2'))
+model.add(BatchNormalization())
+model.add(Activation('relu'))
+model.add(Dropout(0.2))
+
+model.add(Dense(10, 'softmax'))
+
+#build model: method_2
+model = Sequential()
+model.add(Flatten(input_shape = X_train_scaled.shape[1:]))
 model.add(Dense(128, 'relu', kernel_regularizer='l2'))
 model.add(Dropout(0.2))
 model.add(Dense(128, 'relu', kernel_regularizer='l2'))
 model.add(Dropout(0.2))
 model.add(Dense(10, 'softmax'))
 
-#build model: method_2
+#build model: method_3
 model = Sequential()
 model.add(Flatten(input_shape = X_train_scaled.shape[1:]))
 model.add(Dense(
@@ -3919,7 +3939,7 @@ model.add(Dense(
 model.add(Dropout(0.2))
 model.add(Dense(10, activation = keras.activations.softmax))
 
-#build model: method_3
+#build model: method_4
 model = Sequential([
     Flatten(input_shape = X_train_scaled.shape[1:]),
     Dense(128, 'relu', kernel_regularizer='l2'),
@@ -3944,6 +3964,12 @@ model.compile(optimizer = keras.optimizers.Adam(learning_rate = 0.01),
 history = model.fit(X_train_scaled, y_train_ohe, batch_size=32, epochs=20)
 #train model with normal target usig spart_categorical_crossentropy
 history = model.fit(X_train_scaled, y_train, batch_size=32, epochs=20)
+
+#Save the trained model, learned weights & model's architecture
+model.save("my_model.keras")
+model.save_weights("my_model.weights.h5")
+with open("my_model_architecture.json", 'w') as f:
+    f.write(model.to_json())
 
 #visualize loss & accuracy Vs. Epoch
 epoch = np.arange(len(history.history['accuracy']))
@@ -3994,33 +4020,40 @@ print(f"Actual     : {y_test[random_ix]}")
 
 
 
-
-
 ###############################################################################################################
-#create CNN model : MNIST Fashion Dataset
+#### DL - Convolution Neural Network (CNN) Architecture with tensorboard
 ###############################################################################################################
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+import tensorflow as tf
+from tensorflow import keras
+from keras.datasets import fashion_mnist
+from keras.utils import to_categorical
+from keras.callbacks import TensorBoard, EarlyStopping, ReduceLROnPlateau
+from keras import Sequential
+from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization, Activation
+
+import warnings as wr
+wr.filterwarnings('ignore')
+
+print(f"TensorFlow Version: {tf.__version__}")
+print(f"GPU Available: {tf.config.list_physical_devices('GPU')}")
+
+#load data
 (X_train, y_train),(X_test, y_test) = fashion_mnist.load_data()
 
-#show random images with their label
-n = 15
-idx = np.random.randint(1,X_train.shape[0],n)
-fig,ax = plt.subplots(1,n,figsize=(15,2))
-for i,j in enumerate(idx):
-    ax[i].imshow(X_train[j],cmap='gray')
-    ax[i].set_title(y_train[j])
-    ax[i].axis('off')
-plt.tight_layout()
-plt.show()
-
-#Normalize Input
+#scale data
 X_train_norm = X_train/255
 X_test_norm = X_test/255
 
-#Convert output labels to categorical format (One Hot Encoding)
+#one hot encode (OHE) target column
 y_train_cat = to_categorical(y_train, 10)
 y_test_cat = to_categorical(y_test, 10)
 
-#Build the CNN Model
+#build model
 model = Sequential()
 
 model.add(Conv2D(filters=64, kernel_size=(3,3), padding='valid', input_shape=(28, 28, 1)))
@@ -4051,25 +4084,23 @@ model.add(Activation('relu'))
 model.add(Dropout(0.2))
 
 model.add(Dense(10, activation='softmax'))
-
-model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 model.summary()
 
-#Create Callbacks [Optional]
-tb_callback = TensorBoard(
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+
+#callbacks
+tensorboard_callback = TensorBoard(
     log_dir="logs/",
     histogram_freq = 1, #one histogram every epoch
     write_graph = True,
     update_freq = 'epoch'
 )
-
-es_callback = EarlyStopping(
+early_stopping_callback = EarlyStopping(
     monitor = 'val_loss',
     patience = 10,
     restore_best_weights = True,
     verbose = 1
 )
-
 lr_reduce_callback = ReduceLROnPlateau(
     monitor = 'val_loss',
     factor = 0.5,
@@ -4077,17 +4108,18 @@ lr_reduce_callback = ReduceLROnPlateau(
     min_lr = 1e-5,
     verbose = 1,
 )
+callbacks = [tensorboard_callback, early_stopping_callback, lr_reduce_callback]
 
-#Train Model
+#train model
 history = model.fit(
     x = X_train_norm,
     y = y_train_cat,
     epochs = 100,
     validation_data = (X_test_norm, y_test_cat),
-    callbacks = [tb_callback, es_callback, lr_reduce_callback]
+    callbacks = callbacks
 )
 
-#Evaluate Model
+#evaluate
 train_loss = history.history['loss']
 val_loss = history.history['val_loss']
 train_accuracy = history.history['accuracy']
@@ -4111,49 +4143,71 @@ ax[1].grid(True)
 plt.tight_layout()
 plt.show()
 
-#Analyze Training Process using TensorBoard
-%load_ext tensorboard           #to load initially
-#%reload_ext tensorboard        #to reload after process already started
-%tensorboard --logdir logs/     #provide the log directory
-
-
-#Save the trained model, learned weights & model's architecture
-model.save("my_model.keras")
-model.save_weights("my_model.weights.h5")
-with open("my_model_architecture.json", 'w') as f:
-    f.write(model.to_json())
+#tensorboard analysis
+%load_ext tensorboard
+#%reload_ext tensorboard
+%tensorboard --logdir logs/
 
 
 
 
 
 
+###############################################################################################################
+#### DL - Cat vs. Dog classifier on Image Data (from kaggle with api)
+###############################################################################################################
+import numpy as np
+import pandas as pd
+
+import json
+import os
+from pathlib import Path
+from kaggle.api.kaggle_api_extended import KaggleApi
+
+import tensorflow as tf
+from tensorflow import keras
+from keras.preprocessing import image
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from keras.models import Sequential
+from keras.layers import Conv2D, MaxPooling2D, BatchNormalization, Flatten, Dense, Dropout
+
+import cv2
+
+import warnings
+warnings.filterwarnings('ignore')
 
 
+#kaggle api
+#load kaggle credentials from json file api
+kaggle_json_path = Path.home() / ".kaggle" / "kaggle.json"
+with open(kaggle_json_path, "r") as f:
+    creds = json.load(f)
+#set kaggle credentials in environment
+os.environ["KAGGLE_USERNAME"] = creds["username"]
+os.environ["KAGGLE_KEY"] = creds["key"]
+#authenticate kaggle api with credentials
+api = KaggleApi()
+api.authenticate()
+#download data from kaggle
+dataset_slug = 'salader/dogsvscats'           #kaggle dataset online path
+download_path = 'D:/Downloads/data'           #local machine download path
+api.dataset_download_files(dataset=dataset_slug, path=download_path, unzip=True)
 
-
-#################################################
-#create CNN model : Cat vs. Dog Classifier,
-#without data augmentation
-#################################################
-
-
+#without Data Augmentation
+#load downloaded data into keras
 train_ds = keras.utils.image_dataset_from_directory(
-    #directory = '/kaggle/input/dogsvscats/train',
     directory = 'D:/Downloads/data/train',
     labels = 'inferred',
     label_mode = 'int',
     batch_size = 32,
-    image_size = (256, 256)
+    image_size = (256,256)
 )
-
-validation_ds = keras.utils.image_dataset_from_directory(
-    #directory = '/kaggle/input/dogsvscats/test',
+test_ds = keras.utils.image_dataset_from_directory(
     directory = 'D:/Downloads/data/test',
     labels = 'inferred',
     label_mode = 'int',
     batch_size = 32,
-    image_size = (256, 256)
+    image_size = (256,256)
 )
 
 def process(image, label):
@@ -4162,59 +4216,8 @@ def process(image, label):
 train_ds = train_ds.map(process)
 validation_ds = validation_ds.map(process)
 
-
-model = Sequential()
-
-model.add(Conv2D(32, kernel_size = (3,3), padding = 'valid', activation = 'relu', input_shape = (256, 256, 3)))
-model.add(BatchNormalization())
-model.add(MaxPooling2D(pool_size = (2,2), strides = 2, padding = 'valid'))
-
-model.add(Conv2D(64, kernel_size = (3,3), padding = 'valid', activation = 'relu'))
-model.add(BatchNormalization())
-model.add(MaxPooling2D(pool_size = (2,2), strides = 2, padding = 'valid'))
-
-model.add(Conv2D(128, kernel_size = (3,3), padding = 'valid', activation = 'relu'))
-model.add(BatchNormalization())
-model.add(MaxPooling2D(pool_size = (2,2), strides = 2, padding = 'valid'))
-
-model.add(Flatten())
-
-model.add(Dense(128))
-model.add(BatchNormalization())
-model.add(Activation('relu'))
-model.add(Dropout(0.2))
-
-model.add(Dense(64))
-model.add(BatchNormalization())
-model.add(Activation('relu'))
-model.add(Dropout(0.2))
-
-model.add(Dense(1, activation = 'sigmoid'))
-
-model.summary()
-
-
-model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
-history = model.fit(
-    x = train_ds, 
-    epochs = 10, 
-    validation_data = validation_ds
-)
-
-#Saving Trained Model
-model.save("cnn_model.keras")
-
-
-
-
-#################################################
-#creating CNN model : Cat vs. Dog Classifier,
-#with data augmentation
-#################################################
-from keras.preprocessing import image
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-
-#Data Augmentation
+#with Data Augmentation [optional]
+#Data Augmentation process (create new images from existing ones)
 train_datagen = ImageDataGenerator(
     rotation_range = 30,
     rescale = 1/255,
@@ -4225,35 +4228,59 @@ train_datagen = ImageDataGenerator(
     horizontal_flip = True
 )
 test_datagen = ImageDataGenerator(rescale = 1/255)
-
-batch_size = 16
+#generate data for generalization of model
 train_generator = train_datagen.flow_from_directory(
     directory = 'D:/Downloads/data/train',
     target_size = (256,256),
-    batch_size = batch_size,
+    batch_size = 32,
     class_mode = 'binary'
 )
+
 test_generator = test_datagen.flow_from_directory(
     directory = 'D:/Downloads/data/test',
     target_size = (256,256),
-    batch_size = batch_size,
+    batch_size = 32,
     class_mode = 'binary'
 )
 
-#Training model
+#build model
+model = Sequential()
+model.add(Conv2D(32, kernel_size=(3,3), padding='valid', activation='relu', input_shape=(256,256,3)))
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=(2,2), strides=2, padding='valid'))
+
+model.add(Conv2D(32, kernel_size=(3,3), padding='valid', activation='relu'))
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=(2,2), strides=2, padding='valid'))
+
+model.add(Conv2D(32, kernel_size=(3,3), padding='valid', activation='relu'))
+model.add(BatchNormalization())
+model.add(MaxPooling2D(pool_size=(2,2), strides=2, padding='valid'))
+
+model.add(Flatten())
+
+model.add(Dense(128, activation='relu'))
+model.add(Dropout(0.2))
+model.add(Dense(128, activation='relu'))
+model.add(Dropout(0.2))
+model.add(Dense(1, activation='sigmoid'))
+
+model.summary()
+
+#compile model
+model.compile(optimizer='sgd', loss='binary_crossentropy', metrics=['accuracy'])
+
+#train model
 history = model.fit(
-    x = train_generator,
+    #x = train_ds,                               #without data augmentation
+    x = train_generator,                        #with data augmentation
     steps_per_epoch = len(train_generator),
     validation_data = test_generator,
     validation_steps=len(test_generator),
-    epochs = 50
+    epochs = 100
 )
 
-
-
-#################################################
-#Prediction on unseen images using CNN model
-#################################################
+#predict on new data
 paths = [
     "D:/Downloads/data/new_images/cat_1.jpg"
     ,"D:/Downloads/data/new_images/cat_2.jpg"
@@ -4266,7 +4293,6 @@ paths = [
     ,"D:/Downloads/data/new_images/dog_4.jpg"
     ,"D:/Downloads/data/new_images/dog_5.jpg"
 ]
-
 for image_path in paths:
     img = image.load_img(image_path, target_size=(256,256))
     plt.figure(figsize=(1,1))
@@ -4288,7 +4314,6 @@ for image_path in paths:
         confidence = 1 - confidence
     
     print(f"Predicted Class: {class_name} with Confidence Level: {confidence:.2%}")
-)
 
 
 
@@ -4296,7 +4321,7 @@ for image_path in paths:
 
 
 ###############################################################################################################
-#create CNN model : Learn from pre-built models (VGG16)
+#Transfer Learning : CNN model : Learn from pre-built models (VGG16)
 ###############################################################################################################
 import numpy as np
 import pandas as pd
@@ -4520,7 +4545,7 @@ import tensorflow as tf
 from tensorflow import keras
 from keras.datasets import imdb
 #from keras.utils import pad_sequences
-from keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.text import Tokenizer
 from keras.layers import TextVectorization
 from keras.preprocessing.sequence import pad_sequences
 from keras import Sequential
@@ -4614,5 +4639,58 @@ for i in range(n):
 
 
 
-
+#pandas method chain
+df_properties = (
+	pd
+	.DataFrame(data)
+	.drop_duplicates()
+	.apply(lambda col: col.str.strip().str.lower() if col.dtype == "object" else col)
+	.assign(
+		is_starred=lambda df_: df_.name.str.contains("\n").astype(int),
+		name=lambda df_: (
+			df_
+			.name
+			.str.replace("\n[0-9.]+", "", regex=True)
+			.str.strip()
+			.replace("adroit district s", "adroit district's")
+		),
+		location=lambda df_: (
+			df_
+			.location
+			.str.replace("chennai", "")
+			.str.strip()
+			.str.replace(",$", "", regex=True)
+			.str.split("in")
+			.str[-1]
+			.str.strip()
+		),
+		price=lambda df_: (
+			df_
+			.price
+			.str.replace("?", "")
+			.apply(lambda val: float(val.replace("lac", "").strip()) if "lac" in val else float(val.replace("cr", "").strip()) * 100)
+		),
+		area=lambda df_: (
+			df_
+			.area
+			.str.replace("sqft", "")
+			.str.strip()
+			.str.replace(",", "")
+			.pipe(lambda ser: pd.to_numeric(ser))
+		),
+		bhk=lambda df_: (
+			df_
+			.bhk
+			.str.replace("bhk", "")
+			.str.strip()
+			.pipe(lambda ser: pd.to_numeric(ser))
+		)
+	)
+	.rename(columns={
+		"price": "price_lakhs",
+		"area": "area_sqft"
+	})
+	.reset_index(drop=True)
+	.to_excel("chennai-properties-99acres.xlsx", index=False)
+)
 
