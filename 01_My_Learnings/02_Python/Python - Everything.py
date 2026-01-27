@@ -4569,7 +4569,8 @@ reviews = ['go india',
 #Tokenization
 tokenizer = Tokenizer(oov_token='abcd')             #oov_token: out of vocab token, words not found in vocab will be replaced with 'abcd'
 tokenizer.fit_on_texts(reviews)
-tokenizer.word_index                                #all unique words along with their index
+tokenizer.word_index                                #dict of all unique words along index assigned to them
+vocab_size = len(tokenizer.word_index)
 tokenizer.word_counts                               #all unique words along with their count in reviews vocabulary
 tokenizer.document_count                            #count of sentences in reviews
 #Integer Encoding
@@ -4582,7 +4583,7 @@ X_train_pad = pad_sequences(X_train, padding='post')#pad zeros at the end, makin
 #this imdb data is already tokenized & Integer Encoded
 #so, there is no need to do Tokenization + text_to_sequence()
 #loading data, with 10k most used vocabulary(words)
-vocab_cap = 10000
+
 (X_train, y_train),(X_test, y_test) = imdb.load_data(num_words=vocab_cap)
 
 #keeping only first 500 words from each review
@@ -4595,7 +4596,7 @@ X_test_pad = pad_sequences(X_test, maxlen=max_len)
 #output_dim: Size of the output of embedding layer
 #input_length: Size of each review (number of words in each review.)
 model = Sequential()
-model.add(Embedding(input_dim=vocab_cap, output_dim=32, input_length=max_len))
+model.add(Embedding(input_dim=vocab_size, output_dim=32, input_length=max_len))
 model.add(SimpleRNN(64, return_sequences=False, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
 model.summary()
