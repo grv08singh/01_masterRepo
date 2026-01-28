@@ -1,18 +1,36 @@
 #### Problem Statement:
-You are a Data Scientist in a big firm. You have to develop a `deep learning model` to perform `sentiment analysis` on a dataset of `tweets` related to various candidates.
+You are the Data Scientist at a telecom company “Leo” whose customers are churning out to its competitors. You have to analyse the data of your company and find insights and stop your customers from churning out to other telecom companies.
 
-#### Tasks to be Performed:
-##### 1) Data Loading and Preprocessing:
-* __Load__ the `tweet` data from a `CSV file`.
-* __Filter out__ the relevant columns: `candidate`, `sentiment`, and `text`.
-* __Preprocess__ the text data by __removing__ `stop words`, `punctuation`, converting to `lowercase`, and other cleaning steps.
+#### Tasks to be done:
+##### A) Data Manipulation:
+a. Find the total number of male customers
+b. Find the total number of customers whose Internet Service is ‘DSL’
+c. Extract all the Female senior citizens whose Payment Method is Mailed check & store the result in ‘new_customer’
+d. Extract all those customers whose tenure is less than 10 months or their Total charges is less than 500$ & store the result in ‘new_customer’
 
-##### 2) Text Vectorization:
-__Convert__ the preprocessed text data into numerical format using `tokenization` and `padding`, so that it can be fed into a deep learning model.
+##### B) Data Visualization:
+a. Build a pie-chart to show the distribution of customers would be churning out
+b. Build a bar-plot to show the distribution of ‘Internet Service’
 
-##### 3) Model Development:
-__Develop__ a deep learning model using `TensorFlow` and `Keras`. The model includes an `Embedding` layer, a `SpatialDropout1D` layer to prevent overfitting, an `LSTM` layer for sequence data processing, and a `Dense` layer for output. It aims to classify the sentiment of each tweet into one of the three categories.
+##### C) Model Building:
+a. Build a sequential model using Keras, to find out if the customerwouldchurn or not, using ‘tenure’ as the feature and ‘Churn’ as the dependent/target column:
+i. The visible/input layer should have 12 nodes with ‘Relu’ as activation function.
+ii. This model would have 1 hidden layer with 8 nodes and ‘Relu’ as activation function.
+iii. Use ‘Adam’ as the optimization algorithm.
+iv. Fit the model on the train set, with number of epochs to be 150
+v. Predict the values on the test set and build a confusion matrix
+vi. Plot the ‘Accuracy vs Epochs’ graph
 
-##### 4) Model Training and Evaluation:
-* __Train__ the model on the processed text data, using `categorical cross-entropy` as the loss function, and `accuracy` as the evaluation metric.
-* Use a `validation split` to __evaluate__ the model's performance and prevent overfitting.
+b. Build the 2nd model using same target and feature variables:
+i. Add a drop-out layer after the input layer with drop-out value of 0.3
+ii. Add a drop-out layer after the hidden layer with drop-out value of 0.2
+iii. Predict the values on the test set and build a confusion matrix
+iv. Plot the ‘Accuracy vs Epochs’ graph
+
+c. Build the 3rd model using ‘Tenure’, ’Monthly Charges’ & ‘Total Charges’ as the features and ‘Churn’ as the dependent/target column:
+i. The visible/input layer should have 12 nodes with ‘Relu’ as activation function.
+ii. This model would have 1 hidden layer with 8 nodes and ‘Relu’ as activation function
+iii. Use ‘Adam’ as the optimization algorithm
+iv. Fit the model on the train set, with number of epochs to be 150
+v. Predict the values on the test set and build a confusion matrix
+vi. Plot the ‘Accuracy vs Epochs’ graph
