@@ -37,26 +37,55 @@ def clean_rc123(details_1p0):
 
     
     #set database file path
+    db_files = []
     folder_path = Path('./01_software')
     for file_path in folder_path.iterdir():
         if file_path.is_file():
             if season_nm.lower() in file_path.name.lower():
                 accdb_path = "./" + "/".join(str(file_path).split("\\"))
+                db_files.append(accdb_path)
     
-    #create connection with mdb database
-    conn_str = (
-        r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
-        f'DBQ={accdb_path};'
-    )
-    conn = pyodbc.connect(conn_str)
+    df1 = pd.DataFrame(columns=['RC', 'ST', 'YR', 'SESON', 'NOVP', 'NOVCOD', 'STAT', 'DIST', 'STRA',
+               'VILL', 'EPC', 'NOVPC', 'NOVTRS', 'CADC', 'TLC', 'MAC', 'MUC', 'DDG',
+               'SGC', 'GCC', 'LFOG', 'ROG', 'DDTRS', 'TRSSC', 'TRSSF', 'DCKC', 'HSSN',
+               'GEOA', 'TCROPA', 'TNSSN', 'TGEOASN', 'RC61', 'RC62', 'RC63', 'REJ'])
+    df2 = pd.DataFrame(columns=['RC', 'ST', 'YR', 'SESON', 'STAT', 'DIST', 'STRA', 'VILL', 'EPC', 
+                 'HSSN', 'TNSSN', 'CROP', 'VARC', 'ARSU', 'ARSI', 'ARPU', 'ARPI'])
+    df3 = pd.DataFrame(columns=['RC', 'ST', 'YR', 'SESON', 'STAT', 'DIST', 'STRA',
+                 'VILL', 'SN', 'CROP', 'VARC', 'IRRC', 'ERC'])
     
-    cols1 = ['RC', 'ST', 'YR', 'SESON', 'NOVP', 'NOVCOD', 'STAT', 'DIST', 'STRA',
-           'VILL', 'EPC', 'NOVPC', 'NOVTRS', 'CADC', 'TLC', 'MAC', 'MUC', 'DDG',
-           'SGC', 'GCC', 'LFOG', 'ROG', 'DDTRS', 'TRSSC', 'TRSSF', 'DCKC', 'HSSN',
-           'GEOA', 'TCROPA', 'TNSSN', 'TGEOASN', 'RC61', 'RC62', 'RC63', 'REJ']
-    
-    sql_query1 = 'SELECT * FROM "Copy Of RC1"'
-    df1 = pd.read_sql(sql_query1, conn)[cols1]
+    for accdb_path in db_files:
+        #create connection with mdb database
+        conn_str = (
+            r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
+            f'DBQ={accdb_path};'
+        )
+        conn = pyodbc.connect(conn_str)
+        
+        cols1 = ['RC', 'ST', 'YR', 'SESON', 'NOVP', 'NOVCOD', 'STAT', 'DIST', 'STRA',
+               'VILL', 'EPC', 'NOVPC', 'NOVTRS', 'CADC', 'TLC', 'MAC', 'MUC', 'DDG',
+               'SGC', 'GCC', 'LFOG', 'ROG', 'DDTRS', 'TRSSC', 'TRSSF', 'DCKC', 'HSSN',
+               'GEOA', 'TCROPA', 'TNSSN', 'TGEOASN', 'RC61', 'RC62', 'RC63', 'REJ']
+        sql_query1 = 'SELECT * FROM "Copy Of RC1"'
+        df1_current = pd.read_sql(sql_query1, conn)[cols1]
+        df1 = pd.concat([df1, df1_current], axis=0, ignore_index=True)
+        
+        #get data from the table - RC2
+        cols2 = ['RC', 'ST', 'YR', 'SESON', 'STAT', 'DIST', 'STRA', 'VILL', 'EPC', 
+                 'HSSN', 'TNSSN', 'CROP', 'VARC', 'ARSU', 'ARSI', 'ARPU', 'ARPI']
+        
+        sql_query2 = 'SELECT * FROM "Copy Of RC2"'
+        df2_current = pd.read_sql(sql_query2, conn)[cols2]
+        df2 = pd.concat([df2,df2_current], axis=0 ,ignore_index=True)
+        
+        #get data from the table - RC3
+        cols3 = ['RC', 'ST', 'YR', 'SESON', 'STAT', 'DIST', 'STRA',
+                 'VILL', 'SN', 'CROP', 'VARC', 'IRRC', 'ERC']        
+        sql_query3 = 'SELECT * FROM "Copy Of RC3"'
+        df3_current = pd.read_sql(sql_query3, conn)[cols3]
+        df3 = pd.concat([df3,df3_current], axis=0 ,ignore_index=True)
+        
+    conn.close()
     
     df1 = (df1
         .drop_duplicates()
@@ -119,12 +148,6 @@ def clean_rc123(details_1p0):
     
     
     
-    #get data from the table - RC2
-    cols2 = ['RC', 'ST', 'YR', 'SESON', 'STAT', 'DIST', 'STRA', 'VILL', 'EPC', 
-             'HSSN', 'TNSSN', 'CROP', 'VARC', 'ARSU', 'ARSI', 'ARPU', 'ARPI']
-    
-    sql_query2 = 'SELECT * FROM "Copy Of RC2"'
-    df2 = pd.read_sql(sql_query2, conn)[cols2]
     df2 = (df2
         .drop_duplicates()
         .apply(pd.to_numeric, errors='coerce')
@@ -142,13 +165,6 @@ def clean_rc123(details_1p0):
     
     
     
-    #get data from the table - RC3
-    cols3 = ['RC', 'ST', 'YR', 'SESON', 'STAT', 'DIST', 'STRA',
-             'VILL', 'SN', 'CROP', 'VARC', 'IRRC', 'ERC']
-
-    
-    sql_query3 = 'SELECT * FROM "Copy Of RC3"'
-    df3 = pd.read_sql(sql_query3, conn)[cols3]
     df3 = (df3
         .apply(pd.to_numeric, errors='coerce')
         .query("STAT == @state_cd and SESON == @season_cd and ST == @st_cd")
@@ -172,10 +188,6 @@ def clean_rc123(details_1p0):
     rc3 = rc3[rc3['EPC'] == 1].drop(columns=['unique_id','EPC'])
     
     
-    
-    
-    
-    conn.close()
     return rc1_bkp, rc2, rc3
 #%%
 
@@ -183,7 +195,6 @@ def clean_rc123(details_1p0):
 
 #%%
 def clean_rc7(details_2p0):
-
     #get data from the table - RC7
     year = details_2p0['year']
     state_cd = details_2p0['state_cd']
@@ -219,6 +230,8 @@ def clean_rc7(details_2p0):
     
     sql_query7 = 'SELECT * FROM "Sch20RC7"'
     rc7 = pd.read_sql(sql_query7, conn)[cols7]
+    conn.close()
+    
     rc7 = (rc7
         .drop_duplicates()
         .apply(pd.to_numeric, errors="coerce")
@@ -290,12 +303,11 @@ def clean_rc7(details_2p0):
     
     for col in lost_cols:
         rc7.loc[rc7['STAGIN']==3, col] = np.nan
-
+        
     for i in range(crop_details.shape[0]):
         crop = crop_details.loc[i,'crop_cd']
         plan = crop_details.loc[i,'nexp']
         ccf = crop_details.loc[i,'ccf']
-        
         rc7.loc[((rc7['ST']==st_cd) & (rc7['CROP']==crop)), 'NEXP'] = plan
         
         received = rc7[(rc7['ST']==st_cd) & (rc7['CROP']==crop)].shape[0]
@@ -306,7 +318,6 @@ def clean_rc7(details_2p0):
         rc7.loc[(rc7['CROP']==crop), 'CONFAC'] = ccf
         
     
-    conn.close()
     return rc7
 #%%
 
@@ -378,7 +389,7 @@ if __name__ == "__main__":
                 'state_cd' : state_code,
                 'season_cd' : season_code,
                 'st_cd' : st_code,
-                'crop_details' : as2p0_sch[(as2p0_sch['st_cd']==1) & (as2p0_sch['season_cd']==1)][['crop_cd','nexp','ccf']]
+                'crop_details' : as2p0_sch[(as2p0_sch['st_cd']==st_code) & (as2p0_sch['season_cd']==season_code)][['crop_cd','nexp','ccf']].reset_index(drop=True)
             }
             r7 = clean_rc7(details_2p0)
             rc7 = pd.concat([rc7, r7], ignore_index = True)

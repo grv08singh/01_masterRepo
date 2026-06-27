@@ -536,13 +536,6 @@ from keras.preprocessing.sequence import pad_sequences
 
 
 
-
-<<<<<<< Updated upstream
-=======
-
-
-
-
 ###############################################################################################################
 #### Natural Language Processing (NLP) - Everything
 ###############################################################################################################
@@ -1403,94 +1396,62 @@ def preprocess(q):
    
     return q
 
-
 new_df['question1'] = new_df['question1'].apply(preprocess)
 new_df['question2'] = new_df['question2'].apply(preprocess)
-
-
 new_df['q1_len'] = new_df['question1'].str.len() 
 new_df['q2_len'] = new_df['question2'].str.len()
-
-
 new_df['q1_num_words'] = new_df['question1'].apply(lambda row: len(row.split(" ")))
 new_df['q2_num_words'] = new_df['question2'].apply(lambda row: len(row.split(" ")))
-
 
 def common_words(row):
     w1 = set(map(lambda word: word.lower().strip(), row['question1'].split(" ")))
     w2 = set(map(lambda word: word.lower().strip(), row['question2'].split(" ")))    
     return len(w1 & w2)
-
-
 new_df['word_common'] = new_df.apply(common_words, axis=1)
-
 
 def total_words(row):
     w1 = set(map(lambda word: word.lower().strip(), row['question1'].split(" ")))
     w2 = set(map(lambda word: word.lower().strip(), row['question2'].split(" ")))    
     return (len(w1) + len(w2))
 
-
 new_df['word_total'] = new_df.apply(total_words, axis=1)
-
-
 new_df['word_share'] = round(new_df['word_common']/new_df['word_total'],2)
-
-
 # Advanced Features
 from nltk.corpus import stopwords
-
 def fetch_token_features(row):
-    
     q1 = row['question1']
-    q2 = row['question2']
-    
+    q2 = row['question2']    
     SAFE_DIV = 0.0001 
-
-    STOP_WORDS = stopwords.words("english")
-    
-    token_features = [0.0]*8
-    
+    STOP_WORDS = stopwords.words("english")    
+    token_features = [0.0]*8    
     # Converting the Sentence into Tokens: 
     q1_tokens = q1.split()
-    q2_tokens = q2.split()
-    
+    q2_tokens = q2.split()    
     if len(q1_tokens) == 0 or len(q2_tokens) == 0:
         return token_features
-
     # Get the non-stopwords in Questions
     q1_words = set([word for word in q1_tokens if word not in STOP_WORDS])
-    q2_words = set([word for word in q2_tokens if word not in STOP_WORDS])
-    
+    q2_words = set([word for word in q2_tokens if word not in STOP_WORDS])    
     #Get the stopwords in Questions
     q1_stops = set([word for word in q1_tokens if word in STOP_WORDS])
-    q2_stops = set([word for word in q2_tokens if word in STOP_WORDS])
-    
+    q2_stops = set([word for word in q2_tokens if word in STOP_WORDS])    
     # Get the common non-stopwords from Question pair
-    common_word_count = len(q1_words.intersection(q2_words))
-    
+    common_word_count = len(q1_words.intersection(q2_words))    
     # Get the common stopwords from Question pair
-    common_stop_count = len(q1_stops.intersection(q2_stops))
-    
+    common_stop_count = len(q1_stops.intersection(q2_stops))    
     # Get the common Tokens from Question pair
-    common_token_count = len(set(q1_tokens).intersection(set(q2_tokens)))
-    
-    
+    common_token_count = len(set(q1_tokens).intersection(set(q2_tokens)))       
     token_features[0] = common_word_count / (min(len(q1_words), len(q2_words)) + SAFE_DIV)
     token_features[1] = common_word_count / (max(len(q1_words), len(q2_words)) + SAFE_DIV)
     token_features[2] = common_stop_count / (min(len(q1_stops), len(q2_stops)) + SAFE_DIV)
     token_features[3] = common_stop_count / (max(len(q1_stops), len(q2_stops)) + SAFE_DIV)
     token_features[4] = common_token_count / (min(len(q1_tokens), len(q2_tokens)) + SAFE_DIV)
     token_features[5] = common_token_count / (max(len(q1_tokens), len(q2_tokens)) + SAFE_DIV)
-    
     # Last word of both question is same or not
-    token_features[6] = int(q1_tokens[-1] == q2_tokens[-1])
-    
+    token_features[6] = int(q1_tokens[-1] == q2_tokens[-1])    
     # First word of both question is same or not
-    token_features[7] = int(q1_tokens[0] == q2_tokens[0])
-    
+    token_features[7] = int(q1_tokens[0] == q2_tokens[0])    
     return token_features
-
 
 token_features = new_df.apply(fetch_token_features, axis=1)
 
@@ -1504,35 +1465,24 @@ new_df["last_word_eq"]  = list(map(lambda x: x[6], token_features))
 new_df["first_word_eq"] = list(map(lambda x: x[7], token_features))
 
 import distance
-
 def fetch_length_features(row):
-    
     q1 = row['question1']
-    q2 = row['question2']
-    
-    length_features = [0.0]*3
-    
+    q2 = row['question2']    
+    length_features = [0.0]*3    
     # Converting the Sentence into Tokens: 
     q1_tokens = q1.split()
-    q2_tokens = q2.split()
-    
+    q2_tokens = q2.split()    
     if len(q1_tokens) == 0 or len(q2_tokens) == 0:
-        return length_features
-    
+        return length_features    
     # Absolute length features
-    length_features[0] = abs(len(q1_tokens) - len(q2_tokens))
-    
+    length_features[0] = abs(len(q1_tokens) - len(q2_tokens))    
     #Average Token Length of both Questions
-    length_features[1] = (len(q1_tokens) + len(q2_tokens))/2
-    
+    length_features[1] = (len(q1_tokens) + len(q2_tokens))/2    
     strs = list(distance.lcsubstrings(q1, q2))
-    length_features[2] = len(strs[0]) / (min(len(q1), len(q2)) + 1)
-    
+    length_features[2] = len(strs[0]) / (min(len(q1), len(q2)) + 1)    
     return length_features
 
-
 length_features = new_df.apply(fetch_length_features, axis=1)
-
 new_df['abs_len_diff'] = list(map(lambda x: x[0], length_features))
 new_df['mean_len'] = list(map(lambda x: x[1], length_features))
 new_df['longest_substr_ratio'] = list(map(lambda x: x[2], length_features))
@@ -1540,7 +1490,6 @@ new_df['longest_substr_ratio'] = list(map(lambda x: x[2], length_features))
 
 # Fuzzy Features
 from fuzzywuzzy import fuzz
-
 def fetch_fuzzy_features(row):    
     q1 = row['question1']
     q2 = row['question2']    
@@ -1555,7 +1504,6 @@ def fetch_fuzzy_features(row):
     fuzzy_features[3] = fuzz.token_set_ratio(q1, q2)
     return fuzzy_features
 
-
 fuzzy_features = new_df.apply(fetch_fuzzy_features, axis=1)
 
 # Creating new feature columns for fuzzy features
@@ -1563,7 +1511,6 @@ new_df['fuzz_ratio'] = list(map(lambda x: x[0], fuzzy_features))
 new_df['fuzz_partial_ratio'] = list(map(lambda x: x[1], fuzzy_features))
 new_df['token_sort_ratio'] = list(map(lambda x: x[2], fuzzy_features))
 new_df['token_set_ratio'] = list(map(lambda x: x[3], fuzzy_features))
-
 
 # Using TSNE for Dimentionality reduction for 15 Features(Generated after cleaning the data) to 3 dimention
 from sklearn.preprocessing import MinMaxScaler
@@ -1810,82 +1757,6 @@ pickle.dump(cv,open('cv.pkl','wb'))
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#################################################
-#spacy
-#################################################
-#### preprocess using spacy
-!pip install spacy
-!pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.0/en_core_web_sm-2.2.5.tar.gz
-!python -m spacy download en_core_web_sm
-
-import spacy
-import en_core_web_sm
-
-nlp = en_core_web_sm.load()                                             #load spacy model
-
-doc = nlp(u"I will google about facebook")                              #Process a sentence using the model
-doc.text                                                                #'I will google about facebook'
-doc[-1]                                                                 #facebook
-doc[2].pos_                                                             #'VERB'
-doc[2].tag_                                                             #'VB'
-spacy.explain('VB')                                                     #'verb, base form'
-
-for word in doc:
-    print(word.text,"------>", word.pos_,word.tag_,spacy.explain(word.tag_))
-    #I ------> PRON PRP pronoun, personal
-    #will ------> AUX MD verb, modal auxiliary
-    #google ------> VERB VB verb, base form
-    #about ------> ADP IN conjunction, subordinating or preposition
-    #facebook ------> PROPN NNP noun, proper singular
-    
-doc2 = nlp(u"I left the room")
-for word in doc2:
-    print(word.text,"------>", word.pos_,word.tag_,spacy.explain(word.tag_))
-    #I ------> PRON PRP pronoun, personal
-    #left ------> VERB VBD verb, past tense
-    #the ------> DET DT determiner
-    #room ------> NOUN NN noun, singular or mass
-
-from spacy import displacy
-displacy.render(doc6,style='dep',jupyter=True)
-options={
-    'distance':80,
-    'compact':True,
-    'color':'#fff',
-    'bg':'#00a65a'
-}
-displacy.render(doc6,style='dep',jupyter=True,options=options)
-    
-    
-print(doc.vector)                                                       #gives vectorized form of a word
-
-
-
-
-
-
-
->>>>>>> Stashed changes
 ###############################################################################################################
 #### GenAI (LangChain) - Build a Chatbot
 ###############################################################################################################
@@ -3648,7 +3519,6 @@ import nltk
 from nltk import sent_tokenize
 import emoji
 import tqdm
-from tqdm.auto import tqdm
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
@@ -3687,7 +3557,9 @@ df['review'] = df['review'].apply(remove_multiple_spaces)
 def remove_punctuations(text):
     return text.translate(str.maketrans('','',string.punctuation))
 df['review'] = df['review'].apply(remove_punctuations)
+
 # handle emojis
+from tqdm.auto import tqdm
 tqdm.pandas(desc="Processing Data")
 df['review'] = df['review'].progress_apply(emoji.demojize)
 # remove stop words

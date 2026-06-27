@@ -18,13 +18,12 @@ Follow these instructions:
 	(ii) "CY State Details & Capital-N.xlsx"
 
 5) Double Click "CleanRCs.bat".
-	Wait for A black screen to open and close by itself.
+	Wait for A black screen to open and Press Any Key when Prompted.
 
-6) "RC1237.xlsx" is generated in folder "04_Clean_RCs".
-	Check "log.txt" file for any changes to be done manually in RCs.
-	Make suggested changes in "RC1237_clean.xlsx" present in "04_Clean_RCs" folder.
+6) "RC1237_clean_v1.xlsx" is generated in folder "04_Clean_RCs".
+	Check "log.txt" file for any changes to be done manually in "RC1237_clean_v1.xlsx".
 
 7) Double Click "GenerateCY_PY.bat"
-	Wait for A black screen to open and close by itself.
+	Wait for A black screen to open and Press Any Key when Prompted.
 
 8) Final PY, CY excel files are generated in "06_PY_CY_New" folder.
