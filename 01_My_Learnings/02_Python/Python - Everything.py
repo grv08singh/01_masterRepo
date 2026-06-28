@@ -854,6 +854,9 @@ y_train_ohe = to_categorical(y_train, num_classes)
 #### each dimension contains the total number of times that word appears in the sentence
 #### unseen words get handled by ignoring.
 from sklearn.feature_extraction.text import CountVectorizer
+import nltk
+nltk.download('punkt')
+from nltk.tokenize import word_tokenize
 cv = CountVectorizer( analyzer='word',
                 tokenizer=word_tokenize, lowercase=True,
                 ngram_range=(1,1), stop_words='english',
