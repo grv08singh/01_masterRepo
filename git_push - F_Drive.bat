@@ -137,18 +137,19 @@ SET INDEX=0
 :: --- SUMMARY ---------------------------------------------------
 :SUMMARY
 ECHO ¦----------------------------------------------------------¦
-ECHO ¦               PULL SUMMARY                              ¦
+ECHO ¦                PULL SUMMARY                              ¦
 ECHO ¦----------------------------------------------------------¦
+ECHO ¦  Total Repositories  : %REPO_COUNT%
 ECHO ¦  New Changes Pulled  : !PULL_PASS!
 ECHO ¦  Already Up To Date  : !PULL_UP_TO_DATE!
 ECHO ¦  Pull Failed         : !PULL_FAIL!
 ECHO ¦----------------------------------------------------------¦
-ECHO ¦               PUSH SUMMARY                              ¦
+ECHO ¦                PUSH SUMMARY                              ¦
 ECHO ¦----------------------------------------------------------¦
 ECHO ¦  Total Repositories  : %REPO_COUNT%
 ECHO ¦  Pushed Successfully : !PASS!
 ECHO ¦  No Changes (Skipped): !SKIPPED!
-ECHO ¦  Failed              : !FAIL!
+ECHO ¦  Push Failed         : !FAIL!
 ECHO +----------------------------------------------------------+
 ECHO.
 
