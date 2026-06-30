@@ -11,10 +11,14 @@ SET COMMIT_MSG=Auto-sync: %DATE% %TIME%
 SET PASS=0
 SET FAIL=0
 SET SKIPPED=0
+SET PULL_PASS=0
+SET PULL_FAIL=0
+SET PULL_UP_TO_DATE=0
 
 :: --- REPOSITORY NAMES ------------------------------------------
 SET REPOS[0]=01_masterRepo
-SET REPOS[1]=16_FacialExpression_CNN
+SET REPOS[1]=14_Proj_ML_99Acres
+SET REPOS[2]=15_AI_Travel_Agent
 :: ----------------------------------------------------------------
 
 :: Count repos
@@ -28,10 +32,9 @@ SET REPO_COUNT=0
 :: --- MAIN LOOP -------------------------------------------------
 SET INDEX=0
 :REPO_LOOP
-	ECHO ******************************************************************************************
+    ECHO ******************************************************************************************
     IF NOT DEFINED REPOS[%INDEX%] GOTO SUMMARY
 
-    :: Build full path by concatenating BASE_PATH + REPO NAME
     SET REPO_NAME=!REPOS[%INDEX%]!
     SET FULL_PATH=%BASE_PATH%\!REPO_NAME!
     SET /A DISPLAY_NUM=%INDEX%+1
@@ -68,12 +71,26 @@ SET INDEX=0
 
     :: -- STEP 1: Pull ------------------------------------------
     ECHO   ^> [1/3] Pulling from origin/%BRANCH%...
-    git pull origin %BRANCH% 2>&1
+    SET PULL_OUTPUT_FILE=%TEMP%\git_pull_!INDEX!.txt
+    git pull origin %BRANCH% > "!PULL_OUTPUT_FILE!" 2>&1
+    TYPE "!PULL_OUTPUT_FILE!"
+
     IF ERRORLEVEL 1 (
         ECHO   [ERROR] git pull failed. Skipping commit/push.
+        SET /A PULL_FAIL+=1
         SET /A FAIL+=1
         ECHO.
         GOTO REPO_LOOP
+    )
+
+    :: Check if pull brought in new changes or was already up to date
+    FINDSTR /I "Already up to date" "!PULL_OUTPUT_FILE!" >NUL 2>&1
+    IF !ERRORLEVEL! == 0 (
+        ECHO   [PULL] Already up to date.
+        SET /A PULL_UP_TO_DATE+=1
+    ) ELSE (
+        ECHO   [PULL] New changes pulled successfully.
+        SET /A PULL_PASS+=1
     )
 
     :: -- STEP 2: Check Status ----------------------------------
@@ -120,10 +137,19 @@ SET INDEX=0
 :: --- SUMMARY ---------------------------------------------------
 :SUMMARY
 ECHO ¦----------------------------------------------------------¦
+ECHO ¦                PULL SUMMARY                              ¦
+ECHO ¦----------------------------------------------------------¦
+ECHO ¦  Total Repositories  : %REPO_COUNT%
+ECHO ¦  New Changes Pulled  : !PULL_PASS!
+ECHO ¦  Already Up To Date  : !PULL_UP_TO_DATE!
+ECHO ¦  Pull Failed         : !PULL_FAIL!
+ECHO ¦----------------------------------------------------------¦
+ECHO ¦                PUSH SUMMARY                              ¦
+ECHO ¦----------------------------------------------------------¦
 ECHO ¦  Total Repositories  : %REPO_COUNT%
 ECHO ¦  Pushed Successfully : !PASS!
 ECHO ¦  No Changes (Skipped): !SKIPPED!
-ECHO ¦  Failed               : !FAIL!
+ECHO ¦  Push Failed         : !FAIL!
 ECHO +----------------------------------------------------------+
 ECHO.
 
