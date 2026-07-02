@@ -9581,6 +9581,9 @@ git push -u origin main
 git stash
 git pull
 git stash pop
+git add .
+git commit -m "conflict msg"
+git push
 
 #### 2) Keep Remote Changes (Overwrite Local Changes)
 git checkout -- <file path>
