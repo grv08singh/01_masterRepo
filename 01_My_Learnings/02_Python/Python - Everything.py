@@ -535,1232 +535,6 @@ from keras.preprocessing.sequence import pad_sequences
 
 
 
-
-
-###############################################################################################################
-#### Natural Language Processing (NLP) - Everything
-###############################################################################################################
-
-#important terms:
-#word = word
-#corpus = all words from all sentences [definitely contains duplicates]
-#vocabulary = unique words from corpus
-#document = a complete sentence
-
-##################################################################
-# NLP - Text Preprocessing
-##################################################################
-# Convert text to lowercase
-text = "<p>This <b>bold text</b> contains exactly twenty words, carefully styled with basic HTML tags to format its online structural presentation.</p>"
-text = text.lower()
-
-# Remove HTML tags using Regular Expressions (REGEX)
-import re
-def remove_html(text):
-    pattern = re.compile(r'<.*?>')    #start with <(once), any character any number of times, end with >
-    return pattern.sub('', text)
-html_text = "<p>This <b>bold text</b> contains exactly twenty words, carefully styled with basic HTML tags to format its online structural presentation.</p>"
-remove_html(html_text)
-
-# Remove URL
-def remove_url(text):
-    pattern = re.compile(r'http\S+|www\.\S+')
-    return pattern.sub('', text)
-text = 'alfksdkj https://www.youtube.com/watch?v=6C0sLtw5ctc&list=PLKnIA16_RmvZo7fp5kkIth6nRTeQQsjfX&index=3&t=3790s jflsk'
-
-remove_url(text)
-
-# Remove multiple spaces
-def remove_multi_space(text):
-    pattern = re.compile(r'\s+')
-    return pattern.sub(' ', text)
-text = 'abdfs lsdkfj  lskdjfk   lsdkfjk      sldkfjl'
-remove_multi_space(text)
-
-# Remove Punctuations
-import string
-#### slower method
-def rem_punc1(text):
-    for char in text:
-        if char in string.punctuation:
-            text = text.replace(char, '')
-    return text
-text = 'Hi! is this obvious? my dog is running.'
-rem_punc1(text)
-
-#### faster method
-def rem_punc2(text):
-    return text.translate(str.maketrans('','',string.punctuation))
-rem_punc2(text)
-
-# Handle Chat Words
-#### create a dictionary of chat words
-def correct_chat_words(text):
-    chat_abbreviations = {
-        "A3": "Anytime, Anywhere, Anyplace",
-        "ADIH": "Another Day In Hell",
-        "AFK": "Away From Keyboard",
-        "AFAIK": "As Far As I Know",
-        "ASAP": "As Soon As Possible",
-        "ASL": "Age, Sex, Location",
-        "ATK": "At The Keyboard",
-        "ATM": "At The Moment",
-        "BAE": "Before Anyone Else",
-        "BAK": "Back At Keyboard",
-        "BBL": "Be Back Later",
-        "BBS": "Be Back Soon",
-        "BFN": "Bye For Now",
-        "B4N": "Bye For Now",
-        "BRB": "Be Right Back",
-        "BRUH": "Bro",
-        "BRT": "Be Right There",
-        "BSAAW": "Big Smile And A Wink",
-        "BTW": "By The Way",
-        "BWL": "Bursting With Laughter",
-        "CSL": "Can’t Stop Laughing",
-        "CU": "See You",
-        "CUL8R": "See You Later",
-        "CYA": "See You",
-        "DM": "Direct Message",
-        "FAQ": "Frequently Asked Questions",
-        "FC": "Fingers Crossed",
-        "FIMH": "Forever In My Heart",
-        "FOMO": "Fear Of Missing Out",
-        "FR": "For Real",
-        "FWIW": "For What It's Worth",
-        "FYP": "For You Page",
-        "FYI": "For Your Information",
-        "G9": "Genius",
-        "GAL": "Get A Life",
-        "GG": "Good Game",
-        "GMTA": "Great Minds Think Alike",
-        "GN": "Good Night",
-        "GOAT": "Greatest Of All Time",
-        "GR8": "Great!",
-        "HBD": "Happy Birthday",
-        "IC": "I See",
-        "ICQ": "I Seek You",
-        "IDC": "I Don’t Care",
-        "IDK": "I Don't Know",
-        "IFYP": "I Feel Your Pain",
-        "ILU": "I Love You",
-        "ILY": "I Love You",
-        "IMHO": "In My Honest Opinion",
-        "IMU": "I Miss You",
-        "IMO": "In My Opinion",
-        "IOW": "In Other Words",
-        "IRL": "In Real Life",
-        "IYKYK": "If You Know, You Know",
-        "JK": "Just Kidding",
-        "KISS": "Keep It Simple, Stupid",
-        "L": "Loss",
-        "L8R": "Later",
-        "LDR": "Long Distance Relationship",
-        "LMK": "Let Me Know",
-        "LMAO": "Laughing My Ass Off",
-        "LOL": "Laughing Out Loud",
-        "LTNS": "Long Time No See",
-        "M8": "Mate",
-        "MFW": "My Face When",
-        "MID": "Mediocre",
-        "MRW": "My Reaction When",
-        "MTE": "My Thoughts Exactly",
-        "NVM": "Never Mind",
-        "NRN": "No Reply Necessary",
-        "NPC": "Non-Player Character",
-        "OIC": "Oh I See",
-        "OP": "Overpowered",
-        "PITA": "Pain In The Ass",
-        "POV": "Point Of View",
-        "PRT": "Party",
-        "PRW": "Parents Are Watching",
-        "ROFL": "Rolling On The Floor Laughing",
-        "ROFLOL": "Rolling On The Floor Laughing Out Loud",
-        "ROTFLMAO": "Rolling On The Floor Laughing My Ass Off",
-        "RN": "Right Now",
-        "SK8": "Skate",
-        "STATS": "Your Sex And Age",
-        "SUS": "Suspicious",
-        "TBH": "To Be Honest",
-        "TFW": "That Feeling When",
-        "THX": "Thank You",
-        "TIME": "Tears In My Eyes",
-        "TLDR": "Too Long, Didn’t Read",
-        "TNTL": "Trying Not To Laugh",
-        "TTFN": "Ta-Ta For Now!",
-        "TTYL": "Talk To You Later",
-        "U": "You",
-        "U2": "You Too",
-        "U4E": "Yours For Ever",
-        "W": "Win",
-        "W8": "Wait",
-        "WB": "Welcome Back",
-        "WTF": "What The Fuck",
-        "WTG": "Way To Go!",
-        "WUF": "Where Are You From?",
-        "WYD": "What You Doing?",
-        "WYWH": "Wish You Were Here",
-        "ZZZ": "Sleeping, Bored, Tired"
-    }
-    new_text = []
-    for word in text.split():
-        word = word.replace(',','')
-        word = word.replace('.','')
-        word = word.upper()
-        if word in chat_abbreviations.keys():
-            new_text.append(chat_abbreviations[word])
-        else:
-            new_text.append(word)
-    return " ".join(new_text).lower()
-
-# Handle Contractions
-import contractions
-def expand_contractions(text):
-    return contractions.fix(text)
-
-# Correct the Spelling
-from textblob import TextBlob
-incorrect_text = "Thsi si a teext wiht sepling mitkase."
-txt_blob = TextBlob(incorrect_text)
-txt_blob.correct()  #returns correct spellings
-
-# Remove stop words
-import nltk
-nltk.download('stopwords')
-from nltk.corpus import stopwords
-stopwords = stopwords.words('english')
-def remove_stopwords(text):
-    filtered_words = [word for word in text.split() if word not in stopwords]
-    return " ".join(filtered_words)
-
-
-# Handle Emojis
-#### demojize the emojis
-import emoji
-emoji.demojize(emoji_text)    #gives text in place of emoji
-
-#### encode emoji to utf-8 text
-emoji_text = "Let us grab a hot coffee and catch up today! ☕✨ I am so excited to see you and hear all your news! 😊💬"
-emoji_text.encode('utf-8')  #returns emoji encoded into utf-8 text
-
-#### remove emojis
-import re
-def remove_emoji(text):
-    emoji_pattern = re.compile("["
-                           u"\U0001F600-\U0001F64F"  # emoticons
-                           u"\U0001F300-\U0001F5FF"  # symbols & pictographs
-                           u"\U0001F680-\U0001F6FF"  # transport & map symbols
-                           u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
-                           u"\U00002702-\U000027B0"
-                           u"\U000024C2-\U0001F251"
-                           "]+", flags=re.UNICODE)
-    return emoji_pattern.sub(r'', text)
-
-# Remove Digits
-def remove_digits(text):
-    pattern = re.compile(r'\d+')
-    return pattern.sub('', text)
-
-# Tokenize (Tokenization) - sentence/word
-text = 'I am going to Delhi? I will stay there for 3 days! Let\'s hope the trip to be great.'
-
-#### Sentence Tokenization
-text.split('.') #only splits at one character
-#### word Tokenization
-text.split()    #also keeps punctuations attached to words
-#### split function splits on one character only.
-#### what if sentences end with . ? ! 
-#### to overcome this, use REGEX
-
-#### sentence Tokenization
-import re
-re.compile('[.!?] ').split(text)
-#### word Tokenization
-import re
-re.findall("[\w]+", text)
-
-#### Tokenize using NLTK library
-import nltk
-nltk.download('punkt_tab')
-from nltk.tokenize import word_tokenize, sent_tokenize
-sent_tokenize(text)
-word_tokenize(text)
-
-#### Tokenize using Spacy library (most advance)
-import spacy
-!python -m spacy download en_core_web_sm
-nlp = spacy.load("en_core_web_sm")    #load english dictionary
-doc = nlp(text)
-for token in doc:
-    print(token)
-
-# Stemming - root words [rule based - may give wrong spelling]
-from nltk.stem.porter import PorterStemmer
-ps = PorterStemmer()
-def stem_words(text):
-    return " ".join([ps.stem(word) for word in text.split()])
-text = 'walk walks walking walked'
-stem_words(text)
-
-# Lemmatization - root words [using Lexical Dictionary - slower]
-import nltk
-nltk.download('wordnet')
-from nltk.stem import WordNetLemmatizer
-lemmatizer = WordNetLemmatizer()
-
-def lem_word(text):
-  return " ".join([lemmatizer.lemmatize(word, pos='v') for word in text.split()])
-#pos='v' - verb form of root word
-
-
-
-
-
-
-
-
-
-
-##################################################################
-# NLP - Text Vectorization/Representation [text to numbers]
-##################################################################
-
-# One Hot Encoding (OHE)
-#### if one doc/sentence contains 3 words
-#### each word is represented by a vector of dimension equal to the total number of words in vocab.
-#### one dimension is 1 where word matches, others are 0 --> sparse
-
-#### Implementation using pandas
-pd.get_dummies(df,columns=['col1','col2'],drop_first=True)      #OHE for col1 and col2
-
-#### Implementation using sklearn
-from sklearn.preprocessing import OneHotEncoder
-ohe = OneHotEncoder(drop='First', sparse_output=False, handle_unknown='ignore')
-df['review'] = pd.DataFrame(ohe.fit_transform(df[['review']]))
-
-#### Implementation using keras
-from keras.utils import to_categorical
-y_train_ohe = to_categorical(y_train, num_classes)
-
-#### problems in OHE
-#### 1) Sparsity, 2) OOV, 4) No Semantic Meaning capture,
-#### 4) Sentence size varies, Not able to train ML model
-
-
-
-
-# Bag of Words (BOW) - [helpful in text classification]
-#### if one doc/sentence contains 3 words
-#### each SENTENCE is represented by a vector of dimensions equal to the total number of words in vocab.
-#### each dimension contains the total number of times that word appears in the sentence
-#### unseen words get handled by ignoring.
-from sklearn.feature_extraction.text import CountVectorizer
-import nltk
-nltk.download('punkt')
-from nltk.tokenize import word_tokenize
-cv = CountVectorizer( analyzer='word',
-                tokenizer=word_tokenize, lowercase=True,
-                ngram_range=(1,1), stop_words='english',
-                max_features=10000)
-X_train_bow = cv.fit_transform(X_train['review'])
-print(cv.vocabulary_)
-print(X_train_bow[0].toarray())  #1st sentence numbers in train data
-
-X_test_bow = cv.transform(X_test['review'])
-
-x_tr1=pd.DataFrame(x_train_bow.toarray(),columns=cv.get_feature_names_out())
-x_tr1.head()
-
-x_ts1=pd.DataFrame(x_test_bow.toarray(),columns=cv.get_feature_names_out())
-x_ts1.head()
-#### Advantages in BOW
-#### 1) Less sparsity, 2) solves OOV by ignoring new words,
-#### 3) captures Sematic relationship (similarity) to some extent,
-#### 4) works with diff sentence sizes
-
-#### Disadvantages in BOW
-#### 1) Sparcity still exists to a very great extent
-#### 2) OOV is ignored (word may be important)
-#### 3) sequence of words is ignored (context not captured)
-
-
-
-# Bag of ngrams/ n-grams/ bi-grams/ tri-grams
-#### BOW was made with single word
-#### Bag of ngrams is made of n-words taken at a time (2-bi, 3-tri)
-#### BOW = Bag of 1-gram
-#### code modification for Bag of bi-gram
-cv = CountVectorizer(ngram_range=(2,2))
-#### code modification for Bag of bi-gram & tri-gram both
-cv = CountVectorizer(ngram_range=(2,3))
-
-#### Advantages in n-grams
-#### 1) Able to capture semantic meaning
-#### 2) Easy implementation
-
-#### Disadvantages in n-grams
-#### 1) more features/ slow training
-#### 2) OOV is ignored
-
-
-
-
-
-# TF-IDF (TFIDF): Term Frequency Inverse Document Frequency
-#### a word comes in one doc & not others, then its weightage in that sentence is higher
-#### TF = (#occurences of term t in doc d)/(total #terms in d)
-#### IDF = 1 + LOG[(total #docs in corpus)/(#docs with term t)]
-#### calculate TF x IDF for each word in every document
-from sklearn.feature_extraction.text import TfidfVectorizer
-tfidf = TfidfVectorizer(analyzer='word', tokenizer=word_tokenize,
-            lowercase=True, ngram_range=(1,1), max_features=10000)
-x_tr1=tfidf.fit_transform(x_train['review'])
-x_ts1=tfidf.transform(x_test['review'])
-
-x_tr1=pd.DataFrame(x_tr1.toarray(),columns=tfidf.get_feature_names_out())
-x_tr1.head()
-
-x_ts1=pd.DataFrame(x_ts1.toarray(),columns=tfidf.get_feature_names_out())
-x_ts1.head()
-
-#### Advantages in TF-IDF
-#### 1) Works well in information retrieval systems [Google]
-
-#### Disadvantages in TF-IDF
-#### 1) Sparsity exists
-#### 2) OOV is ignored
-#### 3) High Dimensionality
-#### 4) Semantic relationship is not captured
-
-
-
-
-
-# Word2Vec - word embedding technique to convert a word to vector
-#### invented by Google
-#### Captures Semantic Meaning
-#### Low dimentionality - Fast Training
-#### Dense/Non-Sparse Vectors
-#### based on Deep Learning
-#### Word2Vec using pre-trained model from google
-#### 300 dimensional embedding of 3 Million words
-import gensim
-
-!pip install wget
-!wget -c "https://s3.amazonaws.com/dl4j-distribution/GoogleNews-vectors-negative300.bin.gz"
-
-model = KeyedVectors.load_word2vec_format(
-                    'GoogleNews-vectors-negative300.bin.gz',
-                    binary=True, limit=500000)
-#### print the embedding of different words
-model['cricket']
-model['man']
-model.most_similar('man')
-#### similarity score (0 to 1) of 'man' & 'woman'
-model.similarity('man','woman')
-#### odd word out of the given words
-model.doesnt_match(['PHP','java','monkey'])
-#### create a vector = king - man + woman, must be similar to queen
-vec = model['king'] - model['man'] + model['woman']
-model.most_similar([vec])
-
-vec = model['INR'] - model ['India'] + model['England']
-model.most_similar([vec])
-
-
-####Word2Vec using own model
-!pip install gensim
-import gensim
-import os
-from nltk import sent_tokenize
-from gensim.utils import simple_preprocess
-from gensim.models import Word2Vec
-
-text = []
-#from a directory named data present in cwd, load all files
-for filename in os.listdir('data'):
-    f = open(os.path.join('data',filename))
-    corpus = f.read()
-    sentences = sent_tokenize(corpus)   #tokenize sentences
-    for sentence in sentences:
-        text.append(simple_preprocess(sentence))               #simple_preprocess = sentence.split().strip()
-text    #a 2-d list, [[words in sentence1],[words in sentence2],...]
-
-#### method 1
-model = Word2Vec(window=10,     # #words to consider at a time
-            vector_size=100,    #final vector size for each word
-            min_count=2,    #ignore words with frequency lower than 2
-            workers=4)      #use 4 processor threads
-model.build_vocab(text)
-model.train(text, total_examples=model.corpus_count, epochs=model.epochs)
-#### method 2 - giving text in input automatically executes build_vocab and train
-model = Word2Vec(sentences=text,
-            window=10,
-            vector_size=100,
-            min_count=2,
-            workers=4)
-
-model.wv['king']        #embedding (numpy array) of the word king
-model.wv.most_similar('daenerys', topn=5)
-    #result below, because the corpus is from GOT books
-model.wv.similarity('arya','sansa') #similarity score of arya and sansa
-model.wv.doesnt_match(['jon','rikon','robb','arya','sansa','bran'])
-    #prints the odd one i.e. jon
-
-
-model.wv.get_normed_vectors()   #normalized vectors
-model.wv.index_to_key           #all words in text form
-
-#### method to create sentence embeddings from word embeddings
-def doc_vector(doc):
-    # only keep sentence words which are considered in corpus vocab
-    doc = [word for word in doc.split() if word in model.wv.index_to_key]
-    # return mean embeddings of whole sentence
-    return np.mean(model.wv[doc], axis=0)
-
-
-
-
-
-
-
-
-##################################################################
-# NLP Project - Text Classification [Positive/Negative]
-##################################################################
-import pandas as pd
-import numpy as np
-import re
-import string
-import nltk
-from nltk import sent_tokenize
-import emoji
-import tqdm
-from tqdm.auto import tqdm
-from sklearn.preprocessing import LabelEncoder
-from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
-from gensim.models import Word2Vec
-from gensim.utils import simple_preprocess
-from sklearn.naive_bayes import GaussianNB
-from sklearn.metrics import accuracy_score, confusion_matrix, f1_score
-from sklearn.ensemble import RandomForestClassifier
-
-df = pd.read_csv('datasets/IMDB Dataset.csv')
-
-# check class balance
-df['sentiment'].value_counts()
-# check missing values
-df.isnull().sum()
-# drop duplicates
-df.drop_duplicates(inplace=True)
-# convert text to lowercase
-df['review'] = df['review'].str.lower()
-# remove html tags
-def remove_html(text):
-    pattern = re.compile(r'<.*?>')
-    return pattern.sub('', text)
-df['review'] = df['review'].apply(remove_html)
-# remove URLs
-def remove_url(text):
-    pattern = re.compile(r'http\S+|www\.\S+')
-    return pattern.sub('', text)
-df['review'] = df['review'].apply(remove_url)
-# remove multiple spaces
-def remove_multiple_spaces(text):
-    pattern = re.compile(r'\s+')
-    return pattern.sub(' ', text)
-df['review'] = df['review'].apply(remove_multiple_spaces)
-# remove punctuations
-def remove_punctuations(text):
-    return text.translate(str.maketrans('','',string.punctuation))
-df['review'] = df['review'].apply(remove_punctuations)
-# handle emojis
-tqdm.pandas(desc="Processing Data")
-df['review'] = df['review'].progress_apply(emoji.demojize)
-# remove stop words
-nltk.download('stopwords')
-from nltk.corpus import stopwords
-stopwords = stopwords.words('english')
-def remove_stopwords(text):
-    filtered_words = [word for word in text.split() if word not in stopwords]
-    return " ".join(filtered_words)
-df['review'] = df['review'].progress_apply(remove_stopwords)
-# X,y split
-X = df.iloc[:,:-1]
-y = df.iloc[:,-1]
-# label encode y
-le = LabelEncoder()
-y = le.fit_transform(y)
-X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2,random_state=1)
-
-#################################
-# Using Techniques BOW / TFIDF
-#################################
-# BOW
-cv = CountVectorizer(ngram_range=(1,1), min_df=5, max_df=0.95, max_features=5000)
-X_train_bow = cv.fit_transform(X_train['review']).toarray()
-X_test_bow = cv.transform(X_test['review']).toarray()
-
-# TFIDF
-tfidf = TfidfVectorizer(ngram_range=(1,1), min_df=5, max_df=0.95, max_features=5000)
-X_train_tfidf = tfidf.fit_transform(X_train['review']).toarray()
-X_test_tfidf = tfidf.transform(X_test['review']).toarray()
-
-# Gaussian Naive Bayes Model with BOW
-gnb = GaussianNB()
-gnb.fit(X_train_bow, y_train)
-y_pred1 = gnb.predict(X_test_bow)
-confusion_matrix(y_test, y_pred1), accuracy_score(y_test, y_pred1), f1_score(y_test, y_pred1)
-
-# Random Forest Model with TFIDF
-rf = RandomForestClassifier(n_estimators=300, max_depth=5, n_jobs=-1, verbose=1, random_state=42)
-rf.fit(X_train_tfidf, y_train)
-y_pred22 = rf.predict(X_test_tfidf)
-confusion_matrix(y_test, y_pred22), accuracy_score(y_test, y_pred22), f1_score(y_test, y_pred22)
-
-#################################
-# Using Word2Vec Embeddings
-#################################
-# tokenized words for each sentence in all the rows
-story = []
-for doc in df['review']:
-    sentences = sent_tokenize(doc)
-    for sentence in sentences:
-        story.append(simple_preprocess(sentence))
-
-# Word2Vec - method 1
-model_wv = Word2Vec(window=10, vector_size=300, min_count=2, workers=12)
-model_wv.build_vocab(story)
-model_wv.train(story, total_examples=model_wv.corpus_count, epochs=model_wv.epochs)
-
-# Word2Vec - method 2
-model_wv = Word2Vec(sentences=story, window=10, vector_size=300, min_count=2, workers=12)
-
-# all words in vocab of model_wv
-model_wv.wv.index_to_key
-
-# get document (review) embeddings from word embeddings
-def doc_vector(doc):
-    #In the doc (review), keep only the words that are present in vocab of model
-    doc = [word for word in doc.split() if word in model_wv.wv.index_to_key]
-    #each word has an embedding of 300 dimensions.
-    #take mean of embeddings of all the words in a doc (review)
-    return np.mean(model_wv.wv[doc], axis=0)
-# apply above method
-X = []
-for doc in tqdm(df['review'].values):
-    X.append(doc_vector(doc))
-y = df.iloc[:,-1]
-# train test split
-X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2,random_state=1)
-# Random Forest Classifier
-rf = RandomForestClassifier(n_estimators=100, max_depth=8, n_jobs=-1, verbose=1)
-rf.fit(X_train, y_train)
-y_pred = rf.predict(X_test)
-
-confusion_matrix(y_test, y_pred), accuracy_score(y_test, y_pred), f1_score(y_test, y_pred)
-
-
-
-
-
-
-
-
-##################################################################
-# NLP Project - Parts of Speech (POS) Tagging
-##################################################################
-# Applications of POS tagging:
-# 1) Named Entity Recognition
-# 2) Question Answering system
-# 3) Word sense disambiguation (same word used with diff meanings)
-# 4) Chatbots
-
-# Using spacy library, Hidden Markov Model & Viterbi optimization
-
-import spacy
-nlp = spacy.load('en_core_web_sm')
-# POS tagging code
-doc = nlp(u"I will google about facebook")
-
-doc.text                #output= 'I will google about facebook'
-doc[0]                  #output= I
-doc[0].pos_             #overview POS: output= 'PRON'
-doc[0].tag_             #detailed POS: output= 'PRP'
-spacy.explain('PRP')    #explain PRP: output= pronoun, personal
-
-# print POS for every word
-for word in doc:
-    print(word.text,"-->",word.pos_, spacy.explain(word.tag_))
-
-# sentence visualization using spacy
-from spacy import displacy
-doc = nlp(r'The quick brown fox jumped over the lazy dog')
-displacy.render(doc,style='deep',jupyter=True)
-OR
-options={'distance':80,
-        'compact':True,
-        'color':'#fff',
-        'bg':'#00a65a'}
-displacy.render(doc,style='dep',jupyter=True,options=options)
-
-
-
-
-
-
-
-
-##################################################################
-# NLP Project - Duplicate Question Recognition (Quora) using ML
-##################################################################
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-import re
-from bs4 import BeautifulSoup
-
-import warnings
-warnings.filterwarnings('ignore')
-
-
-df = pd.read_csv('datasets/Quora Duplicate Questions Dataset/train.csv')
-
-new_df = df.sample(30000,random_state=2)
-
-def preprocess(q):
-    
-    q = str(q).lower().strip()
-    
-    # Replace certain special characters with their string equivalents
-    q = q.replace('%', ' percent')
-    q = q.replace('$', ' dollar ')
-    q = q.replace('₹', ' rupee ')
-    q = q.replace('€', ' euro ')
-    q = q.replace('@', ' at ')
-    
-    # The pattern '[math]' appears around 900 times in the whole dataset.
-    q = q.replace('[math]', '')
-    
-    # Replacing some numbers with string equivalents (not perfect, can be done better to account for more cases)
-    q = q.replace(',000,000,000 ', 'b ')
-    q = q.replace(',000,000 ', 'm ')
-    q = q.replace(',000 ', 'k ')
-    q = re.sub(r'([0-9]+)000000000', r'\1b', q)
-    q = re.sub(r'([0-9]+)000000', r'\1m', q)
-    q = re.sub(r'([0-9]+)000', r'\1k', q)
-    
-    # Decontracting words
-    # https://en.wikipedia.org/wiki/Wikipedia%3aList_of_English_contractions
-    # https://stackoverflow.com/a/19794953
-    contractions = { 
-    "ain't": "am not",
-    "aren't": "are not",
-    "can't": "can not",
-    "can't've": "can not have",
-    "'cause": "because",
-    "could've": "could have",
-    "couldn't": "could not",
-    "couldn't've": "could not have",
-    "didn't": "did not",
-    "doesn't": "does not",
-    "don't": "do not",
-    "hadn't": "had not",
-    "hadn't've": "had not have",
-    "hasn't": "has not",
-    "haven't": "have not",
-    "he'd": "he would",
-    "he'd've": "he would have",
-    "he'll": "he will",
-    "he'll've": "he will have",
-    "he's": "he is",
-    "how'd": "how did",
-    "how'd'y": "how do you",
-    "how'll": "how will",
-    "how's": "how is",
-    "i'd": "i would",
-    "i'd've": "i would have",
-    "i'll": "i will",
-    "i'll've": "i will have",
-    "i'm": "i am",
-    "i've": "i have",
-    "isn't": "is not",
-    "it'd": "it would",
-    "it'd've": "it would have",
-    "it'll": "it will",
-    "it'll've": "it will have",
-    "it's": "it is",
-    "let's": "let us",
-    "ma'am": "madam",
-    "mayn't": "may not",
-    "might've": "might have",
-    "mightn't": "might not",
-    "mightn't've": "might not have",
-    "must've": "must have",
-    "mustn't": "must not",
-    "mustn't've": "must not have",
-    "needn't": "need not",
-    "needn't've": "need not have",
-    "o'clock": "of the clock",
-    "oughtn't": "ought not",
-    "oughtn't've": "ought not have",
-    "shan't": "shall not",
-    "sha'n't": "shall not",
-    "shan't've": "shall not have",
-    "she'd": "she would",
-    "she'd've": "she would have",
-    "she'll": "she will",
-    "she'll've": "she will have",
-    "she's": "she is",
-    "should've": "should have",
-    "shouldn't": "should not",
-    "shouldn't've": "should not have",
-    "so've": "so have",
-    "so's": "so as",
-    "that'd": "that would",
-    "that'd've": "that would have",
-    "that's": "that is",
-    "there'd": "there would",
-    "there'd've": "there would have",
-    "there's": "there is",
-    "they'd": "they would",
-    "they'd've": "they would have",
-    "they'll": "they will",
-    "they'll've": "they will have",
-    "they're": "they are",
-    "they've": "they have",
-    "to've": "to have",
-    "wasn't": "was not",
-    "we'd": "we would",
-    "we'd've": "we would have",
-    "we'll": "we will",
-    "we'll've": "we will have",
-    "we're": "we are",
-    "we've": "we have",
-    "weren't": "were not",
-    "what'll": "what will",
-    "what'll've": "what will have",
-    "what're": "what are",
-    "what's": "what is",
-    "what've": "what have",
-    "when's": "when is",
-    "when've": "when have",
-    "where'd": "where did",
-    "where's": "where is",
-    "where've": "where have",
-    "who'll": "who will",
-    "who'll've": "who will have",
-    "who's": "who is",
-    "who've": "who have",
-    "why's": "why is",
-    "why've": "why have",
-    "will've": "will have",
-    "won't": "will not",
-    "won't've": "will not have",
-    "would've": "would have",
-    "wouldn't": "would not",
-    "wouldn't've": "would not have",
-    "y'all": "you all",
-    "y'all'd": "you all would",
-    "y'all'd've": "you all would have",
-    "y'all're": "you all are",
-    "y'all've": "you all have",
-    "you'd": "you would",
-    "you'd've": "you would have",
-    "you'll": "you will",
-    "you'll've": "you will have",
-    "you're": "you are",
-    "you've": "you have"
-    }
-
-    q_decontracted = []
-
-    for word in q.split():
-        if word in contractions:
-            word = contractions[word]
-
-        q_decontracted.append(word)
-
-    q = ' '.join(q_decontracted)
-    q = q.replace("'ve", " have")
-    q = q.replace("n't", " not")
-    q = q.replace("'re", " are")
-    q = q.replace("'ll", " will")
-    
-    # Removing HTML tags
-    q = BeautifulSoup(q)
-    q = q.get_text()
-    
-    # Remove punctuations
-    pattern = re.compile('\W')
-    q = re.sub(pattern, ' ', q).strip()
-   
-    return q
-
-new_df['question1'] = new_df['question1'].apply(preprocess)
-new_df['question2'] = new_df['question2'].apply(preprocess)
-new_df['q1_len'] = new_df['question1'].str.len() 
-new_df['q2_len'] = new_df['question2'].str.len()
-new_df['q1_num_words'] = new_df['question1'].apply(lambda row: len(row.split(" ")))
-new_df['q2_num_words'] = new_df['question2'].apply(lambda row: len(row.split(" ")))
-
-def common_words(row):
-    w1 = set(map(lambda word: word.lower().strip(), row['question1'].split(" ")))
-    w2 = set(map(lambda word: word.lower().strip(), row['question2'].split(" ")))    
-    return len(w1 & w2)
-new_df['word_common'] = new_df.apply(common_words, axis=1)
-
-def total_words(row):
-    w1 = set(map(lambda word: word.lower().strip(), row['question1'].split(" ")))
-    w2 = set(map(lambda word: word.lower().strip(), row['question2'].split(" ")))    
-    return (len(w1) + len(w2))
-
-new_df['word_total'] = new_df.apply(total_words, axis=1)
-new_df['word_share'] = round(new_df['word_common']/new_df['word_total'],2)
-# Advanced Features
-from nltk.corpus import stopwords
-def fetch_token_features(row):
-    q1 = row['question1']
-    q2 = row['question2']    
-    SAFE_DIV = 0.0001 
-    STOP_WORDS = stopwords.words("english")    
-    token_features = [0.0]*8    
-    # Converting the Sentence into Tokens: 
-    q1_tokens = q1.split()
-    q2_tokens = q2.split()    
-    if len(q1_tokens) == 0 or len(q2_tokens) == 0:
-        return token_features
-    # Get the non-stopwords in Questions
-    q1_words = set([word for word in q1_tokens if word not in STOP_WORDS])
-    q2_words = set([word for word in q2_tokens if word not in STOP_WORDS])    
-    #Get the stopwords in Questions
-    q1_stops = set([word for word in q1_tokens if word in STOP_WORDS])
-    q2_stops = set([word for word in q2_tokens if word in STOP_WORDS])    
-    # Get the common non-stopwords from Question pair
-    common_word_count = len(q1_words.intersection(q2_words))    
-    # Get the common stopwords from Question pair
-    common_stop_count = len(q1_stops.intersection(q2_stops))    
-    # Get the common Tokens from Question pair
-    common_token_count = len(set(q1_tokens).intersection(set(q2_tokens)))       
-    token_features[0] = common_word_count / (min(len(q1_words), len(q2_words)) + SAFE_DIV)
-    token_features[1] = common_word_count / (max(len(q1_words), len(q2_words)) + SAFE_DIV)
-    token_features[2] = common_stop_count / (min(len(q1_stops), len(q2_stops)) + SAFE_DIV)
-    token_features[3] = common_stop_count / (max(len(q1_stops), len(q2_stops)) + SAFE_DIV)
-    token_features[4] = common_token_count / (min(len(q1_tokens), len(q2_tokens)) + SAFE_DIV)
-    token_features[5] = common_token_count / (max(len(q1_tokens), len(q2_tokens)) + SAFE_DIV)
-    # Last word of both question is same or not
-    token_features[6] = int(q1_tokens[-1] == q2_tokens[-1])    
-    # First word of both question is same or not
-    token_features[7] = int(q1_tokens[0] == q2_tokens[0])    
-    return token_features
-
-token_features = new_df.apply(fetch_token_features, axis=1)
-
-new_df["cwc_min"]       = list(map(lambda x: x[0], token_features))
-new_df["cwc_max"]       = list(map(lambda x: x[1], token_features))
-new_df["csc_min"]       = list(map(lambda x: x[2], token_features))
-new_df["csc_max"]       = list(map(lambda x: x[3], token_features))
-new_df["ctc_min"]       = list(map(lambda x: x[4], token_features))
-new_df["ctc_max"]       = list(map(lambda x: x[5], token_features))
-new_df["last_word_eq"]  = list(map(lambda x: x[6], token_features))
-new_df["first_word_eq"] = list(map(lambda x: x[7], token_features))
-
-import distance
-def fetch_length_features(row):
-    q1 = row['question1']
-    q2 = row['question2']    
-    length_features = [0.0]*3    
-    # Converting the Sentence into Tokens: 
-    q1_tokens = q1.split()
-    q2_tokens = q2.split()    
-    if len(q1_tokens) == 0 or len(q2_tokens) == 0:
-        return length_features    
-    # Absolute length features
-    length_features[0] = abs(len(q1_tokens) - len(q2_tokens))    
-    #Average Token Length of both Questions
-    length_features[1] = (len(q1_tokens) + len(q2_tokens))/2    
-    strs = list(distance.lcsubstrings(q1, q2))
-    length_features[2] = len(strs[0]) / (min(len(q1), len(q2)) + 1)    
-    return length_features
-
-length_features = new_df.apply(fetch_length_features, axis=1)
-new_df['abs_len_diff'] = list(map(lambda x: x[0], length_features))
-new_df['mean_len'] = list(map(lambda x: x[1], length_features))
-new_df['longest_substr_ratio'] = list(map(lambda x: x[2], length_features))
-
-
-# Fuzzy Features
-from fuzzywuzzy import fuzz
-def fetch_fuzzy_features(row):    
-    q1 = row['question1']
-    q2 = row['question2']    
-    fuzzy_features = [0.0]*4    
-    # fuzz_ratio
-    fuzzy_features[0] = fuzz.QRatio(q1, q2)
-    # fuzz_partial_ratio
-    fuzzy_features[1] = fuzz.partial_ratio(q1, q2)
-    # token_sort_ratio
-    fuzzy_features[2] = fuzz.token_sort_ratio(q1, q2)
-    # token_set_ratio
-    fuzzy_features[3] = fuzz.token_set_ratio(q1, q2)
-    return fuzzy_features
-
-fuzzy_features = new_df.apply(fetch_fuzzy_features, axis=1)
-
-# Creating new feature columns for fuzzy features
-new_df['fuzz_ratio'] = list(map(lambda x: x[0], fuzzy_features))
-new_df['fuzz_partial_ratio'] = list(map(lambda x: x[1], fuzzy_features))
-new_df['token_sort_ratio'] = list(map(lambda x: x[2], fuzzy_features))
-new_df['token_set_ratio'] = list(map(lambda x: x[3], fuzzy_features))
-
-# Using TSNE for Dimentionality reduction for 15 Features(Generated after cleaning the data) to 3 dimention
-from sklearn.preprocessing import MinMaxScaler
-X = MinMaxScaler().fit_transform(new_df[['cwc_min', 'cwc_max', 'csc_min', 'csc_max' , 'ctc_min' , 'ctc_max' , 'last_word_eq', 'first_word_eq' , 'abs_len_diff' , 'mean_len' , 'token_set_ratio' , 'token_sort_ratio' ,  'fuzz_ratio' , 'fuzz_partial_ratio' , 'longest_substr_ratio']])
-y = new_df['is_duplicate'].values
-
-from sklearn.manifold import TSNE
-tsne2d = TSNE(
-    n_components=2,
-    init='random', # pca
-    random_state=101,
-    method='barnes_hut',
-    n_iter=1000,
-    verbose=2,
-    angle=0.5
-).fit_transform(X)
-
-x_df = pd.DataFrame({'x':tsne2d[:,0], 'y':tsne2d[:,1] ,'label':y})
-
-# draw the plot in appropriate place in the grid
-sns.lmplot(data=x_df, x='x', y='y', hue='label', fit_reg=False, size=8,palette="Set1",markers=['s','o'])
-
-
-tsne3d = TSNE(
-    n_components=3,
-    init='random', # pca
-    random_state=101,
-    method='barnes_hut',
-    n_iter=1000,
-    verbose=2,
-    angle=0.5
-).fit_transform(X)
-
-import plotly.graph_objs as go
-import plotly.tools as tls
-import plotly.offline as py
-py.init_notebook_mode(connected=True)
-
-trace1 = go.Scatter3d(
-    x=tsne3d[:,0],
-    y=tsne3d[:,1],
-    z=tsne3d[:,2],
-    mode='markers',
-    marker=dict(
-        sizemode='diameter',
-        color = y,
-        colorscale = 'Portland',
-        colorbar = dict(title = 'duplicate'),
-        line=dict(color='rgb(255, 255, 255)'),
-        opacity=0.75
-    )
-)
-
-data=[trace1]
-layout=dict(height=800, width=800, title='3d embedding with engineered features')
-fig=dict(data=data, layout=layout)
-py.iplot(fig, filename='3DBubble')
-
-
-ques_df = new_df[['question1','question2']]
-
-final_df = new_df.drop(columns=['id','qid1','qid2','question1','question2'])
-
-from sklearn.feature_extraction.text import CountVectorizer
-# merge texts
-questions = list(ques_df['question1']) + list(ques_df['question2'])
-
-cv = CountVectorizer(max_features=3000)
-q1_arr, q2_arr = np.vsplit(cv.fit_transform(questions).toarray(),2)
-
-
-temp_df1 = pd.DataFrame(q1_arr, index= ques_df.index)
-temp_df2 = pd.DataFrame(q2_arr, index= ques_df.index)
-temp_df = pd.concat([temp_df1, temp_df2], axis=1)
-
-final_df = pd.concat([final_df, temp_df], axis=1)
-
-from sklearn.model_selection import train_test_split
-X_train,X_test,y_train,y_test = train_test_split(final_df.iloc[:,1:].values,final_df.iloc[:,0].values,test_size=0.2,random_state=1)
-
-
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
-rf = RandomForestClassifier()
-rf.fit(X_train,y_train)
-y_pred = rf.predict(X_test)
-accuracy_score(y_test,y_pred)
-
-
-from xgboost import XGBClassifier
-xgb = XGBClassifier()
-xgb.fit(X_train,y_train)
-y_pred1 = xgb.predict(X_test)
-accuracy_score(y_test,y_pred1)
-
-
-from sklearn.metrics import confusion_matrix
-# for random forest model
-confusion_matrix(y_test,y_pred)
-
-# for xgboost model
-confusion_matrix(y_test,y_pred1)
-
-
-def test_common_words(q1,q2):
-    w1 = set(map(lambda word: word.lower().strip(), q1.split(" ")))
-    w2 = set(map(lambda word: word.lower().strip(), q2.split(" ")))    
-    return len(w1 & w2)
-
-def test_total_words(q1,q2):
-    w1 = set(map(lambda word: word.lower().strip(), q1.split(" ")))
-    w2 = set(map(lambda word: word.lower().strip(), q2.split(" ")))    
-    return (len(w1) + len(w2))
-
-def test_fetch_token_features(q1,q2):
-    
-    SAFE_DIV = 0.0001 
-
-    STOP_WORDS = stopwords.words("english")
-    
-    token_features = [0.0]*8
-    
-    # Converting the Sentence into Tokens: 
-    q1_tokens = q1.split()
-    q2_tokens = q2.split()
-    
-    if len(q1_tokens) == 0 or len(q2_tokens) == 0:
-        return token_features
-
-    # Get the non-stopwords in Questions
-    q1_words = set([word for word in q1_tokens if word not in STOP_WORDS])
-    q2_words = set([word for word in q2_tokens if word not in STOP_WORDS])
-    
-    #Get the stopwords in Questions
-    q1_stops = set([word for word in q1_tokens if word in STOP_WORDS])
-    q2_stops = set([word for word in q2_tokens if word in STOP_WORDS])
-    
-    # Get the common non-stopwords from Question pair
-    common_word_count = len(q1_words.intersection(q2_words))
-    
-    # Get the common stopwords from Question pair
-    common_stop_count = len(q1_stops.intersection(q2_stops))
-    
-    # Get the common Tokens from Question pair
-    common_token_count = len(set(q1_tokens).intersection(set(q2_tokens)))
-    
-    
-    token_features[0] = common_word_count / (min(len(q1_words), len(q2_words)) + SAFE_DIV)
-    token_features[1] = common_word_count / (max(len(q1_words), len(q2_words)) + SAFE_DIV)
-    token_features[2] = common_stop_count / (min(len(q1_stops), len(q2_stops)) + SAFE_DIV)
-    token_features[3] = common_stop_count / (max(len(q1_stops), len(q2_stops)) + SAFE_DIV)
-    token_features[4] = common_token_count / (min(len(q1_tokens), len(q2_tokens)) + SAFE_DIV)
-    token_features[5] = common_token_count / (max(len(q1_tokens), len(q2_tokens)) + SAFE_DIV)
-    
-    # Last word of both question is same or not
-    token_features[6] = int(q1_tokens[-1] == q2_tokens[-1])
-    
-    # First word of both question is same or not
-    token_features[7] = int(q1_tokens[0] == q2_tokens[0])
-    
-    return token_features
-    
-def test_fetch_length_features(q1,q2):
-    length_features = [0.0]*3
-    # Converting the Sentence into Tokens: 
-    q1_tokens = q1.split()
-    q2_tokens = q2.split()    
-    if len(q1_tokens) == 0 or len(q2_tokens) == 0:
-        return length_features    
-    # Absolute length features
-    length_features[0] = abs(len(q1_tokens) - len(q2_tokens))    
-    #Average Token Length of both Questions
-    length_features[1] = (len(q1_tokens) + len(q2_tokens))/2    
-    strs = list(distance.lcsubstrings(q1, q2))
-    length_features[2] = len(strs[0]) / (min(len(q1), len(q2)) + 1)    
-    return length_features
-
-def test_fetch_fuzzy_features(q1,q2):    
-    fuzzy_features = [0.0]*4    
-    # fuzz_ratio
-    fuzzy_features[0] = fuzz.QRatio(q1, q2)
-    # fuzz_partial_ratio
-    fuzzy_features[1] = fuzz.partial_ratio(q1, q2)
-    # token_sort_ratio
-    fuzzy_features[2] = fuzz.token_sort_ratio(q1, q2)
-    # token_set_ratio
-    fuzzy_features[3] = fuzz.token_set_ratio(q1, q2)
-    return fuzzy_features
-
-def query_point_creator(q1,q2):    
-    input_query = []    
-    # preprocess
-    q1 = preprocess(q1)
-    q2 = preprocess(q2)    
-    # fetch basic features
-    input_query.append(len(q1))
-    input_query.append(len(q2))    
-    input_query.append(len(q1.split(" ")))
-    input_query.append(len(q2.split(" ")))    
-    input_query.append(test_common_words(q1,q2))
-    input_query.append(test_total_words(q1,q2))
-    input_query.append(round(test_common_words(q1,q2)/test_total_words(q1,q2),2))    
-    # fetch token features
-    token_features = test_fetch_token_features(q1,q2)
-    input_query.extend(token_features)    
-    # fetch length based features
-    length_features = test_fetch_length_features(q1,q2)
-    input_query.extend(length_features)    
-    # fetch fuzzy features
-    fuzzy_features = test_fetch_fuzzy_features(q1,q2)
-    input_query.extend(fuzzy_features)    
-    # bow feature for q1
-    q1_bow = cv.transform([q1]).toarray()    
-    # bow feature for q2
-    q2_bow = cv.transform([q2]).toarray()
-    return np.hstack((np.array(input_query).reshape(1,22),q1_bow,q2_bow))
-
-
-q1 = 'Where is the capital of India?'
-q2 = 'What is the current capital of Pakistan?'
-q3 = 'Which city serves as the capital of India?'
-q4 = 'What is the business capital of India?'
-
-
-rf.predict(query_point_creator(q1,q4))
-
-
-import pickle
-
-pickle.dump(rf,open('model.pkl','wb'))
-pickle.dump(cv,open('cv.pkl','wb'))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ###############################################################################################################
 #### GenAI (LangChain) - Build a Chatbot
 ###############################################################################################################
@@ -3187,26 +1961,130 @@ rem_punc2(text)
 
 # Handle Chat Words
 #### create a dictionary of chat words
-chat_abbreviations = {
-    "ASAP": "As soon as possible",
-    "F2F": "Face-to-face",
-    "G2G": "Got to go",
-    "LOL": "Laugh out loud",
-    "OMG": "Oh my God",
-    "TTYL": "Talk to you later",
-}
 def correct_chat_words(text):
+    chat_abbreviations = {
+        "A3": "Anytime, Anywhere, Anyplace",
+        "ADIH": "Another Day In Hell",
+        "AFK": "Away From Keyboard",
+        "AFAIK": "As Far As I Know",
+        "ASAP": "As Soon As Possible",
+        "ASL": "Age, Sex, Location",
+        "ATK": "At The Keyboard",
+        "ATM": "At The Moment",
+        "BAE": "Before Anyone Else",
+        "BAK": "Back At Keyboard",
+        "BBL": "Be Back Later",
+        "BBS": "Be Back Soon",
+        "BFN": "Bye For Now",
+        "B4N": "Bye For Now",
+        "BRB": "Be Right Back",
+        "BRUH": "Bro",
+        "BRT": "Be Right There",
+        "BSAAW": "Big Smile And A Wink",
+        "BTW": "By The Way",
+        "BWL": "Bursting With Laughter",
+        "CSL": "Can’t Stop Laughing",
+        "CU": "See You",
+        "CUL8R": "See You Later",
+        "CYA": "See You",
+        "DM": "Direct Message",
+        "FAQ": "Frequently Asked Questions",
+        "FC": "Fingers Crossed",
+        "FIMH": "Forever In My Heart",
+        "FOMO": "Fear Of Missing Out",
+        "FR": "For Real",
+        "FWIW": "For What It's Worth",
+        "FYP": "For You Page",
+        "FYI": "For Your Information",
+        "G9": "Genius",
+        "GAL": "Get A Life",
+        "GG": "Good Game",
+        "GMTA": "Great Minds Think Alike",
+        "GN": "Good Night",
+        "GOAT": "Greatest Of All Time",
+        "GR8": "Great!",
+        "HBD": "Happy Birthday",
+        "IC": "I See",
+        "ICQ": "I Seek You",
+        "IDC": "I Don’t Care",
+        "IDK": "I Don't Know",
+        "IFYP": "I Feel Your Pain",
+        "ILU": "I Love You",
+        "ILY": "I Love You",
+        "IMHO": "In My Honest Opinion",
+        "IMU": "I Miss You",
+        "IMO": "In My Opinion",
+        "IOW": "In Other Words",
+        "IRL": "In Real Life",
+        "IYKYK": "If You Know, You Know",
+        "JK": "Just Kidding",
+        "KISS": "Keep It Simple, Stupid",
+        "L": "Loss",
+        "L8R": "Later",
+        "LDR": "Long Distance Relationship",
+        "LMK": "Let Me Know",
+        "LMAO": "Laughing My Ass Off",
+        "LOL": "Laughing Out Loud",
+        "LTNS": "Long Time No See",
+        "M8": "Mate",
+        "MFW": "My Face When",
+        "MID": "Mediocre",
+        "MRW": "My Reaction When",
+        "MTE": "My Thoughts Exactly",
+        "NVM": "Never Mind",
+        "NRN": "No Reply Necessary",
+        "NPC": "Non-Player Character",
+        "OIC": "Oh I See",
+        "OP": "Overpowered",
+        "PITA": "Pain In The Ass",
+        "POV": "Point Of View",
+        "PRT": "Party",
+        "PRW": "Parents Are Watching",
+        "ROFL": "Rolling On The Floor Laughing",
+        "ROFLOL": "Rolling On The Floor Laughing Out Loud",
+        "ROTFLMAO": "Rolling On The Floor Laughing My Ass Off",
+        "RN": "Right Now",
+        "SK8": "Skate",
+        "STATS": "Your Sex And Age",
+        "SUS": "Suspicious",
+        "TBH": "To Be Honest",
+        "TFW": "That Feeling When",
+        "THX": "Thank You",
+        "TIME": "Tears In My Eyes",
+        "TLDR": "Too Long, Didn’t Read",
+        "TNTL": "Trying Not To Laugh",
+        "TTFN": "Ta-Ta For Now!",
+        "TTYL": "Talk To You Later",
+        "U": "You",
+        "U2": "You Too",
+        "U4E": "Yours For Ever",
+        "W": "Win",
+        "W8": "Wait",
+        "WB": "Welcome Back",
+        "WTF": "What The Fuck",
+        "WTG": "Way To Go!",
+        "WUF": "Where Are You From?",
+        "WYD": "What You Doing?",
+        "WYWH": "Wish You Were Here",
+        "ZZZ": "Sleeping, Bored, Tired"
+    }
     new_text = []
     for word in text.split():
         word = word.replace(',','')
+        word = word.replace('.','')
         word = word.upper()
-        if word in chat_abbreviations:
+        if word in chat_abbreviations.keys():
             new_text.append(chat_abbreviations[word])
         else:
             new_text.append(word)
     return " ".join(new_text).lower()
 txt = 'Omg tbh, I was AFK when the TBH DM dropped, but IMO it’s NGL totally lit RN ngl'
 correct_chat_words(txt)
+
+# Handle Contractions
+import contractions
+def expand_contractions(text):
+    return contractions.fix(text)
 
 # Correct the Spelling
 from textblob import TextBlob
@@ -3345,6 +2223,9 @@ y_train_ohe = to_categorical(y_train, num_classes)
 #### each dimension contains the total number of times that word appears in the sentence
 #### unseen words get handled by ignoring.
 from sklearn.feature_extraction.text import CountVectorizer
+import nltk
+nltk.download('punkt_tab')
+from nltk.tokenize import word_tokenize
 cv = CountVectorizer( analyzer='word',
                 tokenizer=word_tokenize, lowercase=True,
                 ngram_range=(1,1), stop_words='english',
