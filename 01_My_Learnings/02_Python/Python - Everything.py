@@ -60,7 +60,7 @@ jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_masterRepo\Eng_Hi
 06) write README.md
 07) write code for logger and CustomException
 08) write code for setup.py
-09) write requirements.txt and pip install
+09) write requirements.txt and do pip install -r requirements.txt
 10) write source code
 11) write app.py code
 
@@ -83,7 +83,7 @@ Projects:
         6) RAG based Organization chatbot
 
 
-ML Project Checks:
+ML Project Checklist:
     1) Problem Statement
     2) Data Collection
         2.1) Import Data and Required Packages
