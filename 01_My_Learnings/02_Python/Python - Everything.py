@@ -465,6 +465,40 @@ pip install google-generativeai
 
 
 
+pip install numpy
+pip install pandas
+pip install matplotlib
+pip install seaborn
+pip install plotly
+pip install scikit-learn
+pip install tensorflow
+pip install PyTorch
+pip install contractions
+pip install spacy
+pip install nltk
+pip install emoji
+pip install gensim
+pip install tqdm
+pip install distance
+pip install fuzzywuzzy
+pip install xgboost
+pip install optuna
+pip install catboost
+pip install langchain
+pip install langgraph
+pip install imblearn
+pip install streamlit
+pip install textblob
+pip install collections
+pip install mlxtend
+pip install scipy
+pip install statistics
+pip install statsmodel
+pip install kaggle
+
+
+
+
 
 
 
@@ -9691,7 +9725,21 @@ PSComputerName        :
 
 
 ###############################################################################################################
-#### Python Environment
+#### Python Environment - Ubuntu (with sh file)
+###############################################################################################################
+# save a script with name setup_wsl_ml.sh, then run
+chmod +x setup_wsl_ml.sh
+./setup_wsl_ml.sh
+
+# Open a new WSL terminal, then activate the environment with:
+eval "$(~/miniconda3/bin/conda shell.bash hook)"
+conda activate base_cpu
+
+
+
+
+###############################################################################################################
+#### Python Environment - Windows
 ###############################################################################################################
 
 ## C:\Users\grv06\AppData\Roaming\Code\User\settings.json
