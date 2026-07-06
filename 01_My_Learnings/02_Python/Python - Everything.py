@@ -9584,6 +9584,7 @@ git lfs install
 
 git lfs track "*.pdf"           #keep pdf files on LFS
 git lfs track "*.h5"            #keep h5 files on LFS
+git lfs track "*.csv"           #keep csv files on LFS
 
 cd <directory containing large file>
 
