@@ -74,10 +74,10 @@ SET INDEX=0
 
     SET PULL_RC=!ERRORLEVEL!
     TYPE "!PULL_OUTPUT_FILE!"
-	::-------------------------------------------------------------------------------------------------
-	pause
 
     IF !PULL_RC! NEQ 0 (
+		::-------------------------------------------------------------------------------------------------
+		pause
         ECHO   [ERROR] git pull failed. Skipping commit/push.
         SET /A PULL_FAIL+=1
         SET /A FAIL+=1
