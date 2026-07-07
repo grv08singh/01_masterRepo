@@ -31,6 +31,8 @@ SET REPO_COUNT=0
 SET INDEX=0
 :REPO_LOOP
     ECHO ******************************************************************************************
+	::-------------------------------------------------------------------------------------------------
+	pause
     IF NOT DEFINED REPOS[%INDEX%] GOTO SUMMARY
 
     SET REPO_NAME=!REPOS[%INDEX%]!
@@ -106,8 +108,6 @@ SET INDEX=0
         ECHO   [SKIPPED] No local changes detected.
         SET /A SKIPPED+=1
         ECHO.
-		::-------------------------------------------------------------------------------------------------
-		pause
         GOTO REPO_LOOP
     )
 
