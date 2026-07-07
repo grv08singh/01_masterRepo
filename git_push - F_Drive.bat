@@ -7,7 +7,6 @@ SETLOCAL ENABLEDELAYEDEXPANSION
 
 SET BASE_PATH=F:\Grv\Grv\05 GIT
 SET BRANCH=main
-SET COMMIT_MSG=Auto-sync: %DATE% %TIME%
 SET PASS=0
 SET FAIL=0
 SET SKIPPED=0
@@ -39,7 +38,7 @@ SET INDEX=0
     SET /A DISPLAY_NUM=%INDEX%+1
     SET /A INDEX+=1
 
-    ECHO ¦ [%DISPLAY_NUM%/%REPO_COUNT%] !REPO_NAME!
+    ECHO | [%DISPLAY_NUM%/%REPO_COUNT%] !REPO_NAME!
     ECHO +----------------------------------------------------------
 
     :: -- Validate path exists ----------------------------------
@@ -68,13 +67,15 @@ SET INDEX=0
         GOTO REPO_LOOP
     )
 
-    :: -- STEP 1: Pull ------------------------------------------
+    :: -- STEP 1: Pull --------------------------------------------
     ECHO   ^> [1/3] Pulling from origin/%BRANCH%...
     SET PULL_OUTPUT_FILE=%TEMP%\git_pull_!INDEX!.txt
     git pull origin %BRANCH% > "!PULL_OUTPUT_FILE!" 2>&1
+
+    SET PULL_RC=!ERRORLEVEL!
     TYPE "!PULL_OUTPUT_FILE!"
 
-    IF ERRORLEVEL 1 (
+    IF !PULL_RC! NEQ 0 (
         ECHO   [ERROR] git pull failed. Skipping commit/push.
         SET /A PULL_FAIL+=1
         SET /A FAIL+=1
@@ -83,7 +84,7 @@ SET INDEX=0
     )
 
     :: Check if pull brought in new changes or was already up to date
-    FINDSTR /I "Already up to date" "!PULL_OUTPUT_FILE!" >NUL 2>&1
+    FINDSTR /I /C:"Already up to date" "!PULL_OUTPUT_FILE!" >NUL 2>&1
     IF !ERRORLEVEL! == 0 (
         ECHO   [PULL] Already up to date.
         SET /A PULL_UP_TO_DATE+=1
@@ -97,7 +98,8 @@ SET INDEX=0
     git status
 
     git status --porcelain > "%TEMP%\git_status_!INDEX!.txt" 2>&1
-    FOR /F %%A IN ("%TEMP%\git_status_!INDEX!.txt") DO SET FILE_SIZE=%%~zA
+    SET FILE_SIZE=0
+    FOR %%A IN ("%TEMP%\git_status_!INDEX!.txt") DO SET FILE_SIZE=%%~zA
 
     IF "!FILE_SIZE!"=="0" (
         ECHO   [SKIPPED] No local changes detected.
@@ -110,8 +112,10 @@ SET INDEX=0
     ECHO   ^> [3/3] Staging all changes...
     git add .
 
+    SET COMMIT_MSG=Auto-sync: %DATE% %TIME%
+
     ECHO   ^> Committing...
-    git commit -m "%COMMIT_MSG%"
+    git commit -m "!COMMIT_MSG!"
     IF ERRORLEVEL 1 (
         ECHO   [ERROR] git commit failed.
         SET /A FAIL+=1
@@ -135,20 +139,20 @@ SET INDEX=0
 
 :: --- SUMMARY ---------------------------------------------------
 :SUMMARY
-ECHO ¦----------------------------------------------------------¦
-ECHO ¦                PULL SUMMARY                              ¦
-ECHO ¦----------------------------------------------------------¦
-ECHO ¦  Total Repositories  : %REPO_COUNT%
-ECHO ¦  New Changes Pulled  : !PULL_PASS!
-ECHO ¦  Already Up To Date  : !PULL_UP_TO_DATE!
-ECHO ¦  Pull Failed         : !PULL_FAIL!
-ECHO ¦----------------------------------------------------------¦
-ECHO ¦                PUSH SUMMARY                              ¦
-ECHO ¦----------------------------------------------------------¦
-ECHO ¦  Total Repositories  : %REPO_COUNT%
-ECHO ¦  Pushed Successfully : !PASS!
-ECHO ¦  No Changes (Skipped): !SKIPPED!
-ECHO ¦  Push Failed         : !FAIL!
+ECHO +----------------------------------------------------------+
+ECHO |                PULL SUMMARY                              |
+ECHO +----------------------------------------------------------+
+ECHO |  Total Repositories  : %REPO_COUNT%
+ECHO |  New Changes Pulled  : !PULL_PASS!
+ECHO |  Already Up To Date  : !PULL_UP_TO_DATE!
+ECHO |  Pull Failed         : !PULL_FAIL!
+ECHO +----------------------------------------------------------+
+ECHO |                PUSH SUMMARY                              |
+ECHO +----------------------------------------------------------+
+ECHO |  Total Repositories  : %REPO_COUNT%
+ECHO |  Pushed Successfully : !PASS!
+ECHO |  No Changes (Skipped): !SKIPPED!
+ECHO |  Push Failed         : !FAIL!
 ECHO +----------------------------------------------------------+
 ECHO.
 
