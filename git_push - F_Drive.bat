@@ -52,8 +52,6 @@ SET INDEX=0
     :: -- Navigate to repo --------------------------------------
     cd /d "!FULL_PATH!"
     IF ERRORLEVEL 1 (
-		::-------------------------------------------------------------------------------------------------
-		pause
         ECHO   [ERROR] Could not navigate to: !FULL_PATH!
         SET /A FAIL+=1
         ECHO.
@@ -63,6 +61,8 @@ SET INDEX=0
     :: -- Validate it's a git repo ------------------------------
     git rev-parse --is-inside-work-tree >NUL 2>&1
     IF ERRORLEVEL 1 (
+		::-------------------------------------------------------------------------------------------------
+		pause
         ECHO   [ERROR] Not a valid git repository: !FULL_PATH!
         SET /A FAIL+=1
         ECHO.
