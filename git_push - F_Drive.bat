@@ -103,9 +103,9 @@ SET INDEX=0
     FOR %%A IN ("%TEMP%\git_status_!INDEX!.txt") DO SET FILE_SIZE=%%~zA
 
     IF "!FILE_SIZE!"=="0" (
+        ECHO   [SKIPPED] No local changes detected.
 		::-------------------------------------------------------------------------------------------------
 		pause
-        ECHO   [SKIPPED] No local changes detected.
         SET /A SKIPPED+=1
         ECHO.
         GOTO REPO_LOOP
