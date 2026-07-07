@@ -52,6 +52,8 @@ SET INDEX=0
     :: -- Navigate to repo --------------------------------------
     cd /d "!FULL_PATH!"
     IF ERRORLEVEL 1 (
+		::-------------------------------------------------------------------------------------------------
+		pause
         ECHO   [ERROR] Could not navigate to: !FULL_PATH!
         SET /A FAIL+=1
         ECHO.
@@ -135,8 +137,6 @@ SET INDEX=0
     ECHO   [SUCCESS] !REPO_NAME! synced successfully!
     SET /A PASS+=1
     ECHO.
-	::-------------------------------------------------------------------------------------------------
-	pause
     GOTO REPO_LOOP
 
 :: --- SUMMARY ---------------------------------------------------
