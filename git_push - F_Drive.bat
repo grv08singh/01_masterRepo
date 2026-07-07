@@ -97,11 +97,11 @@ SET INDEX=0
     :: -- STEP 2: Check Status ----------------------------------
     ECHO   ^> [2/3] Checking status...
     git status
-	::-------------------------------------------------------------------------------------------------
-	pause
 
     git status --porcelain > "%TEMP%\git_status_!INDEX!.txt" 2>&1
     SET FILE_SIZE=0
+	::-------------------------------------------------------------------------------------------------
+	pause
     FOR %%A IN ("%TEMP%\git_status_!INDEX!.txt") DO SET FILE_SIZE=%%~zA
 
     IF "!FILE_SIZE!"=="0" (
