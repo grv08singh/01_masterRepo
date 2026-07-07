@@ -31,9 +31,9 @@ SET REPO_COUNT=0
 SET INDEX=0
 :REPO_LOOP
     ECHO ******************************************************************************************
-    IF NOT DEFINED REPOS[%INDEX%] GOTO SUMMARY
 	::-------------------------------------------------------------------------------------------------
 	pause
+    IF NOT DEFINED REPOS[%INDEX%] GOTO SUMMARY
 
     SET REPO_NAME=!REPOS[%INDEX%]!
     SET FULL_PATH=%BASE_PATH%\!REPO_NAME!
