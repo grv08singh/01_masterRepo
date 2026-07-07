@@ -18,7 +18,6 @@ SET PULL_UP_TO_DATE=0
 :: --- REPOSITORY NAMES ------------------------------------------
 SET REPOS[0]=01_masterRepo
 SET REPOS[1]=14_Proj_ML_99Acres
-SET REPOS[2]=15_AI_Travel_Agent
 :: ----------------------------------------------------------------
 
 :: Count repos
