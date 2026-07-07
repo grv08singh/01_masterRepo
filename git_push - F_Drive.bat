@@ -101,8 +101,6 @@ SET INDEX=0
     git status --porcelain > "%TEMP%\git_status_!INDEX!.txt" 2>&1
     SET FILE_SIZE=0
     FOR %%A IN ("%TEMP%\git_status_!INDEX!.txt") DO SET FILE_SIZE=%%~zA
-	::-------------------------------------------------------------------------------------------------
-	pause
 
     IF "!FILE_SIZE!"=="0" (
         ECHO   [SKIPPED] No local changes detected.
@@ -110,6 +108,8 @@ SET INDEX=0
         ECHO.
         GOTO REPO_LOOP
     )
+	::-------------------------------------------------------------------------------------------------
+	pause
 
     :: -- STEP 3: Add, Commit, Push -----------------------------
     ECHO   ^> [3/3] Staging all changes...
