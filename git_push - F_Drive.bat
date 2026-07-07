@@ -85,11 +85,12 @@ SET INDEX=0
 
     :: Check if pull brought in new changes or was already up to date
     FINDSTR /I /C:"Already up to date" "!PULL_OUTPUT_FILE!" >NUL 2>&1
-    IF !ERRORLEVEL! == 0 (		::-------------------------------------------------------------------------------------------------
-		pause
-
+    IF !ERRORLEVEL! == 0 (
         ECHO   [PULL] Already up to date.
         SET /A PULL_UP_TO_DATE+=1
+		::-------------------------------------------------------------------------------------------------
+		pause
+
     ) ELSE (
         ECHO   [PULL] New changes pulled successfully.
         SET /A PULL_PASS+=1
