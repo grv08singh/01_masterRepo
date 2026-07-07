@@ -68,14 +68,14 @@ SET INDEX=0
     )
 
     :: -- STEP 1: Pull --------------------------------------------
-	::-------------------------------------------------------------------------------------------------
-	pause
     ECHO   ^> [1/3] Pulling from origin/%BRANCH%...
     SET PULL_OUTPUT_FILE=%TEMP%\git_pull_!INDEX!.txt
     git pull origin %BRANCH% > "!PULL_OUTPUT_FILE!" 2>&1
 
     SET PULL_RC=!ERRORLEVEL!
     TYPE "!PULL_OUTPUT_FILE!"
+	::-------------------------------------------------------------------------------------------------
+	pause
 
     IF !PULL_RC! NEQ 0 (
         ECHO   [ERROR] git pull failed. Skipping commit/push.
