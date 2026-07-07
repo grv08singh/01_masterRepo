@@ -88,10 +88,10 @@ SET INDEX=0
     IF !ERRORLEVEL! == 0 (
         ECHO   [PULL] Already up to date.
         SET /A PULL_UP_TO_DATE+=1
-		::-------------------------------------------------------------------------------------------------
-		pause
 
     ) ELSE (
+		::-------------------------------------------------------------------------------------------------
+		pause
         ECHO   [PULL] New changes pulled successfully.
         SET /A PULL_PASS+=1
     )
