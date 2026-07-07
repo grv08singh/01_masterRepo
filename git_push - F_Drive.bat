@@ -90,8 +90,6 @@ SET INDEX=0
         SET /A PULL_UP_TO_DATE+=1
 
     ) ELSE (
-		::-------------------------------------------------------------------------------------------------
-		pause
         ECHO   [PULL] New changes pulled successfully.
         SET /A PULL_PASS+=1
     )
@@ -99,6 +97,8 @@ SET INDEX=0
     :: -- STEP 2: Check Status ----------------------------------
     ECHO   ^> [2/3] Checking status...
     git status
+	::-------------------------------------------------------------------------------------------------
+	pause
 
     git status --porcelain > "%TEMP%\git_status_!INDEX!.txt" 2>&1
     SET FILE_SIZE=0
