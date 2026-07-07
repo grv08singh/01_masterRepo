@@ -76,8 +76,6 @@ SET INDEX=0
     TYPE "!PULL_OUTPUT_FILE!"
 
     IF !PULL_RC! NEQ 0 (
-		::-------------------------------------------------------------------------------------------------
-		pause
         ECHO   [ERROR] git pull failed. Skipping commit/push.
         SET /A PULL_FAIL+=1
         SET /A FAIL+=1
@@ -87,7 +85,9 @@ SET INDEX=0
 
     :: Check if pull brought in new changes or was already up to date
     FINDSTR /I /C:"Already up to date" "!PULL_OUTPUT_FILE!" >NUL 2>&1
-    IF !ERRORLEVEL! == 0 (
+    IF !ERRORLEVEL! == 0 (		::-------------------------------------------------------------------------------------------------
+		pause
+
         ECHO   [PULL] Already up to date.
         SET /A PULL_UP_TO_DATE+=1
     ) ELSE (
