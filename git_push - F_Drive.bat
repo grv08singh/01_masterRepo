@@ -100,9 +100,9 @@ SET INDEX=0
 
     git status --porcelain > "%TEMP%\git_status_!INDEX!.txt" 2>&1
     SET FILE_SIZE=0
+    FOR %%A IN ("%TEMP%\git_status_!INDEX!.txt") DO SET FILE_SIZE=%%~zA
 	::-------------------------------------------------------------------------------------------------
 	pause
-    FOR %%A IN ("%TEMP%\git_status_!INDEX!.txt") DO SET FILE_SIZE=%%~zA
 
     IF "!FILE_SIZE!"=="0" (
         ECHO   [SKIPPED] No local changes detected.
