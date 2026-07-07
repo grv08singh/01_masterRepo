@@ -29,7 +29,11 @@
 # run jupyter lab on WSL2
 cd 
 jupyter notebook --no-browser --notebook-dir='/mnt/d/05 GIT/01_masterRepo/01_My_Learnings/02_Python/05_NLP'
+jupyter notebook --no-browser --notebook-dir='/mnt/f/Grv/Grv/05 GIT/01_masterRepo/01_My_Learnings/02_Python/05_NLP'
+
+
 jupyter lab --no-browser --notebook-dir='/mnt/d/05 GIT/01_masterRepo/01_My_Learnings/02_Python/05_NLP'
+jupyter lab --no-browser --notebook-dir='/mnt/f/Grv/Grv/05 GIT/01_masterRepo/01_My_Learnings/02_Python/05_NLP'
 
 
 
