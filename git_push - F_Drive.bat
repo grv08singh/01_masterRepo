@@ -61,8 +61,6 @@ SET INDEX=0
     :: -- Validate it's a git repo ------------------------------
     git rev-parse --is-inside-work-tree >NUL 2>&1
     IF ERRORLEVEL 1 (
-		::-------------------------------------------------------------------------------------------------
-		pause
         ECHO   [ERROR] Not a valid git repository: !FULL_PATH!
         SET /A FAIL+=1
         ECHO.
@@ -70,6 +68,8 @@ SET INDEX=0
     )
 
     :: -- STEP 1: Pull --------------------------------------------
+	::-------------------------------------------------------------------------------------------------
+	pause
     ECHO   ^> [1/3] Pulling from origin/%BRANCH%...
     SET PULL_OUTPUT_FILE=%TEMP%\git_pull_!INDEX!.txt
     git pull origin %BRANCH% > "!PULL_OUTPUT_FILE!" 2>&1
