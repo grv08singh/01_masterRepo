@@ -103,13 +103,13 @@ SET INDEX=0
     FOR %%A IN ("%TEMP%\git_status_!INDEX!.txt") DO SET FILE_SIZE=%%~zA
 
     IF "!FILE_SIZE!"=="0" (
+		::-------------------------------------------------------------------------------------------------
+		pause
         ECHO   [SKIPPED] No local changes detected.
         SET /A SKIPPED+=1
         ECHO.
         GOTO REPO_LOOP
     )
-	::-------------------------------------------------------------------------------------------------
-	pause
 
     :: -- STEP 3: Add, Commit, Push -----------------------------
     ECHO   ^> [3/3] Staging all changes...
