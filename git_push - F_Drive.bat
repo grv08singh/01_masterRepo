@@ -38,7 +38,9 @@ SET INDEX=0
     SET /A DISPLAY_NUM=%INDEX%+1
     SET /A INDEX+=1
 
-    ECHO | [%DISPLAY_NUM%/%REPO_COUNT%] !REPO_NAME!
+    ECHO ¦ [%DISPLAY_NUM%/%REPO_COUNT%] !REPO_NAME!
+	::-------------------------------------------------------------------------------------------------
+	pause
     ECHO +----------------------------------------------------------
 
     :: -- Validate path exists ----------------------------------
