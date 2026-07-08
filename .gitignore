@@ -4,3 +4,8 @@ Notepad++/session.xml.inCaseOfCorruption.bak
 01_My_Learnings/02_Python/04_DL_PyTorch/dataset/fashion-mnist_train.csv
 
 *.npy
+
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+**/.ipynb_checkpoints/**
+*-checkpoint.ipynb
