@@ -9613,7 +9613,7 @@ git push -u origin main
 
 
 #######################################################
-#### Resolving Conflict
+#### Resolve File Conflict with same branch versions
 #######################################################
 
 #### 1) Keep Local Changes
