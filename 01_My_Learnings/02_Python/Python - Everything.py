@@ -9580,21 +9580,8 @@ git config --global user.name "Gaurav Singh"
 git config --global user.email "grv08singh@gmail.com"
 git config --list --global
 
-#######################################################
-#### GIT LFS (Large File System) setup
-#######################################################
-winget install -e --id GitHub.GitLFS
-git lfs install
 
-git lfs track "*.pdf"           #keep pdf files on LFS
-git lfs track "*.h5"            #keep h5 files on LFS
-git lfs track "*.csv"           #keep csv files on LFS
 
-cd <directory containing large file>
-
-git add model.h5
-git commit -m "large file commit message"
-git push origin main
 
 
 #######################################################
@@ -9609,6 +9596,79 @@ git commit -m "<commit message>"
 git push -u origin main
 
 #### 
+
+
+
+
+
+
+#######################################################
+#### Remove already pushed files from git and future push
+#######################################################
+git rm --cached notebooks/data/data.zip             #file
+git rm --cached -rf artifacts/evaluation/            #directory
+git commit -m "files removed from git"
+git push origin main
+
+
+
+
+
+#######################################################
+#### GIT LFS (Large File System) - Track a file
+#######################################################
+
+#### install git LFS
+winget install -e --id GitHub.GitLFS
+git lfs install
+
+
+#### Track Files via GIT LFS
+git lfs track "*.pdf"           #keep pdf files on LFS
+git lfs track "*.h5"            #keep h5 files on LFS
+git lfs track "*.csv"           #keep csv files on LFS
+
+cd <directory containing large file>
+
+git add model.h5
+git commit -m "large file commit message"
+git push origin main
+
+#### Untrack a file
+git lfs untrack "file_path"
+git rm --cached "file_path"
+git add "file_path"
+git add .gitattributes
+git commit -m "Stop tracking file via Git LFS"
+git push origin main
+
+
+#### Untrack a directory
+git lfs untrack "directory_path/**"
+git rm --cached -r "directory_path/"
+git add "directory_path/"
+git add .gitattributes
+git commit -m "Stop tracking directory via Git LFS"
+git push origin main
+
+#######################################################
+#### Untrack an LFS file/directory - Purge complete history
+#######################################################
+## install git-filter-repo -->
+pip3 install git-filter-repo
+
+## Untrack an LFS file - Purge complete history
+pip install 
+git lfs untrack "file_path"
+git rm --cached "file_path"
+git add "file_path"
+git add .gitattributes
+git commit -m "Stop tracking file via Git LFS"
+git push origin main
+
+#### Untrack an LFS directory - Purge complete history
+git filter-repo --invert-paths --path path/to/directory/
+git push origin --force --all
 
 
 
@@ -9632,19 +9692,6 @@ git pull
 git add <file path>
 git commit -m "<commit message>"
 git pull                                #both the changes will be in the file, remove one manually 
-
-
-
-
-
-
-#######################################################
-#### removing already pushed files from git and future push
-#######################################################
-git rm --cached notebooks/data/data.zip             #file
-git rm --cached -r artifacts/evaluation/            #directory
-git commit -m "files removed from git"
-git push origin main
 
 
 
