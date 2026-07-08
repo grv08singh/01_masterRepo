@@ -9651,6 +9651,18 @@ git push origin main
 
 
 
+#######################################################
+#### resolve demerged branches
+#######################################################
+git rebase --abort
+git fetch origin
+git reset --hard origin/main
+
+
+
+
+
+
 
 
 
