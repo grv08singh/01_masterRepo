@@ -9652,7 +9652,8 @@ git push origin main
 
 
 #######################################################
-#### resolve demerged branches
+#### resolve demerged branches (on different commit versions)
+#### keep remote branch
 #######################################################
 git rebase --abort
 git fetch origin
