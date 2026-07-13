@@ -26,7 +26,7 @@
 
 #E97550 #1D78B7 #0F5989 #FACE0F
 
-# run jupyter lab on WSL2
+# WSL2 Ubuntu
 cd 
 jupyter notebook --no-browser --notebook-dir='/mnt/d/05 GIT/01_masterRepo/01_My_Learnings/02_Python/05_NLP'
 jupyter notebook --no-browser --notebook-dir='/mnt/f/Grv/Grv/05 GIT/01_masterRepo/01_My_Learnings/02_Python/05_NLP'
@@ -37,19 +37,11 @@ jupyter lab --no-browser --notebook-dir='/mnt/f/Grv/Grv/05 GIT/01_masterRepo/01_
 
 
 
+# Windows
 jupyter notebook --notebook-dir="D:\05 GIT\01_masterRepo\01_My_Learnings\02_Python\05_NLP"
-jupyter notebook --notebook-dir="D:\05 GIT\01_masterRepo\01_My_Learnings\02_Python\04_DL_PyTorch"
-jupyter notebook --notebook-dir="D:\05 GIT\12_GenAI_projects\01_EngHin_Translator_EncDec"
-jupyter notebook --notebook-dir="D:\05 GIT\13_Misc_projects\04_YT_Timestamp_Gen"
+jupyter lab --notebook-dir="D:\05 GIT\01_masterRepo\01_My_Learnings\02_Python\05_NLP"
 
 
-F:
-cd "F:\Grv\Grv\05 GIT\14_Proj_ML_99Acres"
-
-jupyter notebook --notebook-dir="F:\Grv\Grv\05 GIT\14_Proj_ML_99Acres"
-jupyter notebook --notebook-dir="F:\Grv\Grv\05 GIT\13_Misc_projects\05_Email_ID_Extractor"
-jupyter notebook --notebook-dir="F:\Grv\Grv\05 GIT\01_masterRepo\01_My_Learnings\02_Python\02_ML\03_self_ml_dl_models"
-jupyter notebook --notebook-dir="F:\Grv\Grv\06 Personal\GIT\01_masterRepo\Eng_Hin_Translator"
 
 
 
