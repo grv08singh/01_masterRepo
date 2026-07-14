@@ -16,7 +16,7 @@ SET PULL_UP_TO_DATE=0
 
 :: --- REPOSITORY NAMES ------------------------------------------
 SET REPOS[0]=01_masterRepo
-SET REPOS[1]=14_Proj_ML_99Acres
+SET REPOS[1]=18_NLP_QuoraQuestionPair
 :: ----------------------------------------------------------------
 
 :: Count repos
