@@ -1,3 +1,127 @@
+# ==========================================
+# 🪟 Windows OS Junk Files
+# ==========================================
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ==========================================
+# 🐍 Python Specific
+# ==========================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller (If making Windows .exe applications)
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit testing / coverage reports
+htmlcov/
+.toml
+.cache
+.pytest_cache/
+.htmlcov/
+.tox/
+.nosexy/
+.nosetests/
+coverage.xml
+*.cover
+*.py,cover
+
+# Jupyter Notebooks cache
+.ipynb_checkpoints
+
+# pipenv
+#   According to pypa/pipenv#119, it is generally recommended to include Pipfile.lock in version control.
+#   However, if you are building a library rather than an application, you might want to ignore it:
+#Lockfile
+
+# poetry
+#   Similar to Pipfile.lock, poetry.lock is generally recommended to be committed.
+#poetry.lock
+
+# PEP 582 project packages
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# ==========================================
+# 📦 Virtual Environments (Crucial for Python)
+# ==========================================
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# ==========================================
+# 💻 Popular Editors (VS Code / PyCharm / Notepad++)
+# ==========================================
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+
+# PyCharm / JetBrains
+.idea/
+
+# Notepad++ backups
+*.bak
+
+# ==========================================
+# 🔒 Environment Variables & Secrets
+# ==========================================
+.env
+.env.local
+*.env
+secrets.json
+*/credentials.json
+**/credentials.json
+*/token.pickle
+**/token.pickle
+
+
 Notepad++/config.xml
 Notepad++/session.xml
 Notepad++/session.xml.inCaseOfCorruption.bak
@@ -16,8 +140,3 @@ Notepad++/session.xml.inCaseOfCorruption.bak
 /Notepad++/session.xml.inCaseOfCorruption.bak
 06_Office_Related/01_NSO_work/05_AgriSoft_To_RC123/02_Notebooks/parent_directory/*
 06_Office_Related/01_NSO_work/05_AgriSoft_To_RC123/02_Notebooks/parent_directory - Copy/*
-
-*/credentials.json
-**/credentials.json
-*/token.pickle
-**/token.pickle
