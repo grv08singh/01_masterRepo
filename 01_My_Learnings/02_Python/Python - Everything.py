@@ -9562,12 +9562,21 @@ for filepath in list_of_files:
 
 
 ###############################################################################################################
-#### pathlib Module
+#### pathlib Module - Everything (More New)
 ###############################################################################################################
 from pathlib import Path
 
-
-
+curr_dir = Path.cwd()                       #current directory path    
+child_dir = curr_dir / "child folder"       #concat paths
+file_path = child_dir / "abc.xlsx"          #file path
+file_path.parent                            #name of folder containing file
+file_path.name                              #name of file from path
+file_path.stem                              #name of file without extension
+file_path.suffix                            #extension of file
+file_path.exists()                          #returns True if a file/directory exists
+child_dir.isdir()                           #returns True if this path is of a directory
+child_dir.isfile()                          #returns True if this path is of a file
+for item in child_dir.iterdir()             #loop over all items in child_dir
 
 
 
@@ -9578,7 +9587,7 @@ from pathlib import Path
 
 
 ###############################################################################################################
-#### os Module
+#### os Module - Everything
 ###############################################################################################################
 import os
 
