@@ -9562,6 +9562,105 @@ for filepath in list_of_files:
 
 
 ###############################################################################################################
+#### pathlib Module
+###############################################################################################################
+from pathlib import Path
+
+
+
+
+
+
+
+
+
+
+
+
+###############################################################################################################
+#### os Module
+###############################################################################################################
+import os
+
+# count the number of directories in 
+dir_count = sum(1 for entry in os.scandir(dir_path) if entry.is_dir())
+
+# scan a directory and return a list of folders/files/both
+def dir_content(dir_path):
+    subdir_list = []
+    files_list = []
+    dir_content = os.listdir()
+    for entry in entries:
+        if entry.is_dir():
+            subdir_list.append(entry.name)
+        if not entry.is_dir():
+            files_list.append(entry.name)
+    return subdir_list, files_list, dir_content
+
+
+
+
+
+
+
+
+
+
+###############################################################################################################
+#### Archive Files - ZIP, RAR, TAR
+###############################################################################################################
+
+# Extract Zip File to extracted_files folder/directory
+import zipfile
+import os
+with zipfile.ZipFile(zip_path, 'r') as zf:
+    zf.extractall(extract_path, pwd=password)
+
+# Extract Rar File to extracted_files folder/directory
+import rarfile
+with rarfile.RarFile(rar_path) as rf:
+    rf.extractall(extract_path, pwd=password)
+    
+# Extract Tar File to extracted_files folder/directory
+import tarfile
+with tarfile.open(tar_path, 'r') as tar:
+    tar.extractall(extract_to)
+
+
+
+
+# List of files/folders present in a zip file
+with zipfile.ZipFile(zip_path, 'r') as zf:
+    namelist = zf.namelist()
+    return namelist
+
+
+
+
+# Check if a file is a ZIP File
+def is_zip_file(file_path):
+    try:
+        with zipfile.ZipFile(file_path, 'r') as zf:
+            return True
+    except zipfile.BadZipFile:
+        return False
+
+# Check if a file is a Rar File
+def is_rar_file(file_path):
+    try:
+        with rarfile.RarFile(file_path) as rf:
+            return True
+    except (rarfile.RarCannotExec, rarfile.BadRarFile):
+        return False
+
+
+
+
+
+
+
+
+###############################################################################################################
 #### Import Methodology
 ###############################################################################################################
 
