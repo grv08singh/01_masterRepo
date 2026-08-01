@@ -1,0 +1,85 @@
+def aggregate_basic_zip(curr_path, parent_dir, irrelevant_files_dir, 
+                        base_dir, processed_arch_dir, 
+                        unprocessed_arch_dir, arch_extn):
+    # if subdirectories present at current path, move their content to parent directory recursively
+    for item in tqdm(parent_dir.rglob('*'), desc="Handling directories..."):
+        if item.is_file():
+            if item.suffix.lower().strip() != ".csv":
+                dst_path = parent_dir / item.name
+                if 
+            else:
+                csv_parent = item.parent
+                for csv_file in csv_parent:
+                    global_counter += 1
+                    csv_dst_file = base_dir / global_counter / csv_file.name
+                    shutil.move(csv_file, csv_dst_file)
+        elif item.is_dir():
+            
+    
+    for item in tqdm(parent_dir.iterdir(), desc="Handling directories..."):
+        if item.is_dir() and item.name != "00_new_folder":
+            if is_base_dir(item):
+                move_to_base_dir(item, base_dir)
+                move_contents(item, parent_dir)
+            else:
+                move_contents(item, parent_dir)
+        
+    # now no directories are present at current location
+    for item in tqdm(parent_dir.iterdir(), desc='Extracting archives...'):
+        if item.is_file():
+            # setting path to move the file after processing
+            item_dir = item.parent
+            item_name = item.name
+            item_stem = item.stem    #item name without extension
+            processed_arch = processed_arch_dir / item_name
+            basic_zip_dest = base_dir / item_name
+            unprocessed_arch = unprocessed_arch_dir / item_name
+            irrelevant_file = irrelevant_files_dir / item_name
+            
+            if item.suffix in arch_extn:
+                new_folder = parent_dir / "00_new_folder"
+                os.makedirs(new_folder, exist_ok=True)
+    
+                try:
+                    if zipfile.is_zipfile(item):
+                        if is_base_zipfile(item):
+                            shutil.move(item, basic_zip_dest)
+                        else:
+                            with zipfile.ZipFile(item, 'r') as zf:
+                                zf.extractall(new_folder)
+                            shutil.move(item, processed_arch)
+                            
+                    elif rarfile.is_rarfile(item):
+                        if is_base_rar(item):
+                            item_name = f"{item_stem}.zip"
+                            output_zip_path = item_dir / item_name
+                            rar_to_zip(item, output_zip_path)
+                            shutil.move(output_zip_path, basic_zip_dest)
+                        else:
+                            with rarfile.RarFile(item) as rf:
+                                rf.extractall(new_folder)
+                            shutil.move(item, processed_arch)
+                            
+                    elif py7zr.is_7zfile(str(item)):
+                        with py7zr.SevenZipFile(item, mode='r') as seven_zip:
+                            seven_zip.extractall(path=new_folder)
+                        shutil.move(item, processed_arch)
+                        
+                    elif tarfile.is_tarfile(item):
+                        print(item)
+                        with tarfile.open(item, 'r') as tar:
+                            tar.extractall(new_folder)
+                        shutil.move(item, processed_arch)
+                        
+                    else:
+                        shutil.move(item, unprocessed_arch)
+                        
+                except Exception as e:
+                    shutil.move(item, unprocessed_arch)
+                    
+            else:
+                shutil.move(item, irrelevant_file)
+
+    for item in parent_dir.iterdir():
+        if item.is_dir() and item.name == "00_new_folder":
+            aggregate_basic_zip(curr_path, item, irrelevant_files_dir, base_dir, processed_arch_dir, unprocessed_arch_dir, arch_extn)
