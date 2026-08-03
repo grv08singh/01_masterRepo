@@ -1,0 +1,643 @@
+1:
+  1: Kupwara
+  2: Baramula
+  4: Badgam
+  5: Pulwama
+  6: Anantnag
+  9: Doda
+  10: Udhampur
+  11: Poonch
+  12: Rajouri
+  13: Jammu
+  14: Kathua
+  15: Samba
+  16: Kishtwar
+  17: Reasi
+  18: Ramban
+  19: Ganderbal
+  20: Kulgam
+  22: Bandipora
+2:
+  1: Chamba
+  2: Kangra
+  4: Kullu
+  5: Mandi
+  6: Hamirpur
+  7: Una
+  8: Bilaspur
+  9: Solan
+  10: Sirmaur
+  11: Shimla
+  12: Kinnour
+3:
+  1: Gurdaspur
+  2: Amritsar
+  3: Kapurthala
+  4: Jalandhar
+  5: Hoshiarpur
+  6: Sbs Nagar
+  7: Ropar
+  8: Fatehgarh Sahib
+  9: Ludhiana
+  10: Moga
+  11: Ferozpur
+  12: Mukatsar
+  13: Faridkot
+  14: Bhatinda
+  15: Mansa
+  16: Sangrur
+  17: Patiala
+  18: Mohali
+  19: Barnala
+  20: Tarn Taran
+  21: Pathankot
+  22: Fazilka
+  23: Malerkotla
+5:
+  1: Uttarkashi
+  2: Chamoli
+  3: Rudraprayag
+  4: Tehrigarhwal
+  5: Dehradun(Plains)
+  6: Pourigarhwal
+  7: Pithoragarh
+  8: Champawat
+  9: Almora
+  10: Bageshwar
+  11: Nainital(Plains)
+  12: Udhamsinghnagar
+  13: Haridwar
+  14: Nainital(Hills)
+  15: Dehradun(Hills)
+6:
+  1: Panchkula
+  2: Ambala
+  3: Yamunanagar
+  4: Kurukshetra
+  5: Kaithal
+  6: Karnal
+  7: Panipat
+  8: Sonepat
+  9: Jind
+  10: Fatehabad
+  11: Sirsa
+  12: Hisar
+  13: Bhiwani
+  14: Rohtak
+  15: Jhajjar
+  16: Mahendergarh
+  17: Rewari
+  18: Gurugram
+  19: Faridabad
+  20: Mewat
+  21: Palwal
+  22: Charki Dadri
+8:
+  1: Sri Ganganagar
+  2: Hanumangarh
+  3: Bikaner
+  4: Churu
+  5: Jhunjhunu
+  6: Alwar
+  7: Bharatpur
+  8: Dholpur
+  9: Karauli
+  10: Sawai Madhopur
+  11: Dausa
+  12: 'Jaipur '
+  13: Sikar
+  14: Nagaur
+  15: Jodhpur
+  16: Jaisalmer
+  17: Barmer
+  18: Jalore
+  19: Sirohi
+  20: Pali
+  21: Ajmer
+  22: Tonk
+  23: Bundi
+  24: Bhilwara
+  25: Rajsamand
+  26: Udaipur
+  27: Dungarpur
+  28: Banswara
+  29: Chittorgarh
+  30: Kota
+  31: Baran
+  32: Jhalawar
+  33: Pratapgarh
+  34: Balotra
+  35: Beawar
+  36: Deedvana And Kuchamn
+  37: Deeg
+  38: Phalodi
+  39: Khairthal-Tizara
+  40: Kotputli-Behror
+  41: Salumbar
+9:
+  1: Saharanpur
+  2: Muzaffarnagar
+  3: Bijnor
+  4: Moradabad
+  5: Rampur
+  6: J. P. Nagar
+  7: Meerut
+  8: Bagpat
+  9: Ghaziabad
+  10: 'G.B. Nagar '
+  11: Bulandsehar
+  12: Aligarh
+  13: Mahamaya Nagar
+  14: Mathura
+  15: Agra
+  16: Firozabad
+  17: Etah
+  18: Mainpuri
+  19: Badaun
+  20: Bareilly
+  21: Pilibhit
+  22: Shahjahanpur
+  23: Khiri
+  24: Sitapur
+  25: Hardoi
+  26: Unnao
+  27: Lucknow
+  28: Raibareilly
+  29: Farrukhabad
+  30: Kannauj
+  31: Etawah
+  32: Auraiya
+  33: Kanpur Dehat
+  34: Kanpur Nagar
+  35: Jalaun
+  36: Jhansi
+  37: Lalitpur
+  38: Hamirpur
+  39: Mahoba
+  40: Banda
+  41: Chitrakoot
+  42: Fatehpur
+  43: Pratapgarh
+  44: Kaushambi
+  45: Prayagraj
+  46: Barabanki
+  47: Faizabad
+  48: Ambedkar Nagar
+  49: Sultanpur
+  50: Bahraich
+  51: Shrawasti
+  52: Balrampur
+  53: Gonda
+  54: Siddarthnagar
+  55: Basti
+  56: Sant Kabir Nagar
+  57: Maharajganj
+  58: Gorakhpur
+  59: Kushinagar
+  60: Deoria
+  61: Azamgarh
+  62: Mau
+  63: Baliya
+  64: Jaunpur
+  65: Ghazipur
+  66: Chandauli
+  67: Varanasi
+  68: Sant Ravidas Nagar
+  69: Mirzapur
+  70: Sonbhadra
+  71: Kasganj
+  72: Hapur
+  73: Amethi
+  74: Sambhal
+  75: Shamli
+10:
+  1: W. Champaran
+  2: E.Champaran
+  3: Sheohar
+  4: Sitamarhi
+  5: Madhubani
+  6: Supaul
+  7: Araria
+  8: Kishanganj
+  9: Purnia
+  10: Katihar
+  11: Madhepura
+  12: Saharsa
+  13: Darbhanga
+  14: Muzaffarpur
+  15: Gopalganj
+  16: Siwan
+  17: Saran
+  18: Vaishali
+  19: Samastipur
+  20: Begusarai
+  21: Khagaria
+  22: Bhagalpur
+  23: Banka
+  24: Munger
+  25: Lakhisarai
+  26: Shekhpura
+  27: Nalanda
+  28: Patna
+  29: Bhojpur
+  30: Buxar
+  31: Bhabhua
+  32: Rohtash
+  33: Jehanabad
+  34: Aurangabad
+  35: Gaya
+  36: Nawada
+  37: Jamuai
+  38: Arwal
+18:
+  1: Kokrajhar
+  2: Dhubri
+  3: Goalpara
+  4: Bongaigaon
+  5: Barpeta
+  6: "Kamrup\xAE"
+  7: Nalbari
+  8: Darrang
+  9: Morigaon
+  10: Nagaon
+  11: Sonitpur
+  12: Lakhimpur
+  13: Dhemaji
+  14: Tinsukia
+  15: Dibrugarh
+  16: Sivasagar
+  17: Jorhat
+  18: Golaghat
+  19: Karbianglong
+  20: Dimo Hasao
+  21: Cachar
+  22: Karimganj
+  24: Chirang
+  25: Baksa
+  26: Kamrup(M)
+  27: Udalguri
+  28: Biswanath
+  30: Majuli
+  31: Hojai
+  32: West Karbianglong
+  33: South Salmara
+19:
+  2: Jalpaiguri
+  3: Coochbihar
+  4: Uttar Dinajpur
+  5: Dakshin Dinajpur
+  6: Maldah
+  7: Murshidabad
+  8: Birbhum
+  9: Barddhaman (East)
+  10: Nadia
+  11: 24 Pargana( N)
+  12: Hoogly
+  13: Bankura
+  14: Purulia
+  15: Howrah
+  17: 24 Pargana (S)
+  18: Medinipur (W)
+  19: Medinipur (E)
+  20: Alipurduar
+  23: Jhargram
+20:
+  1: Garhwa
+  2: Palamu
+  3: Chatra
+  4: Hazaribagh
+  6: Giridih
+  7: Deoghar
+  8: Godda
+  9: Sahebganj
+  10: Pakud
+  11: Dumka
+  12: Dhanbad
+  13: Bokaro
+  14: Ranchi
+  15: Lohardaga
+  16: Gumla
+  17: W.Singhbhum
+  18: E. Singhbhum
+  19: Latehar
+  20: Simdega
+  21: Jamtara
+  24: Khunti
+21:
+  1: Bargarh
+  2: Jharsuguda
+  3: Sambalpur
+  4: Deogarh
+  5: Sundargarh
+  6: Keonjhar
+  7: Mayurbhanj
+  8: Baleshwar
+  9: Bhadrak
+  10: Kendrapada
+  11: Jagatsinghpur
+  12: Cuttack
+  13: Jajpur
+  14: Dhankenal
+  15: Angul
+  16: Nayagarh
+  17: Khurda
+  18: Puri
+  19: Ganjam
+  20: Gajapati
+  21: Kandhamal
+  22: Boudha
+  23: Subarnapur
+  24: Bolangir
+  25: Nuapada
+  26: Kalahandi
+  27: Rayagada
+  28: Nawrangpur
+  29: Koraput
+  30: Malkangiri
+22:
+  1: Korea
+  2: Sarguja
+  3: Jashpur
+  4: Raigarh
+  5: Korba
+  7: Bilaspur
+  8: Kabirdham
+  9: Rajnandgaon
+  10: Durg
+  11: Raipur
+  12: Mahasamund
+  13: Dhamtri
+  14: Kanker
+  15: Baster
+  16: Dantewara
+  19: Sukma
+  20: Kondan Gaon
+  21: Baloda Bazar
+  22: Gariyaband
+  23: Bemetara
+  24: Balod
+  25: Mungeli
+  26: Surajpur
+  27: Balrampur
+  28: Mc Bharatpur
+  29: S Bilaigarh
+  31: Gorela Pendra
+  32: Kc Gandai
+  33: Mm Ambagarh Chowki
+23:
+  1: Seopur
+  2: Murena
+  3: Bhind
+  4: Gwalior
+  5: Datia
+  6: Shivpuri
+  7: Guna
+  8: Tikamgarh
+  9: Chhatarpur
+  10: Panna
+  11: Sagar
+  12: Damoh
+  13: Satna
+  14: Rewa
+  15: Umaria
+  16: Shahdol
+  17: Sidhi
+  18: Neemuch
+  19: Mandsaur
+  20: Ratlam
+  21: Ujjain
+  22: Shajapur
+  23: Dewas
+  24: Jhabua
+  25: Dhar
+  26: Indore
+  27: Khargone
+  28: Barwani
+  29: Khandwa
+  30: Rajgarh
+  31: Vidisha
+  33: Sehore
+  34: Raisen
+  35: Betul
+  36: Harda
+  37: Hoshangabad
+  38: Katni
+  39: Jabalpur
+  40: Narsinghpur
+  41: Dindori
+  42: Mandla
+  43: Chhindwara
+  44: Seoni
+  45: Balaghat
+  46: Ashok Nagar
+  47: Anup Pur
+  48: Burhanpur
+  49: Alirajpur
+  50: Singrauli
+  51: Agar Malwa
+24:
+  1: Kachchh
+  2: Banaskantha
+  3: Patan
+  4: Mehsana
+  5: Sabarkantha
+  6: Gandhinagar
+  7: Ahmedabad
+  8: Surendranagar
+  9: Rajkot
+  10: Jamnagar
+  11: Porbandar
+  12: Junagadh
+  13: Amreli
+  14: Bhavnagar
+  15: Anand
+  16: Kheda
+  17: Panchmahal
+  18: Dohad
+  19: Vadodara
+  20: Narmada
+  21: Bharuch
+  22: Surat
+  23: Dangs
+  24: Navsari
+  25: Valsad
+  26: Tapi
+  27: Arvalli
+  28: Botad
+  29: 'Chhota
+
+    Udepur'
+  30: Devbhumi Dwarka
+  31: Gir Somnath
+  32: Mahisagar
+  33: Morbi
+27:
+  1: Nandurbar
+  2: Dhule
+  3: Jalgaon
+  4: Buldhana
+  5: Akola
+  6: Wasim
+  7: Amravati
+  14: Yeotmal
+  15: Nanded
+  16: Hingoli
+  17: Parbhani
+  18: Jalna
+  19: C S Nagar
+  20: Nasik
+  25: Pune
+  26: Ahilyanagar
+  27: Beed
+  28: Latur
+  29: Dharashiv
+  30: Solapur
+  31: Satara
+  34: Kolhapur
+  35: Sangali
+  36: Palghar
+28:
+  1: Srikakulam
+  2: Vizianagaram
+  4: East Godavari
+  5: West Godavari
+  6: Krishna
+  7: Guntur
+  8: Prakasam
+  9: S.P.S.Nellore
+  10: Y.S.R.District
+  11: Kurnool
+  12: Anathapuram
+  13: Chittoor
+  14: Palnadu
+  15: Baptla
+  16: Tirupati
+  17: Annamayya
+  18: Nandyala
+  19: Sri Satya Sai
+  20: Alluri Seetha Ramaraju
+  21: Nandyala
+  22: Ntr
+  23: Palnadu
+  24: Kakinada
+  25: Parvathipuram Manyam
+  26: Ntr
+29:
+  1: Belgavi
+  2: Bagalkot
+  3: Vijayapura
+  4: Kalaburgi
+  5: Bidar
+  6: Raichur
+  7: Koppal
+  8: Gadag
+  9: Dharwad
+  10: Uttara Kannada
+  11: Haveri
+  12: Bellary
+  13: Chitradurga
+  14: Davanagere
+  15: Shivamogga
+  16: Udupi
+  17: Chickmagaluru
+  18: Tumakuru
+  19: Kolar
+  21: Bengaluru(R)
+  22: Mandya
+  23: Hassan
+  24: Dakshina Kannada
+  25: Kodagu
+  26: Mysuru
+  27: Chamarajanagar
+  28: Ramnagara
+  29: Chikkaballapura
+  30: Yadgir
+  31: Vijayanagara
+32:
+  1: Kasargod
+  2: Kannur
+  3: Wayanad
+  4: Kozhikode
+  5: Malapuram
+  6: Palakkad
+  7: Thrissur
+  8: Ernakulam
+  9: Idukki
+  10: Kottayam
+  11: Alappuzha
+  12: Pathanamthitta
+  13: Kollam
+  14: Thiruvananthapuram
+33:
+  1: Thiruvallur
+  2: Chennai
+  3: Kancheepuram
+  4: Vellore
+  5: Dharmapuri
+  6: Thiruvannamalai
+  7: Villupuram
+  8: Salem
+  9: Namakkal
+  10: Erode
+  11: The Nilgiris
+  12: Coimbatore
+  13: Dindigul
+  14: Karur
+  15: Tiruchirapalli
+  16: Perambalur
+  17: Ariyalur
+  18: Cuddalore
+  19: Nagapattinam
+  20: Thiruvarur
+  21: Thanjavur
+  22: Pudukottai
+  23: Sivagangai
+  24: Madurai
+  25: Theni
+  26: Virudhunagar
+  27: Ramanathapuram
+  28: Thoothukudi
+  29: Tirunelveli
+  30: Kanyakumari
+  31: Krishnagiri
+  32: Thiruppur
+  33: Chengalpattu
+  34: Kallakurichi
+  35: Ranipet
+  36: Tirupathur
+  37: Tenkasi
+  38: Myladuthurai
+34:
+  2: Puducherry
+  4: Karaikal
+36:
+  1: Adilabad
+  2: Komaram Bheem
+  3: Mancherial
+  4: Nirmal
+  5: Nizamabad
+  6: Jagtial
+  7: Peddapalli
+  8: Jayashankar
+  9: Bhadradri
+  10: Mahabubabad
+  11: Warangal Rural
+  12: Hanumakonda
+  13: Karimnagar
+  14: Rajanna
+  15: Kamareddy
+  16: Sangareddy
+  17: Medak
+  18: Siddipet
+  19: Jangaon
+  20: Yadadri
+  23: Rangareddy
+  24: Vikarabad
+  25: Mahbubnagar
+  26: Jogulamba
+  27: Wanaparthy
+  28: Nagarkurnool
+  29: Nalgonda
+  30: Suryapet
+  31: Khammam
+  33: Narayanpet
