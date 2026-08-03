@@ -32,7 +32,7 @@ jupyter notebook --no-browser --notebook-dir='/mnt/d/05 GIT/18_NLP_DuplicateQues
 jupyter notebook --no-browser --notebook-dir='/mnt/f/Grv/Grv/05 GIT/01_masterRepo/01_My_Learnings/02_Python/05_NLP'
 
 
-jupyter lab --no-browser --notebook-dir='/mnt/d/05 GIT/01_masterRepo/01_My_Learnings/02_Python/05_NLP'
+jupyter lab --no-browser --notebook-dir='/mnt/d/05 GIT/18_NLP_DuplicateQuestionPair/notebooks'
 jupyter lab --no-browser --notebook-dir='/mnt/f/Grv/Grv/05 GIT/01_masterRepo/01_My_Learnings/02_Python/05_NLP'
 
 
