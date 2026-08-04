@@ -1,0 +1,10 @@
+01_parent_directory.zip
+01_parent_directory/*
+01_parent_directory - Copy/*
+02_irrelevant_files/*
+03_unprocessed_archives/*
+04_processed_archives/*
+05_base_folder/*
+06_base_error_folder/*
+07_base_processed_folder/*
+csv_files/*
