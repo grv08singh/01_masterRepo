@@ -3116,30 +3116,22 @@ import torch
 # Create tensor in torch:
 ## empty tensor of shape (2,3) - values are from previously stored at those locations
 x = torch.empty(2,3)
-## check type - torch.Tensor
-type(x)
-## using zeros
-torch.zeros(2,3)
-## using ones
-torch.ones(2,3)
-## using rand
-torch.rand(2,3)
-## use of seed
-torch.manual_seed(100)
-torch.rand(2,3)
-## using tensor
-torch.tensor([[1,2,3],[4,5,6]])
-## using arange
-torch.arange(0,19,2)
-## using linspace
-torch.linspace(1,10,10)
-## using eye
-torch.eye(5)
-## using full
-torch.full((3,3),5)
+x.shape                             # Tensor Shape
+x.dtype                             #torch.int64, torch.float32, etc..
+type(x)                             ## check type - torch.Tensor
+id(x)                               #memory location of where x is pointing
 
-# Data Types in Torch
-x.dtype             #torch.int64, torch.float32, etc..
+torch.zeros(2,3)                    ## using zeros
+torch.ones(2,3)                     ## using ones
+torch.rand(2,3)                     ## using rand
+torch.manual_seed(100)              ## use of seed
+torch.rand(2,3)
+torch.randint(size=(2,3), low=0, high=10)
+torch.tensor([[1,2,3],[4,5,6]])     ## using tensor
+torch.arange(0,19,2)                ## using arange
+torch.linspace(1,10,10)             ## using linspace
+torch.eye(5)                        ## using eye
+torch.full((3,3),5)                 ## using full
 
 ## this will create integer tensor
 torch.tensor([[1.0,2.0,3.0],[4.0,5.0,6.0]], dtype=torch.int32)
@@ -3148,199 +3140,132 @@ torch.tensor([[1,2,3],[4,5,6]], dtype=torch.float64)
 ## change dtype of existing tensor
 x.to(torch.float32)
 
-# Tensor Shape
-x.shape
 
-## empty tensor with shape that of x
-torch.empty_like(x)
-## zeros tensor with shape that of x
-torch.zeros_like(x)
-## ones tensor with shape that of x
-torch.ones_like(x)
+
+torch.empty_like(x)                 ## empty tensor with shape that of x
+torch.zeros_like(x)                 ## zeros tensor with shape that of x
+torch.ones_like(x)                  ## ones tensor with shape that of x
 ## random tensor with shape that of x
 torch.rand_like(x)          #error - coz x is INT, rand creates float
 torch.rand_like(x,dtype=torch.float64)
 
 # Mathematical Scalar Operations
-## addition
-x + 2
-## subtraction
-x - 2
-## multiplication
-x * 3
-## division
-x / 3
-## int division
-(x * 100)//3
-## mod
-(x * 100)%2
-## power
-x**2
+x + 2                               ## addition
+x - 2                               ## subtraction
+x * 3                               ## multiplication
+x / 3                               ## division
+(x * 100)//3                        ## int division
+(x * 100)%2                         ## mod
+x**2                                ## power
 
 # Mathematical tensor Operations (element-by-element)
-## addition
-x + y
-## subtraction
-x - y
-## multiplication
-x * y
-## division
-x / y
-## int division
-x//y
-## mod
-x%y
-## power
-x**y
+x + y                               ## addition
+x - y                               ## subtraction
+x * y                               ## multiplication
+x / y                               ## division
+x//y                                ## int division
+x%y                                 ## mod
+x**y                                ## power
 
 # other Mathematical operations
-## absolute values of elements
-torch.abs(x)
-## negative of all values in a tensor
-torch.neg(x)
-## round all numbers in a tensor
-torch.round(x)
-## ceil all numbers in a tensor
-torch.ceil(x)
-## floor all numbers in a tensor
-torch.floor(x)
-## clamp all numbers in a range, 2 for <=2, 3 for >=3
-torch.clamp(x, min=2, max=3)
-## sum of all numbers in a tensor
-torch.sum(x)
-## sum along columns in a tensor
-torch.sum(x, dim=0)
-## sum along rows in a tensor
-torch.sum(x, dim=1)
-## mean of all numbers in a tensor - d.type(x) must be torch.float
-torch.mean(x)
-## mean along columns in a tensor
-torch.mean(x, dim=0)
-## mean along rows in a tensor
-torch.mean(x, dim=1)
-## maximum along columns in a tensor
-torch.max(x, dim=0)
-## minimum along rows in a tensor
-torch.min(x, dim=1)
-## product of all numbers in a tensor
-torch.product(x)
-## standard deviation of all numbers in a tensor
-torch.std(x)
-## variance of all numbers in a tensor
-torch.var(x)
-## position of maximum in a tensor
-torch.argmax(x)
-## position of minimum in a tensor
-torch.argmin(x)
+torch.abs(x)                        ## absolute values of elements
+torch.neg(x)                        ## negative of all values in a tensor
+torch.round(x)                      ## round all numbers in a tensor
+torch.ceil(x)                       ## ceil all numbers in a tensor
+torch.floor(x)                      ## floor all numbers in a tensor
+torch.clamp(x, min=2, max=3)        ## clamp all numbers in a range, 2 for <=2, 3 for >=3
+torch.sum(x)                        ## sum of all numbers in a tensor
+torch.sum(x, dim=0)                 ## sum along columns in a tensor
+torch.sum(x, dim=1)                 ## sum along rows in a tensor
+torch.mean(x)                       ## mean of all numbers in a tensor - d.type(x) must be torch.float
+torch.mean(x, dim=0)                ## mean along columns in a tensor
+torch.mean(x, dim=1)                ## mean along rows in a tensor
+torch.max(x, dim=0)                 ## maximum along columns in a tensor
+torch.min(x, dim=1)                 ## minimum along rows in a tensor
+torch.product(x)                    ## product of all numbers in a tensor
+torch.std(x)                        ## standard deviation of all numbers in a tensor
+torch.var(x)                        ## variance of all numbers in a tensor
+torch.argmax(x)                     ## position of maximum in a tensor
+torch.argmin(x)                     ## position of minimum in a tensor
 
 # Matrix Operations
-## Matrix Multiplication
-torch.matmul(x,y) #no.of cols in x must be = no. of rows in y
-## dot product
-torch.dot(x, y) #x and y are two vectors
-## Transpose --> swap 0th dimension with 1st
-torch.transpose(f,0,1)
-## determinant - only possible for square matrix
-torch.det(a)
-## inverse - only possible for square matrix
-torch.inverse(a)
+torch.matmul(x,y)                   ## Matrix Multiplication
+torch.dot(x, y)                     ## dot product #x and y are two vectors
+torch.transpose(f,0,1)              ## Transpose --> swap 0th dimension with 1st
+torch.det(a)                        ## determinant - only possible for square matrix
+torch.inverse(a)                    ## inverse - only possible for square matrix
 
 # Comparison Operations
-## greater than
 x > y
-## less than
 x < y
-## greater than or equal to
 x >= y
-## less than or equal to
 x <= y
-## equal to
 x == y
 
 # Special Functions
-## random numbers tensor in range(0,10)
-torch.randint(size=(2,3), low=0, high=10)
-## log
 torch.log(x)
-## exponent
 torch.exp(x)
-## square root
 torch.sqrt(x)
-## sigmoid
 torch.sigmoid(x)
-## softmax
 torch.softmax(x, dim=0)
-## relu
 torch.relu(x)
 
 # all the above functions return a tensor, that occupies space
 # what if we don't want to save the resultant tensor at a new place
 # what if we wanna save resultant tensor in x itself.
 # This is called inplace=True operation
-
-## add x and y and save the resultant in x
-x.add_(y)
-## relu of x saved to x
-x.relu_()
-## copy tensor x to y
-y = x.clone()
-id(x)   #memory location of where x is pointing
-id(y)   #memory location of where y is pointing
+x.add_(y)                           ## add x and y and save the resultant in x
+x.relu_()                           ## relu of x saved to x
+y = x.clone()                       ## copy tensor x to y
 
 
 # GPU operations
-## check if gpu is available
-torch.cuda.is_available()
-## create new tensor on GPU
-device = torch.device('cuda')
+torch.cuda.is_available()           ## check if gpu is available
+device = torch.device('cuda')       ## create new tensor on GPU
 torch.rand((2,3), device=device)
-## move existing CPU tensors to GPU
-a.to(device)    #after moving to GPU, all operations happen on GPU
+a.to(device)                        ## move existing CPU tensors to GPU
 
-## Reshape
 a = torch.ones(4,4)
-a.reshape(2,2,2,2)
-## Flatten
-a.flatten()
-## permute - change the index of the shape
-a = torch.rand(2,3,4)
-a.permute(2,0,1).shape  #(4,2,3) changed the shape sequence
-## unsqueeze - add a new dimension at a position
-a = torch.rand(226,226,3)
-a.unsqueeze(0).shape    #(1,226,226,3) added a new dim at position 0
-## squeeze - remove a dimension
-a = torch.rand(1,20)    #2-D tensor
-a.squeeze(0).shape      #([20]) 1-D tensor
+a.reshape(2,2,2,2)                  ## Reshape
+a.flatten()                         ## Flatten
 
-# Moving tensors between NumPy and PyTorch
+a = torch.rand(2,3,4)
+a.permute(2,0,1).shape              ## permute - change the index of the shape #(4,2,3) changed the shape sequence
+
+a = torch.rand(226,226,3)
+a.unsqueeze(0).shape                ## unsqueeze - add a new dimension at a position    #(1,226,226,3) added a new dim at position 0
+
+a = torch.rand(1,20)                #2-D tensor
+a.squeeze(0).shape                  ## squeeze - remove a dimension #([20]) 1-D tensor
+
+
 ## convert a PyTorch Tensor to NumPy Tensor
 a = torch.tensor([1,2,3])
-b = a.numpy()
-## convert a NumPy Tensor to PyTorch Tensor
-c = torch.from_numpy(b)
+b = a.numpy()                       ## PyTorch to Numpy
+c = torch.from_numpy(b)             ## Numpy to PyTorch
 
 
 # Autograd - Automatic Gradient in PyTorch
 ## example 1
 x = torch.tensor(3, requires_grad=True)
-y = x**2                #relationship between x and y
-y.backward()            #calculating gradient in backward direction
-x.grad                  #gives gradient automatically
+y = x**2                            ## relationship between x and y
+y.backward()                        ## calculating gradient in backward direction
+x.grad                              ## gives gradient automatically
 
 ## example 2
 x = torch.tensor(3, requires_grad=True)
-y = x**2                #relationship between x and y
-z = torch.sin(y)        #relationship between y and z
-z.backward()            #calculating gradient in backward direction
-x.grad                  #gives gradient automatically
+y = x**2                            ## relationship between x and y
+z = torch.sin(y)                    ## relationship between y and z
+z.backward()                        ## calculating gradient in backward direction
+x.grad                              ## gives gradient automatically
 
 ## example 3
 x = torch.tensor([1,2,3], requires_grad=True)
-z = x**2.mean()                         #relationship between x and z
-y_hat = torch.sigmoid(z)                #relationship between y and z
-L = ylog(y_hat) - (1-y)log(1-y_hat)     #Binary CrossEntropy Loss
-L.backward()                            #calculating gradient in backward direction
-x.grad                                  #gives gradient automatically
+z = x**2.mean()                         ## relationship between x and z
+y_hat = torch.sigmoid(z)                ## relationship between y and z
+L = ylog(y_hat) - (1-y)log(1-y_hat)     ## Binary CrossEntropy Loss
+L.backward()                            ## calculating gradient in backward direction
+x.grad                                  ## gives gradient automatically
 
 ## Autograd keeps accumulating gradients over multiple runs
 ## therefore, it is necessary to clear the gradients before each run.
@@ -3351,10 +3276,10 @@ x.grad.zero_()
 x.requires_grad_(False)
 ## method 2, detach() function
 z = x.detach()
-y1 = x**2       #gradient tracking ON
-y2 = z**2       #gradient tracking OFF
-y1.backward()   #POSSIBLE
-y2.backward()   #NOT POSSIBLE
+y1 = x**2                           ## gradient tracking ON
+y2 = z**2                           ## gradient tracking OFF
+y1.backward()                       ## POSSIBLE
+y2.backward()                       ## NOT POSSIBLE
 ## method 3, with torch.no_grad()
 with torch.no_grad:
     y = x**2    #gradient tracking OFF
@@ -4326,6 +4251,7 @@ class CustomDataset(Dataset):
 
 train_dataset = CustomDataset(X_train,y_train,transform=custom_transform)
 test_dataset = CustomDataset(X_test, y_test,transform=custom_transform)
+
 train_loader = Dataloader(train_dataset,batch_size=32,shuffle=True)
 test_dataloader=Dataloader(test_dataset,batch_size=32,shuffle=False)
 
@@ -4816,6 +4742,136 @@ def calculate_accuracy(model, dataloader, device):
 # Compute accuracy
 accuracy = calculate_accuracy(model, dataloader, device)
 print(f"Model Accuracy: {accuracy:.2f}%")
+
+
+
+
+
+
+
+
+
+##################################################################
+# DL in PyTorch - GRU (Gated Recurrent Unit)
+##################################################################
+
+#### Example 1
+import torch
+import torch.nn as nn
+
+# Define dimensions
+batch_size = 4
+seq_len = 10      # Number of steps in the sequence
+input_size = 8    # Number of features per step
+hidden_size = 16  # Size of the hidden state
+num_layers = 1    # Number of stacked GRU layers
+
+# Instantiate the GRU layer
+# batch_first=True makes expected tensor format: (batch, seq, feature)
+gru = nn.GRU(input_size=input_size, hidden_size=hidden_size, num_layers=num_layers, batch_first=True)
+
+# Create dummy input data
+input_tensor = torch.randn(batch_size, seq_len, input_size)
+
+# Optional: Initialize the initial hidden state (defaults to zeros if omitted)
+h0 = torch.zeros(num_layers, batch_size, hidden_size)
+
+# Forward pass through the GRU
+output, hn = gru(input_tensor, h0)
+
+# Check the shapes
+print("Output shape (batch, seq, hidden):", output.shape)  # torch.Size([4, 10, 16])
+print("Final hidden state shape (layers, batch, hidden):", hn.shape)  # torch.Size([1, 4, 16])
+
+
+
+
+
+#### Example 2
+class GRUClassifier(nn.Module):
+    def __init__(self, input_size, hidden_size, num_layers, num_classes):
+        super(GRUClassifier, self).__init__()
+        self.hidden_size = hidden_size
+        self.num_layers = num_layers
+        
+        # GRU layer
+        self.gru = nn.GRU(input_size, hidden_size, num_layers, batch_first=True)
+        
+        # Fully connected output layer
+        self.fc = nn.Linear(hidden_size, num_classes)
+        
+    def forward(self, x):
+        # Initialize hidden state with zeros
+        h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).to(x.device)
+        
+        # Forward propagate through GRU
+        # output shape: (batch_size, seq_len, hidden_size)
+        # hn shape: (num_layers, batch_size, hidden_size)
+        out, hn = self.gru(x, h0)
+        
+        # Decode the hidden state of the last time step only
+        # out[:, -1, :] slices out the last sequence step
+        out = self.fc(out[:, -1, :])
+        return out
+
+# Instantiate model
+model = GRUClassifier(input_size=5, hidden_size=32, num_layers=2, num_classes=3)
+
+# Test with a mock batch of data
+mock_data = torch.randn(8, 15, 5) # (batch_size=8, seq_len=15, features=5)
+predictions = model(mock_data)
+
+print("Predictions shape (batch_size, num_classes):", predictions.shape) # torch.Size([8, 3])
+
+
+
+
+
+
+#### Example 3 - Quora Duplicate Questions Pair
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+class SiameseGRU(nn.Module):
+    def __init__(self, vocab_size, embed_dim, hidden_dim):
+        super(SiameseGRU, self).__init__()
+        self.embedding = nn.Embedding(vocab_size, embed_dim, padding_idx=0)
+        self.gru = nn.GRU(embed_dim, hidden_dim, batch_first=True, bidirectional=True)
+        # Combined features: [u, v, |u - v|, u * v] -> hidden_dim * 4 * 2 (due to bidirectional)
+        self.fc = nn.Linear(hidden_dim * 8, 1)
+
+    def forward_once(self, x):
+        embedded = self.embedding(x)
+        _, h_n = self.gru(embedded)
+        # h_n shape: (num_layers * num_directions, batch, hidden_dim)
+        # Concatenate forward and backward final hidden states
+        h_cat = torch.cat((h_n[-2], h_n[-1]), dim=1)
+        return h_cat
+
+    def forward(self, q1, q2):
+        u = self.forward_once(q1)
+        v = self.forward_once(q2)
+        # Compute absolute difference and element-wise product for similarity cues
+        diff = torch.abs(u - v)
+        prod = u * v
+        combined = torch.cat((u, v, diff, prod), dim=1)
+        out = torch.sigmoid(self.fc(combined))
+        return out
+
+# Example usage
+vocab_size, embed_dim, hidden_dim = 10000, 300, 128
+model = SiameseGRU(vocab_size, embed_dim, hidden_dim)
+
+# Dummy batch of tokenized question pairs (Batch Size: 2, Seq Length: 5)
+q1_tensor = torch.randint(0, vocab_size, (2, 5))
+q2_tensor = torch.randint(0, vocab_size, (2, 5))
+
+preds = model(q1_tensor, q2_tensor)
+print("Duplicate probabilities:", preds)
+
+
+
 
 
 
@@ -9731,6 +9787,55 @@ git push origin main
 
 
 
+#######################################################
+#### Replace the local repo with remote one (in case of conflict)
+#######################################################
+git fetch --all
+git reset --hard origin/main
+git clean -fd
+git stash -u            #optional - to save untracked files
+git pull
+git stash pop           #optional - to recover changes
+
+
+
+#######################################################
+#### Resolve File Conflict with same branch versions
+#######################################################
+
+#### 1) Keep Local Changes
+git stash
+git pull
+git stash pop
+git add .
+git commit -m "conflict msg"
+git push
+
+#### 2) Keep Remote Changes (Overwrite Local Changes)
+git checkout -- <file path>
+git pull
+
+#### 3) To manually check the file which changes to keep
+git add <file path>
+git commit -m "<commit message>"
+git pull                                #both the changes will be in the file, remove one manually 
+
+
+
+
+
+
+#######################################################
+#### resolve demerged branches (on different commit versions)
+#### keep remote branch
+#######################################################
+git rebase --abort
+git fetch origin
+git reset --hard origin/main
+
+
+
+
 
 
 #######################################################
@@ -9788,43 +9893,6 @@ git push origin main
 #### Untrack an LFS directory - Purge complete history
 git filter-repo --invert-paths --path path/to/directory/
 git push origin --force --all
-
-
-
-#######################################################
-#### Resolve File Conflict with same branch versions
-#######################################################
-
-#### 1) Keep Local Changes
-git stash
-git pull
-git stash pop
-git add .
-git commit -m "conflict msg"
-git push
-
-#### 2) Keep Remote Changes (Overwrite Local Changes)
-git checkout -- <file path>
-git pull
-
-#### 3) To manually check the file which changes to keep
-git add <file path>
-git commit -m "<commit message>"
-git pull                                #both the changes will be in the file, remove one manually 
-
-
-
-
-
-
-#######################################################
-#### resolve demerged branches (on different commit versions)
-#### keep remote branch
-#######################################################
-git rebase --abort
-git fetch origin
-git reset --hard origin/main
-
 
 
 

@@ -1,0 +1,4 @@
+python src/pipelines/p2_data_preprocessing_pipeline.py;
+python src/pipelines/p3_data_processing_pipeline.py;
+python src/pipelines/p4_model_training_pipeline.py;
+
