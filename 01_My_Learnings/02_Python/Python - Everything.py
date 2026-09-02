@@ -38,6 +38,7 @@ jupyter lab --no-browser --notebook-dir='/mnt/f/Grv/Grv/05 GIT/01_masterRepo/01_
 
 
 # Windows
+jupyter notebook --notebook-dir="C:\Users\Dex\Desktop\TN WP 2026-27"
 jupyter notebook --notebook-dir="D:\05 GIT\01_masterRepo\01_My_Learnings\02_Python\05_NLP"
 jupyter lab --notebook-dir="D:\05 GIT\01_masterRepo\01_My_Learnings\02_Python\05_NLP"
 
@@ -146,6 +147,335 @@ ML Project Checklist:
         5.08) 
         5.09) 
         5.10) 
+
+
+
+
+
+
+
+
+###############################################################################################################
+#### LangChain - Everything
+###############################################################################################################
+# --- Model Provider Keys (Choose what you use) ---
+OPENAI_API_KEY=your_actual_openai_api_key_here
+ANTHROPIC_API_KEY=your_actual_anthropic_api_key_here
+GOOGLE_API_KEY=your_actual_gemini_api_key_here
+
+# --- LangSmith Tracing & Observability (Optional) ---
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_API_KEY=your_langsmith_api_key_here
+LANGCHAIN_PROJECT=my-langchain-app
+
+##################################################################
+# LLM Invoking
+##################################################################
+import os
+from dotenv import load_dotenv
+
+from langchain.chat_models import init_chat_model
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_anthropic import ChatAnthropic
+from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
+from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace, HuggingFacePipeline
+
+from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
+
+#for api based LLMs
+load_dotenv()
+
+#1) Paid Cloud LLM
+#Unified Initializer (Recommended) - dynamic way
+model = init_chat_model("google_genai:gemini-3.7-flash")
+
+#static way
+model = ChatGoogleGenerativeAI(model='gemini-1.5-pro')                          #Gemini
+model = ChatAnthropic(model='claude-3-5-sonnet-20241022')                       #Claude
+model = ChatOpenAI(model='gpt-4', temperature=1.5, max_completion_tokens=10)    #OpenAI
+model = ChatOllama(model="tinyllama", temperature=0.7)                          #Ollama    
+
+#2) Free Cloud LLM
+llm = HuggingFaceEndpoint(
+            repo_id="TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+            task="text-generation"
+        )
+model = ChatHuggingFace(llm=llm)
+
+#3) Free Local LLM
+os.environ['HF_HOME'] = 'D:/huggingface_cache'
+llm = HuggingFacePipeline.from_model_id(
+            model_id='TinyLlama/TinyLlama-1.1B-Chat-v1.0',
+            task='text-generation',
+            pipeline_kwargs=dict(
+                temperature=0.5,
+                max_new_tokens=100
+            )
+        )
+model = ChatHuggingFace(llm=llm)
+
+
+#Querying LLM model
+prompt = 'What is the capital of India'
+result = model.invoke(prompt)
+print(result.content)
+
+
+#keeping chat history
+messages=[
+            SystemMessage(content='You are a helpful assistant'),
+            HumanMessage(content='Tell me about LangChain')
+        ]
+result = model.invoke(messages)
+messages.append(AIMessage(content=result.content))
+
+
+
+
+
+
+
+
+
+##################################################################
+# LangChain Prompts
+##################################################################
+from langchain_core.prompts import ChatPromptTemplate, PromptTemplate, MessagesPlaceholder
+
+#1)Create Simple Text Only Prompt - using PromptTemplate
+template = "Write a poem about {topic}."
+prompt_template = PromptTemplate(template=template, input_variables=["topic"], validate_template=True)
+prompt_template.save('template.json')
+prompt = prompt_template.format(topic="AI")                 #output: 'Write a poem about AI.'
+or
+prompt = prompt_template.invoke({'topic': 'AI'})            #ouput: StringPromptValue(text='Write a poem about AI.')
+
+
+#2)Create Structured Prompt - using ChatPromptTemplate
+chat_prompt_template = ChatPromptTemplate([
+                            ("system", "You are a helpful poetic assistant. You only reply in rhyming poems."),
+                            ("human", "Write a poem about {topic}.")
+                        ])
+prompt = chat_prompt_template.format_messages(topic="AI")   #list of messages
+or
+prompt = chat_prompt_template.invoke({'topic':'AI'})        #ChatPromptValue object having list of messages    
+
+
+
+
+
+
+
+
+
+
+##################################################################
+# with Structured Output
+##################################################################
+
+# set output structure using json schema
+json_schema = {
+  "title": "Review",
+  "type": "object",
+  "properties": {
+    "key_themes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Write down all the key themes discussed in the review in a list"
+    },
+    "summary": {
+      "type": "string",
+      "description": "A brief summary of the review"
+    },
+    "sentiment": {
+      "type": "string",
+      "enum": ["pos", "neg"],
+      "description": "Return sentiment of the review either negative, positive or neutral"
+    },
+    "pros": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "string"
+      },
+      "description": "Write down all the pros inside a list"
+    },
+    "cons": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "string"
+      },
+      "description": "Write down all the cons inside a list"
+    },
+    "name": {
+      "type": ["string", "null"],
+      "description": "Write the name of the reviewer"
+    }
+  },
+  "required": ["key_themes", "summary", "sentiment"]
+}
+
+# set output structure using pydantic model base class
+from pydantic import BaseModel, Field
+class Review(BaseModel):
+    key_themes: list[str] = Field(description="Write down all the key themes discussed in the review in a list")
+    summary: str = Field(description="A brief summary of the review")
+    sentiment: Literal["pos", "neg"] = Field(description="Return sentiment of the review either negative, positive or neutral")
+    pros: Optional[list[str]] = Field(default=None, description="Write down all the pros inside a list")
+    cons: Optional[list[str]] = Field(default=None, description="Write down all the cons inside a list")
+    name: Optional[str] = Field(default=None, description="Write the name of the reviewer")
+class Review(TypedDict):
+    key_themes: Annotated[list[str], "Write down all the key themes discussed in the review in a list"]
+    summary: Annotated[str, "A brief summary of the review"]
+    sentiment: Annotated[Literal["pos", "neg"], "Return sentiment of the review either negative, positive or neutral"]
+    pros: Annotated[Optional[list[str]], "Write down all the pros inside a list"]
+    cons: Annotated[Optional[list[str]], "Write down all the cons inside a list"]
+    name: Annotated[Optional[str], "Write the name of the reviewer"]
+
+structured_model = model.with_structured_output(json_schema)
+or
+structured_model = model.with_structured_output(Review)
+
+result = structured_model.invoke(prompt)
+
+
+
+
+
+
+
+
+
+##################################################################
+# HuggingFace LLMs
+##################################################################
+import os
+from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
+from langchain_core.messages import HumanMessage, SystemMessage
+
+repo_id = "google/gemma-4-31B-it"
+llm = HuggingFaceEndpoint(
+            repo_id=repo_id,
+            task="text-generation", # Required for ChatHuggingFace mapping
+            max_new_tokens=512,
+            temperature=0.7,
+            do_sample=True,
+        )
+model = ChatHuggingFace(llm=llm)
+messages = [
+                SystemMessage(content="You are an expert, concise coding assistant."),
+                HumanMessage(content="Write a Python list comprehension that filters out negative numbers.")
+            ]
+result = model.invoke(messages)
+print(result.content)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##################################################################
+# Output Parsers
+##################################################################
+from langchain_core.prompts import PromptTemplate
+from langchain_core.output_parsers import JsonOutputParser, PydanticOutputParser, StrOutputParser
+from pydantic import BaseModel, Field
+
+#1) step 1
+#for json, pydantic, string output parser
+class CustomSchema(BaseModel):
+    fact_1: str = Field(description="Fact 1 about the topic")
+    fact_2: str = Field(description="Fact 2 about the topic")
+    fact_3: str = Field(description="Fact 3 about the topic")
+
+#2) step 2
+parser = JsonOutputParser(pydantic_object=CustomSchema)             #json output parser
+or
+parser = PydanticOutputParser(pydantic_object=CustomSchema)         #pydantic output parser
+or
+parser = StrOutputParser()                                          #string output parser
+
+#3) step 3
+template = PromptTemplate(
+                template='Give 3 fact about {topic} \n {format_instruction}',
+                input_variables=['topic'],
+                partial_variables={'format_instruction':parser.get_format_instructions()}   #for json and pydantic only, wont work with string
+            )
+
+chain = template | model | parser
+result = chain.invoke({'topic':'black hole'})
+print(result)
+
+
+
+
+
+
+
+
+##################################################################
+# Embedding Models
+##################################################################
+from dotenv import load_dotenv
+from langchain_openai import OpenAIEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
+from sklearn.metrics.pairwise import cosine_similarity
+
+load_dotenv()
+
+emb_model = OpenAIEmbeddings(model='text-embedding-3-large', dimensions=300)                #OpenAI
+emb_model = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2')      #HuggingFace
+
+#single query
+query = "Delhi is the capital of India"
+result = emb_model.embed_query(query)
+
+#vector query
+documents = [
+                "Delhi is the capital of India",
+                "Kolkata is the capital of West Bengal",
+                "Paris is the capital of France"
+            ]
+result_vector = emb_model.embed_documents(documents)
+
+#Finding Cosine Similarity
+scores = cosine_similarity([result], result_vector)[0]
+index, score = sorted(list(enumerate(scores)),key=lambda x:x[1])[-1]
+print(query)
+print(documents[index])
+print("similarity score is:", score)
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
         
 
 
