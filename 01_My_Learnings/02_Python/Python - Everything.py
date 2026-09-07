@@ -155,6 +155,12 @@ ML Project Checklist:
 
 
 
+
+
+
+
+
+
 ###############################################################################################################
 #### LangChain - Everything
 ###############################################################################################################
@@ -178,9 +184,8 @@ from langchain.chat_models import init_chat_model
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_anthropic import ChatAnthropic
 from langchain_openai import ChatOpenAI
-from langchain_ollama import ChatOllama
 from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace, HuggingFacePipeline
-
+from langchain_core.runnables import RunnableParallel
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 
 #for api based LLMs
@@ -191,15 +196,71 @@ load_dotenv()
 model = init_chat_model("google_genai:gemini-3.7-flash")
 
 #static way
-model = ChatGoogleGenerativeAI(model='gemini-1.5-pro')                          #Gemini
+model = ChatGoogleGenerativeAI(model='gemini-3.7-flash')                        #Gemini
 model = ChatAnthropic(model='claude-3-5-sonnet-20241022')                       #Claude
 model = ChatOpenAI(model='gpt-4', temperature=1.5, max_completion_tokens=10)    #OpenAI
-model = ChatOllama(model="tinyllama", temperature=0.7)                          #Ollama    
 
-#2) Free Cloud LLM
+#2) Free HuggingFace LLM
+'''
+    deepseek-ai/DeepSeek-V4-Flash-0731                      1,048,576
+    RadixArk/Kimi-K3-DSpark                                 1,048,576
+    deepseek-ai/DeepSeek-V4-Flash                           1,048,576
+    zai-org/GLM-5.2-FP8                                     1,048,576
+    zai-org/GLM-5.2                                         1,048,576
+    nvidia/GLM-5.2-NVFP4                                    1,048,576
+    nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-NVFP4      1,048,576
+    deepseek-ai/DeepSeek-V4-Pro                             1,048,576
+    cyankiwi/MiniCPM-SALA-AWQ-8bit                          524,288
+    nvidia/Qwen3.6-35B-A3B-NVFP4                            262,144
+    farbodtavakkoli/OTel-2.0-LLM-31B-IT                     262,144
+    Qwen/Qwen3-4B-Instruct-2507                             262,144
+    ornith-ai/Ornith-1.0-35B                                262,144
+    nvidia/Gemma-4-31B-IT-NVFP4                             262,144
+    prism-ml/Ternary-Bonsai-27B-mlx-2bit                    262,144
+    prism-ml/Bonsai-27B-mlx-1bit                            262,144
+    Qwen/Qwen3-Coder-Next-FP8                               262,144
+    ornith-ai/Ornith-1.0-9B                                 262,144
+    QuantTrio/Qwen3-VL-30B-A3B-Instruct-AWQ                 262,144
+    nvidia/Gemma-4-26B-A4B-NVFP4                            262,144
+    Qwen/Qwen3-30B-A3B-Instruct-2507                        262,144
+    nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4          262,144
+    Qwen/Qwen3-4B-Instruct-2507-FP8                         262,144
+    Qwen/Qwen3-Coder-30B-A3B-Instruct-FP8                   262,144
+    nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16           262,144
+    Bahushruth/Qwen3.6-35B-A3B-abliterated-v4               262,144
+    sakamakismile/Qwen3.6-27B-Text-NVFP4-MTP                262,144
+    cyankiwi/Qwen3-Coder-30B-A3B-Instruct-AWQ-4bit          262,144
+    nvidia/Qwen3.5-122B-A10B-NVFP4                          262,144
+    nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16              262,144
+    protoLabsAI/Ornith-1.0-35B-FP8                          262,144
+    OBLITERATUS/Qwen3.8-27B-OBLITERATED                     262,144
+    Qwen/Qwen3-Coder-30B-A3B-Instruct                       262,144
+    cyankiwi/Qwen3-30B-A3B-Instruct-2507-AWQ-4bit           262,144
+    nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8               262,144
+    nvidia/Qwen3.6-27B-NVFP4                                262,144
+    Qwen/Qwen3-30B-A3B-Instruct-2507-FP8                    262,144
+    nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-NVFP4             262,144
+    ornith-ai/Ornith-1.5-35B-A3B-NVFP4                      262,144
+    google/gemma-4-31B-it-assistant                         262,144
+    ornith-ai/Ornith-1.0-35B-FP8                            262,144
+    MiniMaxAI/MiniMax-M2.7                                  204,800
+    zai-org/GLM-4.7-Flash                                   202,752
+    zai-org/GLM-5-FP8                                       202,752
+    nvidia/MiniMax-M2.5-NVFP4                               196,608
+    MiniMaxAI/MiniMax-M2.5                                  196,608
+    deepseek-ai/DeepSeek-V3.2                               163,840
+    deepseek-ai/DeepSeek-R1                                 163,840
+    deepseek-ai/DeepSeek-V3-0324                            163,840
+    deepseek-ai/DeepSeek-V3                                 163,840
+'''
+            
+repo_id = any one of the above
 llm = HuggingFaceEndpoint(
-            repo_id="TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-            task="text-generation"
+            repo_id=repo_id,
+            task="text-generation", # Required for ChatHuggingFace mapping
+            max_new_tokens=512,
+            temperature=0.7,
+            do_sample=True,
         )
 model = ChatHuggingFace(llm=llm)
 
@@ -209,26 +270,29 @@ llm = HuggingFacePipeline.from_model_id(
             model_id='TinyLlama/TinyLlama-1.1B-Chat-v1.0',
             task='text-generation',
             pipeline_kwargs=dict(
-                temperature=0.5,
-                max_new_tokens=100
-            )
+                    temperature=0.5,
+                    max_new_tokens=100
+                )
         )
 model = ChatHuggingFace(llm=llm)
 
 
-#Querying LLM model
+#Creating Prompt
+#single query prompt
 prompt = 'What is the capital of India'
+############# OR
+#prompt with chat history
+messages_prompt = [
+                    SystemMessage(content="You are an expert, concise coding assistant."),
+                    HumanMessage(content="Write a Python list comprehension that filters out negative numbers.")
+                ]
+
+
+
+#Invoking LLM
 result = model.invoke(prompt)
 print(result.content)
-
-
-#keeping chat history
-messages=[
-            SystemMessage(content='You are a helpful assistant'),
-            HumanMessage(content='Tell me about LangChain')
-        ]
-result = model.invoke(messages)
-messages.append(AIMessage(content=result.content))
+messages_prompt.append(AIMessage(content=result.content))       #to keep chat history
 
 
 
@@ -248,7 +312,7 @@ template = "Write a poem about {topic}."
 prompt_template = PromptTemplate(template=template, input_variables=["topic"], validate_template=True)
 prompt_template.save('template.json')
 prompt = prompt_template.format(topic="AI")                 #output: 'Write a poem about AI.'
-or
+############# OR
 prompt = prompt_template.invoke({'topic': 'AI'})            #ouput: StringPromptValue(text='Write a poem about AI.')
 
 
@@ -258,10 +322,11 @@ chat_prompt_template = ChatPromptTemplate([
                             ("human", "Write a poem about {topic}.")
                         ])
 prompt = chat_prompt_template.format_messages(topic="AI")   #list of messages
-or
+############# OR
 prompt = chat_prompt_template.invoke({'topic':'AI'})        #ChatPromptValue object having list of messages    
 
-
+#invoke LLM
+result = model.invoke(prompt)
 
 
 
@@ -317,7 +382,7 @@ json_schema = {
   "required": ["key_themes", "summary", "sentiment"]
 }
 
-# set output structure using pydantic model base class
+# set output structure using pydantic BaseModel class
 from pydantic import BaseModel, Field
 class Review(BaseModel):
     key_themes: list[str] = Field(description="Write down all the key themes discussed in the review in a list")
@@ -326,6 +391,7 @@ class Review(BaseModel):
     pros: Optional[list[str]] = Field(default=None, description="Write down all the pros inside a list")
     cons: Optional[list[str]] = Field(default=None, description="Write down all the cons inside a list")
     name: Optional[str] = Field(default=None, description="Write the name of the reviewer")
+# set output structure using TypedDict class
 class Review(TypedDict):
     key_themes: Annotated[list[str], "Write down all the key themes discussed in the review in a list"]
     summary: Annotated[str, "A brief summary of the review"]
@@ -335,41 +401,11 @@ class Review(TypedDict):
     name: Annotated[Optional[str], "Write the name of the reviewer"]
 
 structured_model = model.with_structured_output(json_schema)
-or
+############# OR
 structured_model = model.with_structured_output(Review)
 
+#invoke LLM
 result = structured_model.invoke(prompt)
-
-
-
-
-
-
-
-
-
-##################################################################
-# HuggingFace LLMs
-##################################################################
-import os
-from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
-from langchain_core.messages import HumanMessage, SystemMessage
-
-repo_id = "google/gemma-4-31B-it"
-llm = HuggingFaceEndpoint(
-            repo_id=repo_id,
-            task="text-generation", # Required for ChatHuggingFace mapping
-            max_new_tokens=512,
-            temperature=0.7,
-            do_sample=True,
-        )
-model = ChatHuggingFace(llm=llm)
-messages = [
-                SystemMessage(content="You are an expert, concise coding assistant."),
-                HumanMessage(content="Write a Python list comprehension that filters out negative numbers.")
-            ]
-result = model.invoke(messages)
-print(result.content)
 
 
 
@@ -401,16 +437,16 @@ class CustomSchema(BaseModel):
 
 #2) step 2
 parser = JsonOutputParser(pydantic_object=CustomSchema)             #json output parser
-or
+############# OR
 parser = PydanticOutputParser(pydantic_object=CustomSchema)         #pydantic output parser
-or
+############# OR
 parser = StrOutputParser()                                          #string output parser
 
 #3) step 3
 template = PromptTemplate(
                 template='Give 3 fact about {topic} \n {format_instruction}',
                 input_variables=['topic'],
-                partial_variables={'format_instruction':parser.get_format_instructions()}   #for json and pydantic only, wont work with string
+                partial_variables={'format_instruction':parser.get_format_instructions()}   #for json and pydantic only, Not Needed with string output parser
             )
 
 chain = template | model | parser
@@ -425,15 +461,343 @@ print(result)
 
 
 ##################################################################
-# Embedding Models
+# LangChain Chains
 ##################################################################
-from dotenv import load_dotenv
+#Simple Chain
+from langchain_core.prompts import PromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+
+chain = prompt | model | parser
+result = chain.invoke({'topic':'cricket'})
+print(result)
+chain.get_graph().print_ascii()
+
+
+#Sequential Chain
+prompt1 = PromptTemplate(
+    template='Generate a detailed report on {topic}',
+    input_variables=['topic']
+)
+prompt2 = PromptTemplate(
+    template='Generate a 5 pointer summary from the following text \n {text}',
+    input_variables=['text']
+)
+
+parser = StrOutputParser()
+chain = prompt1 | model1 | parser1 | prompt2 | model2 | parser2
+result = chain.invoke({'topic': 'Unemployment in India'})
+print(result)
+chain.get_graph().print_ascii()
+
+
+#Parallel Chain
+from langchain_core.runnables import RunnableParallel
+prompt1 = PromptTemplate(
+    template='Generate a 150 word essay on the topic \n {topic}',
+    input_variables=['topic']
+)
+prompt2 = PromptTemplate(
+    template='Generate 5 Multiple choise general knowledge questions on the topic \n {topic}',
+    input_variables=['topic']
+)
+prompt3 = PromptTemplate(
+    template='Merge the provided essay and quiz into a single document \n essay -> {essay} and quiz -> {quiz}',
+    input_variables=['essay', 'quiz']
+)
+parser = StrOutputParser()
+
+parallel_chain = RunnableParallel({
+    'essay': prompt1 | model | parser,
+    'quiz': prompt2 | model | parser
+})
+
+merge_chain = prompt3 | model | parser
+chain = parallel_chain | merge_chain
+topic = 'Global Warming'
+result = chain.invoke({'topic':topic})
+print(result)
+chain.get_graph().print_ascii()
+
+
+#Conditional Chain
+from langchain.schema.runnable import RunnableParallel, RunnableBranch, RunnableLambda
+from langchain_core.output_parsers import PydanticOutputParser
+from pydantic import BaseModel, Field
+from typing import Literal
+
+parser = StrOutputParser()
+class Feedback(BaseModel):
+    sentiment: Literal['positive', 'negative'] = Field(description='Give the sentiment of the feedback')
+parser2 = PydanticOutputParser(pydantic_object=Feedback)
+
+prompt1 = PromptTemplate(
+    template='Classify the sentiment of the following feedback text into postive or negative \n {feedback} \n {format_instruction}',
+    input_variables=['feedback'],
+    partial_variables={'format_instruction':parser2.get_format_instructions()}
+)
+
+classifier_chain = prompt1 | model | parser2
+prompt2 = PromptTemplate(
+    template='Write an appropriate response to this positive feedback \n {feedback}',
+    input_variables=['feedback']
+)
+prompt3 = PromptTemplate(
+    template='Write an appropriate response to this negative feedback \n {feedback}',
+    input_variables=['feedback']
+)
+branch_chain = RunnableBranch(
+    (lambda x:x.sentiment == 'positive', prompt2 | model | parser),
+    (lambda x:x.sentiment == 'negative', prompt3 | model | parser),
+    RunnableLambda(lambda x: "could not find sentiment")
+)
+
+chain = classifier_chain | branch_chain
+print(chain.invoke({'feedback': 'This is a beautiful phone'}))
+chain.get_graph().print_ascii()
+print(result)
+
+
+
+
+
+
+
+
+##################################################################
+# LangChain Runnables
+##################################################################
+from langchain.schema.runnable import RunnableSequence, RunnableParallel, RunnablePassthrough, RunnableBranch, RunnableLambda
+
+#Runnable Sequence
+chain = RunnableSequence(prompt1, model, parser, prompt2, model, parser)
+result = chain.invoke({'topic':'AI'})
+
+#Runnable Parallel
+parallel_chain = RunnableParallel({
+                    'tweet': RunnableSequence(prompt1, model, parser),
+                    'linkedin': RunnableSequence(prompt2, model, parser)
+                })
+result = parallel_chain.invoke({'topic':'AI'})
+
+#Runnable Branch - conditional branch
+#Runnable Passthrough - do nothing
+prompt1 = PromptTemplate(
+    template='Write a detailed report on {topic}',
+    input_variables=['topic']
+)
+prompt2 = PromptTemplate(
+    template='Summarize the following text \n {text}',
+    input_variables=['text']
+)
+
+report_gen_chain = prompt1 | model | parser
+branch_chain = RunnableBranch(
+                    (lambda x: len(x.split())>300, prompt2 | model | parser),
+                    RunnablePassthrough()
+                )
+
+final_chain = RunnableSequence(report_gen_chain, branch_chain)
+result = final_chain.invoke({'topic':'Russia vs Ukraine'}))
+
+
+#Runnable Lambda
+def word_count(text):
+    return len(text.split())
+
+prompt = PromptTemplate(
+            template='Write a joke about {topic}',
+            input_variables=['topic']
+        )
+
+joke_gen_chain = RunnableSequence(prompt, model, parser)
+parallel_chain = RunnableParallel({
+                    'joke': RunnablePassthrough(),
+                    'word_count': RunnableLambda(word_count)
+                })
+
+final_chain = RunnableSequence(joke_gen_chain, parallel_chain)
+result = final_chain.invoke({'topic':'AI'})
+final_result = """{} \n word count - {}""".format(result['joke'], result['word_count'])
+print(final_result)
+
+
+
+
+
+
+
+
+##################################################################
+# LangChain - Document Loader
+##################################################################
+#csv loader
+from langchain_community.document_loaders import CSVLoader
+loader = CSVLoader(file_path='Social_Network_Ads.csv')
+docs = loader.load()
+print(type(docs))
+print(len(docs))
+print(docs[1])
+
+#pdf loader
+from langchain_community.document_loaders import PyPDFLoader
+loader = PyPDFLoader('dl-curriculum.pdf')
+docs = loader.load()
+print(docs[0].page_content)
+print(docs[1].metadata)
+
+#text loader
+from langchain_community.document_loaders import TextLoader
+prompt = PromptTemplate(
+            template='Write a summary for the following poem - \n {poem}',
+            input_variables=['poem']
+        )
+loader = TextLoader('cricket.txt', encoding='utf-8')
+docs = loader.load()
+print(docs[0].page_content)
+print(docs[0].metadata)
+
+chain = prompt | model | parser
+print(chain.invoke({'poem':docs[0].page_content}))
+
+#webbase loader
+from langchain_community.document_loaders import WebBaseLoader
+prompt = PromptTemplate(
+            template='Answer the following question \n {question} from the following text - \n {text}',
+            input_variables=['question','text']
+        )
+
+url = 'https://www.flipkart.com/apple-macbook-air-m2-16-gb-256-gb-ssd-macos-sequoia-mc7x4hn-a/p/itmdc5308fa78421'
+loader = WebBaseLoader(url)
+docs = loader.load()
+chain = prompt | model | parser
+print(chain.invoke({'question':'What is the prodcut that we are talking about?', 'text':docs[0].page_content}))
+
+#directory / folder loader
+from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
+loader = DirectoryLoader(
+            path='books',
+            glob='*.pdf',
+            loader_cls=PyPDFLoader
+        )
+docs = loader.lazy_load()
+for document in docs:
+    print(document.metadata)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##################################################################
+# LangChain - Text Splitter
+##################################################################
+#Text Splitter
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+text = '''
+This is a long text. It is for experimentation only.
+This text will be splitted.
+'''
+splitter = RecursiveCharacterTextSplitter(
+                chunk_size=50,
+                chunk_overlap=0,
+            )
+chunks = splitter.split_text(text)
+print(len(chunks))
+print(chunks)
+
+
+#docs (text) Splitter - docs created from pdf, csv etc.
+from langchain.text_splitter import CharacterTextSplitter
+splitter = CharacterTextSplitter(
+                chunk_size=500,
+                chunk_overlap=0,
+                separator=''
+            )
+result = splitter.split_documents(docs)
+print(result[1].page_content)
+
+#python code splitting
+from langchain.text_splitter import RecursiveCharacterTextSplitter,Language
+
+text = """
+# Project Name: Smart Student Tracker
+A simple Python-based project to manage and track student data, including their grades, age, and academic status.
+## Features
+- Add new students with relevant info
+- View student details
+- Check if a student is passing
+- Easily extendable class-based design
+## 🛠 Tech Stack
+- Python 3.10+
+- No external dependencies
+## Getting Started
+1. Clone the repo  
+   ```bash
+   git clone https://github.com/your-username/student-tracker.git
+"""
+splitter = RecursiveCharacterTextSplitter.from_language(
+                language=Language.MARKDOWN,
+                chunk_size=200,
+                chunk_overlap=0,
+            )
+chunks = splitter.split_text(text)
+print(len(chunks))
+print(chunks[0])
+
+#Semantic Splitter
+from langchain_experimental.text_splitter import SemanticChunker
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_openai.embeddings import OpenAIEmbeddings
+text = """
+Farmers were working hard in the fields, preparing the soil and planting seeds for the next season. The sun was bright, and the air smelled of earth and fresh grass. The Indian Premier League (IPL) is the biggest cricket league in the world. People all over the world watch the matches and cheer for their favourite teams.
+Terrorism is a big danger to peace and safety. It causes harm to people and creates fear in cities and villages. When such attacks happen, they leave behind pain and sadness. To fight terrorism, we need strong laws, alert security forces, and support from people who care about peace and safety.
+"""
+#using embeddings model
+emb_model = OpenAIEmbeddings()
+############# OR
+emb_model = GoogleGenerativeAIEmbeddings(
+                model="models/gemini-embedding-001"
+            )
+############# OR
+emb_model = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2')
+
+#split text
+splitter = SemanticChunker(
+                    emb_model, 
+                    breakpoint_threshold_type="standard_deviation",
+                    breakpoint_threshold_amount=3
+                )
+docs = splitter.create_documents([text])
+print(len(docs))
+print(docs)
+
+
+
+
+
+
+##################################################################
+# LangChain - Embedding Models
+##################################################################
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_openai import OpenAIEmbeddings
 from langchain_huggingface import HuggingFaceEmbeddings
 from sklearn.metrics.pairwise import cosine_similarity
 
 load_dotenv()
 
+emb_model = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")               #Gemini
 emb_model = OpenAIEmbeddings(model='text-embedding-3-large', dimensions=300)                #OpenAI
 emb_model = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2')      #HuggingFace
 
@@ -455,6 +819,23 @@ index, score = sorted(list(enumerate(scores)),key=lambda x:x[1])[-1]
 print(query)
 print(documents[index])
 print("similarity score is:", score)
+
+
+
+
+
+
+##################################################################
+# LangChain - Create tools
+##################################################################
+
+
+
+
+
+
+
+
 
 
 
