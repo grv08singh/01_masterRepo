@@ -26,4 +26,4 @@ Follow these instructions:
 7) Double Click "GenerateCY_PY.bat"
 	Wait for A black screen to open and Press Any Key when Prompted.
 
-8) Final PY, CY excel files are generated in "06_PY_CY_New" folder.
+8) Final PY, CY excel files are generated in "05_PY_CY_New" folder.
