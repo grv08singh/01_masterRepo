@@ -239,7 +239,12 @@ def clean_rc7(details_2p0):
         .assign(
             YR = year
             ,CROP = lambda x : x['CROP'].replace({55:12, 57:56, 52:14})       #adjusting cotton & sugarcane crop code
-            ,REJ = lambda x : x['REJ'].apply(lambda y : 1 if y==1 else 0)
+            #,REJ = lambda x : x['REJ'].apply(lambda y : 0 if (y!=1 or x['STAGIN'].isin([1, 2, 3])) else 1)
+            ,REJ = lambda x : (
+                x['REJ']
+                .where(x['STAGIN'].isin([1,2,3]),0)
+                .where(x['REJ'].isin([0]), 0)
+            )
             ,RSV = lambda x: x['RSV'].where(x["RSV"].isin([0, 1, 2, 3, 9]), 0)
             ,REXML = lambda x: x["REXML"].where(
                         ~(x["STAGIN"].isin([2, 3]) & ~x["REXML"].isin([1, 2, 3, 4, 9])),
@@ -316,7 +321,6 @@ def clean_rc7(details_2p0):
         if ccf < 1:
             ccf = np.floor(ccf*10000)
         rc7.loc[(rc7['CROP']==crop), 'CONFAC'] = ccf
-        
     
     return rc7
 #%%
