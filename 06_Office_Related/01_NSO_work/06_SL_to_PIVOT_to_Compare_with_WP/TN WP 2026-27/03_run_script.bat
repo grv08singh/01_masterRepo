@@ -1,2 +1,3 @@
 @echo off
-python 02_sl_to_wp_pivot.py
+python 02_sl_to_wp_pivot_v2.py
+pause
