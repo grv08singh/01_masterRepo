@@ -1,19 +1,21 @@
 {
-    "editor.fontFamily": "Courier New",
-    "editor.fontSize": 15,
+    //"editor.fontFamily": "Consolas",
+    "editor.fontFamily": "Consolas, 'Courier New', monospace",
+    "editor.fontSize": 14,
     "editor.fontLigatures": true,
-    "editor.fontWeight": 600,
-    "terminal.integrated.fontSize": 15,
-    "terminal.integrated.fontWeight": 600,
+    "editor.fontWeight": 350,
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontWeight": 350,
     
     "workbench.colorCustomizations": {
         "titleBar.activeBackground":"#004cbf",
-        "titleBar.activeForeground":"#FFFFFF",
+        "titleBar.activeForeground":"#dbdbdb",
 
         "activityBar.background": "#008e8e",
         "activityBar.foreground":"#ffff03",
         "activityBar.inactiveForeground": "#FFFFFF",
 
+        "sideBar.border": "#008e8e",
         "sideBarTitle.background":"#37b0b0",
         "sideBarTitle.foreground":"#000000",
 
@@ -30,29 +32,39 @@
         "tab.activeForeground": "#000000",
         //"tab.activeBorder":"#007777",
 
-        "tab.inactiveBackground": "#b0e0e0",
+        "tab.inactiveBackground": "#ffffff",
         "tab.inactiveForeground": "#007777",
 
-        "breadcrumb.background":"#ffffff",
+        "breadcrumb.background":"#dbdbdb",
         "breadcrumb.foreground":"#008e8e",
 
         "editor.background": "#e4f4f4",
         "editor.foreground":"#000000",
         
         "editor.lineHighlightBackground": "#ceeaea",
-        "editor.selectionBackground": "#beeaea",
+        "editor.selectionBackground": "#a8dede",
 
         "notebook.cellEditorBackground": "#ecf8f8",
-        "notebook.editorBackground": "#f9ffff",
+        "notebook.editorBackground": "#f8f8f8",
+        "notebook.cellBorderColor": "#b0e0e0",
+        "notebook.focusedCellBackground": "#d0f0f0",
+        "notebook.focusedCellBorder": "#008e8e",
+        "notebook.outputContainerBackgroundColor": "#ededed",
 
-        "panel.background":"#b0e0e0",
-        "panelTitle.activeForeground":"#007777",
-        "panelTitle.activeBorder":"#007777",
-        "panelTitle.inactiveForeground":"#000000",
+        "panel.border": "#008e8e",
+        "panelTitle.border": "#008e8e",
+        "panelTitle.activeForeground":"#008e8e",
+        "panelTitle.activeBorder":"#008e8e",
+        "panelTitle.inactiveForeground":"#747474",
+        "panelTitleBadge.background": "#d040d0",
+        "panelTitleBadge.foreground": "#ffffff",
+        "panel.background":"#e4f4f4",
+
+        "outputView.background": "#e4f4f4",
 
         "terminal.background":"#e4f4f4",
         "terminal.foreground":"#000000",
-        "window.inactiveBorder":"#000000"
+        "window.inactiveBorder":"#000000",
     },
     "workbench.colorTheme": "Light+",
     "amazonQ.suppressPrompts": {
@@ -63,20 +75,20 @@
     "editor.semanticTokenColorCustomizations": {
         "rules": {
             "module": {
-                "foreground": "#0077ff",
-                "fontStyle": "bold"
+                "foreground": "#001eff",
+                //"fontStyle": "bold"
             },
             "class":{
-                "foreground": "#067e00",
-                "fontStyle": "bold"
+                "foreground": "#000000",
+                //"fontStyle": "bold"
             },
             "method": {
-                "foreground": "#ff00ee",
-                "fontStyle": "bold"
+                "foreground": "#020202",
+                //"fontStyle": "bold"
             },
             "function": {
-                "foreground": "#ff00ee",
-                "fontStyle": "bold"
+                "foreground": "#000000",
+                //"fontStyle": "bold"
             }
         }
     },
@@ -86,12 +98,16 @@
             "textMateRules": [
                 {
                     "scope": [
-                        "meta.member.access.python",
-                        "meta.attribute.python",
-                        "keyword.control.import.python"
+                        //"meta.member.access.python",
+                        //"meta.attribute.python",
+                        //"keyword.control.import.python",
+                        "source.python",
+                        "variable.other.python",
+                        "punctuation.separator.element.python"
                     ],
                     "settings": {
-                        "fontStyle": "bold"
+                        //"fontStyle": "bold",
+                        "foreground": "#001eff"
                     }
                 }
             ]
@@ -102,6 +118,69 @@
     "editor.minimap.enabled": false,
     "claudeCode.preferredLocation": "panel",
     "python.terminal.useEnvFile": true,
-    "explorer.confirmDragAndDrop": false
-
+    "explorer.confirmDragAndDrop": false,
+    "jupyter.askForKernelRestart": false,
+    "[python]": {
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.defaultColorDecorators": "never",
+        "editor.formatOnType": true,
+        //"editor.wordBasedSuggestions": "off"
+    },
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.openRepositoryInParentFolders": "never",
+    "gitlens.ai.model": "vscode",
+    "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+    "mcpServers": {},
+    "codium.git.showCommitNotification": false,
+    "workbench.startupEditor": "none",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "python": false
+    },
+    "amazonQ.telemetry": false,
+    "python.analysis.typeCheckingMode": "standard",
+    "terminal.integrated.automationProfile.linux": {},
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash",
+            "icon": "terminal-git-bash"
+        },
+        "Ubuntu (WSL)": {
+            "path": "C:\\Windows\\System32\\wsl.exe",
+            "args": [
+                "-d",
+                "Ubuntu"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
+    "chat.viewSessions.orientation": "stacked",
+    "chat.tips.enabled": false,
+    "github.copilot.nextEditSuggestions.eagerness": "low",
+    "github.copilot.nextEditSuggestions.enabled": false,
+    "editor.wordWrap": "on",
+    "terminal.integrated.commandsToSkipShell": [
+        "kilo-code.new.agentManagerOpen",
+        "kilo-code.new.agentManager.showTerminal"
+    ],
+    "kilo-code.new.agentWorkStyle": "autonomous",
+    "kilo-code.new.showTaskTimeline": false,
+    "remote.autoForwardPortsSource": "hybrid",
+    "editor.inlineSuggest.showToolbar": "always"
 }
