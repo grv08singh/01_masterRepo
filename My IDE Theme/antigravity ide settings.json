@@ -1,0 +1,85 @@
+{
+    "editor.fontFamily": "Consolas, 'Courier New', monospace",
+    "editor.fontSize": 14,
+    "editor.fontLigatures": true,
+    "editor.fontWeight": 350,
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontWeight": 350,
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#004cbf",
+        "titleBar.activeForeground": "#dbdbdb",
+        "activityBar.background": "#008e8e",
+        "activityBar.foreground": "#ffff03",
+        "activityBar.inactiveForeground": "#FFFFFF",
+        "sideBar.border": "#008e8e",
+        "sideBarTitle.background": "#37b0b0",
+        "sideBarTitle.foreground": "#000000",
+        "sideBarSectionHeader.background": "#74cccc",
+        "sideBarSectionHeader.foreground": "#000000",
+        "sideBar.background": "#b0e0e0",
+        "sideBar.foreground": "#000000",
+        "tab.border": "#000000",
+        "tab.activeBackground": "#e4f4f4",
+        "tab.activeForeground": "#000000",
+        "tab.inactiveBackground": "#ffffff",
+        "tab.inactiveForeground": "#007777",
+        "breadcrumb.background": "#dbdbdb",
+        "breadcrumb.foreground": "#008e8e",
+        "editor.background": "#e4f4f4",
+        "editor.foreground": "#000000",
+        "editor.lineHighlightBackground": "#ceeaea",
+        "editor.selectionBackground": "#a8dede",
+        "notebook.cellEditorBackground": "#ecf8f8",
+        "notebook.editorBackground": "#f8f8f8",
+        "notebook.cellBorderColor": "#b0e0e0",
+        "notebook.focusedCellBackground": "#d0f0f0",
+        "notebook.focusedCellBorder": "#008e8e",
+        "notebook.outputContainerBackgroundColor": "#ededed",
+        "panel.border": "#008e8e",
+        "panelTitle.border": "#008e8e",
+        "panelTitle.activeForeground": "#008e8e",
+        "panelTitle.activeBorder": "#008e8e",
+        "panelTitle.inactiveForeground": "#747474",
+        "panelTitleBadge.background": "#d040d0",
+        "panelTitleBadge.foreground": "#ffffff",
+        "panel.background": "#e4f4f4",
+        "outputView.background": "#e4f4f4",
+        "terminal.background": "#e4f4f4",
+        "terminal.foreground": "#000000",
+        "window.inactiveBorder": "#000000",
+    },
+    "workbench.colorTheme": "Default Light+",
+    "editor.semanticTokenColorCustomizations": {
+        "rules": {
+            "module": {
+                "foreground": "#001eff"
+            },
+            "class": {
+                "foreground": "#000000"
+            },
+            "method": {
+                "foreground": "#020202"
+            },
+            "function": {
+                "foreground": "#000000"
+            }
+        }
+    },
+    "editor.tokenColorCustomizations": {
+        "[Light+]": {
+            "textMateRules": [
+                {
+                    "scope": [
+                        "source.python",
+                        "variable.other.python",
+                        "punctuation.separator.element.python"
+                    ],
+                    "settings": {
+                        "foreground": "#001eff"
+                    }
+                }
+            ]
+        }
+    },
+    "files.autoSave": "afterDelay",
+}
