@@ -1,0 +1,149 @@
+def get_SL_to_ML(directory, state):
+    records = []
+
+    #df to use
+    df_state = pd.read_excel("ML_Template.xlsx", sheet_name="State")
+    df_seasons = pd.read_excel("ML_Template.xlsx", sheet_name="Seasons")
+    df_samples = pd.read_excel("ML_Template.xlsx", sheet_name="Samples")
+    df_districts = pd.read_excel("ML_Template.xlsx", sheet_name="Districts")
+    df_crops = pd.read_excel("ML_Template.xlsx", sheet_name="Crops")
+
+    #df to create
+    df_Vill = pd.DataFrame(columns=['STATENAME','SEASONNAME','SAMPLENAME','DISTRICTNAME',
+                                    'CROPNAME','TALUKA','CIRCLE','VILLAGE'])
+    
+    df_ML = pd.DataFrame(columns=['YEAR','SEASONCODE','SEASONNAME','HSEASONNAME',
+                                  'SAMPLE','SAMPLENAME','HSAMPLENAME','STATE',
+                                  'STATENAME','SHORTSTATE','HSTATENAME','ROCODE',
+                                  'RONAME','HRONAME','SROCODE','SRONAME','HSRONAME',
+                                  'DISTRICT','DISTRICTNAME','HDISTRICTNAME',
+                                  'SELORDER','EXPT','CROPCODE','CROPNAME',
+                                  'HCROPNAME','STATUS','EXPTID',])
+    
+    # Get all .xlsx files in the directory
+    excel_files = glob.glob(os.path.join(directory, "*.xlsx"))
+
+    #for each excel workbook
+    for file_path in excel_files:
+        file_name = os.path.basename(file_path)
+        incorrect_distt = Path(file_name).stem.title()
+
+        distt = correct_distt_name(incorrect_distt)     ############################## usable
+        # Determine file type and use appropriate library
+        if file_path.endswith('.xlsx'):
+            try:
+                wb = load_workbook(file_path, data_only=True)
+                #for each sheet in excel workbook
+                for sheet_name in wb.sheetnames:
+                    if "cent" in sheet_name.lower() or "sta" in sheet_name.lower():
+                        st = 1 if "cent" in sheet_name.lower() else 2     ############################## usable
+                        sample = df_samples[df_samples['SAMPLE']==st]['SAMPLENAME'].iloc[0]
+                        
+                        ws = wb[sheet_name]
+                        
+                        # setting which cells to scan
+                        row_text_list = ['taluka', 'circle', 'vill', 'exp', 'os']
+                        start_row = 0
+                        title_row = 0
+                        while start_row <= 0:
+                            title_row = get_first_row(ws, row_text_list)
+                            crop_row = title_row-1
+                            start_row = title_row + 1
+                            
+                        col_text_list = ['vill']
+                        start_col = 0
+                        while start_col <= 0:
+                            start_col = get_first_col(ws, col_text_list) + 1
+                            taluka_col = start_col - 3
+                            circle_col = start_col - 2
+                            village_col = start_col - 1
+                        
+                        end_row = ws.max_row + 1
+                        end_col = ws.max_column + 1
+
+                        if start_row > 0 and start_col > 0:
+                            for col_idx in range(start_col, end_col):
+                                # get crop name and type
+                                
+                                incorrect_crop = ws.cell(row=crop_row, column=col_idx).value     ############################## usable
+                                if isinstance(incorrect_crop, str) and incorrect_crop is not None:
+                                    incorrect_crop = re.sub(r'\s+', '', incorrect_crop)
+                                else:
+                                    incorrect_crop = ws.cell(row=crop_row, column=col_idx-1).value
+                                    if isinstance(incorrect_crop, str) and incorrect_crop is not None:
+                                        incorrect_crop = re.sub(r'\s+', '', incorrect_crop)
+                                    else:
+                                        incorrect_crop = None
+    
+                                # set season
+                                if incorrect_crop is not None:
+                                    crop = correct_crop(incorrect_crop)
+                                    season = get_season(crop)
+                                    
+                                    if '(UI)' in incorrect_crop:
+                                        crop = crop + '_UI'
+                                    elif '(I)' in incorrect_crop:
+                                        crop = crop + '_IR'
+                                    
+                                    
+                                    plan = 0
+                                    for row_idx in range(start_row, end_row):
+                                        cell_val = ws.cell(row=row_idx, column=col_idx).value
+                                        cell_header = ws.cell(row=title_row, column=col_idx).value
+                                        
+                                        if cell_val is not None:
+                                            if taluka_col>0 and circle_col>0 and village_col>0:
+                                                taluka = ws.cell(row=row_idx, column=taluka_col).value     ############################## usable
+                                                circle = ws.cell(row=row_idx, column=circle_col).value     ############################## usable
+                                                village = ws.cell(row=row_idx, column=village_col).value     ############################## usable
+
+                                                if taluka is not None and circle is not None and village is not None:
+                                                    if 'exp' in str(cell_header).lower():
+                                                        plan += cell_val     ############################## usable
+                                                    if 'os' in str(cell_header).lower():
+                                                        if 'A' in str(cell_val):
+                                                            crop = crop + '_A'
+                                                        elif 'B' in str(cell_val):
+                                                            crop = crop + '_B'
+
+                                                        m_digit  = re.search(r"\d+", str(cell_val))
+                                                        
+                                                        selorder = m_digit.group()
+
+                                                        if len(selorder) == 1:
+                                                            selorder = '0' + selorder
+
+                                                        
+                                                        df_village_row = {
+                                                            'STATENAME': state,
+                                                            'SEASONNAME': season.upper(),
+                                                            'SAMPLENAME': sample.upper(),
+                                                            'DISTRICTNAME': distt.upper(),
+                                                            'CROPNAME': crop.upper(),
+                                                            'TALUKA': str(taluka).upper(),
+                                                            'CIRCLE': str(circle).upper(),
+                                                            'VILLAGE': str(village).upper()
+                                                        }
+                                                        df_Vill = pd.concat([df_Vill, pd.DataFrame([df_village_row])], ignore_index=True)
+                                                        
+                                                        df_ML_row = {
+                                                            'STATENAME': state,
+                                                            'SEASONNAME': season.upper(),
+                                                            'SAMPLENAME': sample.upper(),
+                                                            'DISTRICTNAME': distt.upper(),
+                                                            'CROPNAME': crop.upper(),
+                                                            'SELORDER': selorder,
+                                                            'EXPT': str(1)
+                                                        }
+                                                        
+                                                        df_ML = pd.concat([df_long, pd.DataFrame([new_long_row])], ignore_index=True)
+                                                        pd.merge(df_ML,df_state,how='left',on='STATENAME')
+                                                        pd.merge(df_ML,df_seasons,how='left',on='SEASONNAME')
+                                                        pd.merge(df_ML,df_samples,how='left',on='SAMPLENAME')
+                                                        pd.merge(df_ML,df_districts,how='left',on='DISTRICTNAME')
+                                                        pd.merge(df_ML,df_crops,how='left',on='CROPNAME')
+
+            except Exception as e:
+                print(f"Error reading {file_name}, {season}, {sample}, {distt}, {crop}, {village} (openpyxl): {e}")
+                raise e
+    return df_Vill, df_ML
