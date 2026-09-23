@@ -10,5 +10,13 @@
         "TUR": 8,
         "COTTON_IR": 9,
         "COTTON_UI": 10
+    },
+    "RABI": {
+        "R&M": 11,
+        "GRAM": 12,
+        "WHEAT_IR": 13
+    },
+    "SUMMER": {
+        "BAJRA": 14
     }
 }
