@@ -6,7 +6,7 @@
 	"COTTON": ["cot", "ton"], 
 	"GROUNDNUT": ["gnut", "gro", "ground", "ndnut"], 
 	"CASTOR": ["cast", "stor", "arandi"], 
-	"SESAMUM": ["sesame", "sesamum", "ses", "samum", "mum"], 
+	"SESAMUM": ["sesam", "sesamum", "ses", "samum", "mum"], 
 	"WHEAT": ["wheat", "whet", "whe", "eat"], 
 	"GRAM": ["gram", "gra", "ram"], 
 	"RAPE_MUSTARD": ["rap", "rape", "must", "tard"]

@@ -1,3 +1,3 @@
 @echo off
-python 02_sl_to_wp_pivot_v2.py
+python 02_SL_to_ML_GJ.py
 pause
