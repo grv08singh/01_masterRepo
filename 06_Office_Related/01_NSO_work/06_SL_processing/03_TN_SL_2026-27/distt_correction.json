@@ -1,0 +1,165 @@
+{
+    "GANDHINAGAR": [
+        "gand",
+        "dhinagar",
+        "dhi"
+    ],
+    "AHMEDABAD": [
+        "ahm",
+        "dabad"
+    ],
+    "AMRELI": [
+        "amr",
+        "reli",
+        "relli"
+    ],
+    "BHAVNAGAR": [
+        "bhav",
+        "bhaav",
+        "vnagar"
+    ],
+    "BOTAD": [
+        "bot",
+        "tad"
+    ],
+    "JAMNAGAR": [
+        "jam",
+        "mnagar"
+    ],
+    "PORBANDAR": [
+        "por",
+        "bandar",
+        "bander",
+        "band"
+    ],
+    "DEVBHUMI DWARKA": [
+        "dev",
+        "bhumi",
+        "bhoomi",
+        "dwarka",
+        "dwarika",
+        "dwar"
+    ],
+    "RAJKOT": [
+        "raj",
+        "kot"
+    ],
+    "JUNAGADH": [
+        "juna",
+        "gadh",
+        "garh"
+    ],
+    "GIR SOMNATH": [
+        "gir",
+        "som",
+        "nath"
+    ],
+    "MORBI": [
+        "mor",
+        "rbi"
+    ],
+    "KACHCHH": [
+        "kach",
+        "kutch",
+        "katch",
+        "kacch"
+    ],
+    "SURENDRANAGAR": [
+        "suren",
+        "surin",
+        "ndran",
+        "dranagar"
+    ],
+    "PANCHMAHAL": [
+        "pan",
+        "nchm"
+    ],
+    "DAHOD": [
+        "dah",
+        "dohad",
+        "doh"
+    ],
+    "VADODARA": [
+        "vado",
+        "baroda",
+        "baro",
+        "odara",
+        "roda"
+    ],
+    "NARMADA": [
+        "narm",
+        "mada",
+        "mda"
+    ],
+    "BHARUCH": [
+        "bharu",
+        "bharoo",
+        "ruch",
+        "rooch",
+        "och"
+    ],
+    "CHHOTA UDEPUR": [
+        "chhota",
+        "chota",
+		"udepur",
+		"udaipur",
+        "ude",
+        "udai"
+    ],
+    "MAHISAGAR": [
+        "mahi",
+        "hisagar",
+        "sagar"
+    ],
+    "BANASKANTHA": [
+        "banas",
+        "skantha"
+    ],
+    "PATAN": [
+        "patan",
+        "paatan"
+    ],
+    "MEHSANA": [
+        "meh",
+        "mahe",
+        "sana"
+    ],
+    "SABARKANTHA": [
+        "sabar",
+        "rkantha"
+    ],
+    "ANAND": [
+        "anand",
+		"nand"
+    ],
+    "KHEDA": [
+        "khed"
+    ],
+    "ARVALLI": [
+        "arav",
+        "arv",
+        "alli",
+        "valli",
+        "ali",
+        "vali"
+    ],
+    "SURAT": [
+        "surat",
+        "soorat"
+    ],
+    "DANGS": [
+        "dang"
+    ],
+    "TAPI": [
+        "tapi",
+        "tapee"
+    ],
+    "NAVSARI": [
+        "nav",
+        "sari"
+    ],
+    "VALSAD": [
+        "vals",
+        "lsad"
+    ]
+}
