@@ -1,13 +1,1 @@
-{
-	"PADDY": ["pad", "ddy", "ady", "dy"], 
-	"BAJRA": ["baj", "jra", "jara", "baaj"], 
-	"MAIZE": ["maiz", "mez"], 
-	"TUR": ["arhar", "toor", "tur"], 
-	"COTTON": ["cot", "ton"], 
-	"GROUNDNUT": ["gnut", "gro", "ground", "ndnut"], 
-	"CASTOR": ["cast", "stor", "arandi"], 
-	"SESAMUM": ["sesam", "sesamum", "ses", "samum", "mum"], 
-	"WHEAT": ["wheat", "whet", "whe", "eat"], 
-	"GRAM": ["gram", "gra", "ram"], 
-	"RAPE_MUSTARD": ["rap", "rape", "must", "tard"]
-}
+{"PADDY_KAR": ["kar", "kur", "vai"], "PADDY_SAMBA": ["samba", "sam"], "PADDY_NAVRAI": ["nav", "rai"], "BAJRA": ["baj", "jra", "jara"], "COTTON": ["cot", "ton"], "GINGELLY": ["gin", "gelly", "gely", "gel"], "GROUNDNUT": ["ground", "grou", "gro", "ndnut"], "MAIZE": ["maize", "maiz", "mez", "ze"], "BLACKGRAM": ["black", "bgram", "kgram"], "SUGARCANE": ["sugar", "cane", "can"], "JOWAR": ["jow", "war"], "HORSEGRAM": ["hor", "rse", "segram", "hour"], "GREENGRAM": ["green", "ggram", "engram"], "REDGRAM": ["red", "rgram", "dgram"]}
