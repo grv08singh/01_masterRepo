@@ -1,0 +1,135 @@
+def get_SL_to_ML(directory):
+    #df to use
+    df_state = pd.read_excel("ML_Template.xlsx", sheet_name="State", dtype=str)
+    state = df_state['STATE'].iloc[0]
+    year = df_state['YEAR'].iloc[0]
+    
+    df_samples = pd.read_excel("ML_Template.xlsx", sheet_name="Samples", dtype=str)
+    df_districts = pd.read_excel("ML_Template.xlsx", sheet_name="Districts", dtype=str)
+    df_crops = pd.read_excel("ML_Template.xlsx", sheet_name="Crops", dtype=str)
+
+    #df to create
+    df_Vill = pd.DataFrame(columns=['STATE','SEASONCODE','SAMPLE','CROPCODE',
+                                    'DISTRICT','DISTRICTNAME','BLOCK','VILLAGE'])
+    
+    df_ML = pd.DataFrame(columns=['YEAR','SEASONCODE','SEASONNAME','HSEASONNAME',
+                                  'SAMPLE','SAMPLENAME','HSAMPLENAME','STATE',
+                                  'STATENAME','SHORTSTATE','HSTATENAME','ROCODE',
+                                  'RONAME','HRONAME','SROCODE','SRONAME','HSRONAME',
+                                  'DISTRICT','DISTRICTNAME','HDISTRICTNAME',
+                                  'SELORDER','EXPT','CROPCODE','CROPNAME',
+                                  'HCROPNAME','STATUS','EXPTID',])
+    
+    # Get all .xlsx and .xls files in the directory
+    excel_files = glob.glob(os.path.join(directory, "*.xlsx"))
+    
+    for file_path in excel_files:
+        file_name = os.path.basename(file_path)
+        incorrect_distt = Path(file_name).stem.strip().title()
+
+        district_name = correct_distt_name(incorrect_distt)
+        district_code = df_districts[df_districts['DISTRICTNAME']==district_name]['DISTRICT'].iloc[0]
+        # Determine file type and use appropriate library
+        if file_path.endswith('.xlsx'):
+            #try:
+            wb = load_workbook(file_path, data_only=True)
+            for sheet_name in wb.sheetnames:
+                if "cent" in sheet_name.lower() or "sta" in sheet_name.lower():
+                    sample = '1' if "cent" in sheet_name.lower() else '2'
+                    
+                    ws = wb[sheet_name]
+                    
+                    # setting which cells to scan
+                    row_text_list = ['block', 'name of the village', 'name of village']
+                    start_row = 0
+                    title_row = 0
+                    while start_row <= 0:
+                        title_row = get_first_row(ws, row_text_list)
+                        crop_row = title_row
+                        crop_type_row = title_row + 1
+                        os_row = title_row + 2
+                        start_row = title_row + 3
+                        
+                    col_text_list = ['Expts. & O.S', 'Expts', 'Expt', 'O.S']
+                    start_col = 0
+                    while start_col <= 0:
+                        start_col = get_first_col(ws, col_text_list)
+                        block_col = start_col - 2
+                        village_col = start_col - 1
+                    
+                    end_row = ws.max_row + 1
+                    end_col = ws.max_column + 1
+
+                    for col_idx in range(start_col, end_col):
+                        for row_idx in range(start_row, end_row):
+                            cell_val = ws.cell(row=row_idx, column=col_idx).value
+                            if cell_val is not None:
+                                if isinstance(cell_val, str):
+                                    cell_val = cell_val.strip()
+                                    if '-' in cell_val:
+                                        req_pattern = str(re.search(r'\d+-\d+', cell_val).group()).strip()
+                                        if req_pattern:
+                                            expts_n_os = re.findall(r'\d+', req_pattern)
+                                            selorder = str(expts_n_os[1])
+                                            if len(selorder) == 1:
+                                                selorder = '0' + selorder
+                                            
+                                            if village_col>0:
+                                                village = ws.cell(row=row_idx, column=village_col).value
+                                                if isinstance(village, str) and village is not None:
+                                                    village = village.upper()
+                                                    if block_col>0:
+                                                        block = ws.cell(row=row_idx, column=block_col).value
+                                                        if isinstance(block, str) and block is not None:
+                                                            block = block.upper()
+                                                            
+                                                            # get crop code (2-digit), season code (1-digit) and irrigation code (2-digit)
+                                                            crop_cd1, season_cd, irr_cd = get_crop(df_crops, ws, crop_row, col_idx, crop_type_row)
+                                                            if crop_cd1 is not None and season_cd is not None:
+                                                                crop_cd = crop_cd1
+                                                                #set crop code for A/B type cotton
+                                                                if crop_cd1 in ('12','55'):
+                                                                    if '@' in str(cell_val):
+                                                                        crop_cd = '12'
+                                                                    else:
+                                                                        crop_cd = '55'
+                                                                elif crop_cd1 in ('56','57'):
+                                                                    if '@' in str(cell_val):
+                                                                        crop_cd = '56'
+                                                                    else:
+                                                                        crop_cd = '57'
+                                                                crop_code = crop_cd + irr_cd
+                                                                
+                                                                df_village_row = {
+                                                                    'STATE': state,
+                                                                    'DISTRICT': district_code,
+                                                                    'SAMPLE': sample,
+                                                                    'SEASONCODE': season_cd,
+                                                                    'CROPCODE': crop_code,
+                                                                    'BLOCK': block,
+                                                                    'VILLAGE': village
+                                                                }
+                                                                df_Vill = pd.concat([df_Vill, pd.DataFrame([df_village_row])], 
+                                                                                    ignore_index=True)
+                                                                
+                                                                df_ML_row = {
+                                                                    'YEAR': [year, year],
+                                                                    'STATE': [state, state],
+                                                                    'DISTRICT': [district_code, district_code],
+                                                                    'SAMPLE': [sample, sample],
+                                                                    'SEASONCODE': [season_cd, season_cd],
+                                                                    'CROPCODE': [crop_code, crop_code],
+                                                                    'SELORDER': [selorder, selorder],
+                                                                    'EXPT': ['1','2']
+                                                                }
+                                                                
+                                                                df_ML = pd.concat([df_ML, pd.DataFrame(df_ML_row, dtype=str)], ignore_index=True)
+
+            #except Exception as e:
+            #    print(f"Error reading {file_name}, {sheet_name}, {row_idx}, {col_idx}, {village}, {crop}")
+            #    raise e
+
+    #joins
+    df_ML = apply_join(df_ML, df_state, df_samples, df_districts, df_crops)
+    
+    return df_Vill, df_ML

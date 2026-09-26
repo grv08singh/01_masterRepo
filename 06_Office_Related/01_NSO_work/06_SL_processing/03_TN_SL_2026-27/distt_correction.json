@@ -1,0 +1,296 @@
+{
+    "ERODE": [
+        "erode",
+        "erod",
+        "rode",
+        "rod",
+        "ero"
+    ],
+    "THE NILGIRIS": [
+        "nilgiri",
+        "nil",
+        "neel",
+        "lgiri"
+    ],
+    "COIMBATORE": [
+        "coim",
+        "batore",
+        "tore",
+        "coyam",
+        "batur",
+        "bat"
+    ],
+    "TIRUPPUR": [
+        "thirupur",
+        "thiruppur",
+        "tirupur",
+        "tiruppur",
+        "ruppur",
+        "rupur"
+    ],
+    "DHARMAPURI": [
+        "dharma",
+        "dharam",
+        "dharm",
+        "rmapuri"
+    ],
+    "KRISHNAGIRI": [
+        "krishna",
+        "krish",
+        "nagiri",
+        "kri"
+    ],
+    "TIRUPATHUR": [
+        "tirupathur",
+        "thirupathur",
+        "rupathur",
+        "upath"
+    ],
+    "SALEM": [
+        "salem",
+        "selam",
+        "sal",
+        "lem",
+        "sel",
+        "lam"
+    ],
+    "NAMAKKAL": [
+        "namakk",
+        "namak",
+        "makkal",
+        "akkal",
+        "kkal"
+    ],
+    "KARUR": [
+        "karur",
+        "karoor",
+        "karu",
+        "kar"
+    ],
+    "TIRUCHIRAPPALLI": [
+        "tiruch",
+        "thiruch",
+        "chirap",
+        "chira",
+        "ppalli",
+        "ppali",
+        "palli",
+        "pali"
+    ],
+    "PERAMBALUR": [
+        "peram",
+        "balur",
+        "pera",
+        "rambal",
+        "amba"
+    ],
+    "ARIYALUR": [
+        "ariya",
+        "yalur",
+        "ariy",
+        "yalu",
+        "riya"
+    ],
+    "THIRUVALLUR": [
+        "thiruvallur",
+        "tiruvallur",
+        "uvallur",
+        "vallur",
+        "uvalur",
+        "valur",
+        "allur"
+    ],
+    "CHENNAI": [
+        "chenn",
+        "ennai",
+        "nnai",
+        "nai"
+    ],
+    "KANCHEEPURAM": [
+        "kanchee",
+        "cheepuram",
+        "kanchi",
+        "kanch",
+        "chipuram",
+        "kaanch",
+        "kaan",
+        "cheep",
+        "chip"
+    ],
+    "CHENGALPATTU": [
+        "chengal",
+        "galpattu",
+        "engalp",
+        "cheng",
+        "engal",
+        "pattu",
+        "patu"
+    ],
+    "VILUPPURAM": [
+        "villu",
+        "lupuram",
+        "vilup",
+        "vill",
+        "upuram",
+        "vilu"
+    ],
+    "CUDDALORE": [
+        "cudd",
+        "dalore",
+        "cud",
+        "alore"
+    ],
+    "KALLAKURICHI": [
+        "kalla",
+        "kalli",
+        "kala",
+        "kali",
+        "lakurichi",
+        "kurichi"
+    ],
+    "MAYILADUTHURAI": [
+        "myladu",
+        "mayiladu",
+        "duthurai",
+        "mayila",
+        "thurai",
+        "hurai",
+        "myla",
+        "mayi"
+    ],
+    "VELLORE": [
+        "vello",
+        "llore",
+        "velo",
+        "llor"
+    ],
+    "TIRUVANNAMALAI": [
+        "tiruvanna",
+        "thiruvanna",
+        "tiruvana",
+        "thiruvana",
+        "namalai",
+        "malai",
+        "alai"
+    ],
+    "RANIPET": [
+        "ranip",
+        "nipet",
+        "rani"
+    ],
+    "DINDIGUL": [
+        "dindig",
+        "indigul",
+        "dindi",
+        "dind",
+        "din",
+        "gul"
+    ],
+    "SIVAGANGAI": [
+        "sivaganga",
+        "sivagan",
+        "sivag",
+        "siva",
+        "gangai",
+        "ganga",
+        "gang"
+    ],
+    "MADURAI": [
+        "madur",
+        "adurai",
+        "durai",
+        "madu"
+    ],
+    "THENI": [
+        "theni",
+        "heni",
+        "eni"
+    ],
+    "NAGAPATTINAM": [
+        "nagapattin",
+        "nagapatt",
+        "nagapat",
+        "nagap",
+        "ppattinam",
+        "ppatti",
+        "ppati",
+        "patti",
+        "pati"
+    ],
+    "THIRUVARUR": [
+        "tiruvarur",
+        "thiruvarur",
+        "uvarur",
+        "uvaroor",
+        "thiruvar",
+        "tiruvar"
+    ],
+    "THANJAVUR": [
+        "thanjav",
+        "tanjav",
+        "anjavur",
+        "anjav",
+        "anja"
+    ],
+    "PUDUKKOTTAI": [
+        "pudukkott",
+        "pudukkot",
+        "pudukott",
+        "pudukot",
+        "kkottai",
+        "kkotai",
+        "kottai",
+        "kotai"
+    ],
+    "THOOTHUKUDI": [
+        "thoothu",
+        "thukudi",
+        "thooth",
+        "ukudi",
+        "thuk"
+    ],
+    "TIRUNELVELI": [
+        "thirun",
+        "tirun",
+        "runelvel",
+        "nelvel",
+        "velli",
+        "veli"
+    ],
+    "KANNIYAKUMARI": [
+        "kanniya",
+        "kumari",
+        "kaniya",
+        "kanya",
+        "yakumari",
+        "yakum",
+        "umari"
+    ],
+    "TENKASI": [
+        "tenkasi",
+        "thenkasi",
+        "tenka",
+        "enkasi",
+        "enka",
+        "tenk",
+        "thenk"
+    ],
+    "VIRUDHUNAGAR": [
+        "virudhu",
+        "virudh",
+        "virudu",
+        "virud",
+        "dhunagar",
+        "dunagar",
+        "rudhunagar",
+        "rudhun"
+    ],
+    "RAMANATHAPURAM": [
+        "ramanatha",
+        "ramana",
+        "manatha",
+        "natha",
+        "thapuram",
+        "hapuram"
+    ]
+}
